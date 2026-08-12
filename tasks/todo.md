@@ -3,7 +3,7 @@
 Full detail (acceptance criteria, verification, files) in [plan.md](plan.md). Work top to bottom; stop at each checkpoint for review before continuing (checkpoint-per-milestone autonomy, confirmed).
 
 ## Phase 0: Repo Scaffold
-- [ ] Task 1: Initialize project structure and tooling
+- [x] Task 1: Initialize project structure and tooling
 - [ ] **Checkpoint: Repo Scaffold** — review with user
 
 ## Phase 1: Data Acquisition & Prep
