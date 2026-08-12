@@ -9,7 +9,7 @@ Full detail (acceptance criteria, verification, files) in [plan.md](plan.md). Wo
 ## Phase 1: Data Acquisition & Prep
 - [x] Task 2: Dataset download script
 - [x] Task 3: Verify no source-image leakage across splits
-- [ ] **Checkpoint: Data Acquisition & Prep** — review with user
+- [x] **Checkpoint: Data Acquisition & Prep** — review with user
 
 ## Phase 2: Image-Quality Gate
 - [ ] Task 4: Quality gate logic
