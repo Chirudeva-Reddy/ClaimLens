@@ -59,8 +59,9 @@ claimlens/
   app.py                  → Gradio Blocks UI, wires the pipeline together
   train.py                → YOLOv8n-seg fine-tuning entrypoint
 data/
-  raw/                     → downloaded datasets (gitignored)
-  processed/               → train/val/test splits (source-image-level, no leakage)
+  raw/                     → downloaded dataset (gitignored); Roboflow's export already provides
+                              disjoint train/valid/test folders with no augmentation, so this is
+                              used directly — no separate processed/ split step is needed
   price_table.json         → curated illustrative pricing data
   policy_clauses/          → sample/illustrative policy text
 models/                     → trained weights + exported ONNX (gitignored, or Git LFS if small enough)

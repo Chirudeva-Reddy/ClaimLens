@@ -7,8 +7,8 @@ Full detail (acceptance criteria, verification, files) in [plan.md](plan.md). Wo
 - [ ] **Checkpoint: Repo Scaffold** — review with user
 
 ## Phase 1: Data Acquisition & Prep
-- [ ] Task 2: Dataset download script
-- [ ] Task 3: Source-image-level train/val/test split
+- [x] Task 2: Dataset download script
+- [x] Task 3: Verify no source-image leakage across splits
 - [ ] **Checkpoint: Data Acquisition & Prep** — review with user
 
 ## Phase 2: Image-Quality Gate

@@ -51,16 +51,15 @@ ClaimLens is built as the pipeline SPEC.md defines: quality gate â†’ detection â
 **Files:** `scripts/download_data.py`
 **Estimated scope:** XS
 
-## Task 3: Source-image-level train/val/test split
-**Description:** Split `data/raw/` into `data/processed/{train,val,test}` at the source-image level (no near-duplicate crop crossing a split boundary), per SPEC.md's no-leakage requirement.
+## Task 3: Verify no source-image leakage across splits
+**Description:** The downloaded Roboflow export (Task 2) already provides disjoint `train`/`valid`/`test` image folders with no augmentation applied, so no custom splitter is needed (avoids duplicating a split Roboflow already did correctly). Instead, verify the no-leakage property directly: no source image appears in more than one split.
 **Acceptance criteria:**
-- [ ] `scripts/make_splits.py` writes the three splits
-- [ ] A pytest test asserts no image ID appears in more than one split
+- [x] A pytest test asserts no source image ID appears in more than one of `data/raw/{train,valid,test}`
 **Verification:**
-- [ ] `pytest tests/test_split_leakage.py` passes
+- [x] `pytest tests/test_split_leakage.py` passes (1995 train / 655 valid / 200 test, 0 overlap)
 **Dependencies:** Task 2
-**Files:** `scripts/make_splits.py`, `tests/test_split_leakage.py`
-**Estimated scope:** S
+**Files:** `tests/test_split_leakage.py`
+**Estimated scope:** XS
 
 ### Checkpoint: Data Acquisition & Prep
 - [ ] Dataset downloaded and split, leakage test passes
