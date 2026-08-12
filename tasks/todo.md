@@ -12,8 +12,8 @@ Full detail (acceptance criteria, verification, files) in [plan.md](plan.md). Wo
 - [x] **Checkpoint: Data Acquisition & Prep** — review with user
 
 ## Phase 2: Image-Quality Gate
-- [ ] Task 4: Quality gate logic
-- [ ] **Checkpoint: Image-Quality Gate** — review with user
+- [x] Task 4: Quality gate logic
+- [x] **Checkpoint: Image-Quality Gate** — review with user
 
 ## Phase 3: Damage Detection & Segmentation
 - [ ] Task 5: Bounded YOLOv8n-seg fine-tune (MPS)

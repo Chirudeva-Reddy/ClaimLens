@@ -70,20 +70,24 @@ ClaimLens is built as the pipeline SPEC.md defines: quality gate → detection �
 ### Phase 2: Image-Quality Gate
 
 ## Task 4: Quality gate logic
-**Description:** Implement accept/reject rules for a submitted photo — blur/sharpness check, minimum resolution, and (per SPEC.md's revised capture assumption) a check that the photo plausibly shows the damaged area rather than an unusable frame. No fixed 7-view checklist — this operates per-photo, not per-required-slot.
+**Description:** Implement accept/reject rules for a submitted photo — blur/sharpness check (variance of Laplacian) and minimum resolution. Purely technical/model-independent, as the pipeline requires (§5 runs this before detection exists). The semantic "does this photo plausibly show the damaged area" and "is photo coverage sufficient" judgment calls need detection output and are deferred to the Phase 5 triage engine, not built here.
 **Acceptance criteria:**
-- [ ] `claimlens/quality_gate/gate.py` exposes a function that returns accept/reject + reason for a given image
-- [ ] Every rejection reason has at least one unit test with a fixture image
+- [x] `claimlens/quality_gate/gate.py` exposes a function that returns accept/reject + reason for a given image
+- [x] Every rejection reason has at least one unit test
 **Verification:**
-- [ ] `pytest tests/quality_gate/` passes
-- [ ] Manual check: one deliberately blurry and one sharp sample image produce the expected verdicts
+- [x] `pytest tests/quality_gate/` passes (synthetic fixtures generated in-test via PIL, not stored binary images)
+- [x] Manual check against 100 real dataset images: 1/100 rejected (see note below)
 **Dependencies:** Task 1
-**Files:** `claimlens/quality_gate/gate.py`, `tests/quality_gate/test_gate.py`, a couple of small fixture images under `tests/fixtures/`
+**Files:** `claimlens/quality_gate/gate.py`, `tests/quality_gate/test_gate.py`
 **Estimated scope:** M
 
+**Notes from implementation:**
+- Found and fixed a real bug: Pillow's `ImageFilter.Kernel` leaves the 1px image border unfiltered (copies the source pixel), which injected phantom variance into even a perfectly flat image. Fixed by cropping the border before computing variance.
+- The textbook "~100" blur-variance threshold rejected 30% of real CarDD training images (they're 640x640, stretch-resized by Roboflow, which softens edges). Recalibrated to 15.0 against a real sample — see the `ponytail:` comment in `gate.py` for the reasoning and the revisit trigger (real user submissions, not resized training data).
+
 ### Checkpoint: Image-Quality Gate
-- [ ] pytest passes, manual check confirms expected accept/reject behavior
-- [ ] Review with user before starting model training
+- [x] pytest passes, manual check confirms expected accept/reject behavior
+- [x] Review with user before starting model training
 
 ---
 
