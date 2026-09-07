@@ -160,8 +160,8 @@ pip install -e .
 # Run the complete test suite (44 tests)
 pytest
 
-# Launch the Gradio Dashboard locally
-python -m claimlens.app
+# Launch the web dashboard locally
+python app.py
 ```
 Access the application in your browser at `http://127.0.0.1:7860`.
 

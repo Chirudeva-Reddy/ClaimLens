@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ClaimLens — Insurtech Damage & Total-Loss Triage Cockpit</title>
     <meta name="description" content="AI-driven, explainable two-stage vehicle damage segmentation and total-loss triage calibrated to UAE CBUAE statutory motor policies and OEM collision pricing in AED.">
+    <link rel="icon" href="data:,">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -50,7 +51,7 @@
                 </div>
                 <div class="latency-badge font-mono" id="system-latency-badge" title="Local CV Inference & Costing Pipeline Latency">
                     <span class="latency-dot"></span>
-                    <span id="latency-val">&lt;5ms RECALC</span>
+                    <span id="latency-val">READY</span>
                 </div>
             </div>
         </div>
@@ -64,10 +65,10 @@
                 <span class="scenario-bar-hint">1-click automated appraisal presets calibrated to CBUAE regulatory benchmarks:</span>
             </div>
 
-            <div class="scenario-segmented-control" role="tablist" aria-label="Inspection Scenarios">
+            <div class="scenario-segmented-control" role="group" aria-label="Inspection Scenarios">
                 <div class="scenario-active-indicator" id="scenario-sliding-pill"></div>
 
-                <button type="button" class="scenario-tab-btn" id="btn-case-a" data-case="case_a" role="tab" aria-selected="false">
+                <button type="button" class="scenario-tab-btn" id="btn-case-a" data-case="case_a" aria-pressed="false">
                     <div class="tab-badge-row">
                         <span class="pill-badge pill-repair">
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -88,7 +89,7 @@
                     <span class="tab-subtext">Toyota Camry • Bumper Scratch (&lt;2% ACV)</span>
                 </button>
 
-                <button type="button" class="scenario-tab-btn" id="btn-case-b" data-case="case_b" role="tab" aria-selected="false">
+                <button type="button" class="scenario-tab-btn" id="btn-case-b" data-case="case_b" aria-pressed="false">
                     <div class="tab-badge-row">
                         <span class="pill-badge pill-loss">
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -113,7 +114,7 @@
                     <span class="tab-subtext">Fleet Standard • Multi-Panel (&gt;80% ACV)</span>
                 </button>
 
-                <button type="button" class="scenario-tab-btn" id="btn-case-c" data-case="case_c" role="tab" aria-selected="false">
+                <button type="button" class="scenario-tab-btn" id="btn-case-c" data-case="case_c" aria-pressed="false">
                     <div class="tab-badge-row">
                         <span class="pill-badge pill-abstain">
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -157,7 +158,7 @@
                         <span class="control-note">Min 480x480 Forensic Gate</span>
                     </div>
                     <div class="upload-dropzone" id="upload-dropzone" role="button" tabindex="0" aria-label="Upload collision image">
-                        <input type="file" id="image-file-input" accept="image/*" class="file-input-hidden">
+                        <input type="file" id="image-file-input" accept="image/jpeg,image/png,image/webp" class="file-input-hidden">
                         <div class="dropzone-idle" id="dropzone-idle">
                             <div class="upload-icon-circle">
                                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -178,7 +179,7 @@
                             </button>
                         </div>
                     </div>
-                    <div id="quality-gate-banner" class="quality-gate-banner hidden"></div>
+                    <div id="quality-gate-banner" role="status" class="quality-gate-banner hidden"></div>
                 </div>
 
                 <!-- Parameters Column -->
@@ -209,7 +210,7 @@
                             </div>
                             <div class="input-currency-wrapper">
                                 <span class="currency-prefix font-mono">AED</span>
-                                <input type="number" id="input-acv" class="form-control font-mono tabular-nums" value="120000" min="1000" max="500000" step="1000" aria-label="Pre-Accident Cash Value in AED">
+                                <input type="number" id="input-acv" class="form-control font-mono tabular-nums" value="120000" required min="1000" max="500000" step="1000" aria-label="Pre-Accident Cash Value in AED">
                             </div>
 
                             <!-- Interactive Real-time ACV Range Slider -->
@@ -266,7 +267,7 @@
                                     <span>100%</span>
                                 </div>
                             </div>
-                            <span class="control-subtext">Real-time simulation slider connected to 0ms recalculation engine.</span>
+                            <span class="control-subtext">Adjust the threshold to simulate the economic outcome.</span>
                         </div>
                     </div>
 
@@ -285,7 +286,7 @@
 
         <!-- Executive Triage Decision Banner & Telemetry Strip -->
         <section class="cockpit-card triage-section" id="triage-section" aria-label="Triage Decision">
-            <div class="triage-banner status-waiting" id="triage-banner">
+            <div class="triage-banner status-waiting" id="triage-banner" aria-live="polite">
                 <div class="triage-banner-left">
                     <div class="triage-icon-badge" id="triage-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -379,13 +380,13 @@
 
                         <!-- Canvas Layer Toggles -->
                         <div class="layer-toggles" role="group" aria-label="Overlay Layer Toggles">
-                            <button type="button" class="toggle-pill active" id="toggle-parts" data-layer="parts">
+                            <button type="button" class="toggle-pill active" aria-pressed="true" id="toggle-parts" data-layer="parts">
                                 <span class="toggle-dot dot-parts"></span> Components
                             </button>
-                            <button type="button" class="toggle-pill active" id="toggle-damages" data-layer="damages">
+                            <button type="button" class="toggle-pill active" aria-pressed="true" id="toggle-damages" data-layer="damages">
                                 <span class="toggle-dot dot-damages"></span> Damages
                             </button>
-                            <button type="button" class="toggle-pill active" id="toggle-labels" data-layer="labels">
+                            <button type="button" class="toggle-pill active" aria-pressed="true" id="toggle-labels" data-layer="labels">
                                 <span class="toggle-dot dot-labels"></span> Labels
                             </button>
                         </div>
@@ -535,6 +536,7 @@
                                 <li>Sub-surface chassis rail micro-cracks or weld-seam tearing require physical undercarriage laser measurement.</li>
                                 <li>Internal fluid lines, radiators, and condenser leaks require pressure testing prior to road release.</li>
                             </ul>
+                        </div>
                             <div class="export-row">
                                 <button type="button" class="btn-cockpit-action" id="btn-open-appraisal">
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -562,7 +564,6 @@
                                     <span>Download Claim JSON</span>
                                 </button>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -672,9 +673,10 @@
 
                     <!-- Defensibility & Physical Inspection Notice -->
                     <div class="report-section">
+                        <p>Educational demonstration — not an official appraisal, repair authorization, or insurance decision.</p>
                         <h3 class="report-section-title">4. Defensibility Caveats & Forensic Certification</h3>
                         <div class="report-caveat-box">
-                            <p><strong>Forensic Gate Status:</strong> Resolution, Laplacian edge variance, and aspect ratio passed forensic quality gate. All costs derived from verified UAE parts catalog.</p>
+                            <p><strong>Photo Quality:</strong> <span id="rpt-quality-status">Awaiting inspection.</span></p>
                             <p><strong>Physical Inspection Boundary:</strong> This assessment applies strictly to visible collision damage. Unibody micro-torsion, ADAS calibration, and SRS airbag circuits mandate accredited physical verification prior to road certification.</p>
                         </div>
                     </div>
@@ -684,12 +686,12 @@
                         <div class="sig-block">
                             <div class="sig-line"></div>
                             <span class="sig-title">Certified UAE Insurance Adjuster</span>
-                            <span class="sig-note font-mono">License: UAE-CBUAE-ADJ-49102</span>
+                            <span class="sig-note font-mono">License: ____________________</span>
                         </div>
                         <div class="sig-block">
                             <div class="sig-line"></div>
                             <span class="sig-title">Accredited Bodyshop Lead Estimator</span>
-                            <span class="sig-note font-mono">Certified Facility Code: DXB-RP-883</span>
+                            <span class="sig-note font-mono">Facility code: ____________________</span>
                         </div>
                     </div>
                 </div>

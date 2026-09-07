@@ -122,3 +122,16 @@ def test_frontend_index_served() -> None:
     assert response.status_code == 200
     assert "ClaimLens" in response.text
     assert "CBUAE Unified Motor Policy Aligned" in response.text
+
+
+def test_recalculate_presets_and_invalid_inputs() -> None:
+    payload = {"repair_cost_median_aed": 6500, "acv_aed": 10000}
+    for preset, threshold in (("uae_50", 50), ("us_70", 70), ("us_75", 75), ("uk_60", 60)):
+        response = client.post("/api/recalculate", json={**payload, "jurisdiction": preset})
+        assert response.status_code == 200
+        assert response.json()["financials"]["threshold_pct"] == threshold
+        assert response.json()["financials"]["is_total_loss"] == (65 >= threshold)
+    for invalid in ({"acv_aed": 0}, {"jurisdiction": "unknown"}, {"custom_threshold": 0}):
+        assert client.post("/api/recalculate", json={**payload, **invalid}).status_code == 422
+    structural = client.post("/api/recalculate", json={**payload, "structural_risk_flag": True})
+    assert structural.json()["financials"]["is_total_loss"] is False

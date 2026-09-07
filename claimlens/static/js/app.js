@@ -27,6 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
         return `CLM-2026-DXB-${rand}`;
     }
 
+    let analysisVersion = 0;
+    let recalculateVersion = 0;
+    let recalculateTimer;
+
     // Status Icons (Clean Monochromatic / Semantic SVGs, No Emojis)
     const STATUS_ICONS = {
         waiting: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
@@ -108,17 +112,64 @@ document.addEventListener('DOMContentLoaded', () => {
     const rptClauseTitle = document.getElementById('rpt-clause-title');
     const rptClauseText = document.getElementById('rpt-clause-text');
 
+    function resetResults() {
+        analysisVersion += 1;
+        recalculateVersion += 1;
+        clearTimeout(recalculateTimer);
+        state.lastAnalysisData = null;
+        document.body.classList.remove('has-analysis');
+        canvasBaseImg.removeAttribute('src');
+        canvasSvg.innerHTML = '';
+        canvasWrapper.classList.add('hidden');
+        canvasPlaceholder.classList.remove('hidden');
+        hideTooltip();
+        triageBanner.className = 'triage-banner status-waiting';
+        triageIcon.innerHTML = STATUS_ICONS.waiting;
+        triageHeadline.textContent = 'Awaiting inspection';
+        triageSummary.textContent = 'Run an inspection for the selected photograph and vehicle brand.';
+        triageAction.textContent = 'Select evidence and run inspection.';
+        [kpiRepairCost, kpiRepairRange, kpiAcv, kpiThreshold, gaugeLossRatio].forEach(el => { el.textContent = '—'; });
+        gaugeBar.style.strokeDashoffset = 314.159;
+        tableBody.innerHTML = '<tr><td colspan="6">Run an inspection to see repair items.</td></tr>';
+        assumptionsList.innerHTML = '';
+        policyClausesContainer.innerHTML = '';
+        document.getElementById('unknowns-list').innerHTML = '';
+        document.querySelectorAll('#btn-open-appraisal, #btn-print-report, #btn-export-json').forEach(el => { el.disabled = true; });
+    }
+
+    selectBrand.addEventListener('change', resetResults);
+    resetResults();
+
     // =========================================================================
     // 1. Tab Navigation Handlers
     // =========================================================================
     document.querySelectorAll('.tabs-nav .tab-btn').forEach(btn => {
         btn.addEventListener('click', () => {
-            document.querySelectorAll('.tabs-nav .tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tabs-nav .tab-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); b.tabIndex = -1; });
             document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
             btn.classList.add('active');
+            btn.setAttribute('aria-selected', 'true');
+            btn.tabIndex = 0;
             const targetId = btn.getAttribute('data-tab');
             const targetPane = document.getElementById(targetId);
             if (targetPane) targetPane.classList.add('active');
+        });
+    });
+
+    const tabs = [...document.querySelectorAll('.tabs-nav .tab-btn')];
+    tabs.forEach((tab, index) => {
+        tab.id = `console-tab-${index}`;
+        tab.setAttribute('aria-controls', tab.dataset.tab);
+        tab.setAttribute('aria-selected', String(index === 0));
+        tab.tabIndex = index === 0 ? 0 : -1;
+        document.getElementById(tab.dataset.tab).setAttribute('aria-labelledby', tab.id);
+        tab.addEventListener('keydown', e => {
+            if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) return;
+            e.preventDefault();
+            const next = e.key === 'Home' ? 0 : e.key === 'End' ? tabs.length - 1
+                : (index + (e.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+            tabs[next].click();
+            tabs[next].focus();
         });
     });
 
@@ -146,20 +197,20 @@ document.addEventListener('DOMContentLoaded', () => {
     if (sliderAcv) {
         sliderAcv.addEventListener('input', (e) => {
             syncAcvDisplay(e.target.value);
-            triggerRecalculate();
+            scheduleRecalculate();
         });
     }
 
     inputAcv.addEventListener('input', (e) => {
         syncAcvDisplay(e.target.value);
-        triggerRecalculate();
+        scheduleRecalculate();
     });
 
     document.querySelectorAll('.chip-btn').forEach(chip => {
         chip.addEventListener('click', () => {
             const val = parseFloat(chip.getAttribute('data-val'));
             syncAcvDisplay(val);
-            triggerRecalculate();
+            scheduleRecalculate();
         });
     });
 
@@ -169,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
             selectJurisdiction.value = 'custom';
             kpiThresholdRule.textContent = 'Custom Insurer Economic Rule';
         }
-        triggerRecalculate();
+        scheduleRecalculate();
     });
 
     selectJurisdiction.addEventListener('change', (e) => {
@@ -193,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             kpiThresholdRule.textContent = 'Custom Insurer Economic Rule';
         }
-        triggerRecalculate();
+        scheduleRecalculate();
     });
 
     // =========================================================================
@@ -206,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     dropzone.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
+        if (e.target === dropzone && (e.key === 'Enter' || e.key === ' ')) {
             e.preventDefault();
             fileInput.click();
         }
@@ -240,12 +291,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function handleSelectedFile(file) {
+        if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
+            alert('Select a JPEG, PNG, or WEBP image.');
+            return;
+        }
+        resetResults();
         state.uploadedFile = file;
         state.activeScenarioId = null;
-        document.querySelectorAll('.scenario-tab-btn').forEach(c => c.classList.remove('active-scenario'));
+        document.querySelectorAll('.scenario-tab-btn').forEach(c => { c.classList.remove('active-scenario'); c.setAttribute('aria-pressed', 'false'); });
 
         const reader = new FileReader();
+        reader.onerror = () => alert('Unable to read this image. Please select it again.');
         reader.onload = (event) => {
+            if (state.uploadedFile !== file) return;
             previewImg.src = event.target.result;
             dropzoneIdle.classList.add('hidden');
             dropzonePreview.classList.remove('hidden');
@@ -255,6 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function clearInputEvidence() {
+        resetResults();
         state.uploadedFile = null;
         state.activeScenarioId = null;
         fileInput.value = '';
@@ -262,7 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dropzonePreview.classList.add('hidden');
         dropzoneIdle.classList.remove('hidden');
         qualityGateBanner.classList.add('hidden');
-        document.querySelectorAll('.scenario-tab-btn').forEach(c => c.classList.remove('active-scenario'));
+        document.querySelectorAll('.scenario-tab-btn').forEach(c => { c.classList.remove('active-scenario'); c.setAttribute('aria-pressed', 'false'); });
     }
 
     // =========================================================================
@@ -276,15 +335,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     async function loadAndRunScenario(caseId) {
+        resetResults();
         document.querySelectorAll('.scenario-tab-btn').forEach(c => {
             c.classList.remove('active-scenario');
-            c.setAttribute('aria-selected', 'false');
+            c.setAttribute('aria-pressed', 'false');
         });
 
         const activeTab = document.querySelector(`[data-case="${caseId}"]`);
         if (activeTab) {
             activeTab.classList.add('active-scenario');
-            activeTab.setAttribute('aria-selected', 'true');
+            activeTab.setAttribute('aria-pressed', 'true');
         }
 
         state.activeScenarioId = caseId;
@@ -332,6 +392,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function setCockpitLoading(isLoading) {
+        document.querySelector('.form-section').setAttribute('aria-busy', String(isLoading));
+        document.querySelectorAll('.form-section input, .form-section select, .chip-btn, .scenario-tab-btn, #btn-clear-preview').forEach(el => {
+            el.disabled = isLoading;
+        });
+        dropzone.inert = isLoading;
         if (isLoading) {
             btnSpinner.classList.remove('hidden');
             btnRunInspection.disabled = true;
@@ -367,6 +432,9 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        if (!inputAcv.reportValidity()) return;
+        resetResults();
+        const version = analysisVersion;
         setCockpitLoading(true);
         const startTime = performance.now();
 
@@ -389,10 +457,11 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (!response.ok) {
-                throw new Error(`Server returned HTTP ${response.status}`);
+                throw new Error(`Inspection HTTP ${response.status}: ${await response.text()}`);
             }
 
             const data = await response.json();
+            if (version !== analysisVersion) return;
             const elapsed = Math.round(performance.now() - startTime);
             if (latencyVal) {
                 latencyVal.textContent = `${elapsed}ms PIPELINE`;
@@ -405,7 +474,10 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Inspection failed:', err);
             alert(`Analysis encountered an error: ${err.message}`);
         } finally {
-            setCockpitLoading(false);
+            if (version === analysisVersion) {
+                setCockpitLoading(false);
+                if (!state.lastAnalysisData) tableBody.innerHTML = '<tr><td colspan="6">Inspection failed. Please try again.</td></tr>';
+            }
         }
     }
 
@@ -413,6 +485,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. Render Inspection & Telemetry Results
     // =========================================================================
     function renderAnalysisResults(data) {
+        document.body.classList.add('has-analysis');
         // Quality Gate status
         if (!data.quality_gate.accepted) {
             qualityGateBanner.textContent = `Quality Gate Flag: ${data.quality_gate.reason}. ${data.quality_gate.actionable_guidance}`;
@@ -432,7 +505,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Radial Loss Ratio Gauge
         const ratio = Math.min(100.0, Math.max(0.0, data.financials.loss_ratio_pct));
-        gaugeLossRatio.textContent = `${ratio.toFixed(1)}%`;
+        gaugeLossRatio.textContent = `${data.financials.loss_ratio_pct.toFixed(1)}%`;
         const circumference = 314.159;
         const offset = circumference - (ratio / 100.0) * circumference;
         gaugeBar.style.strokeDashoffset = offset;
@@ -447,6 +520,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Canvas & High-Precision SVG Rendering
         if (data.image_meta && data.image_meta.raw_base64) {
             canvasPlaceholder.classList.add('hidden');
+            canvasWrapper.classList.remove('hidden');
             canvasBaseImg.src = data.image_meta.raw_base64;
             state.imageDimensions = {
                 width: data.image_meta.width,
@@ -461,14 +535,17 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCostTable(data.line_items);
 
         if (data.assumptions && assumptionsList) {
-            assumptionsList.innerHTML = data.assumptions.map(a => `<li>${a}</li>`).join('');
+            assumptionsList.innerHTML = data.assumptions.map(a => `<li>${escapeHtml(a)}</li>`).join('');
         }
 
         if (data.policy_guidance && policyClausesContainer) {
             renderPolicyClauses(data.policy_guidance);
         }
 
-        // Populate official appraisal report modal
+        document.getElementById('unknowns-list').innerHTML = data.unknowns.map(item => `<li>${escapeHtml(item)}</li>`).join('');
+        document.querySelectorAll('#btn-open-appraisal, #btn-print-report, #btn-export-json').forEach(el => { el.disabled = false; });
+
+        // Populate appraisal report modal
         populateAppraisalReport(data);
 
         // Smoothly bring results into focus
@@ -637,7 +714,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const polyId = item.damage_polygon_id || '';
             const actionClass = item.action === 'REPLACE' ? 'action-replace' : 'action-repair';
             return `
-                <tr data-poly-id="${polyId}" class="table-row-item">
+                <tr data-poly-id="${polyId}" class="table-row-item" tabindex="0">
                     <td class="font-mono tabular-nums">${idx + 1}</td>
                     <td>
                         <strong>${escapeHtml(item.part_name)}</strong>
@@ -656,6 +733,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const polyId = row.getAttribute('data-poly-id');
             if (!polyId) return;
 
+            row.addEventListener('focus', () => { highlightPolygonAndRow(polyId, true); showTooltipForPolygonId(polyId); });
+            row.addEventListener('blur', () => { highlightPolygonAndRow(polyId, false); hideTooltip(); });
             row.addEventListener('mouseenter', () => {
                 highlightPolygonAndRow(polyId, true);
                 showTooltipForPolygonId(polyId);
@@ -684,7 +763,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================================================
     function renderPolicyClauses(clauses) {
         if (!clauses || clauses.length === 0) {
-            policyClausesContainer.innerHTML = '<p class="empty-hint">No specific statutory exclusions triggered.</p>';
+            policyClausesContainer.innerHTML = '<p class="empty-hint">Policy guidance not established for this evidence.</p>';
             return;
         }
 
@@ -704,12 +783,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================================================
     // 12. Instant Real-Time Recalculate (<5ms Endpoint Integration)
     // =========================================================================
+    function scheduleRecalculate() {
+        recalculateVersion += 1;
+        clearTimeout(recalculateTimer);
+        recalculateTimer = setTimeout(triggerRecalculate, 180);
+    }
+
     async function triggerRecalculate() {
-        if (!state.lastAnalysisData) return;
+        if (!state.lastAnalysisData?.quality_gate.accepted || !inputAcv.checkValidity()) return;
+        const version = recalculateVersion;
+        const original = state.lastAnalysisData;
 
         const currentMedian = state.lastAnalysisData.financials.repair_cost_median_aed;
-        const currentAcv = parseFloat(inputAcv.value) || 120000;
-        const currentThresh = parseFloat(sliderThreshold.value) || 50;
+        const currentAcv = Number(inputAcv.value);
+        const currentThresh = Number(sliderThreshold.value);
         const currentJurisdiction = selectJurisdiction.value;
         const hasItems = state.lastAnalysisData.line_items.length > 0;
         const structuralFlag = state.lastAnalysisData.financials.structural_risk_flag;
@@ -730,8 +817,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
             });
 
-            if (resp.ok) {
+            if (!resp.ok) throw new Error(`Recalculation HTTP ${resp.status}: ${await resp.text()}`);
+            {
                 const rec = await resp.json();
+                if (version !== recalculateVersion || original !== state.lastAnalysisData) return;
+                if (original.triage.outcome === 'INSUFFICIENT_EVIDENCE_INSPECTION_REQUIRED') {
+                    Object.assign(rec, original.triage);
+                    rec.financials.is_total_loss = false;
+                }
                 const duration = Math.round(performance.now() - startRecalc);
                 if (latencyVal) {
                     latencyVal.textContent = `${duration}ms RECALC`;
@@ -747,7 +840,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Update Loss Ratio Gauge
                 const ratio = Math.min(100.0, Math.max(0.0, rec.financials.loss_ratio_pct));
-                gaugeLossRatio.textContent = `${ratio.toFixed(1)}%`;
+                gaugeLossRatio.textContent = `${rec.financials.loss_ratio_pct.toFixed(1)}%`;
                 const circumference = 314.159;
                 const offset = circumference - (ratio / 100.0) * circumference;
                 gaugeBar.style.strokeDashoffset = offset;
@@ -757,16 +850,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 kpiAcv.textContent = `AED ${rec.financials.acv_aed.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
                 kpiThreshold.textContent = `${rec.financials.threshold_pct.toFixed(1)}%`;
 
-                // Update state copy
-                state.lastAnalysisData.financials.acv_aed = rec.financials.acv_aed;
-                state.lastAnalysisData.financials.loss_ratio_pct = rec.financials.loss_ratio_pct;
-                state.lastAnalysisData.financials.threshold_pct = rec.financials.threshold_pct;
-                state.lastAnalysisData.financials.is_total_loss = rec.financials.is_total_loss;
+                state.lastAnalysisData = {
+                    ...original,
+                    triage: { ...original.triage, outcome: rec.outcome, headline: rec.headline,
+                        status_color: rec.status_color, summary_reason: rec.summary_reason,
+                        recommended_action: rec.recommended_action },
+                    financials: { ...original.financials, ...rec.financials }
+                };
 
                 populateAppraisalReport(state.lastAnalysisData);
             }
         } catch (err) {
+            if (version !== recalculateVersion) return;
             console.error('Recalculation error:', err);
+            alert(`Recalculation failed; displayed results are unchanged. ${err.message}`);
         }
     }
 
@@ -782,6 +879,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 pill.classList.remove('active');
             }
+            pill.setAttribute('aria-pressed', String(state.activeLayers[layer]));
             applyLayerVisibility();
         });
     });
@@ -806,7 +904,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (rptClaimId) rptClaimId.textContent = state.claimReferenceId;
         if (rptDate) rptDate.textContent = new Date().toISOString().replace('T', ' ').substring(0, 19) + ' UTC';
-        if (rptBrand) rptBrand.textContent = selectBrand.value;
+        if (rptBrand) rptBrand.textContent = data.financials.brand || 'Not assessed';
+        document.getElementById('rpt-quality-status').textContent = data.quality_gate.accepted
+            ? 'Photo quality gate passed. Estimates cover visible damage only.'
+            : `Photo quality gate rejected: ${data.quality_gate.reason}. No repair estimate was produced.`;
 
         const outcomeText = data.triage.headline;
         if (rptVerdictBadge) rptVerdictBadge.textContent = outcomeText;
@@ -835,6 +936,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        rptClauseTitle.textContent = 'Policy guidance not established';
+        rptClauseText.textContent = 'No matched clause is available for this evidence.';
+
         // Render primary regulatory clause
         if (data.policy_guidance && data.policy_guidance.length > 0) {
             const topClause = data.policy_guidance[0];
@@ -851,19 +955,38 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             populateAppraisalReport(state.lastAnalysisData);
             adjusterModalBackdrop.classList.remove('hidden');
+            document.querySelector('main').inert = true;
+            btnCloseModal.focus();
         });
     }
 
+    function closeAppraisal() {
+        adjusterModalBackdrop.classList.add('hidden');
+        document.querySelector('main').inert = false;
+        btnOpenAppraisal.focus();
+    }
+
+    adjusterModalBackdrop.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closeAppraisal();
+        if (e.key === 'Tab') {
+            const target = e.shiftKey ? btnModalPrint : btnCloseModal;
+            if (document.activeElement === target) {
+                e.preventDefault();
+                (e.shiftKey ? btnCloseModal : btnModalPrint).focus();
+            }
+        }
+    });
+
     if (btnCloseModal) {
         btnCloseModal.addEventListener('click', () => {
-            adjusterModalBackdrop.classList.add('hidden');
+            closeAppraisal();
         });
     }
 
     if (adjusterModalBackdrop) {
         adjusterModalBackdrop.addEventListener('click', (e) => {
             if (e.target === adjusterModalBackdrop) {
-                adjusterModalBackdrop.classList.add('hidden');
+                closeAppraisal();
             }
         });
     }

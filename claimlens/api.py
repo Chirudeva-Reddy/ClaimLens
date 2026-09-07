@@ -12,14 +12,14 @@ import contextlib
 import io
 import tempfile
 from pathlib import Path
-from typing import Annotated, Any
+from typing import Annotated, Any, Literal
 
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from PIL import Image
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from claimlens.costing.estimate import CostEstimate, estimate_repair_costs
 from claimlens.detection.infer import inspect_vehicle
@@ -27,6 +27,7 @@ from claimlens.detection.schemas import InspectionResult
 from claimlens.policy.retrieve import retrieve_policy_guidance
 from claimlens.quality_gate.gate import check_image_quality
 from claimlens.triage.decide import TriageDecision, TriageOutcome, decide_triage
+from claimlens.triage.thresholds import get_preset
 
 SCENARIOS: dict[str, dict[str, Any]] = {
     "case_a": {
@@ -80,10 +81,10 @@ app.add_middleware(
 
 
 class RecalculateRequest(BaseModel):
-    repair_cost_median_aed: float
-    acv_aed: float
-    jurisdiction: str = "uae_50"
-    custom_threshold: float = 50.0
+    repair_cost_median_aed: float = Field(ge=0, allow_inf_nan=False)
+    acv_aed: float = Field(gt=0, allow_inf_nan=False)
+    jurisdiction: Literal["uae_50", "us_70", "us_75", "uk_60", "custom"] = "uae_50"
+    custom_threshold: float = Field(default=50.0, ge=10, le=100, allow_inf_nan=False)
     structural_risk_flag: bool = False
     has_line_items: bool = True
 
@@ -163,9 +164,9 @@ def recalculate_loss_ratio(req: RecalculateRequest) -> dict[str, Any]:
     threshold = (
         req.custom_threshold
         if req.jurisdiction == "custom"
-        else (50.0 if req.jurisdiction == "uae_50" else (70.0 if req.jurisdiction == "us_70" else 75.0))
+        else get_preset(req.jurisdiction).threshold * 100.0
     )
-    acv = max(100.0, req.acv_aed)
+    acv = req.acv_aed
     loss_ratio_pct = (req.repair_cost_median_aed / acv) * 100.0
 
     if req.structural_risk_flag:
@@ -209,7 +210,7 @@ def recalculate_loss_ratio(req: RecalculateRequest) -> dict[str, Any]:
             "acv_aed": round(acv, 2),
             "loss_ratio_pct": round(loss_ratio_pct, 2),
             "threshold_pct": round(threshold, 2),
-            "is_total_loss": loss_ratio_pct >= threshold,
+            "is_total_loss": outcome == TriageOutcome.PROBABLE_TOTAL_LOSS_REVIEW,
             "currency": "AED",
         },
     }
@@ -275,7 +276,7 @@ async def analyze_claim_endpoint(
                         "repair_cost_median_aed": 0.0,
                         "acv_aed": acv,
                         "loss_ratio_pct": 0.0,
-                        "threshold_pct": custom_threshold if jurisdiction == "custom" else 50.0,
+                        "threshold_pct": custom_threshold if jurisdiction == "custom" else get_preset(jurisdiction).threshold * 100.0,
                         "is_total_loss": False,
                         "currency": "AED",
                     },

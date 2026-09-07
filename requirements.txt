@@ -4,3 +4,6 @@ ultralytics
 shapely
 gradio>=6.0.0
 Pillow
+fastapi
+uvicorn
+python-multipart

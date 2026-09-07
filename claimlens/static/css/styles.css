@@ -1970,6 +1970,7 @@ body.cockpit-root {
     }
 
     /* Hide on-screen UI components */
+    .main-container,
     .app-header,
     .scenario-bar-section,
     .form-section,
@@ -2162,3 +2163,17 @@ body.cockpit-root {
         align-items: flex-start;
     }
 }
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+@media print {
+    body:not(.has-analysis) .adjuster-modal-backdrop { display: none !important; }
+}
+
+.table-row-item:focus-visible { outline: 2px solid #38BDF8; outline-offset: -2px; }
