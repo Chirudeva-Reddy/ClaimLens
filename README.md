@@ -1,13 +1,3 @@
----
-title: ClaimLens — Explainable Vehicle Damage & Total-Loss Triage
-emoji: 🚗
-colorFrom: blue
-colorTo: indigo
-sdk: gradio
-app_file: app.py
-pinned: false
----
-
 # ClaimLens 🔍🚗
 
 > **An explainable, two-stage vehicle damage and total-loss triage system.**  
@@ -15,8 +5,8 @@ pinned: false
 
 [![Python 3.13](https://img.shields.io/badge/python-3.13-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![Tests: Pytest](https://img.shields.io/badge/tests-44%20passed-success.svg)](tests/)
-[![Gradio App](https://img.shields.io/badge/demo-Gradio%206-orange.svg)](http://127.0.0.1:7860)
+[![Tests: Pytest](https://img.shields.io/badge/tests-52%20passed-success.svg)](tests/)
+[![Dashboard: FastAPI](https://img.shields.io/badge/dashboard-FastAPI-orange.svg)](claimlens/api.py)
 [![Currency: AED](https://img.shields.io/badge/currency-AED%20(Dirhams)-emerald.svg)](data/price_table.json)
 [![CBUAE Compliant](https://img.shields.io/badge/regulation-CBUAE%20Standard-purple.svg)](data/policy_clauses/)
 
@@ -60,7 +50,7 @@ flowchart TD
     I --> K[Statutory Policy Retrieval: TF-IDF Cosine Similarity]
     K --> L[CBUAE Unified Motor Policy Articles 7 2, 7 3, Schedule 2]
     
-    J1 --> M[Explainable Gradio Dashboard]
+    J1 --> M[Explainable Inspection Cockpit]
     J2 --> M
     Z1 --> M
     Z2 --> M
@@ -174,7 +164,7 @@ Access the application in your browser at `http://127.0.0.1:7860`.
 - [x] **Phase 4**: Deterministic repair-cost engine in AED.
 - [x] **Phase 5**: Total-loss decision engine with CBUAE 50% economic rule.
 - [x] **Phase 6**: Statutory policy retrieval with CBUAE Unified Motor Policy articles.
-- [x] **Phase 7**: Gradio 6 interactive dashboard with spatial overlays & reasoning trails.
+- [x] **Phase 7**: Interactive FastAPI cockpit with spatial overlays & reasoning trails.
 - [x] **Scraper Pipeline**: Live crawl of 3,174 UAE OEM body parts across popular vehicle brands.
 - [x] **Phase 8**: Comprehensive Model Card & Blueprint §11 evaluation table.
 - [ ] **Phase 9 Deployment**: Public deployment on Hugging Face Spaces & GitHub.
