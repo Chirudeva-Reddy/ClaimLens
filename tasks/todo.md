@@ -42,6 +42,6 @@ Full detail (acceptance criteria, verification, files) in [plan.md](plan.md). Wo
 - [x] **Checkpoint: Eval / Metrics Writeup** — review with user
 
 ## Phase 9: README + Deployment
-- [ ] Task 13: README
+- [x] Task 13: README
 - [ ] Task 14: Deploy to GitHub + Hugging Face Spaces
 - [ ] **Checkpoint: Complete** — final acceptance against live demo
