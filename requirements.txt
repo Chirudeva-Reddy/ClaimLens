@@ -1,0 +1,6 @@
+torch
+torchvision
+ultralytics
+shapely
+gradio>=6.0.0
+Pillow
