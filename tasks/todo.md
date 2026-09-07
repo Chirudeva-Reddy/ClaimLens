@@ -30,8 +30,8 @@ Full detail (acceptance criteria, verification, files) in [plan.md](plan.md). Wo
 - [x] **Checkpoint: Total-Loss Triage Engine** — review with user
 
 ## Phase 6: Policy Retrieval
-- [ ] Task 10: Illustrative policy clause retrieval
-- [ ] **Checkpoint: Policy Retrieval** — review with user
+- [x] Task 10: Illustrative policy clause retrieval
+- [x] **Checkpoint: Policy Retrieval** — review with user
 
 ## Phase 7: Gradio Demo UI
 - [ ] Task 11: Wire the pipeline into a Gradio Blocks app
