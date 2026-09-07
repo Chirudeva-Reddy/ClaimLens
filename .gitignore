@@ -5,9 +5,10 @@ __pycache__/
 data/raw/
 data/parts/
 data/processed/
-models/
-*.pt
+models/*_run/
+models/*.onnx
 *.onnx
+yolov8n-seg.pt
 .env
 
 
