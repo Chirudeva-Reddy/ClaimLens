@@ -138,34 +138,46 @@ def annotate_inspection(
     damages: list[DetectedDamage],
 ) -> Image.Image:
     canvas = image.copy().convert("RGBA")
+    overlay = Image.new("RGBA", canvas.size, (0, 0, 0, 0))
+    draw_overlay = ImageDraw.Draw(overlay)
+
+    # 1. Shaded polygon fills and borders on overlay layer
+    for part in parts:
+        border_color = (14, 165, 233, 230)  # Sky blue
+        fill_color = (14, 165, 233, 45)
+        if part.polygon and len(part.polygon) >= 3:
+            draw_overlay.polygon(part.polygon, fill=fill_color, outline=border_color, width=2)
+        else:
+            draw_overlay.rectangle(part.box, fill=fill_color, outline=border_color, width=2)
+
+    for dmg in damages:
+        border_color = (239, 68, 68, 255)  # Crimson red
+        fill_color = (239, 68, 68, 80)
+        if dmg.polygon and len(dmg.polygon) >= 3:
+            draw_overlay.polygon(dmg.polygon, fill=fill_color, outline=border_color, width=3)
+        else:
+            draw_overlay.rectangle(dmg.box, fill=fill_color, outline=border_color, width=3)
+
+    canvas = Image.alpha_composite(canvas, overlay)
     draw = ImageDraw.Draw(canvas)
 
-    # Draw parts in subtle blue/cyan
+    # 2. Text badges with high-contrast pill backgrounds
     for part in parts:
-        if part.polygon and len(part.polygon) >= 3:
-            draw.polygon(part.polygon, outline=(40, 140, 240, 200), width=2)
-        else:
-            draw.rectangle(part.box, outline=(40, 140, 240, 200), width=2)
-        draw.text(
-            (part.box[0], max(0, part.box[1] - 12)),
-            f"{part.name} ({part.confidence:.2f})",
-            fill=(40, 140, 240, 255),
-        )
+        text = f"{part.name} ({part.confidence:.0%})"
+        bx = max(2, int(part.box[0]))
+        by = max(2, int(part.box[1]) - 14)
+        draw.rectangle((bx, by, bx + len(text) * 7 + 6, by + 13), fill=(15, 23, 42, 220))
+        draw.text((bx + 3, by), text, fill=(56, 189, 248, 255))
 
-    # Draw damages in vibrant red/orange
     for dmg in damages:
-        outline_color = (255, 60, 60, 255)
-        if dmg.polygon and len(dmg.polygon) >= 3:
-            draw.polygon(dmg.polygon, outline=outline_color, width=3)
-        else:
-            draw.rectangle(dmg.box, outline=outline_color, width=3)
-        draw.text(
-            (dmg.box[0], dmg.box[1]),
-            f"DAMAGE: {dmg.name} ({dmg.confidence:.2f})",
-            fill=outline_color,
-        )
+        text = f"DAMAGE: {dmg.name} ({dmg.confidence:.0%})"
+        bx = max(2, int(dmg.box[0]))
+        by = max(2, int(dmg.box[1]))
+        draw.rectangle((bx, by, bx + len(text) * 7 + 8, by + 14), fill=(69, 10, 10, 230))
+        draw.text((bx + 4, by + 1), text, fill=(254, 202, 202, 255))
 
     return canvas.convert("RGB")
+
 
 
 def inspect_vehicle(

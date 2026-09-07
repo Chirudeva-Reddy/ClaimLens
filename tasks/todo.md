@@ -34,8 +34,8 @@ Full detail (acceptance criteria, verification, files) in [plan.md](plan.md). Wo
 - [x] **Checkpoint: Policy Retrieval** — review with user
 
 ## Phase 7: Gradio Demo UI
-- [ ] Task 11: Wire the pipeline into a Gradio Blocks app
-- [ ] **Checkpoint: Gradio Demo UI** — review with user
+- [x] Task 11: Wire the pipeline into a Gradio Blocks app
+- [x] **Checkpoint: Gradio Demo UI** — review with user
 
 ## Phase 8: Eval / Metrics Writeup
 - [ ] Task 12: Model card and metrics table
