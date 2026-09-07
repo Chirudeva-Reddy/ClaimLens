@@ -1,83 +1,103 @@
 /* ==========================================================================
-   ClaimLens hero motion layer.
+   ClaimLens landing sequence.
 
    Ownership split (Motion and GSAP must never write transforms to the same
    element):
-     GSAP + ScrollTrigger -> .lens, .hero-veil   (pinned / scrubbed work)
-     Motion               -> .lens-glass clip, wordmark letters, counters,
-                             cockpit section reveals
+     GSAP + ScrollTrigger -> the pinned hero: lens, copy layer, curtain mask
+     Motion               -> wordmark letters, below-fold section reveals
      Lenis                -> smooth scrolling and in-page anchors
 
-   Copy entrance is pure CSS, so the hero still reads correctly if this
-   module fails to load.
+   Scroll story: headline leaves, the wordmark resolves inside the glass,
+   then the glass opens past the viewport and the page comes through it.
+
+   Hero copy entrance is pure CSS, so the page still reads if this module
+   fails to load.
    ========================================================================== */
 
 import { animate, inView, stagger } from 'https://cdn.jsdelivr.net/npm/motion@13.2.0/+esm';
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const root = document.documentElement;
 const lens = document.getElementById('hero-lens');
-const glass = document.querySelector('.lens-glass');
+const curtain = document.getElementById('hero-curtain');
+const copy = document.getElementById('hero-copy');
 const letters = document.querySelectorAll('.lens-wordmark span');
-const counters = document.querySelectorAll('[data-count-to]');
 
-/* ---------- Static end-state, used under reduced motion ---------- */
+/* ---------- Preloader ---------------------------------------------------- */
 
-function settle() {
-    if (glass) glass.style.clipPath = 'circle(52% at 50% 50%)';
-    letters.forEach((el) => { el.style.opacity = '1'; el.style.transform = 'none'; el.style.filter = 'none'; });
-    counters.forEach((el) => { el.textContent = format(el, Number(el.dataset.countTo)); });
-    document.querySelectorAll('.reveal-on-scroll').forEach((el) => {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
+function runPreloader() {
+    const box = document.getElementById('preloader');
+    const fill = document.getElementById('preloader-fill');
+    const label = document.getElementById('preloader-pct');
+    if (!box) return Promise.resolve();
+
+    let pct = 0;
+    const set = (v) => {
+        pct = Math.max(pct, Math.min(100, Math.round(v)));
+        if (fill) fill.style.width = pct + '%';
+        if (label) label.textContent = String(pct);
+    };
+    set(8);
+
+    const photo = document.querySelector('.lens-media');
+    const settled = (el, ev) => new Promise((resolve) => {
+        el.addEventListener(ev, resolve, { once: true });
+        el.addEventListener('error', resolve, { once: true });
+    });
+
+    const ready = Promise.all([
+        photo && !photo.complete ? settled(photo, 'load') : Promise.resolve(),
+        document.readyState === 'complete' ? Promise.resolve() : settled(window, 'load'),
+        new Promise((r) => setTimeout(r, 650)),
+    ]);
+
+    // Creep forward while waiting so the bar never looks stalled.
+    const creep = setInterval(() => set(Math.min(pct + 4, 88)), 170);
+
+    return ready.then(() => {
+        clearInterval(creep);
+        set(100);
+        return new Promise((r) => setTimeout(r, 320));
+    }).then(() => {
+        box.dataset.done = 'true';
+        setTimeout(() => box.remove(), 700);
     });
 }
 
-function format(el, value) {
-    // Whole numbers stay whole; ratios keep one decimal, matching the cockpit readouts.
-    return Number.isInteger(Number(el.dataset.countTo)) ? String(Math.round(value)) : value.toFixed(1);
-}
+/* ---------- Wordmark ----------------------------------------------------- */
 
-/* ---------- Intro: the glass irises open, then the wordmark resolves ---------- */
+let wordAnimation = null;
 
-function playIntro() {
-    if (glass) {
-        glass.style.clipPath = 'circle(0% at 50% 50%)';
-        animate(glass,
-            { clipPath: ['circle(0% at 50% 50%)', 'circle(52% at 50% 50%)'] },
-            { duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.15 });
-    }
-
-    if (letters.length) {
-        animate(letters,
-            { opacity: [0, 1], y: [18, 0], filter: ['blur(9px)', 'blur(0px)'] },
-            { type: 'spring', visualDuration: 0.55, bounce: 0.28, delay: stagger(0.045, { startDelay: 0.7 }) });
-    }
-
-    counters.forEach((el) => {
-        const target = Number(el.dataset.countTo);
-        // Markup carries the true value so a failed module load still reads correctly.
-        el.textContent = format(el, 0);
-        animate(0, target, {
-            duration: 1.4,
-            delay: 1.05,
-            ease: [0.16, 1, 0.3, 1],
-            onUpdate: (v) => { el.textContent = format(el, v); },
-        });
+function hideWordmark() {
+    // Stop any in-flight reveal, or it commits its end styles over these.
+    wordAnimation?.stop();
+    wordAnimation = null;
+    letters.forEach((el) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(16px)';
+        el.style.filter = 'blur(10px)';
     });
 }
 
-/* ---------- Scroll reveals for the cockpit below the fold ---------- */
+function revealWordmark() {
+    wordAnimation = animate(letters,
+        { opacity: 1, y: 0, filter: 'blur(0px)' },
+        { type: 'spring', visualDuration: 0.5, bounce: 0.26, delay: stagger(0.04) });
+}
+
+/* ---------- Below-fold reveals ------------------------------------------- */
 
 function wireReveals() {
+    root.dataset.motion = 'on';
     return inView('.reveal-on-scroll', (el) => {
         animate(el, { opacity: [0, 1], y: [26, 0] }, { duration: 0.62, ease: [0.16, 1, 0.3, 1] });
-    }, { amount: 0.15, margin: '0px 0px -8% 0px' });
+    }, { amount: 0.12, margin: '0px 0px -6% 0px' });
 }
 
-/* ---------- Scroll-linked lens handoff (GSAP owns .lens) ---------- */
+/* ---------- The pinned sequence (GSAP owns every element it touches) ------ */
 
-function wireScrollScrub() {
-    if (!window.gsap || !window.ScrollTrigger || !lens) return null;
+function wireSequence() {
+    if (!window.gsap || !window.ScrollTrigger || !lens || !curtain) return null;
     gsap.registerPlugin(ScrollTrigger);
 
     const mm = gsap.matchMedia();
@@ -87,26 +107,69 @@ function wireScrollScrub() {
     }, (ctx) => {
         if (ctx.conditions.reduce || !ctx.conditions.isDesktop) return;
 
-        // The lens tracks the reader down the page and hands off to the cockpit.
-        gsap.to(lens, {
-            yPercent: -14,
-            scale: 1.16,
-            rotate: -4,
-            ease: 'none',
-            scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 0.5 },
+        root.dataset.sequence = 'on';
+        curtain.classList.add('is-sequenced');
+        hideWordmark();
+        gsap.set(lens, { xPercent: -50, yPercent: -50, rotate: -16, transformOrigin: '50% 50%' });
+
+        // The hole and the glass grow together, so the rim always rides its edge.
+        const maxHole = () => Math.hypot(innerWidth, innerHeight) / 2 * 1.08;
+        const holeScale = () => maxHole() / (lens.offsetWidth / 2);
+
+        let spoken = false;
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: '#hero',
+                start: 'top top',
+                // The page keeps scrolling behind the fixed glass, so the hole
+                // opens onto the first content section rather than onto nothing.
+                endTrigger: '#project',
+                // Stop just short, so the heading clears the sticky header.
+                end: 'top 90px',
+                pin: true,
+                pinSpacing: false,
+                scrub: 0.6,
+                invalidateOnRefresh: true,
+                onUpdate: (self) => {
+                    // Wordmark letters resolve once, at the point the glass owns the frame.
+                    if (!spoken && self.progress > 0.34) { spoken = true; revealWordmark(); }
+                    if (spoken && self.progress < 0.28) { spoken = false; hideWordmark(); }
+                },
+                onLeave: () => { root.dataset.revealed = 'true'; },
+                onEnterBack: () => { root.dataset.revealed = 'false'; },
+            },
         });
 
-        gsap.to('.hero-veil', {
-            yPercent: 12,
-            opacity: 0.04,
-            ease: 'none',
-            scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 0.5 },
-        });
+        // 1. The headline hands the frame to the glass.
+        tl.to(copy, { yPercent: -34, opacity: 0, ease: 'power1.in', duration: 0.22 }, 0)
+          .to(lens, { scale: 1.18, rotate: -6, ease: 'none', duration: 0.45 }, 0)
+
+        // 2. The evidence layer dims out, leaving the wordmark on dark glass.
+          .to(['.lens-media', '.lens-annotations', '.lens-sweep', '.lens-shine'],
+              { opacity: 0, ease: 'none', duration: 0.22 }, 0.42)
+          .to('.lens-hud', { opacity: 0, ease: 'none', duration: 0.16 }, 0.42)
+          .to('.lens-tint', { opacity: 0, ease: 'none', duration: 0.2 }, 0.5)
+
+        // 3. The page comes through the glass.
+          .to('.lens-wordmark', { scale: 1.35, opacity: 0, ease: 'power1.in', duration: 0.16 }, 0.62)
+          .to(lens, { scale: holeScale, ease: 'power2.in', duration: 0.26 }, 0.68)
+          .to(curtain, { '--hole': () => maxHole() + 'px', ease: 'power2.in', duration: 0.26 }, 0.68)
+          .to('.lens-glass', { opacity: 0, ease: 'none', duration: 0.06 }, 0.88);
+
+        return () => {
+            tl.kill();
+            curtain.classList.remove('is-sequenced');
+            delete root.dataset.sequence;
+            delete root.dataset.revealed;
+            gsap.set([lens, copy, '.lens-glass', '.lens-wordmark', '.lens-media', '.lens-annotations',
+                      '.lens-sweep', '.lens-shine', '.lens-hud', '.lens-tint'], { clearProps: 'all' });
+            letters.forEach((el) => { el.style.cssText = ''; });
+        };
     });
     return mm;
 }
 
-/* ---------- Smooth scrolling ---------- */
+/* ---------- Smooth scrolling --------------------------------------------- */
 
 function wireLenis() {
     if (!window.Lenis || !window.gsap) return null;
@@ -118,20 +181,19 @@ function wireLenis() {
     return { lenis, tick };
 }
 
-/* ---------- Demo CTA: run a real claim in the cockpit ---------- */
+/* ---------- Demo CTA: run a real claim in the cockpit --------------------- */
 
 document.getElementById('btn-hero-demo')?.addEventListener('click', () => {
     const cockpit = document.getElementById('cockpit');
-    const caseB = document.getElementById('btn-case-b');
+    document.getElementById('btn-case-b')?.click();
     if (window.__claimlensLenis) {
         window.__claimlensLenis.scrollTo(cockpit, { offset: -84 });
     } else {
         cockpit?.scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth', block: 'start' });
     }
-    caseB?.click();
 });
 
-/* ---------- Build / rebuild on preference change ---------- */
+/* ---------- Build / rebuild on preference change -------------------------- */
 
 let teardown = [];
 
@@ -139,18 +201,18 @@ function build() {
     teardown.splice(0).forEach((fn) => fn());
 
     if (reduceMotion.matches) {
-        delete document.documentElement.dataset.motion;
-        settle();
+        delete root.dataset.motion;
+        document.querySelectorAll('.reveal-on-scroll').forEach((el) => {
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+        });
         return;
     }
-
-    document.documentElement.dataset.motion = 'on';
-    playIntro();
 
     const stopReveals = wireReveals();
     if (stopReveals) teardown.push(stopReveals);
 
-    const mm = wireScrollScrub();
+    const mm = wireSequence();
     if (mm) teardown.push(() => mm.revert());
 
     const smooth = wireLenis();
@@ -162,10 +224,12 @@ function build() {
             delete window.__claimlensLenis;
         });
     }
-
-    // Images arrive after layout; ScrollTrigger needs the corrected offsets.
-    window.addEventListener('load', () => window.ScrollTrigger?.refresh(), { once: true });
 }
 
-build();
+runPreloader().then(() => {
+    build();
+    // Pin distances depend on images that land after first layout.
+    window.ScrollTrigger?.refresh();
+});
+
 reduceMotion.addEventListener('change', build);

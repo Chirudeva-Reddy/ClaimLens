@@ -57,24 +57,66 @@
         </div>
     </header>
 
-    <!-- Hero: the lens opens over real inspection evidence -->
-    <section class="hero" id="hero">
-        <div class="hero-veil" aria-hidden="true"></div>
-        <div class="hero-beams" aria-hidden="true"><i></i><i></i><i></i></div>
-        <div class="hero-rules" aria-hidden="true"></div>
+    <!-- Loading gate: holds the reveal until the evidence photograph is decoded -->
+    <div class="preloader" id="preloader" role="status" aria-live="polite">
+        <div class="preloader-inner">
+            <svg class="preloader-mark" width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="10.5" cy="10.5" r="7"/>
+                <line x1="15.6" y1="15.6" x2="21" y2="21"/>
+            </svg>
+            <p class="preloader-label font-mono">Calibrating inspection</p>
+            <div class="preloader-track"><span class="preloader-fill" id="preloader-fill"></span></div>
+            <p class="preloader-pct font-mono"><span id="preloader-pct">0</span>%</p>
+        </div>
+    </div>
 
-        <div class="hero-inner">
-            <div class="hero-copy">
+    <!-- Hero: a pinned sequence. Headline, then the wordmark inside the glass,
+         then the page passes through the lens into the content. -->
+    <section class="hero" id="hero">
+        <div class="hero-curtain" id="hero-curtain">
+            <div class="hero-veil" aria-hidden="true"></div>
+            <div class="hero-beams" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="hero-rules" aria-hidden="true"></div>
+
+            <div class="lens" id="hero-lens">
+                <div class="lens-glass">
+                    <img class="lens-media" src="/api/scenarios/case_b/image" alt="Severe multi-panel front-end collision under inspection" width="640" height="640" fetchpriority="high" decoding="async">
+                    <div class="lens-tint" aria-hidden="true"></div>
+                    <svg class="lens-annotations" viewBox="0 0 200 200" aria-hidden="true">
+                        <polygon class="lens-poly" points="52,96 96,74 138,92 132,132 74,138"/>
+                        <polygon class="lens-poly lens-poly-b" points="112,52 152,60 156,88 118,80"/>
+                        <path class="lens-tick" d="M100 18v14M100 168v14M18 100h14M168 100h14"/>
+                    </svg>
+                    <div class="lens-sweep" aria-hidden="true"></div>
+                    <p class="lens-wordmark" id="lens-wordmark" aria-label="ClaimLens"><span aria-hidden="true">C</span><span aria-hidden="true">l</span><span aria-hidden="true">a</span><span aria-hidden="true">i</span><span aria-hidden="true">m</span><span aria-hidden="true">L</span><span aria-hidden="true">e</span><span aria-hidden="true">n</span><span aria-hidden="true">s</span></p>
+                    <dl class="lens-hud font-mono">
+                        <div class="lens-hud-row">
+                            <dt>Loss ratio</dt>
+                            <dd><span data-count-to="86.4">86.4</span>%</dd>
+                        </div>
+                        <div class="lens-hud-row lens-hud-verdict">
+                            <dt>Verdict</dt>
+                            <dd>Total loss</dd>
+                        </div>
+                    </dl>
+                    <div class="lens-shine" aria-hidden="true"></div>
+                </div>
+                <div class="lens-collar" aria-hidden="true"></div>
+                <div class="lens-handle" aria-hidden="true"></div>
+            </div>
+
+            <div class="hero-scrim" aria-hidden="true"></div>
+
+            <div class="hero-copy" id="hero-copy">
                 <h1 class="hero-title">
                     <span class="hero-line"><span style="--i:0">Photograph the damage.</span></span>
                     <span class="hero-line"><span style="--i:1">Get the verdict.</span></span>
                 </h1>
                 <p class="hero-sub">
-                    ClaimLens segments the damage, prices the repair in AED, and calls total loss
-                    against CBUAE thresholds.
+                    Damage segmented, repair priced in AED, total loss called against CBUAE thresholds.
                 </p>
                 <div class="hero-actions">
-                    <a class="hero-btn hero-btn-primary" href="#cockpit" data-hero-scroll>
+                    <a class="hero-btn hero-btn-primary" href="#cockpit">
                         Open the cockpit
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg>
                     </a>
@@ -83,35 +125,84 @@
                     </button>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="hero-stage">
-                <div class="lens" id="hero-lens">
-                    <div class="lens-glass">
-                        <img class="lens-media" src="/api/scenarios/case_b/image" alt="Severe multi-panel front-end collision under inspection" width="640" height="640" fetchpriority="high" decoding="async">
-                        <div class="lens-tint" aria-hidden="true"></div>
-                        <svg class="lens-annotations" viewBox="0 0 200 200" aria-hidden="true">
-                            <polygon class="lens-poly" points="52,96 96,74 138,92 132,132 74,138"/>
-                            <polygon class="lens-poly lens-poly-b" points="112,52 152,60 156,88 118,80"/>
-                            <path class="lens-tick" d="M100 18v14M100 168v14M18 100h14M168 100h14"/>
-                        </svg>
-                        <div class="lens-sweep" aria-hidden="true"></div>
-                        <p class="lens-wordmark" aria-label="ClaimLens"><span aria-hidden="true">C</span><span aria-hidden="true">l</span><span aria-hidden="true">a</span><span aria-hidden="true">i</span><span aria-hidden="true">m</span><span aria-hidden="true">L</span><span aria-hidden="true">e</span><span aria-hidden="true">n</span><span aria-hidden="true">s</span></p>
-                        <dl class="lens-hud font-mono">
-                            <div class="lens-hud-row">
-                                <dt>Loss ratio</dt>
-                                <dd><span data-count-to="86.4">86.4</span>%</dd>
-                            </div>
-                            <div class="lens-hud-row lens-hud-verdict">
-                                <dt>Verdict</dt>
-                                <dd>Total loss</dd>
-                            </div>
-                        </dl>
-                        <div class="lens-shine" aria-hidden="true"></div>
-                    </div>
-                    <div class="lens-collar" aria-hidden="true"></div>
-                    <div class="lens-handle" aria-hidden="true"></div>
-                </div>
+    <!-- Scroll runway for the pinned sequence. Only present while the sequence runs. -->
+    <div class="hero-runway" aria-hidden="true"></div>
+
+    <!-- What the system is -->
+    <section class="story story-project" id="project" aria-labelledby="project-heading">
+        <div class="story-inner">
+            <h2 class="story-heading" id="project-heading">Five stages, each one auditable on its own.</h2>
+            <p class="story-lede">
+                ClaimLens decomposes total-loss triage into stages an adjuster can inspect, rather than one
+                classifier that answers and refuses to explain.
+            </p>
+
+            <ol class="stage-grid">
+                <li class="stage-cell stage-cell-wide reveal-on-scroll">
+                    <p class="stage-verb font-mono">Gate</p>
+                    <h3>Reject the photograph before it misleads anyone</h3>
+                    <p>Resolution floor and variance-of-Laplacian blur test run before any model sees the image.</p>
+                    <p class="stage-metric font-mono">96.7% precision <span>/</span> 98.2% recall</p>
+                </li>
+                <li class="stage-cell reveal-on-scroll">
+                    <p class="stage-verb font-mono">Segment</p>
+                    <h3>Two models, not one</h3>
+                    <p>YOLOv8n-seg over 21 vehicle components, and a second over 6 damage categories.</p>
+                    <p class="stage-metric font-mono">82.0% <span>/</span> 64.6% box mAP@50</p>
+                </li>
+                <li class="stage-cell reveal-on-scroll">
+                    <p class="stage-verb font-mono">Associate</p>
+                    <h3>Damage bound to its host panel</h3>
+                    <p>Shapely polygon intersection assigns every damage mask to a component and flags load-bearing zones.</p>
+                    <p class="stage-metric font-mono">94.2% assignment accuracy</p>
+                </li>
+                <li class="stage-cell reveal-on-scroll">
+                    <p class="stage-verb font-mono">Price</p>
+                    <h3>Deterministic AED, no model guessing costs</h3>
+                    <p>Rule-based costing against a scraped catalogue of 3,174 UAE OEM body parts.</p>
+                    <p class="stage-metric font-mono">4.8% median absolute error</p>
+                </li>
+                <li class="stage-cell reveal-on-scroll">
+                    <p class="stage-verb font-mono">Decide</p>
+                    <h3>The statutory test, stated out loud</h3>
+                    <p>CBUAE 50% economic rule with US and UK thresholds selectable, and the clause cited alongside the verdict.</p>
+                    <p class="stage-metric font-mono">95.0% sensitivity <span>/</span> 92.3% specificity</p>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Why it is built this way -->
+    <section class="story story-motivation" id="motivation" aria-labelledby="motivation-heading">
+        <div class="story-inner motivation-inner">
+            <div class="motivation-copy">
+                <h2 class="story-heading" id="motivation-heading">A verdict without reasoning is not a verdict.</h2>
+                <p>
+                    Vehicle owners send in accident photographs and get back a blunt total-loss or repair
+                    decision with nothing behind it. The usual shortcut makes it worse: an end-to-end
+                    classifier, or a language model asked to act as a pricing oracle.
+                </p>
+                <p>
+                    Those systems fail in specific ways. They invent repair costs. They miss unibody
+                    structural compromise that no photograph can rule out. They answer with high confidence
+                    on evidence that cannot support an answer.
+                </p>
+                <p>
+                    So ClaimLens is built to abstain. When the photograph is too poor, the confidence too
+                    low, or the impact lands on a load-bearing zone, it stops and asks for a physical
+                    teardown instead of producing a number.
+                </p>
             </div>
+            <figure class="motivation-figure reveal-on-scroll">
+                <p class="motivation-stat font-mono">0.0%</p>
+                <figcaption>
+                    Dangerous failure rate. The system issues no automated confident verdict on ambiguous,
+                    blurry, low-confidence or structural evidence.
+                </figcaption>
+            </figure>
         </div>
     </section>
 

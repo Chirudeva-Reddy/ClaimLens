@@ -4,16 +4,33 @@ async (page) => {
     page.on('pageerror', error => errors.push(error.message));
     const check = (condition, message) => { if (!condition) throw new Error(message); };
     const text = selector => page.locator(selector).textContent();
+    await page.setViewportSize({width: 1440, height: 900});
     await page.reload();
 
-    // Hero: the lens opens, reports, and hands off to the cockpit.
-    await page.waitForFunction(() => getComputedStyle(document.querySelector('.lens-glass')).clipPath === 'circle(52% at 50% 50%)');
-    await page.waitForFunction(() => document.querySelector('[data-count-to="86.4"]').textContent === '86.4');
-    check(await text('.lens-wordmark') === 'ClaimLens', 'Wordmark missing from the lens');
-    check(await page.locator('.hero-sub').evaluate(el => getComputedStyle(el).opacity) === '1', 'Hero copy stayed hidden');
-    await page.locator('.hero-btn-primary').click();
-    await page.waitForFunction(() => window.scrollY > 200);
+    // Landing sequence: preloader, then the pinned lens story.
+    await page.waitForFunction(() => !document.getElementById('preloader'), null, {timeout: 20000});
+    // A reload restores the previous scroll position; the sequence starts at the top.
+    await page.evaluate(() => window.__claimlensLenis?.scrollTo(0, {immediate: true}));
+    await page.waitForTimeout(500);
+    const wordOpacity = () => page.locator('.lens-wordmark span').first().evaluate(el => Number(getComputedStyle(el).opacity));
+    check(await page.locator('.hero-copy').evaluate(el => getComputedStyle(el).opacity) === '1', 'Hero copy stayed hidden');
+    check(await wordOpacity() === 0, 'Wordmark showed before the scroll revealed it');
+
+    const seqEnd = await page.evaluate(() => ScrollTrigger.getAll()[0].end);
+    await page.evaluate(e => window.__claimlensLenis.scrollTo(e * 0.6, {immediate: true}), seqEnd);
+    await page.waitForTimeout(700);
+    check(await wordOpacity() === 1, 'Wordmark never resolved inside the glass');
+    check(await page.locator('#hero-curtain').evaluate(el => getComputedStyle(el).maskImage.includes('radial-gradient')), 'Curtain lost its aperture mask');
+
+    await page.evaluate(e => window.__claimlensLenis.scrollTo(e, {immediate: true}), seqEnd);
+    await page.waitForTimeout(900);
+    const hole = await page.locator('#hero-curtain').evaluate(el => parseFloat(getComputedStyle(el).getPropertyValue('--hole')));
+    check(hole > Math.hypot(1440, 900) / 2, `Aperture never covered the viewport (${hole}px)`);
+    check(await page.locator('.app-header').evaluate(el => getComputedStyle(el).opacity) === '1', 'Header never returned after the reveal');
+    check((await page.locator('#project-heading').boundingBox()).y > 0, 'Reveal did not land on the project section');
+
     await page.evaluate(() => window.__claimlensLenis.scrollTo(0, {immediate: true}));
+    await page.waitForTimeout(400);
     await page.locator('#btn-hero-demo').click();
     await page.waitForFunction(() => document.querySelector('#triage-headline').textContent === 'CONSTRUCTIVE TOTAL LOSS REVIEW');
     await page.evaluate(() => window.__claimlensLenis.scrollTo(0, {immediate: true}));
@@ -73,8 +90,11 @@ async (page) => {
     check((await text('#triage-headline')).includes('REJECTED'), 'Recalculation replaced rejection');
 
     await page.setViewportSize({width: 375, height: 812});
+    await page.waitForTimeout(800);  // gsap.matchMedia tears the desktop sequence down
     check(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'Mobile page overflows');
     check(await page.locator('.lens-hud-row').first().evaluate(el => el.getBoundingClientRect().height) < 20, 'Lens readout wraps on mobile');
+    check(await page.locator('.hero-runway').evaluate(el => getComputedStyle(el).display) === 'none', 'Scroll runway left an empty gap on mobile');
+    check(await page.locator('.lens-wordmark span').first().evaluate(el => Number(getComputedStyle(el).opacity)) === 1, 'Wordmark hidden on mobile, where there is no sequence');
     await page.screenshot({path: 'output/playwright/mobile.png', fullPage: true});
     await page.setViewportSize({width: 1440, height: 1000});
     await page.locator('#btn-case-a').click();
@@ -84,8 +104,9 @@ async (page) => {
     await page.emulateMedia({reducedMotion: 'reduce'});
     await page.reload();
     await page.waitForTimeout(900);
-    check(await page.locator('.lens-glass').evaluate(el => getComputedStyle(el).clipPath) === 'circle(52% at 50% 50%)', 'Reduced motion hid the lens');
-    check(await text('[data-count-to="86.4"]') === '86.4', 'Reduced motion left the readout at zero');
+    check(await page.locator('.lens-wordmark span').first().evaluate(el => Number(getComputedStyle(el).opacity)) === 1, 'Reduced motion hid the wordmark');
+    check(await page.locator('.hero-copy').evaluate(el => getComputedStyle(el).opacity) === '1', 'Reduced motion hid the hero copy');
+    check(await page.locator('.app-header').evaluate(el => getComputedStyle(el).opacity) === '1', 'Reduced motion hid the header');
     check(await page.locator('.reveal-on-scroll').first().evaluate(el => getComputedStyle(el).opacity) === '1', 'Reduced motion hid the cockpit');
     await page.emulateMedia({reducedMotion: null});
 

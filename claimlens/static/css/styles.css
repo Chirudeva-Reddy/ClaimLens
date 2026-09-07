@@ -2179,39 +2179,114 @@ body.cockpit-root {
 .table-row-item:focus-visible { outline: 2px solid #38BDF8; outline-offset: -2px; }
 
 /* ==========================================================================
-   Hero: "The Lens Opens"
-   Instrument-panel landing built on the cockpit tokens. Beams background and
-   spotlight readout adapted from KokonutUI patterns; deep-teal light and
-   tight display tracking referenced from chirudevareddy.com.
+   Landing sequence: preloader, pinned lens hero, project and motivation.
+   Beam field and spotlight surfaces adapted from KokonutUI patterns; deep
+   instrument light and tight display tracking referenced from
+   chirudevareddy.com. Built on the cockpit tokens above.
    ========================================================================== */
+
+/* --- Preloader ---------------------------------------------------------- */
+
+.preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: grid;
+    place-items: center;
+    background-color: var(--bg-base);
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.preloader[data-done="true"] {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.preloader-inner {
+    display: grid;
+    justify-items: center;
+    gap: 14px;
+    width: min(260px, 74vw);
+    text-align: center;
+}
+
+.preloader-mark {
+    color: var(--accent-primary);
+    opacity: 0.9;
+    animation: preloader-scan 2.4s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+@keyframes preloader-scan {
+    0%, 100% { transform: translate(-6px, -4px) rotate(-8deg); }
+    50%      { transform: translate(6px, 4px) rotate(6deg); }
+}
+
+.preloader-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+}
+
+.preloader-track {
+    width: 100%;
+    height: 2px;
+    border-radius: var(--radius-full);
+    background-color: rgba(148, 163, 184, 0.16);
+    overflow: hidden;
+}
+
+.preloader-fill {
+    display: block;
+    width: 0%;
+    height: 100%;
+    background-color: var(--accent-primary);
+    transition: width 0.25s ease-out;
+}
+
+.preloader-pct {
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    font-variant-numeric: tabular-nums;
+}
+
+/* --- Hero stage --------------------------------------------------------- */
 
 .hero {
     position: relative;
+    z-index: 5;
+    height: 100dvh;
+    background-color: transparent;
+}
+
+/* Everything opaque lives in the curtain, so the sequence can punch a hole
+   through it and let the page below show through the glass. */
+.hero-curtain {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
     isolation: isolate;
-    overflow: clip;
-    min-height: calc(100dvh - 76px);
-    display: flex;
-    align-items: center;
-    padding: 72px 24px 88px;
     background-color: var(--bg-base);
 }
 
-/* Real inspection evidence, held back so the lens does the revealing. */
+.hero-curtain.is-sequenced {
+    --hole: 0px;
+    mask-image: radial-gradient(circle at 50% 50%, transparent var(--hole), #000 calc(var(--hole) + 2px));
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, transparent var(--hole), #000 calc(var(--hole) + 2px));
+}
+
 .hero-veil {
     position: absolute;
     inset: 0;
-    z-index: -3;
     background: url("/api/scenarios/case_b/image") center/cover no-repeat;
     filter: blur(9px) grayscale(0.85) brightness(0.5);
     opacity: 0.16;
     transform: scale(1.08);
 }
 
-/* Beam field: three soft light columns, blurred once, transform-only after. */
 .hero-beams {
     position: absolute;
     inset: -20%;
-    z-index: -2;
     overflow: hidden;
     pointer-events: none;
     filter: blur(var(--beam-blur, 44px));
@@ -2249,51 +2324,60 @@ body.cockpit-root {
     50%      { opacity: 1; }
 }
 
-/* Measurement rules: structural, not decorative. They mark the lens axis. */
 .hero-rules {
     position: absolute;
     inset: 0;
-    z-index: -2;
     pointer-events: none;
     background-image:
         linear-gradient(to right, var(--border-subtle) 1px, transparent 1px),
         linear-gradient(to bottom, var(--border-subtle) 1px, transparent 1px);
     background-size: 96px 96px;
-    mask-image: radial-gradient(ellipse 70% 60% at 62% 50%, #000 15%, transparent 78%);
-    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 62% 50%, #000 15%, transparent 78%);
+    mask-image: radial-gradient(ellipse 66% 62% at 50% 50%, #000 15%, transparent 78%);
+    -webkit-mask-image: radial-gradient(ellipse 66% 62% at 50% 50%, #000 15%, transparent 78%);
     opacity: 0.7;
 }
 
-.hero::after {
-    content: "";
+/* Keeps the headline legible where it crosses the glass. */
+.hero-scrim {
     position: absolute;
     inset: 0;
-    z-index: -1;
     pointer-events: none;
     background:
-        radial-gradient(ellipse 65% 60% at 55% 45%, transparent 20%, rgba(11, 15, 23, 0.88) 100%),
-        linear-gradient(to bottom, var(--bg-base), transparent 20%, transparent 72%, var(--bg-base));
+        linear-gradient(to bottom, rgba(11, 15, 23, 0.88) 0%, rgba(11, 15, 23, 0.34) 38%, transparent 56%),
+        linear-gradient(to top, rgba(11, 15, 23, 0.7) 0%, transparent 28%);
 }
 
-.hero-inner {
-    width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-    align-items: center;
-    gap: clamp(32px, 6vw, 88px);
+/* --- Copy layer --------------------------------------------------------- */
+
+.hero-copy {
+    position: absolute;
+    left: 50%;
+    top: clamp(76px, 12vh, 132px);
+    transform: translateX(-50%);
+    z-index: 3;
+    width: min(1120px, calc(100% - 48px));
+    text-align: center;
 }
 
-/* --- Copy column --- */
+.hero-copy::before {
+    content: "";
+    position: absolute;
+    inset: -56px -80px -40px;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(ellipse 62% 100% at 50% 42%,
+        rgba(11, 15, 23, 0.94) 0%,
+        rgba(11, 15, 23, 0.78) 46%,
+        transparent 76%);
+}
 
 .hero-title {
-    font-size: clamp(2.25rem, 4.2vw, 3.5rem);
-    line-height: 1.06;
-    letter-spacing: -0.042em;
+    font-size: clamp(2.6rem, 6.2vw, 5.2rem);
+    line-height: 1.03;
+    letter-spacing: -0.045em;
     font-weight: 600;
     color: var(--text-primary);
-    margin-bottom: 22px;
+    margin-bottom: 18px;
 }
 
 .hero-line {
@@ -2301,25 +2385,22 @@ body.cockpit-root {
     overflow: hidden;
 }
 
-.hero-line + .hero-line {
-    color: var(--text-secondary);
-}
+.hero-line + .hero-line { color: var(--text-secondary); }
 
-.hero-line > span {
-    display: block;
-}
+.hero-line > span { display: block; }
 
 .hero-sub {
-    font-size: clamp(0.98rem, 1.2vw, 1.12rem);
-    line-height: 1.65;
+    font-size: clamp(0.98rem, 1.15vw, 1.14rem);
+    line-height: 1.6;
     color: var(--text-secondary);
-    max-width: 46ch;
-    margin-bottom: 34px;
+    max-width: 50ch;
+    margin: 0 auto 26px;
 }
 
 .hero-actions {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 12px;
 }
 
@@ -2343,22 +2424,10 @@ body.cockpit-root {
                 color 0.22s ease;
 }
 
-.hero-btn-primary {
-    background-color: var(--accent-primary);
-    color: #04140E;
-}
-
-.hero-btn-primary:hover {
-    background-color: #34D399;
-}
-
-.hero-btn-primary svg {
-    transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.hero-btn-primary:hover svg {
-    transform: translateX(3px);
-}
+.hero-btn-primary { background-color: var(--accent-primary); color: #04140E; }
+.hero-btn-primary:hover { background-color: #34D399; }
+.hero-btn-primary svg { transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1); }
+.hero-btn-primary:hover svg { transform: translateX(3px); }
 
 .hero-btn-ghost {
     background-color: rgba(17, 24, 39, 0.72);
@@ -2368,35 +2437,21 @@ body.cockpit-root {
     -webkit-backdrop-filter: blur(8px);
 }
 
-.hero-btn-ghost:hover {
-    border-color: var(--accent-primary);
-    color: var(--accent-primary);
-}
+.hero-btn-ghost:hover { border-color: var(--accent-primary); color: var(--accent-primary); }
+.hero-btn:active { transform: scale(0.98); }
+.hero-btn:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 3px; }
 
-.hero-btn:active {
-    transform: scale(0.98);
-}
-
-.hero-btn:focus-visible {
-    outline: 2px solid var(--accent-primary);
-    outline-offset: 3px;
-}
-
-/* --- Lens column --- */
-
-.hero-stage {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: clamp(24px, 4vw, 40px);
-}
+/* --- The glass ---------------------------------------------------------- */
 
 .lens {
-    --lens-size: clamp(240px, 30vw, 400px);
-    position: relative;
+    --lens-size: min(62vh, 74vmin, 620px);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 2;
     width: var(--lens-size);
     height: var(--lens-size);
-    transform: rotate(-18deg);
+    transform: translate(-50%, -50%) rotate(-16deg);
     will-change: transform;
 }
 
@@ -2405,14 +2460,14 @@ body.cockpit-root {
     inset: 0;
     border-radius: 50%;
     overflow: hidden;
-    background-color: #05090F;
+    background-color: var(--bg-base);
     border: 3px solid rgba(226, 232, 240, 0.16);
     box-shadow:
         0 0 0 10px rgba(11, 15, 23, 0.9),
         0 0 0 12px rgba(148, 163, 184, 0.22),
         0 34px 90px rgba(0, 0, 0, 0.72),
         inset 0 2px 22px rgba(148, 163, 184, 0.14);
-    transform: rotate(18deg);
+    transform: rotate(16deg);
 }
 
 .lens-media {
@@ -2423,7 +2478,7 @@ body.cockpit-root {
     object-fit: cover;
     object-position: 48% 46%;
     transform: scale(1.75);
-    filter: saturate(0.75) contrast(1.08) brightness(0.72);
+    filter: saturate(0.75) contrast(1.08) brightness(0.6);
 }
 
 .lens-tint {
@@ -2434,12 +2489,7 @@ body.cockpit-root {
         linear-gradient(140deg, rgba(6, 182, 212, 0.14), rgba(16, 185, 129, 0.1));
 }
 
-.lens-annotations {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-}
+.lens-annotations { position: absolute; inset: 0; width: 100%; height: 100%; }
 
 .lens-poly {
     fill: rgba(16, 185, 129, 0.16);
@@ -2449,16 +2499,9 @@ body.cockpit-root {
     filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.45));
 }
 
-.lens-poly-b {
-    fill: rgba(6, 182, 212, 0.14);
-    stroke: var(--accent-cyan);
-}
+.lens-poly-b { fill: rgba(6, 182, 212, 0.14); stroke: var(--accent-cyan); }
 
-.lens-tick {
-    stroke: rgba(226, 232, 240, 0.45);
-    stroke-width: 1.4;
-    stroke-linecap: round;
-}
+.lens-tick { stroke: rgba(226, 232, 240, 0.45); stroke-width: 1.4; stroke-linecap: round; }
 
 .lens-sweep {
     position: absolute;
@@ -2476,37 +2519,36 @@ body.cockpit-root {
 }
 
 @keyframes lens-sweep {
-    0%       { transform: translateY(0); opacity: 0; }
-    12%      { opacity: 1; }
-    88%      { opacity: 1; }
-    100%     { transform: translateY(500%); opacity: 0; }
+    0%   { transform: translateY(0); opacity: 0; }
+    12%  { opacity: 1; }
+    88%  { opacity: 1; }
+    100% { transform: translateY(500%); opacity: 0; }
 }
 
+/* The wordmark stays out of the frame until the sequence calls for it. */
 .lens-wordmark {
     position: absolute;
     inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: clamp(1.6rem, 3.4vw, 2.7rem);
-    font-weight: 700;
-    letter-spacing: -0.045em;
     isolation: isolate;
+    font-size: clamp(2rem, 7vh, 4.2rem);
+    font-weight: 700;
+    letter-spacing: -0.048em;
     color: var(--text-primary);
     text-shadow: 0 2px 24px rgba(0, 0, 0, 0.9);
 }
 
+.lens-wordmark span { display: inline-block; }
+
 .lens-wordmark::before {
     content: "";
     position: absolute;
-    inset: 26% 6%;
+    inset: 30% 8%;
     z-index: -1;
     border-radius: 50%;
-    background: radial-gradient(ellipse at center, rgba(5, 9, 15, 0.9) 0%, rgba(5, 9, 15, 0.62) 55%, transparent 78%);
-}
-
-.lens-wordmark span {
-    display: inline-block;
+    background: radial-gradient(ellipse at center, rgba(5, 9, 15, 0.92) 0%, rgba(5, 9, 15, 0.66) 55%, transparent 78%);
 }
 
 .lens-shine {
@@ -2517,6 +2559,50 @@ body.cockpit-root {
         rgba(255, 255, 255, 0.04) 26%,
         transparent 46%);
     mix-blend-mode: screen;
+}
+
+.lens-hud {
+    position: absolute;
+    left: 50%;
+    bottom: 15%;
+    transform: translateX(-50%);
+    width: 58%;
+    display: grid;
+    gap: 4px;
+    padding: 8px 10px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    background-color: rgba(5, 9, 15, 0.72);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.lens-hud-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.lens-hud dt {
+    font-size: clamp(0.5rem, 1.1vh, 0.62rem);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.lens-hud dd {
+    white-space: nowrap;
+    font-size: clamp(0.68rem, 1.5vh, 0.88rem);
+    font-weight: 600;
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+}
+
+.lens-hud-verdict dd {
+    color: var(--status-ruby);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
 }
 
 .lens-collar {
@@ -2542,58 +2628,12 @@ body.cockpit-root {
     box-shadow: 0 18px 44px rgba(0, 0, 0, 0.65);
 }
 
-/* --- In-glass readout: the instrument reports what it sees --- */
-
-.lens-hud {
-    position: absolute;
-    left: 50%;
-    bottom: 15%;
-    transform: translateX(-50%);
-    width: 62%;
-    display: grid;
-    gap: 4px;
-    padding: 8px 10px;
-    border-radius: var(--radius-sm);
-    border: 1px solid rgba(148, 163, 184, 0.18);
-    background-color: rgba(5, 9, 15, 0.72);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-}
-
-.lens-hud-row {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 8px;
-}
-
-.lens-hud dt {
-    font-size: clamp(0.5rem, 0.9vw, 0.6rem);
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--text-secondary);
-}
-
-.lens-hud dd {
-    white-space: nowrap;
-    font-size: clamp(0.68rem, 1.1vw, 0.86rem);
-    font-weight: 600;
-    color: var(--text-primary);
-    font-variant-numeric: tabular-nums;
-}
-
-.lens-hud-verdict dd {
-    color: var(--status-ruby);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-}
-
-/* --- Entrance choreography: CSS only, so it survives a JS failure --- */
+/* --- Entrance: CSS only, so the hero survives a failed module load ------- */
 
 .hero-line > span {
     opacity: 0;
     animation: hero-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    animation-delay: calc(var(--i, 0) * 0.09s + 0.15s);
+    animation-delay: calc(var(--i, 0) * 0.09s + 0.25s);
 }
 
 .hero-sub,
@@ -2602,23 +2642,8 @@ body.cockpit-root {
     animation: hero-fade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.hero-sub     { animation-delay: 0.42s; }
-.hero-actions { animation-delay: 0.54s; }
-
-/* Opacity only: the HUD carries a centring translate that must survive. */
-.lens-hud {
-    opacity: 0;
-    animation: hero-dissolve 0.7s ease-out 1.05s forwards;
-}
-
-@keyframes hero-dissolve {
-    to { opacity: 1; }
-}
-
-/* Below-fold reveals are hidden only once the motion module has claimed them. */
-[data-motion="on"] .reveal-on-scroll { opacity: 0; }
-
-#cockpit { scroll-margin-top: 88px; }
+.hero-sub     { animation-delay: 0.5s; }
+.hero-actions { animation-delay: 0.62s; }
 
 @keyframes hero-rise {
     from { opacity: 0; transform: translateY(105%); }
@@ -2630,63 +2655,266 @@ body.cockpit-root {
     to   { opacity: 1; transform: translateY(0); }
 }
 
-/* --- Responsive --- */
+[data-motion="on"] .reveal-on-scroll { opacity: 0; }
+
+/* The header wordmark would give away the reveal, so it arrives after it. */
+[data-sequence="on"] .app-header {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+}
+
+[data-sequence="on"][data-revealed="true"] .app-header {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#cockpit { scroll-margin-top: 88px; }
+
+.hero-runway { display: none; }
+
+/* The sequence scrolls the page behind the glass; this is the distance it
+   travels between the hero and the first content section. */
+[data-sequence="on"] .hero-runway {
+    display: block;
+    height: 140vh;
+}
+
+/* --- Story sections ----------------------------------------------------- */
+
+.story {
+    position: relative;
+    z-index: 1;
+    padding: clamp(72px, 11vh, 128px) 24px;
+    background-color: var(--bg-base);
+}
+
+.story-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.story-heading {
+    font-size: clamp(1.75rem, 3.4vw, 2.9rem);
+    line-height: 1.1;
+    letter-spacing: -0.035em;
+    font-weight: 600;
+    color: var(--text-primary);
+    max-width: 22ch;
+}
+
+.story-lede {
+    margin-top: 16px;
+    max-width: 62ch;
+    font-size: clamp(0.98rem, 1.1vw, 1.08rem);
+    line-height: 1.65;
+    color: var(--text-secondary);
+}
+
+.stage-grid {
+    list-style: none;
+    margin-top: clamp(36px, 6vh, 64px);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.stage-cell {
+    position: relative;
+    overflow: hidden;
+    padding: 24px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-subtle);
+    background-color: var(--bg-surface);
+    transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.3s ease;
+}
+
+.stage-cell-wide {
+    grid-column: 1 / -1;
+    background:
+        radial-gradient(ellipse 60% 120% at 88% 10%, rgba(16, 185, 129, 0.14), transparent 62%),
+        var(--bg-surface);
+}
+
+.stage-grid:has(.stage-cell:hover) .stage-cell { opacity: 0.62; }
+.stage-grid:has(.stage-cell:hover) .stage-cell:hover { opacity: 1; }
+.stage-cell:hover { border-color: rgba(16, 185, 129, 0.42); }
+
+.stage-cell::after {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    left: 0;
+    width: 55%;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+    transform: translateX(-100%) skewX(-12deg);
+    transition: transform 0.7s ease-out;
+}
+
+.stage-cell:hover::after { transform: translateX(280%) skewX(-12deg); }
+
+.stage-verb {
+    font-size: 0.66rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-primary);
+    margin-bottom: 12px;
+}
+
+.stage-cell h3 {
+    font-size: clamp(1.02rem, 1.4vw, 1.24rem);
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.stage-cell p:not(.stage-verb):not(.stage-metric) {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 52ch;
+}
+
+.stage-metric {
+    margin-top: 16px;
+    font-size: 0.82rem;
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+}
+
+.stage-metric span { color: var(--text-dim); padding: 0 2px; }
+
+.motivation-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr);
+    gap: clamp(32px, 6vw, 80px);
+    align-items: start;
+}
+
+.motivation-copy p {
+    margin-top: 18px;
+    max-width: 62ch;
+    font-size: clamp(0.98rem, 1.1vw, 1.08rem);
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+.motivation-figure {
+    padding: 28px 24px;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(16, 185, 129, 0.24);
+    background:
+        radial-gradient(ellipse 80% 100% at 20% 0%, rgba(16, 185, 129, 0.12), transparent 68%),
+        var(--bg-surface);
+}
+
+.motivation-stat {
+    font-size: clamp(2.6rem, 5vw, 3.6rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    color: var(--accent-primary);
+    font-variant-numeric: tabular-nums;
+}
+
+.motivation-figure figcaption {
+    margin-top: 12px;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+/* --- Responsive --------------------------------------------------------- */
 
 @media (max-width: 1100px) {
-    .hero-inner {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 44px;
-    }
-
-    .hero-copy { max-width: 640px; }
-    .hero-sub { max-width: 54ch; }
+    .motivation-inner { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media (max-width: 768px) {
     .hero {
         --beam-blur: 24px;
-        min-height: auto;
-        padding: 44px 16px 64px;
+        height: auto;
+        min-height: 100dvh;
+        display: flex;
     }
 
+    .hero-curtain {
+        position: relative;
+        inset: auto;
+        width: 100%;
+        padding: 40px 16px 56px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     .hero-beams i:nth-child(3) { display: none; }
 
-    .lens { --lens-size: clamp(200px, 56vw, 280px); }
-
-    .lens-hud {
-        width: 76%;
-        bottom: 13%;
-        padding: 7px 8px;
+    .hero-copy {
+        position: relative;
+        order: 1;
+        left: auto;
+        top: auto;
+        transform: none;
+        width: 100%;
     }
 
+    .hero-copy::before { display: none; }
+
+    .hero-scrim { display: none; }
+
+    .lens {
+        position: relative;
+        order: 2;
+        left: auto;
+        top: auto;
+        margin: 44px auto 0;
+        transform: rotate(-16deg);
+        --lens-size: min(66vw, 300px);
+    }
+
+    .lens-hud { width: 76%; bottom: 13%; padding: 7px 8px; }
     .lens-hud dt { letter-spacing: 0.1em; }
+    .lens-wordmark { font-size: clamp(1.5rem, 8vw, 2.2rem); }
 
     .hero-btn { flex: 1 1 auto; justify-content: center; }
+
+    .stage-grid { grid-template-columns: minmax(0, 1fr); }
+    .stage-cell-wide { grid-column: auto; }
+
+    .story { padding: 56px 16px; }
 }
 
-/* --- Accessibility and print --- */
+/* --- Accessibility and print -------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {
     .hero-beams i,
-    .lens-sweep {
+    .lens-sweep,
+    .preloader-mark {
         animation: none !important;
     }
 
     .hero-line > span,
-    .reveal-on-scroll,
     .hero-sub,
     .hero-actions,
     .lens-hud,
-    .lens-wordmark span {
+    .lens-wordmark,
+    .lens-wordmark span,
+    .reveal-on-scroll {
         opacity: 1 !important;
         transform: none !important;
         animation: none !important;
         filter: none !important;
     }
 
-    .lens { transform: rotate(-18deg) !important; }
+    [data-sequence="on"] .app-header { opacity: 1; pointer-events: auto; }
 }
 
 @media print {
-    .hero { display: none !important; }
+    .preloader,
+    .hero,
+    .story {
+        display: none !important;
+    }
 }
