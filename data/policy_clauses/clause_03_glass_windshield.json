@@ -1,7 +1,7 @@
 {
   "id": "clause_03_glass_windshield",
-  "title": "Automotive Glass & Windshield Endorsement",
-  "citation": "Illustrative Motor Comprehensive Policy — Section 2 (Endorsements), Clause G-1",
-  "text": "The policy covers accidental breakage, shattering, or cracking of the front windshield, rear glass, or side windows. Certified replacement of automotive safety glass and necessary recalibration of forward-facing ADAS camera/radar sensors bonded to the glass shall be indemnified without applying the collision deductible, up to the stated glass cover limit.",
-  "keywords": ["windshield", "glass", "shatter", "crack", "window", "camera", "ADAS", "sensor calibration", "deductible waiver"]
+  "title": "Automotive Glass & Forward-Facing ADAS Coverage",
+  "citation": "UAE Unified Motor Vehicle Insurance Policy (CBUAE Endorsement — Glass Cover applied by Sukoon and UAE Insurers)",
+  "text": "The policy covers accidental breakage, shattering, or cracking of the front windshield, rear glass, or side windows. Certified replacement of automotive safety glass and necessary recalibration of forward-facing ADAS camera/radar sensors bonded to the glass shall be indemnified without applying the collision deductible, up to the stated glass cover sub-limit.",
+  "keywords": ["windshield", "glass", "shatter", "crack", "window", "camera", "ADAS", "sensor calibration", "deductible waiver", "sukoon", "cbuae"]
 }

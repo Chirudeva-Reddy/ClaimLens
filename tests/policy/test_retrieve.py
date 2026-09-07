@@ -6,7 +6,8 @@ def test_retrieve_total_loss_clause():
     assert res.is_established
     assert res.matched_clause is not None
     assert res.matched_clause.id == "clause_01_total_loss_economic"
-    assert "Clause 4.1" in res.citation
+    assert "Article 7(2)" in res.citation
+    assert "CBUAE" in res.citation
     assert res.relevance_score > 0.20
 
 
@@ -17,7 +18,7 @@ def test_retrieve_chassis_structural_clause():
     assert res.is_established
     assert res.matched_clause is not None
     assert res.matched_clause.id == "clause_02_chassis_structural"
-    assert "Clause 4.2" in res.citation
+    assert "Article 7(3)" in res.citation
     assert "chassis" in res.text.lower()
 
 
@@ -28,7 +29,7 @@ def test_retrieve_glass_windshield_clause():
     assert res.is_established
     assert res.matched_clause is not None
     assert res.matched_clause.id == "clause_03_glass_windshield"
-    assert "Clause G-1" in res.citation
+    assert "Glass Cover" in res.citation
     assert "windshield" in res.text.lower()
 
 
@@ -37,7 +38,7 @@ def test_retrieve_agency_repair_clause():
     assert res.is_established
     assert res.matched_clause is not None
     assert res.matched_clause.id == "clause_05_repair_agency_choice"
-    assert "Clause 3.1" in res.citation
+    assert "Article 1(b)" in res.citation
 
 
 def test_retrieve_irrelevant_query_returns_not_established():
