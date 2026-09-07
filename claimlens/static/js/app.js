@@ -793,6 +793,9 @@ document.addEventListener('DOMContentLoaded', () => {
         canvasSvg.querySelectorAll('.svg-damage').forEach(el => {
             el.style.display = state.activeLayers.damages ? 'block' : 'none';
         });
+        canvasSvg.querySelectorAll('.svg-structural').forEach(el => {
+            el.style.display = state.activeLayers.labels ? 'block' : 'none';
+        });
     }
 
     // =========================================================================
