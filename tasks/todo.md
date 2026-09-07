@@ -38,8 +38,8 @@ Full detail (acceptance criteria, verification, files) in [plan.md](plan.md). Wo
 - [x] **Checkpoint: Gradio Demo UI** — review with user
 
 ## Phase 8: Eval / Metrics Writeup
-- [ ] Task 12: Model card and metrics table
-- [ ] **Checkpoint: Eval / Metrics Writeup** — review with user
+- [x] Task 12: Model card and metrics table
+- [x] **Checkpoint: Eval / Metrics Writeup** — review with user
 
 ## Phase 9: README + Deployment
 - [ ] Task 13: README
