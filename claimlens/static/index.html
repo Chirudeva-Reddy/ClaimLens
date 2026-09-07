@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClaimLens — Explainable Insurtech Damage & Total-Loss Triage</title>
+    <meta name="description" content="AI-driven, explainable two-stage vehicle damage segmentation and total-loss triage calibrated to UAE CBUAE statutory motor policies and OEM collision pricing in AED.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <!-- Top Navigation / Header -->
+    <header class="app-header">
+        <div class="header-container">
+            <div class="brand-group">
+                <div class="brand-logo">
+                    <span class="logo-icon">🔍</span>
+                </div>
+                <div>
+                    <div class="brand-title-row">
+                        <h1 class="brand-title">ClaimLens</h1>
+                        <span class="version-tag">ENTERPRISE v2.4</span>
+                    </div>
+                    <p class="brand-subtitle">Explainable Vehicle Damage Triage & CBUAE Statutory Total-Loss Compliance Engine</p>
+                </div>
+            </div>
+            <div class="header-badges">
+                <div class="regulatory-badge">
+                    <span class="uae-flag">🇦🇪</span>
+                    <span>CBUAE Unified Motor Policy Aligned</span>
+                </div>
+                <div class="currency-badge">
+                    <span class="badge-dot"></span>
+                    <span>All Valuations in AED</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <!-- Quick-Launch Blueprint §13 Scenarios Row -->
+        <section class="section-container scenarios-section">
+            <div class="section-header">
+                <div class="section-title-wrap">
+                    <span class="section-num">01</span>
+                    <h2>Quick-Launch Validation Scenarios</h2>
+                </div>
+                <p class="section-hint">Select any curated collision case to run 1-click inspection, spatial association, and total-loss rule evaluation:</p>
+            </div>
+            <div class="scenarios-grid">
+                <button type="button" class="scenario-card" id="btn-case-a" data-case="case_a">
+                    <div class="scenario-card-header">
+                        <span class="scenario-icon">🚗</span>
+                        <span class="scenario-pill pill-repair">REPAIRABLE BENCHMARK</span>
+                    </div>
+                    <div class="scenario-card-body">
+                        <h3 class="scenario-title">Scenario A: Minor Surface Damage</h3>
+                        <p class="scenario-meta">Toyota Camry / Corolla • Bumper Scratch</p>
+                        <p class="scenario-desc">Single-panel cosmetic impact. Estimated repair represents &lt;2% of vehicle cash value.</p>
+                    </div>
+                    <div class="scenario-card-footer">
+                        <span class="scenario-val">ACV: AED 120,000</span>
+                        <span class="scenario-action">Load & Analyze &rarr;</span>
+                    </div>
+                </button>
+
+                <button type="button" class="scenario-card" id="btn-case-b" data-case="case_b">
+                    <div class="scenario-card-header">
+                        <span class="scenario-icon">💥</span>
+                        <span class="scenario-pill pill-loss">TOTAL LOSS TRIGGER</span>
+                    </div>
+                    <div class="scenario-card-body">
+                        <h3 class="scenario-title">Scenario B: Multi-Panel Severe Collision</h3>
+                        <p class="scenario-meta">General Fleet • Hood + Bumper + Quarter</p>
+                        <p class="scenario-desc">Multiple structural panels compromised. Cumulative repair cost exceeds 80% of market value.</p>
+                    </div>
+                    <div class="scenario-card-footer">
+                        <span class="scenario-val">ACV: AED 15,000</span>
+                        <span class="scenario-action">Load & Analyze &rarr;</span>
+                    </div>
+                </button>
+
+                <button type="button" class="scenario-card" id="btn-case-c" data-case="case_c">
+                    <div class="scenario-card-header">
+                        <span class="scenario-icon">⚠️</span>
+                        <span class="scenario-pill pill-abstain">SAFE ABSTENTION</span>
+                    </div>
+                    <div class="scenario-card-body">
+                        <h3 class="scenario-title">Scenario C: Quarter-Panel Unibody Impact</h3>
+                        <p class="scenario-meta">Toyota Prado / RAV4 • Rear Quarter Hit</p>
+                        <p class="scenario-desc">Damage directly engages the load-bearing unibody. Camera-only estimation safely abstains.</p>
+                    </div>
+                    <div class="scenario-card-footer">
+                        <span class="scenario-val">ACV: AED 85,000</span>
+                        <span class="scenario-action">Load & Analyze &rarr;</span>
+                    </div>
+                </button>
+            </div>
+        </section>
+
+        <!-- Claim Evidence & Assessment Parameters Form -->
+        <section class="section-container form-section">
+            <div class="section-header">
+                <div class="section-title-wrap">
+                    <span class="section-num">02</span>
+                    <h2>Collision Evidence & Valuation Console</h2>
+                </div>
+            </div>
+
+            <div class="console-grid">
+                <!-- Dropzone Left -->
+                <div class="dropzone-column">
+                    <label class="input-label">Collision Evidence Photograph</label>
+                    <div class="upload-dropzone" id="upload-dropzone">
+                        <input type="file" id="image-file-input" accept="image/*" class="file-input-hidden">
+                        <div class="dropzone-idle" id="dropzone-idle">
+                            <div class="upload-icon-circle">
+                                <span>📷</span>
+                            </div>
+                            <h4 class="dropzone-prompt">Drop collision photo here or <span class="browse-link">browse</span></h4>
+                            <p class="dropzone-hint">Supports JPEG, PNG, WEBP (min 640x480 for forensic gate)</p>
+                        </div>
+                        <div class="dropzone-preview hidden" id="dropzone-preview">
+                            <img id="preview-img" src="" alt="Collision Preview">
+                            <button type="button" class="btn-clear-preview" id="btn-clear-preview" title="Remove photo">&times;</button>
+                        </div>
+                    </div>
+                    <div id="quality-gate-banner" class="quality-gate-banner hidden"></div>
+                </div>
+
+                <!-- Parameters Right -->
+                <div class="parameters-column">
+                    <div class="form-row">
+                        <div class="form-group flex-1">
+                            <label for="select-brand" class="input-label">Vehicle Brand (OEM Calibration)</label>
+                            <div class="select-wrapper">
+                                <select id="select-brand" class="form-control">
+                                    <option value="Toyota" selected>Toyota (Scraped OEM Tier)</option>
+                                    <option value="Nissan">Nissan (UAE Market Tier)</option>
+                                    <option value="Hyundai">Hyundai (UAE Market Tier)</option>
+                                    <option value="Ford">Ford (UAE Market Tier)</option>
+                                    <option value="Lexus">Lexus (Premium OEM Tier)</option>
+                                    <option value="Mercedes-Benz">Mercedes-Benz (Luxury OEM Tier)</option>
+                                    <option value="General Market Standard">General Market Standard (UAE Bodyshop Avg)</option>
+                                </select>
+                            </div>
+                            <span class="input-subtext">Calibrated against 3,174 classified UAE collision body parts.</span>
+                        </div>
+
+                        <div class="form-group flex-1">
+                            <label for="input-acv" class="input-label">Pre-Accident Cash Value (AED)</label>
+                            <div class="input-currency-wrapper">
+                                <span class="currency-prefix">AED</span>
+                                <input type="number" id="input-acv" class="form-control font-mono" value="120000" min="1000" max="2500000" step="1000">
+                            </div>
+                            <div class="quick-chips">
+                                <button type="button" class="chip-btn" data-val="15000">15k</button>
+                                <button type="button" class="chip-btn" data-val="50000">50k</button>
+                                <button type="button" class="chip-btn" data-val="85000">85k</button>
+                                <button type="button" class="chip-btn active" data-val="120000">120k</button>
+                                <button type="button" class="chip-btn" data-val="250000">250k</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group flex-1">
+                            <label for="select-jurisdiction" class="input-label">Statutory Jurisdiction & Total-Loss Rule</label>
+                            <div class="select-wrapper">
+                                <select id="select-jurisdiction" class="form-control">
+                                    <option value="uae_50" selected>UAE Unified Motor Policy (50% Economic Test)</option>
+                                    <option value="us_70">US Total Loss Formula (70% Standard)</option>
+                                    <option value="us_75">US Standard Threshold (75%)</option>
+                                    <option value="uk_60">UK / European Market Reference (60%)</option>
+                                    <option value="custom">Custom Threshold (%)</option>
+                                </select>
+                            </div>
+                            <span class="input-subtext">CBUAE Article 7(2): Total loss if repair exceeds 50% of market value.</span>
+                        </div>
+
+                        <div class="form-group flex-1" id="custom-thresh-group">
+                            <div class="slider-label-row">
+                                <label for="slider-threshold" class="input-label">Economic Cut-Off Threshold</label>
+                                <span class="slider-value font-mono" id="slider-threshold-val">50%</span>
+                            </div>
+                            <input type="range" id="slider-threshold" class="range-slider" min="10" max="100" value="50" step="5">
+                            <span class="input-subtext">Live slider: updates loss ratio calculation in 0ms!</span>
+                        </div>
+                    </div>
+
+                    <div class="action-btn-row">
+                        <button type="button" class="btn-primary-action" id="btn-run-inspection">
+                            <span class="btn-spinner hidden" id="btn-spinner"></span>
+                            <span class="btn-icon">⚡</span>
+                            <span class="btn-text">Run AI Inspection & Total-Loss Triage</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Executive Triage Decision Banner -->
+        <section class="section-container triage-section" id="triage-section">
+            <div class="triage-banner status-waiting" id="triage-banner">
+                <div class="triage-banner-left">
+                    <div class="triage-icon-badge" id="triage-icon">⏳</div>
+                    <div>
+                        <div class="triage-status-headline" id="triage-headline">Awaiting Collision Evidence</div>
+                        <p class="triage-summary" id="triage-summary">Select one of the Quick-Launch validation scenarios above or upload a collision photograph to generate an explainable triage decision.</p>
+                        <div class="triage-action-box" id="triage-action-box">
+                            <span class="action-label">RECOMMENDED PROTOCOL:</span>
+                            <span class="action-text" id="triage-action">Provide accident photograph and confirm vehicle market valuation.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="triage-banner-right">
+                    <div class="gauge-ring-container">
+                        <svg class="gauge-ring" viewBox="0 0 120 120">
+                            <circle class="gauge-bg" cx="60" cy="60" r="50"></circle>
+                            <circle class="gauge-bar" id="gauge-bar" cx="60" cy="60" r="50"></circle>
+                        </svg>
+                        <div class="gauge-center-text">
+                            <span class="gauge-value font-mono" id="gauge-loss-ratio">0.0%</span>
+                            <span class="gauge-label">LOSS RATIO</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floating Executive KPI Metrics -->
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <span class="kpi-label">ESTIMATED VISIBLE REPAIR</span>
+                        <span class="kpi-icon">🔧</span>
+                    </div>
+                    <div class="kpi-value font-mono" id="kpi-repair-cost">AED 0.00</div>
+                    <div class="kpi-footer" id="kpi-repair-range">Min: AED 0 • Max: AED 0</div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <span class="kpi-label">PRE-ACCIDENT CASH VALUE</span>
+                        <span class="kpi-icon">🏷️</span>
+                    </div>
+                    <div class="kpi-value font-mono" id="kpi-acv">AED 120,000</div>
+                    <div class="kpi-footer">Vehicle Market Baseline</div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <span class="kpi-label">STATUTORY CUT-OFF THRESHOLD</span>
+                        <span class="kpi-icon">⚖️</span>
+                    </div>
+                    <div class="kpi-value font-mono" id="kpi-threshold">50.0%</div>
+                    <div class="kpi-footer" id="kpi-threshold-rule">CBUAE Motor Policy Article 7(2)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Split Studio (Visual Canvas Left | Intelligence Tabs Right) -->
+        <section class="section-container studio-section" id="studio-section">
+            <div class="studio-grid">
+                <!-- Left: Interactive Vision Canvas Studio -->
+                <div class="studio-card vision-card">
+                    <div class="studio-card-header">
+                        <div class="title-with-badge">
+                            <h3>🔬 Interactive Computer Vision Studio</h3>
+                            <span class="studio-badge">VECTOR POLYGON OVERLAY</span>
+                        </div>
+                        <!-- Canvas Layer Toggles -->
+                        <div class="layer-toggles">
+                            <button type="button" class="toggle-pill active" id="toggle-parts" data-layer="parts">
+                                <span class="toggle-dot dot-parts"></span> Components
+                            </button>
+                            <button type="button" class="toggle-pill active" id="toggle-damages" data-layer="damages">
+                                <span class="toggle-dot dot-damages"></span> Damages
+                            </button>
+                            <button type="button" class="toggle-pill active" id="toggle-labels" data-layer="labels">
+                                <span class="toggle-dot dot-labels"></span> Labels
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="canvas-viewport" id="canvas-viewport">
+                        <div class="canvas-wrapper" id="canvas-wrapper">
+                            <img id="canvas-base-img" class="canvas-base-img" src="" alt="Collision Analysis">
+                            <svg id="canvas-svg" class="canvas-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none"></svg>
+                            <!-- Dynamic Hover Tooltip HUD -->
+                            <div id="canvas-tooltip" class="canvas-tooltip hidden">
+                                <div class="tooltip-header" id="tt-header">Front Bumper</div>
+                                <div class="tooltip-row">
+                                    <span class="tt-label">Damage:</span>
+                                    <span class="tt-val font-mono" id="tt-damage">Scratch</span>
+                                </div>
+                                <div class="tooltip-row">
+                                    <span class="tt-label">Confidence:</span>
+                                    <span class="tt-val font-mono" id="tt-conf">88.5%</span>
+                                </div>
+                                <div class="tooltip-row">
+                                    <span class="tt-label">Est. Repair:</span>
+                                    <span class="tt-val font-mono" id="tt-cost">AED 1,402.50</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="canvas-placeholder" id="canvas-placeholder">
+                            <div class="placeholder-icon">📐</div>
+                            <p>Upload an accident image or click a scenario to generate interactive polygon overlays.</p>
+                        </div>
+                    </div>
+
+                    <div class="canvas-footer-legend">
+                        <div class="legend-item">
+                            <span class="legend-swatch swatch-part"></span>
+                            <span>Vehicle Body Component (Blue)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-swatch swatch-damage"></span>
+                            <span>Collision Damage Mask (Red)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-swatch swatch-structural"></span>
+                            <span>Structural / Load-Bearing Risk (Amber)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Analytical Intelligence Tabs -->
+                <div class="studio-card tabs-card">
+                    <div class="tabs-nav">
+                        <button type="button" class="tab-btn active" data-tab="tab-line-items">
+                            <span>📊</span> Itemized Repair Estimate (AED)
+                        </button>
+                        <button type="button" class="tab-btn" data-tab="tab-policy">
+                            <span>📜</span> CBUAE Statutory Guidance
+                        </button>
+                        <button type="button" class="tab-btn" data-tab="tab-unknowns">
+                            <span>🛡️</span> "What Isn't Known"
+                        </button>
+                    </div>
+
+                    <div class="tabs-content">
+                        <!-- Tab 1: Itemized Cost Table -->
+                        <div class="tab-pane active" id="tab-line-items">
+                            <div class="table-container">
+                                <table class="itemized-table" id="itemized-table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Component</th>
+                                            <th>Damage</th>
+                                            <th>Action</th>
+                                            <th>Est. Range (AED)</th>
+                                            <th>Median (AED)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table-body">
+                                        <tr class="empty-row">
+                                            <td colspan="6">No line items calculated yet. Run an inspection to view deterministic collision costs.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="assumptions-box">
+                                <h4 class="assumptions-title">⚙️ Engineering Assumptions & OEM Baseline</h4>
+                                <ul id="assumptions-list" class="assumptions-list">
+                                    <li>Pricing reflects verified UAE automotive aftermarket distributor data (Al Khateeb UAE).</li>
+                                    <li>Bodyshop labor computed at standard UAE certified rate of AED 165/hour.</li>
+                                    <li>Only direct visible damage mapped to recognized components is priced deterministically.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Tab 2: Policy Guidance -->
+                        <div class="tab-pane" id="tab-policy">
+                            <div class="policy-header-banner">
+                                <div>
+                                    <h4>Central Bank of the UAE (CBUAE) Unified Motor Vehicle Insurance Policy</h4>
+                                    <p>Statutory regulatory basis governing total-loss thresholds, economic repairability, and owner compensation.</p>
+                                </div>
+                            </div>
+                            <div class="policy-clauses-container" id="policy-clauses-container">
+                                <p class="empty-hint">Run an inspection to retrieve applicable statutory policy articles.</p>
+                            </div>
+                        </div>
+
+                        <!-- Tab 3: "What Isn't Known" Checklist -->
+                        <div class="tab-pane" id="tab-unknowns">
+                            <div class="unknowns-header-banner">
+                                <h4>Defensibility Checklist & Hidden Collision Vulnerabilities</h4>
+                                <p>Mandatory physical inspection requirements that 2D photographic computer vision cannot certify:</p>
+                            </div>
+                            <ul class="unknowns-list" id="unknowns-list">
+                                <li>Hidden suspension geometry and camber distortion cannot be certified from 2D photographic evidence alone.</li>
+                                <li>SRS airbag sensor readiness, seatbelt pretensioners, and ADAS radar calibration require OBD-II diagnostic scanning.</li>
+                                <li>Sub-surface chassis rail micro-cracks or weld-seam tearing require physical undercarriage laser measurement.</li>
+                                <li>Internal fluid lines, radiators, and condenser leaks require pressure testing prior to road release.</li>
+                            </ul>
+                            <div class="export-row">
+                                <button type="button" class="btn-secondary" id="btn-print-report">
+                                    <span>🖨️</span> Print / Export Audit Appraisal (PDF)
+                                </button>
+                                <button type="button" class="btn-secondary" id="btn-export-json">
+                                    <span>💾</span> Download Machine-Readable Claim JSON
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <div class="footer-container">
+            <p><strong>ClaimLens</strong> — Explainable AI Vehicle Collision & Total-Loss Triage Engine • Built with Two-Stage YOLOv8n-seg, Shapely Spatial Association, and CBUAE Policy Guidance.</p>
+            <p class="footer-sub">Strictly deterministic pricing in AED grounded in empirical UAE OEM parts datasets • Zero ungrounded LLM hallucination for financial totals.</p>
+        </div>
+    </footer>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

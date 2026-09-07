@@ -1,8 +1,11 @@
 """ClaimLens root entrypoint for Hugging Face Spaces & local serving."""
 
-from claimlens.app import create_app
+import uvicorn
 
-demo = create_app()
+from claimlens.api import app
+
+# Export ASGI app object for uvicorn app:app
+__all__ = ["app"]
 
 if __name__ == "__main__":
-    demo.launch()
+    uvicorn.run(app, host="0.0.0.0", port=7860)
