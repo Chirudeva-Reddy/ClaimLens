@@ -106,7 +106,7 @@ function wireSequence() {
 
     const mm = gsap.matchMedia();
     mm.add({
-        isDesktop: '(min-width: 769px)',
+        isDesktop: '(min-width: 901px)',
         reduce: '(prefers-reduced-motion: reduce)',
     }, (ctx) => {
         if (ctx.conditions.reduce || !ctx.conditions.isDesktop) return;
@@ -130,6 +130,7 @@ function wireSequence() {
         const holeScale = () => maxHole() / (lens.offsetWidth / 2);
 
         let spoken = false;
+        let exiting = false;
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: '#hero',
@@ -141,15 +142,25 @@ function wireSequence() {
                 end: 'top 90px',
                 pin: true,
                 pinSpacing: false,
-                scrub: 0.6,
+                scrub: 0.25,
                 invalidateOnRefresh: true,
                 onUpdate: (self) => {
                     // Wordmark letters resolve once, at the point the glass owns the frame.
                     if (!spoken && self.progress > 0.34) { spoken = true; revealWordmark(); }
                     if (spoken && self.progress < 0.28) { spoken = false; hideWordmark(); }
+                    const past = self.progress > 0.6;
+                    if (past !== exiting) { exiting = past; lens.classList.toggle('is-exiting', past); }
                 },
                 onLeave: () => { root.dataset.revealed = 'true'; },
                 onEnterBack: () => { root.dataset.revealed = 'false'; },
+                // Scrolling back above the start leaves the trigger inactive, so
+                // reset the reveal here rather than waiting for an update tick.
+                onLeaveBack: () => {
+                    spoken = false;
+                    exiting = false;
+                    lens.classList.remove('is-exiting');
+                    hideWordmark();
+                },
             },
         });
 
@@ -162,11 +173,13 @@ function wireSequence() {
               { opacity: 0, ease: 'none', duration: 0.22 }, 0.42)
           .to('.lens-hud', { opacity: 0, ease: 'none', duration: 0.16 }, 0.42)
           .to('.lens-tint', { opacity: 0, ease: 'none', duration: 0.2 }, 0.5)
+          .to(['.hero-veil', '.hero-beams', '.hero-rules'],
+              { autoAlpha: 0, ease: 'none', duration: 0.16 }, 0.46)
 
         // 3. The page comes through the glass.
           .to('.lens-wordmark', { scale: 1.35, opacity: 0, ease: 'power1.in', duration: 0.16 }, 0.62)
-          .to(lens, { scale: holeScale, ease: 'power2.in', duration: 0.26 }, 0.68)
-          .to(curtain, { '--hole': () => maxHole() + 'px', ease: 'power2.in', duration: 0.26 }, 0.68)
+          .to(lens, { scale: holeScale, ease: 'power1.in', duration: 0.26 }, 0.68)
+          .to(curtain, { '--hole': () => maxHole() + 'px', ease: 'power1.in', duration: 0.26 }, 0.68)
           .to('.lens-glass', { opacity: 0, ease: 'none', duration: 0.06 }, 0.88);
 
         return () => {
@@ -175,7 +188,9 @@ function wireSequence() {
             delete root.dataset.sequence;
             delete root.dataset.revealed;
             gsap.set([lens, copy, '.lens-glass', '.lens-wordmark', '.lens-media', '.lens-annotations',
-                      '.lens-sweep', '.lens-shine', '.lens-hud', '.lens-tint'], { clearProps: 'all' });
+                      '.lens-sweep', '.lens-shine', '.lens-hud', '.lens-tint',
+                      '.hero-veil', '.hero-beams', '.hero-rules'], { clearProps: 'all' });
+            lens.classList.remove('is-exiting');
             letters.forEach((el) => { el.style.cssText = ''; });
         };
     });
@@ -186,7 +201,7 @@ function wireSequence() {
 
 function wireLenis() {
     if (!window.Lenis || !window.gsap) return null;
-    const lenis = new Lenis({ anchors: { offset: -84 } });
+    const lenis = new Lenis({ lerp: 0.16, anchors: { offset: -84 } });
     lenis.on('scroll', ScrollTrigger.update);
     const tick = (time) => lenis.raf(time * 1000);
     gsap.ticker.add(tick);

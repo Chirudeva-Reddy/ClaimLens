@@ -85,8 +85,9 @@
             <div class="hero-veil" aria-hidden="true"></div>
             <div class="hero-beams" aria-hidden="true"><i></i><i></i><i></i></div>
             <div class="hero-rules" aria-hidden="true"></div>
+        </div>
 
-            <div class="hero-inner">
+        <div class="hero-inner">
                 <div class="hero-copy" id="hero-copy">
                     <h1 class="hero-title">
                         <span class="hero-line"><span style="--i:0">Photograph the damage.</span></span>
@@ -119,17 +120,14 @@
                                         <pattern id="lens-mesh" width="7" height="7" patternUnits="userSpaceOnUse">
                                             <circle cx="1.2" cy="1.2" r="1" fill="rgba(94, 245, 224, 0.75)"/>
                                         </pattern>
-                                        <filter id="lens-bloom" x="-40%" y="-40%" width="180%" height="180%">
-                                            <feGaussianBlur stdDeviation="3" result="b"/>
-                                            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-                                        </filter>
                                     </defs>
 
                                     <g class="lens-registration">
                                         <path d="M126 66h14M133 59v14M282 96h14M289 89v14M118 318h14M125 311v14"/>
                                     </g>
 
-                                    <g class="lens-detection" filter="url(#lens-bloom)">
+                                    <g class="lens-detection">
+                                        <polygon class="lens-poly-glow" points="160,118 210,100 236,150 228,238 176,258 148,196"/>
                                         <polygon class="lens-poly" points="160,118 210,100 236,150 228,238 176,258 148,196"/>
                                         <polygon class="lens-poly-mesh" points="160,118 210,100 236,150 228,238 176,258 148,196"/>
                                         <g class="lens-vertex">
@@ -139,7 +137,8 @@
                                         </g>
                                     </g>
 
-                                    <g class="lens-detection lens-detection-b" filter="url(#lens-bloom)">
+                                    <g class="lens-detection lens-detection-b">
+                                        <polygon class="lens-poly-glow" points="248,262 306,286 322,318 300,332 254,300"/>
                                         <polygon class="lens-poly" points="248,262 306,286 322,318 300,332 254,300"/>
                                         <polygon class="lens-poly-mesh" points="248,262 306,286 322,318 300,332 254,300"/>
                                         <g class="lens-vertex">
@@ -199,7 +198,6 @@
                         <div class="lens-handle" aria-hidden="true"><span></span><span></span></div>
                     </div>
                 </div>
-            </div>
         </div>
     </section>
 
