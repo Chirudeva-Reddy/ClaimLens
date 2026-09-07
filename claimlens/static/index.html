@@ -28,7 +28,7 @@
                 </div>
                 <div class="brand-titles">
                     <div class="brand-title-row">
-                        <h1 class="brand-title">ClaimLens</h1>
+                        <p class="brand-title">ClaimLens</p>
                         <span class="version-tag font-mono">INSPECTION COCKPIT v2.4</span>
                     </div>
                     <p class="brand-subtitle">Explainable Vehicle Damage Segmentation & CBUAE Total-Loss Engine</p>
@@ -57,9 +57,67 @@
         </div>
     </header>
 
-    <main class="main-container">
+    <!-- Hero: the lens opens over real inspection evidence -->
+    <section class="hero" id="hero">
+        <div class="hero-veil" aria-hidden="true"></div>
+        <div class="hero-beams" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="hero-rules" aria-hidden="true"></div>
+
+        <div class="hero-inner">
+            <div class="hero-copy">
+                <h1 class="hero-title">
+                    <span class="hero-line"><span style="--i:0">Photograph the damage.</span></span>
+                    <span class="hero-line"><span style="--i:1">Get the verdict.</span></span>
+                </h1>
+                <p class="hero-sub">
+                    ClaimLens segments the damage, prices the repair in AED, and calls total loss
+                    against CBUAE thresholds.
+                </p>
+                <div class="hero-actions">
+                    <a class="hero-btn hero-btn-primary" href="#cockpit" data-hero-scroll>
+                        Open the cockpit
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg>
+                    </a>
+                    <button type="button" class="hero-btn hero-btn-ghost" id="btn-hero-demo">
+                        Watch a claim run
+                    </button>
+                </div>
+            </div>
+
+            <div class="hero-stage">
+                <div class="lens" id="hero-lens">
+                    <div class="lens-glass">
+                        <img class="lens-media" src="/api/scenarios/case_b/image" alt="Severe multi-panel front-end collision under inspection" width="640" height="640" fetchpriority="high" decoding="async">
+                        <div class="lens-tint" aria-hidden="true"></div>
+                        <svg class="lens-annotations" viewBox="0 0 200 200" aria-hidden="true">
+                            <polygon class="lens-poly" points="52,96 96,74 138,92 132,132 74,138"/>
+                            <polygon class="lens-poly lens-poly-b" points="112,52 152,60 156,88 118,80"/>
+                            <path class="lens-tick" d="M100 18v14M100 168v14M18 100h14M168 100h14"/>
+                        </svg>
+                        <div class="lens-sweep" aria-hidden="true"></div>
+                        <p class="lens-wordmark" aria-label="ClaimLens"><span aria-hidden="true">C</span><span aria-hidden="true">l</span><span aria-hidden="true">a</span><span aria-hidden="true">i</span><span aria-hidden="true">m</span><span aria-hidden="true">L</span><span aria-hidden="true">e</span><span aria-hidden="true">n</span><span aria-hidden="true">s</span></p>
+                        <dl class="lens-hud font-mono">
+                            <div class="lens-hud-row">
+                                <dt>Loss ratio</dt>
+                                <dd><span data-count-to="86.4">86.4</span>%</dd>
+                            </div>
+                            <div class="lens-hud-row lens-hud-verdict">
+                                <dt>Verdict</dt>
+                                <dd>Total loss</dd>
+                            </div>
+                        </dl>
+                        <div class="lens-shine" aria-hidden="true"></div>
+                    </div>
+                    <div class="lens-collar" aria-hidden="true"></div>
+                    <div class="lens-handle" aria-hidden="true"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-container" id="cockpit">
         <!-- Compact Scenario Quick-Launch Switcher Bar -->
-        <section class="cockpit-bar scenario-bar-section" aria-label="Scenario Selection">
+        <section class="cockpit-bar scenario-bar-section reveal-on-scroll" aria-label="Scenario Selection">
             <div class="scenario-bar-header">
                 <span class="eyebrow-label">VALIDATION SCENARIOS</span>
                 <span class="scenario-bar-hint">1-click automated appraisal presets calibrated to CBUAE regulatory benchmarks:</span>
@@ -142,7 +200,7 @@
         </section>
 
         <!-- Collision Evidence & Valuation Console -->
-        <section class="cockpit-card form-section" aria-label="Evidence & Appraisal Setup">
+        <section class="cockpit-card form-section reveal-on-scroll" aria-label="Evidence & Appraisal Setup">
             <div class="card-section-header">
                 <div class="card-title-group">
                     <h2 class="card-title">Collision Evidence & Valuation Console</h2>
@@ -285,7 +343,7 @@
         </section>
 
         <!-- Executive Triage Decision Banner & Telemetry Strip -->
-        <section class="cockpit-card triage-section" id="triage-section" aria-label="Triage Decision">
+        <section class="cockpit-card triage-section reveal-on-scroll" id="triage-section" aria-label="Triage Decision">
             <div class="triage-banner status-waiting" id="triage-banner" aria-live="polite">
                 <div class="triage-banner-left">
                     <div class="triage-icon-badge" id="triage-icon">
@@ -361,7 +419,7 @@
         </section>
 
         <!-- Interactive Split Studio (Vision Canvas Left | Analytical Console Right) -->
-        <section class="studio-section" id="studio-section" aria-label="Inspection Studio">
+        <section class="studio-section reveal-on-scroll" id="studio-section" aria-label="Inspection Studio">
             <div class="studio-grid">
                 <!-- Left: Interactive Computer Vision Studio -->
                 <div class="cockpit-card studio-card vision-card">
@@ -715,6 +773,10 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js" defer></script>
     <script src="/static/js/app.js"></script>
+    <script type="module" src="/static/js/hero.js"></script>
 </body>
 </html>

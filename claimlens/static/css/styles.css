@@ -2177,3 +2177,516 @@ body.cockpit-root {
 }
 
 .table-row-item:focus-visible { outline: 2px solid #38BDF8; outline-offset: -2px; }
+
+/* ==========================================================================
+   Hero: "The Lens Opens"
+   Instrument-panel landing built on the cockpit tokens. Beams background and
+   spotlight readout adapted from KokonutUI patterns; deep-teal light and
+   tight display tracking referenced from chirudevareddy.com.
+   ========================================================================== */
+
+.hero {
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+    min-height: calc(100dvh - 76px);
+    display: flex;
+    align-items: center;
+    padding: 72px 24px 88px;
+    background-color: var(--bg-base);
+}
+
+/* Real inspection evidence, held back so the lens does the revealing. */
+.hero-veil {
+    position: absolute;
+    inset: 0;
+    z-index: -3;
+    background: url("/api/scenarios/case_b/image") center/cover no-repeat;
+    filter: blur(9px) grayscale(0.85) brightness(0.5);
+    opacity: 0.16;
+    transform: scale(1.08);
+}
+
+/* Beam field: three soft light columns, blurred once, transform-only after. */
+.hero-beams {
+    position: absolute;
+    inset: -20%;
+    z-index: -2;
+    overflow: hidden;
+    pointer-events: none;
+    filter: blur(var(--beam-blur, 44px));
+    contain: paint;
+}
+
+.hero-beams i {
+    position: absolute;
+    top: -60%;
+    height: 220%;
+    width: clamp(90px, 14vw, 220px);
+    border-radius: 50% / 8%;
+    background: linear-gradient(to bottom,
+        transparent 0%,
+        color-mix(in srgb, var(--beam-color) 45%, transparent) 12%,
+        var(--beam-color) 42%,
+        var(--beam-color) 58%,
+        color-mix(in srgb, var(--beam-color) 45%, transparent) 88%,
+        transparent 100%);
+    animation: beam-drift var(--beam-dur) linear infinite,
+               beam-pulse calc(var(--beam-dur) / 3.7) ease-in-out infinite;
+}
+
+.hero-beams i:nth-child(1) { left: 6%;  --beam-color: rgba(6, 182, 212, 0.20);  --beam-dur: 26s; animation-delay: 0s, -3s; }
+.hero-beams i:nth-child(2) { left: 42%; --beam-color: rgba(16, 185, 129, 0.19); --beam-dur: 34s; animation-delay: -9s, -1s; }
+.hero-beams i:nth-child(3) { left: 78%; --beam-color: rgba(6, 182, 212, 0.13);  --beam-dur: 44s; animation-delay: -17s, -6s; }
+
+@keyframes beam-drift {
+    from { transform: rotate(-35deg) translateY(35%); }
+    to   { transform: rotate(-35deg) translateY(-45%); }
+}
+
+@keyframes beam-pulse {
+    0%, 100% { opacity: 0.72; }
+    50%      { opacity: 1; }
+}
+
+/* Measurement rules: structural, not decorative. They mark the lens axis. */
+.hero-rules {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background-image:
+        linear-gradient(to right, var(--border-subtle) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--border-subtle) 1px, transparent 1px);
+    background-size: 96px 96px;
+    mask-image: radial-gradient(ellipse 70% 60% at 62% 50%, #000 15%, transparent 78%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 62% 50%, #000 15%, transparent 78%);
+    opacity: 0.7;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 65% 60% at 55% 45%, transparent 20%, rgba(11, 15, 23, 0.88) 100%),
+        linear-gradient(to bottom, var(--bg-base), transparent 20%, transparent 72%, var(--bg-base));
+}
+
+.hero-inner {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    align-items: center;
+    gap: clamp(32px, 6vw, 88px);
+}
+
+/* --- Copy column --- */
+
+.hero-title {
+    font-size: clamp(2.25rem, 4.2vw, 3.5rem);
+    line-height: 1.06;
+    letter-spacing: -0.042em;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 22px;
+}
+
+.hero-line {
+    display: block;
+    overflow: hidden;
+}
+
+.hero-line + .hero-line {
+    color: var(--text-secondary);
+}
+
+.hero-line > span {
+    display: block;
+}
+
+.hero-sub {
+    font-size: clamp(0.98rem, 1.2vw, 1.12rem);
+    line-height: 1.65;
+    color: var(--text-secondary);
+    max-width: 46ch;
+    margin-bottom: 34px;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.hero-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    white-space: nowrap;
+    padding: 13px 22px;
+    border-radius: var(--radius-md);
+    font-family: var(--font-sans);
+    font-size: 0.94rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+                background-color 0.22s ease,
+                border-color 0.22s ease,
+                color 0.22s ease;
+}
+
+.hero-btn-primary {
+    background-color: var(--accent-primary);
+    color: #04140E;
+}
+
+.hero-btn-primary:hover {
+    background-color: #34D399;
+}
+
+.hero-btn-primary svg {
+    transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-btn-primary:hover svg {
+    transform: translateX(3px);
+}
+
+.hero-btn-ghost {
+    background-color: rgba(17, 24, 39, 0.72);
+    border-color: var(--border-medium);
+    color: var(--text-primary);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.hero-btn-ghost:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+}
+
+.hero-btn:active {
+    transform: scale(0.98);
+}
+
+.hero-btn:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 3px;
+}
+
+/* --- Lens column --- */
+
+.hero-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(24px, 4vw, 40px);
+}
+
+.lens {
+    --lens-size: clamp(240px, 30vw, 400px);
+    position: relative;
+    width: var(--lens-size);
+    height: var(--lens-size);
+    transform: rotate(-18deg);
+    will-change: transform;
+}
+
+.lens-glass {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #05090F;
+    border: 3px solid rgba(226, 232, 240, 0.16);
+    box-shadow:
+        0 0 0 10px rgba(11, 15, 23, 0.9),
+        0 0 0 12px rgba(148, 163, 184, 0.22),
+        0 34px 90px rgba(0, 0, 0, 0.72),
+        inset 0 2px 22px rgba(148, 163, 184, 0.14);
+    transform: rotate(18deg);
+}
+
+.lens-media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 48% 46%;
+    transform: scale(1.75);
+    filter: saturate(0.75) contrast(1.08) brightness(0.72);
+}
+
+.lens-tint {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 50% 50%, transparent 45%, rgba(5, 9, 15, 0.82) 100%),
+        linear-gradient(140deg, rgba(6, 182, 212, 0.14), rgba(16, 185, 129, 0.1));
+}
+
+.lens-annotations {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.lens-poly {
+    fill: rgba(16, 185, 129, 0.16);
+    stroke: var(--accent-primary);
+    stroke-width: 1.6;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.45));
+}
+
+.lens-poly-b {
+    fill: rgba(6, 182, 212, 0.14);
+    stroke: var(--accent-cyan);
+}
+
+.lens-tick {
+    stroke: rgba(226, 232, 240, 0.45);
+    stroke-width: 1.4;
+    stroke-linecap: round;
+}
+
+.lens-sweep {
+    position: absolute;
+    left: -20%;
+    right: -20%;
+    height: 26%;
+    top: -30%;
+    background: linear-gradient(to bottom,
+        transparent,
+        rgba(16, 185, 129, 0.32) 45%,
+        rgba(16, 185, 129, 0.55) 50%,
+        rgba(16, 185, 129, 0.32) 55%,
+        transparent);
+    animation: lens-sweep 3.6s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+@keyframes lens-sweep {
+    0%       { transform: translateY(0); opacity: 0; }
+    12%      { opacity: 1; }
+    88%      { opacity: 1; }
+    100%     { transform: translateY(500%); opacity: 0; }
+}
+
+.lens-wordmark {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(1.6rem, 3.4vw, 2.7rem);
+    font-weight: 700;
+    letter-spacing: -0.045em;
+    isolation: isolate;
+    color: var(--text-primary);
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.9);
+}
+
+.lens-wordmark::before {
+    content: "";
+    position: absolute;
+    inset: 26% 6%;
+    z-index: -1;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(5, 9, 15, 0.9) 0%, rgba(5, 9, 15, 0.62) 55%, transparent 78%);
+}
+
+.lens-wordmark span {
+    display: inline-block;
+}
+
+.lens-shine {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(128deg,
+        rgba(255, 255, 255, 0.18) 0%,
+        rgba(255, 255, 255, 0.04) 26%,
+        transparent 46%);
+    mix-blend-mode: screen;
+}
+
+.lens-collar {
+    position: absolute;
+    left: 50%;
+    bottom: -6%;
+    width: 15%;
+    height: 16%;
+    transform: translateX(-50%) rotate(45deg);
+    border-radius: 4px;
+    background: linear-gradient(135deg, #64748B, #1E293B);
+}
+
+.lens-handle {
+    position: absolute;
+    left: 50%;
+    top: 96%;
+    width: 11%;
+    height: 54%;
+    transform: translateX(-50%);
+    border-radius: 0 0 999px 999px;
+    background: linear-gradient(100deg, #0F172A 0%, #475569 32%, #94A3B8 52%, #334155 74%, #0B1220 100%);
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.65);
+}
+
+/* --- In-glass readout: the instrument reports what it sees --- */
+
+.lens-hud {
+    position: absolute;
+    left: 50%;
+    bottom: 15%;
+    transform: translateX(-50%);
+    width: 62%;
+    display: grid;
+    gap: 4px;
+    padding: 8px 10px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    background-color: rgba(5, 9, 15, 0.72);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.lens-hud-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.lens-hud dt {
+    font-size: clamp(0.5rem, 0.9vw, 0.6rem);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.lens-hud dd {
+    white-space: nowrap;
+    font-size: clamp(0.68rem, 1.1vw, 0.86rem);
+    font-weight: 600;
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+}
+
+.lens-hud-verdict dd {
+    color: var(--status-ruby);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+/* --- Entrance choreography: CSS only, so it survives a JS failure --- */
+
+.hero-line > span {
+    opacity: 0;
+    animation: hero-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: calc(var(--i, 0) * 0.09s + 0.15s);
+}
+
+.hero-sub,
+.hero-actions {
+    opacity: 0;
+    animation: hero-fade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-sub     { animation-delay: 0.42s; }
+.hero-actions { animation-delay: 0.54s; }
+
+/* Opacity only: the HUD carries a centring translate that must survive. */
+.lens-hud {
+    opacity: 0;
+    animation: hero-dissolve 0.7s ease-out 1.05s forwards;
+}
+
+@keyframes hero-dissolve {
+    to { opacity: 1; }
+}
+
+/* Below-fold reveals are hidden only once the motion module has claimed them. */
+[data-motion="on"] .reveal-on-scroll { opacity: 0; }
+
+#cockpit { scroll-margin-top: 88px; }
+
+@keyframes hero-rise {
+    from { opacity: 0; transform: translateY(105%); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes hero-fade {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Responsive --- */
+
+@media (max-width: 1100px) {
+    .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 44px;
+    }
+
+    .hero-copy { max-width: 640px; }
+    .hero-sub { max-width: 54ch; }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        --beam-blur: 24px;
+        min-height: auto;
+        padding: 44px 16px 64px;
+    }
+
+    .hero-beams i:nth-child(3) { display: none; }
+
+    .lens { --lens-size: clamp(200px, 56vw, 280px); }
+
+    .lens-hud {
+        width: 76%;
+        bottom: 13%;
+        padding: 7px 8px;
+    }
+
+    .lens-hud dt { letter-spacing: 0.1em; }
+
+    .hero-btn { flex: 1 1 auto; justify-content: center; }
+}
+
+/* --- Accessibility and print --- */
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-beams i,
+    .lens-sweep {
+        animation: none !important;
+    }
+
+    .hero-line > span,
+    .reveal-on-scroll,
+    .hero-sub,
+    .hero-actions,
+    .lens-hud,
+    .lens-wordmark span {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+        filter: none !important;
+    }
+
+    .lens { transform: rotate(-18deg) !important; }
+}
+
+@media print {
+    .hero { display: none !important; }
+}

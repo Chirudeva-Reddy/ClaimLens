@@ -5,6 +5,19 @@ async (page) => {
     const check = (condition, message) => { if (!condition) throw new Error(message); };
     const text = selector => page.locator(selector).textContent();
     await page.reload();
+
+    // Hero: the lens opens, reports, and hands off to the cockpit.
+    await page.waitForFunction(() => getComputedStyle(document.querySelector('.lens-glass')).clipPath === 'circle(52% at 50% 50%)');
+    await page.waitForFunction(() => document.querySelector('[data-count-to="86.4"]').textContent === '86.4');
+    check(await text('.lens-wordmark') === 'ClaimLens', 'Wordmark missing from the lens');
+    check(await page.locator('.hero-sub').evaluate(el => getComputedStyle(el).opacity) === '1', 'Hero copy stayed hidden');
+    await page.locator('.hero-btn-primary').click();
+    await page.waitForFunction(() => window.scrollY > 200);
+    await page.evaluate(() => window.__claimlensLenis.scrollTo(0, {immediate: true}));
+    await page.locator('#btn-hero-demo').click();
+    await page.waitForFunction(() => document.querySelector('#triage-headline').textContent === 'CONSTRUCTIVE TOTAL LOSS REVIEW');
+    await page.evaluate(() => window.__claimlensLenis.scrollTo(0, {immediate: true}));
+
     await page.locator('#btn-case-a').click();
     await page.waitForFunction(() => !document.querySelector('#btn-open-appraisal').disabled);
     check(await text('#triage-headline') === 'ECONOMICALLY REPAIRABLE', 'Case A verdict');
@@ -61,11 +74,21 @@ async (page) => {
 
     await page.setViewportSize({width: 375, height: 812});
     check(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'Mobile page overflows');
+    check(await page.locator('.lens-hud-row').first().evaluate(el => el.getBoundingClientRect().height) < 20, 'Lens readout wraps on mobile');
     await page.screenshot({path: 'output/playwright/mobile.png', fullPage: true});
     await page.setViewportSize({width: 1440, height: 1000});
     await page.locator('#btn-case-a').click();
     await page.waitForFunction(() => !document.querySelector('#btn-open-appraisal').disabled);
     await page.screenshot({path: 'output/playwright/desktop.png', fullPage: true});
+    // Reduced motion must land on the finished state, not a half-played one.
+    await page.emulateMedia({reducedMotion: 'reduce'});
+    await page.reload();
+    await page.waitForTimeout(900);
+    check(await page.locator('.lens-glass').evaluate(el => getComputedStyle(el).clipPath) === 'circle(52% at 50% 50%)', 'Reduced motion hid the lens');
+    check(await text('[data-count-to="86.4"]') === '86.4', 'Reduced motion left the readout at zero');
+    check(await page.locator('.reveal-on-scroll').first().evaluate(el => getComputedStyle(el).opacity) === '1', 'Reduced motion hid the cockpit');
+    await page.emulateMedia({reducedMotion: null});
+
     check(errors.length === 0, `Browser errors: ${errors.join('; ')}`);
-    console.log('Frontend smoke passed: scenarios, recalculation, report, export, rejection, keyboard and mobile.');
+    console.log('Frontend smoke passed: hero, scenarios, recalculation, report, export, rejection, keyboard, reduced motion and mobile.');
 }
