@@ -3,6 +3,8 @@
 > **An explainable, two-stage vehicle damage and total-loss triage system.**  
 > Option C Architecture: Two-Stage Computer Vision + Spatial Overlap + Scraped UAE OEM Parts Pricing (AED) + CBUAE Policy Retrieval + Safe Abstention.
 
+**[Open the live demo](https://chirudeva-reddy.github.io/ClaimLens/)**
+
 [![Python 3.13](https://img.shields.io/badge/python-3.13-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Tests: Pytest](https://img.shields.io/badge/tests-52%20passed-success.svg)](tests/)
@@ -126,6 +128,22 @@ ClaimLens restricts ML strictly to what vision models excel at (segmentation and
 | **Case A** | Minor Surface Damage | `data/demo_examples/case_a_repairable.jpg` | AED 120,000 (Toyota) | 🟢 **`PROBABLY_REPAIRABLE`** | `ECONOMIC_REPAIRABLE_WITHIN_THRESHOLD` (1.2% ratio) |
 | **Case B** | Economic Total Loss | `data/demo_examples/case_b_total_loss.jpg` | AED 15,000 (General) | 🔴 **`PROBABLE_TOTAL_LOSS_REVIEW`** | `ECONOMIC_THRESHOLD_EXCEEDED` (80.5% ratio > 50%) |
 | **Case C** | Structural Proximity | `data/demo_examples/case_c_structural_inspection.jpg` | AED 85,000 (Toyota) | ⚠️ **`INSUFFICIENT_EVIDENCE_INSPECTION_REQUIRED`** | `STRUCTURAL_INTEGRITY_SAFE_ABSTENTION` (Quarter-panel hit) |
+
+---
+
+## 🔍 The published demo
+
+The [live demo](https://chirudeva-reddy.github.io/ClaimLens/) is a static
+build. GitHub Pages serves files, so the segmentation models cannot run
+there: the three validation scenarios replay responses frozen from a real
+pipeline run, and the total-loss recalculation is mirrored in the browser.
+
+Working in the demo: all three scenarios with their segmentation overlays and
+line items, the live ACV and threshold simulation, the jurisdiction presets,
+the adjuster report and the JSON export.
+
+Needs inference, so disabled there: uploading your own photograph, and
+switching the OEM pricing tier. Run it locally for those.
 
 ---
 
