@@ -1,4 +1,4 @@
-// Run with playwright-cli run-code --filename scripts/frontend-smoke.js on the local dashboard.
+// Run with: playwright-cli open http://localhost:8000 && playwright-cli run-code --filename scripts/frontend-smoke.js
 async (page) => {
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
@@ -48,7 +48,7 @@ async (page) => {
     await page.locator('#select-brand').selectOption('Nissan');
     check(await page.locator('#btn-open-appraisal').isDisabled(), 'Brand change retained stale appraisal');
     check(await page.locator('.svg-polygon').count() === 0, 'Brand change retained old overlays');
-    await page.locator('#image-file-input').setInputFiles({name: 'tiny.png', mimeType: 'image/png', buffer: Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+jRZkAAAAASUVORK5CYII=', 'base64')});
+    await page.locator('#image-file-input').setInputFiles('scripts/tiny.png');
     await page.locator('#btn-run-inspection').click();
     await page.waitForFunction(() => !document.querySelector('#btn-open-appraisal').disabled);
     check((await text('#triage-headline')).includes('REJECTED'), 'Tiny photo was not rejected');
