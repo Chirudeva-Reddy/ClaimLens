@@ -28,4 +28,6 @@ def test_no_source_image_appears_in_more_than_one_split():
     for i, a in enumerate(SPLITS):
         for b in SPLITS[i + 1 :]:
             overlap = ids_by_split[a] & ids_by_split[b]
-            assert not overlap, f"{len(overlap)} source images in both {a} and {b}: {sorted(overlap)[:5]}"
+            assert not overlap, (
+                f"{len(overlap)} source images in both {a} and {b}: {sorted(overlap)[:5]}"
+            )

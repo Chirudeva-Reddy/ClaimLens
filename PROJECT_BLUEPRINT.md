@@ -169,7 +169,7 @@ economic_ratio = estimated_repair_cost / pre_accident_value
 
 if structural_or_hidden_damage_suspected or image_evidence_insufficient:
     triage = "INSUFFICIENT_EVIDENCE_INSPECTION_REQUIRED"
-elif economic_ratio >= total_loss_threshold:      # threshold is a config value, e.g. 0.50 / 0.70 / 0.75
+elif economic_ratio >= total_loss_threshold:  # threshold is a config value, e.g. 0.50 / 0.70 / 0.75
     triage = "PROBABLE_TOTAL_LOSS_REVIEW"
 else:
     triage = "PROBABLY_REPAIRABLE"

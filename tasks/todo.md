@@ -16,9 +16,9 @@ Full detail (acceptance criteria, verification, files) in [plan.md](plan.md). Wo
 - [x] **Checkpoint: Image-Quality Gate** — review with user
 
 ## Phase 3: Damage Detection & Segmentation
-- [ ] Task 5: Bounded YOLOv8n-seg fine-tune (MPS)
-- [ ] Task 6: Inference wrapper
-- [ ] **Checkpoint: Damage Detection & Segmentation** — review with user
+- [x] Task 5: Bounded YOLOv8n-seg fine-tune (MPS)
+- [x] Task 6: Inference wrapper
+- [x] **Checkpoint: Damage Detection & Segmentation** — review with user
 
 ## Phase 4: Visible Repair-Cost Estimator
 - [ ] Task 7: Curated price table

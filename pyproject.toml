@@ -7,11 +7,18 @@ name = "claimlens"
 version = "0.1.0"
 description = "Explainable vehicle damage & total-loss triage"
 requires-python = ">=3.11"
-dependencies = ["Pillow"]
+dependencies = [
+    "Pillow",
+    "torch",
+    "torchvision",
+    "ultralytics",
+    "shapely",
+]
 
 [project.optional-dependencies]
 dev = ["pytest", "ruff"]
-data = ["roboflow"]
+data = ["roboflow", "kagglehub"]
+
 
 [tool.setuptools.packages.find]
 include = ["claimlens*"]
