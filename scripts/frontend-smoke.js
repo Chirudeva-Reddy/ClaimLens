@@ -94,7 +94,8 @@ async (page) => {
     check(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'Mobile page overflows');
     check(await page.locator('.lens-hud-row').first().evaluate(el => el.getBoundingClientRect().height) < 20, 'Lens readout wraps on mobile');
     check(await page.locator('.hero-runway').evaluate(el => getComputedStyle(el).display) === 'none', 'Scroll runway left an empty gap on mobile');
-    check(await page.locator('.lens-wordmark span').first().evaluate(el => Number(getComputedStyle(el).opacity)) === 1, 'Wordmark hidden on mobile, where there is no sequence');
+    check(await page.locator('.lens-wordmark').evaluate(el => getComputedStyle(el).display) === 'none', 'Wordmark overlaps the readout on mobile');
+    check(await page.locator('.lens-hud').evaluate(el => Number(getComputedStyle(el).opacity)) === 1, 'Readout hidden on mobile');
     await page.screenshot({path: 'output/playwright/mobile.png', fullPage: true});
     await page.setViewportSize({width: 1440, height: 1000});
     await page.locator('#btn-case-a').click();

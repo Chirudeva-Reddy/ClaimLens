@@ -2180,12 +2180,19 @@ body.cockpit-root {
 
 /* ==========================================================================
    Landing sequence: preloader, pinned lens hero, project and motivation.
-   Beam field and spotlight surfaces adapted from KokonutUI patterns; deep
-   instrument light and tight display tracking referenced from
-   chirudevareddy.com. Built on the cockpit tokens above.
+   Instrument light and tight display tracking referenced from
+   chirudevareddy.com; beam field and spotlight surfaces adapted from
+   KokonutUI patterns. Built on the cockpit tokens above.
    ========================================================================== */
 
-/* --- Preloader ---------------------------------------------------------- */
+:root {
+    /* Instrument glow. Sits between the cockpit emerald and cyan, and is used
+       only for the glass, never for interface controls. */
+    --glow: #2DD4BF;
+    --glow-soft: rgba(45, 212, 191, 0.5);
+}
+
+/* --- Preloader: a measuring scale, not a progress bar -------------------- */
 
 .preloader {
     position: fixed;
@@ -2197,56 +2204,73 @@ body.cockpit-root {
     transition: opacity 0.6s ease, visibility 0.6s ease;
 }
 
-.preloader[data-done="true"] {
-    opacity: 0;
-    visibility: hidden;
-}
+.preloader[data-done="true"] { opacity: 0; visibility: hidden; }
 
 .preloader-inner {
     display: grid;
-    justify-items: center;
-    gap: 14px;
-    width: min(260px, 74vw);
-    text-align: center;
-}
-
-.preloader-mark {
-    color: var(--accent-primary);
-    opacity: 0.9;
-    animation: preloader-scan 2.4s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-}
-
-@keyframes preloader-scan {
-    0%, 100% { transform: translate(-6px, -4px) rotate(-8deg); }
-    50%      { transform: translate(6px, 4px) rotate(6deg); }
+    gap: 18px;
+    width: min(420px, 84vw);
 }
 
 .preloader-label {
     font-size: 0.62rem;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
     color: var(--text-tertiary);
 }
 
-.preloader-track {
-    width: 100%;
-    height: 2px;
-    border-radius: var(--radius-full);
-    background-color: rgba(148, 163, 184, 0.16);
-    overflow: hidden;
+.preloader-scale {
+    position: relative;
+    height: 34px;
 }
 
-.preloader-fill {
-    display: block;
+.preloader-ticks {
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 22px;
+    background-repeat: repeat-x;
+    background-position: left bottom, left bottom;
+    /* Minor ticks every 9px, major every 45px. Vertical rules, so the
+       gradient has to vary along X. */
+    background-image:
+        repeating-linear-gradient(to right, rgba(148, 163, 184, 0.34) 0 1px, transparent 1px 9px),
+        repeating-linear-gradient(to right, rgba(148, 163, 184, 0.5) 0 1px, transparent 1px 45px);
+    background-size: 100% 9px, 100% 20px;
+}
+
+/* Second copy of the same scale, clipped to progress. */
+.preloader-ticks-lit {
     width: 0%;
-    height: 100%;
-    background-color: var(--accent-primary);
-    transition: width 0.25s ease-out;
+    overflow: hidden;
+    background-image:
+        repeating-linear-gradient(to right, var(--glow) 0 1px, transparent 1px 9px),
+        repeating-linear-gradient(to right, #5EF5E0 0 1px, transparent 1px 45px);
+    transition: width 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: drop-shadow(0 0 5px var(--glow-soft));
+}
+
+.preloader-reticle {
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    color: var(--glow);
+    transform: translate(-50%, 0);
+    transition: left 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: drop-shadow(0 0 6px var(--glow-soft));
+}
+
+.preloader-readout {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
 }
 
 .preloader-pct {
-    font-size: 0.72rem;
-    color: var(--text-secondary);
+    color: var(--text-primary);
     font-variant-numeric: tabular-nums;
 }
 
@@ -2264,6 +2288,8 @@ body.cockpit-root {
 .hero-curtain {
     position: absolute;
     inset: 0;
+    display: flex;
+    align-items: center;
     overflow: hidden;
     isolation: isolate;
     background-color: var(--bg-base);
@@ -2279,8 +2305,8 @@ body.cockpit-root {
     position: absolute;
     inset: 0;
     background: url("/api/scenarios/case_b/image") center/cover no-repeat;
-    filter: blur(9px) grayscale(0.85) brightness(0.5);
-    opacity: 0.16;
+    filter: blur(11px) grayscale(0.9) brightness(0.42);
+    opacity: 0.14;
     transform: scale(1.08);
 }
 
@@ -2310,9 +2336,9 @@ body.cockpit-root {
                beam-pulse calc(var(--beam-dur) / 3.7) ease-in-out infinite;
 }
 
-.hero-beams i:nth-child(1) { left: 6%;  --beam-color: rgba(6, 182, 212, 0.20);  --beam-dur: 26s; animation-delay: 0s, -3s; }
-.hero-beams i:nth-child(2) { left: 42%; --beam-color: rgba(16, 185, 129, 0.19); --beam-dur: 34s; animation-delay: -9s, -1s; }
-.hero-beams i:nth-child(3) { left: 78%; --beam-color: rgba(6, 182, 212, 0.13);  --beam-dur: 44s; animation-delay: -17s, -6s; }
+.hero-beams i:nth-child(1) { left: 4%;  --beam-color: rgba(45, 212, 191, 0.16); --beam-dur: 26s; animation-delay: 0s, -3s; }
+.hero-beams i:nth-child(2) { left: 38%; --beam-color: rgba(16, 185, 129, 0.16); --beam-dur: 34s; animation-delay: -9s, -1s; }
+.hero-beams i:nth-child(3) { left: 74%; --beam-color: rgba(45, 212, 191, 0.11); --beam-dur: 44s; animation-delay: -17s, -6s; }
 
 @keyframes beam-drift {
     from { transform: rotate(-35deg) translateY(35%); }
@@ -2331,78 +2357,49 @@ body.cockpit-root {
     background-image:
         linear-gradient(to right, var(--border-subtle) 1px, transparent 1px),
         linear-gradient(to bottom, var(--border-subtle) 1px, transparent 1px);
-    background-size: 96px 96px;
-    mask-image: radial-gradient(ellipse 66% 62% at 50% 50%, #000 15%, transparent 78%);
-    -webkit-mask-image: radial-gradient(ellipse 66% 62% at 50% 50%, #000 15%, transparent 78%);
-    opacity: 0.7;
+    background-size: 104px 104px;
+    mask-image: radial-gradient(ellipse 70% 66% at 62% 50%, #000 12%, transparent 76%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 66% at 62% 50%, #000 12%, transparent 76%);
+    opacity: 0.75;
 }
 
-/* Keeps the headline legible where it crosses the glass. */
-.hero-scrim {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-        linear-gradient(to bottom, rgba(11, 15, 23, 0.88) 0%, rgba(11, 15, 23, 0.34) 38%, transparent 56%),
-        linear-gradient(to top, rgba(11, 15, 23, 0.7) 0%, transparent 28%);
+.hero-inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1560px;
+    margin: 0 auto;
+    padding: 0 clamp(24px, 4vw, 64px);
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    align-items: center;
+    gap: clamp(24px, 3vw, 56px);
 }
 
-/* --- Copy layer --------------------------------------------------------- */
-
-.hero-copy {
-    position: absolute;
-    left: 50%;
-    top: clamp(76px, 12vh, 132px);
-    transform: translateX(-50%);
-    z-index: 3;
-    width: min(1120px, calc(100% - 48px));
-    text-align: center;
-}
-
-.hero-copy::before {
-    content: "";
-    position: absolute;
-    inset: -56px -80px -40px;
-    z-index: -1;
-    pointer-events: none;
-    background: radial-gradient(ellipse 62% 100% at 50% 42%,
-        rgba(11, 15, 23, 0.94) 0%,
-        rgba(11, 15, 23, 0.78) 46%,
-        transparent 76%);
-}
+/* --- Copy column -------------------------------------------------------- */
 
 .hero-title {
-    font-size: clamp(2.6rem, 6.2vw, 5.2rem);
-    line-height: 1.03;
-    letter-spacing: -0.045em;
+    font-size: clamp(2.2rem, 3.9vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.042em;
     font-weight: 600;
     color: var(--text-primary);
-    margin-bottom: 18px;
+    margin-bottom: 20px;
 }
 
-.hero-line {
-    display: block;
-    overflow: hidden;
-}
-
+.hero-line { display: block; overflow: hidden; }
 .hero-line + .hero-line { color: var(--text-secondary); }
-
 .hero-line > span { display: block; }
 
 .hero-sub {
-    font-size: clamp(0.98rem, 1.15vw, 1.14rem);
-    line-height: 1.6;
+    font-size: clamp(0.96rem, 1.1vw, 1.08rem);
+    line-height: 1.65;
     color: var(--text-secondary);
-    max-width: 50ch;
-    margin: 0 auto 26px;
+    max-width: 44ch;
+    margin-bottom: 32px;
 }
 
-.hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-}
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
 .hero-btn {
     display: inline-flex;
@@ -2430,7 +2427,7 @@ body.cockpit-root {
 .hero-btn-primary:hover svg { transform: translateX(3px); }
 
 .hero-btn-ghost {
-    background-color: rgba(17, 24, 39, 0.72);
+    background-color: rgba(17, 24, 39, 0.82);
     border-color: var(--border-medium);
     color: var(--text-primary);
     backdrop-filter: blur(8px);
@@ -2441,33 +2438,78 @@ body.cockpit-root {
 .hero-btn:active { transform: scale(0.98); }
 .hero-btn:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 3px; }
 
-/* --- The glass ---------------------------------------------------------- */
+/* --- The instrument ----------------------------------------------------- */
+
+.hero-stage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .lens {
-    --lens-size: min(62vh, 74vmin, 620px);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    z-index: 2;
+    --lens-size: min(70vh, 40vw, 620px);
+    --u: calc(var(--lens-size) / 100);   /* 1u = 1% of the lens, keeps the assembly proportional */
+    position: relative;
     width: var(--lens-size);
     height: var(--lens-size);
-    transform: translate(-50%, -50%) rotate(-16deg);
     will-change: transform;
+}
+
+.lens-body { position: absolute; inset: 0; }
+
+.lens-body::after {
+    content: "";
+    position: absolute;
+    inset: -6%;
+    border-radius: 50%;
+    pointer-events: none;
+    box-shadow: 0 0 calc(22 * var(--u)) calc(2 * var(--u)) rgba(45, 212, 191, 0.14);
+}
+
+/* Machined ring: a conic metal gradient with its middle masked out. */
+.lens-rim {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    background: conic-gradient(from 200deg,
+        #05080B 0deg, #58646F 22deg, #0A0E13 58deg, #1C232B 100deg,
+        #93A0AC 148deg, #0F141A 192deg, #3B4650 240deg, #06090D 290deg,
+        #6B7784 328deg, #05080B 360deg);
+    z-index: 3;
+    mask-image: radial-gradient(circle calc(50 * var(--u)) at 50% 50%,
+        transparent calc(46.4 * var(--u)), #000 calc(46.4 * var(--u) + 1px));
+    -webkit-mask-image: radial-gradient(circle calc(50 * var(--u)) at 50% 50%,
+        transparent calc(46.4 * var(--u)), #000 calc(46.4 * var(--u) + 1px));
+    box-shadow:
+        0 calc(3 * var(--u)) calc(9 * var(--u)) rgba(0, 0, 0, 0.66),
+        inset 0 0 calc(2 * var(--u)) rgba(255, 255, 255, 0.16);
+}
+
+.lens-rim::after {
+    content: "";
+    position: absolute;
+    inset: calc(3.6 * var(--u));
+    border-radius: 50%;
+    pointer-events: none;
+    box-shadow:
+        inset 0 0 0 calc(0.5 * var(--u)) rgba(94, 245, 224, 0.92),
+        inset 0 0 calc(7 * var(--u)) calc(0.6 * var(--u)) rgba(45, 212, 191, 0.45),
+        0 0 calc(9 * var(--u)) calc(0.4 * var(--u)) rgba(45, 212, 191, 0.34);
 }
 
 .lens-glass {
     position: absolute;
-    inset: 0;
+    z-index: 1;
+    inset: calc(3.6 * var(--u));
     border-radius: 50%;
     overflow: hidden;
     background-color: var(--bg-base);
-    border: 3px solid rgba(226, 232, 240, 0.16);
     box-shadow:
-        0 0 0 10px rgba(11, 15, 23, 0.9),
-        0 0 0 12px rgba(148, 163, 184, 0.22),
-        0 34px 90px rgba(0, 0, 0, 0.72),
-        inset 0 2px 22px rgba(148, 163, 184, 0.14);
-    transform: rotate(16deg);
+        0 0 0 calc(0.5 * var(--u)) rgba(45, 212, 191, 0.9),
+        0 0 calc(6 * var(--u)) calc(0.6 * var(--u)) rgba(45, 212, 191, 0.42),
+        inset 0 0 calc(14 * var(--u)) rgba(45, 212, 191, 0.24),
+        inset 0 calc(2 * var(--u)) calc(10 * var(--u)) rgba(226, 232, 240, 0.12);
 }
 
 .lens-media {
@@ -2477,123 +2519,122 @@ body.cockpit-root {
     height: 100%;
     object-fit: cover;
     object-position: 48% 46%;
-    transform: scale(1.75);
-    filter: saturate(0.75) contrast(1.08) brightness(0.6);
+    transform: scale(1.8);
+    filter: saturate(0.32) contrast(1.34) brightness(0.36);
 }
 
 .lens-tint {
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(circle at 50% 50%, transparent 45%, rgba(5, 9, 15, 0.82) 100%),
-        linear-gradient(140deg, rgba(6, 182, 212, 0.14), rgba(16, 185, 129, 0.1));
+        radial-gradient(circle at 50% 42%, transparent 30%, rgba(2, 9, 11, 0.9) 100%),
+        linear-gradient(150deg, rgba(45, 212, 191, 0.16), rgba(4, 32, 31, 0.5));
 }
 
 .lens-annotations { position: absolute; inset: 0; width: 100%; height: 100%; }
 
 .lens-poly {
-    fill: rgba(16, 185, 129, 0.16);
-    stroke: var(--accent-primary);
-    stroke-width: 1.6;
+    fill: rgba(45, 212, 191, 0.2);
+    stroke: #5EF5E0;
+    stroke-width: 1.8;
     stroke-linejoin: round;
-    filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.45));
 }
 
-.lens-poly-b { fill: rgba(6, 182, 212, 0.14); stroke: var(--accent-cyan); }
+.lens-poly-mesh { fill: url(#lens-mesh); stroke: none; }
 
-.lens-tick { stroke: rgba(226, 232, 240, 0.45); stroke-width: 1.4; stroke-linecap: round; }
+.lens-vertex rect {
+    fill: rgba(4, 12, 14, 0.9);
+    stroke: var(--glow);
+    stroke-width: 1.2;
+}
+
+.lens-registration path {
+    stroke: rgba(45, 212, 191, 0.55);
+    stroke-width: 1.2;
+    stroke-linecap: round;
+    fill: none;
+}
+
+.lens-leader {
+    fill: none;
+    stroke: rgba(226, 232, 240, 0.55);
+    stroke-width: 1;
+}
+
+.lens-callout rect {
+    fill: rgba(2, 9, 11, 0.86);
+    stroke: rgba(94, 245, 224, 0.7);
+    stroke-width: 1;
+}
+
+.lens-callout text {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    fill: var(--text-primary);
+}
+
+.lens-callout-name { fill: var(--glow); }
+.lens-callout-score { fill: var(--text-secondary); }
 
 .lens-sweep {
     position: absolute;
     left: -20%;
     right: -20%;
-    height: 26%;
+    height: 24%;
     top: -30%;
     background: linear-gradient(to bottom,
         transparent,
-        rgba(16, 185, 129, 0.32) 45%,
-        rgba(16, 185, 129, 0.55) 50%,
-        rgba(16, 185, 129, 0.32) 55%,
+        rgba(45, 212, 191, 0.1) 45%,
+        rgba(45, 212, 191, 0.22) 50%,
+        rgba(45, 212, 191, 0.1) 55%,
         transparent);
-    animation: lens-sweep 3.6s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    animation: lens-sweep 4.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
 }
 
 @keyframes lens-sweep {
     0%   { transform: translateY(0); opacity: 0; }
     12%  { opacity: 1; }
     88%  { opacity: 1; }
-    100% { transform: translateY(500%); opacity: 0; }
+    100% { transform: translateY(520%); opacity: 0; }
 }
 
-/* The wordmark stays out of the frame until the sequence calls for it. */
-.lens-wordmark {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    isolation: isolate;
-    font-size: clamp(2rem, 7vh, 4.2rem);
-    font-weight: 700;
-    letter-spacing: -0.048em;
-    color: var(--text-primary);
-    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.9);
-}
-
-.lens-wordmark span { display: inline-block; }
-
-.lens-wordmark::before {
-    content: "";
-    position: absolute;
-    inset: 30% 8%;
-    z-index: -1;
-    border-radius: 50%;
-    background: radial-gradient(ellipse at center, rgba(5, 9, 15, 0.92) 0%, rgba(5, 9, 15, 0.66) 55%, transparent 78%);
-}
-
-.lens-shine {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(128deg,
-        rgba(255, 255, 255, 0.18) 0%,
-        rgba(255, 255, 255, 0.04) 26%,
-        transparent 46%);
-    mix-blend-mode: screen;
-}
-
+/* Readout, bracketed like an instrument panel. */
 .lens-hud {
     position: absolute;
-    left: 50%;
-    bottom: 15%;
-    transform: translateX(-50%);
-    width: 58%;
+    left: 13%;
+    bottom: 18%;
+    width: 47%;
+    padding: calc(2.4 * var(--u)) calc(2.8 * var(--u));
     display: grid;
-    gap: 4px;
-    padding: 8px 10px;
-    border-radius: var(--radius-sm);
-    border: 1px solid rgba(148, 163, 184, 0.18);
-    background-color: rgba(5, 9, 15, 0.72);
+    gap: calc(0.9 * var(--u));
+    background-color: rgba(3, 10, 12, 0.78);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
+    box-shadow:
+        inset calc(0.4 * var(--u)) 0 0 rgba(45, 212, 191, 0.5),
+        inset 0 calc(0.4 * var(--u)) 0 rgba(45, 212, 191, 0.5),
+        inset calc(-0.4 * var(--u)) 0 0 rgba(45, 212, 191, 0.5),
+        inset 0 calc(-0.4 * var(--u)) 0 rgba(45, 212, 191, 0.5);
 }
 
 .lens-hud-row {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-    gap: 8px;
+    gap: calc(2 * var(--u));
 }
 
 .lens-hud dt {
-    font-size: clamp(0.5rem, 1.1vh, 0.62rem);
-    letter-spacing: 0.16em;
+    font-size: max(9px, calc(2.1 * var(--u)));
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--text-secondary);
 }
 
 .lens-hud dd {
     white-space: nowrap;
-    font-size: clamp(0.68rem, 1.5vh, 0.88rem);
+    font-size: max(10px, calc(2.4 * var(--u)));
     font-weight: 600;
     color: var(--text-primary);
     font-variant-numeric: tabular-nums;
@@ -2602,31 +2643,115 @@ body.cockpit-root {
 .lens-hud-verdict dd {
     color: var(--status-ruby);
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
 }
 
-.lens-collar {
+.lens-hud-bar {
+    margin-top: calc(1 * var(--u));
+    height: calc(0.8 * var(--u));
+    background-color: rgba(148, 163, 184, 0.2);
+}
+
+.lens-hud-bar span {
+    display: block;
+    width: 86.4%;
+    height: 100%;
+    background-color: var(--glow);
+    box-shadow: 0 0 calc(1.6 * var(--u)) var(--glow-soft);
+}
+
+.lens-wordmark {
     position: absolute;
-    left: 50%;
-    bottom: -6%;
-    width: 15%;
-    height: 16%;
-    transform: translateX(-50%) rotate(45deg);
-    border-radius: 4px;
-    background: linear-gradient(135deg, #64748B, #1E293B);
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    isolation: isolate;
+    font-size: calc(13 * var(--u));
+    font-weight: 700;
+    letter-spacing: -0.048em;
+    color: var(--text-primary);
+    text-shadow: 0 2px calc(4 * var(--u)) rgba(0, 0, 0, 0.9);
 }
 
+.lens-wordmark span { display: inline-block; }
+
+.lens-wordmark::before {
+    content: "";
+    position: absolute;
+    inset: 30% 6%;
+    z-index: -1;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(3, 10, 12, 0.94) 0%, rgba(3, 10, 12, 0.7) 52%, transparent 78%);
+}
+
+.lens-shine {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(138deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.07) 22%, transparent 42%),
+        radial-gradient(ellipse 130% 56% at 32% 2%, rgba(214, 255, 250, 0.2), transparent 62%);
+    mix-blend-mode: screen;
+}
+
+/* Neck, collar and handle ride a single 42 degree axis from the lens centre. */
+.lens-neck,
+.lens-collar,
 .lens-handle {
     position: absolute;
     left: 50%;
-    top: 96%;
-    width: 11%;
-    height: 54%;
-    transform: translateX(-50%);
-    border-radius: 0 0 999px 999px;
-    background: linear-gradient(100deg, #0F172A 0%, #475569 32%, #94A3B8 52%, #334155 74%, #0B1220 100%);
-    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.65);
+    top: 50%;
+    transform-origin: 0 0;
 }
+
+.lens-neck {
+    width: calc(13 * var(--u));
+    height: calc(12 * var(--u));
+    transform: rotate(42deg) translate(calc(45 * var(--u)), calc(-6 * var(--u)));
+    background: linear-gradient(180deg, #6C7885 0%, #2A323B 46%, #10151B 100%);
+    border-radius: calc(1 * var(--u));
+}
+
+.lens-collar {
+    display: grid;
+    place-items: center;
+    width: calc(12 * var(--u));
+    height: calc(17 * var(--u));
+    transform: rotate(42deg) translate(calc(56 * var(--u)), calc(-8.5 * var(--u)));
+    border-radius: calc(1.5 * var(--u));
+    background: linear-gradient(180deg, #7C8894 0%, #2B333C 44%, #0D1218 100%);
+    box-shadow:
+        inset 0 0 0 calc(0.35 * var(--u)) rgba(45, 212, 191, 0.75),
+        0 0 calc(3 * var(--u)) rgba(45, 212, 191, 0.35);
+    color: rgba(226, 232, 240, 0.5);
+}
+
+.lens-collar svg { width: calc(6 * var(--u)); height: calc(6 * var(--u)); }
+
+.lens-handle {
+    width: calc(42 * var(--u));
+    height: calc(19 * var(--u));
+    transform: rotate(42deg) translate(calc(68 * var(--u)), calc(-9.5 * var(--u)));
+    border-radius: calc(2 * var(--u)) calc(8 * var(--u)) calc(8 * var(--u)) calc(2 * var(--u));
+    background:
+        linear-gradient(180deg, #59646F 0%, #2C343D 30%, #171D24 62%, #0A0E13 100%);
+    box-shadow:
+        inset 0 calc(0.4 * var(--u)) 0 rgba(226, 232, 240, 0.24),
+        0 calc(2 * var(--u)) calc(7 * var(--u)) rgba(0, 0, 0, 0.6);
+}
+
+.lens-handle span {
+    position: absolute;
+    top: 12%;
+    bottom: 12%;
+    width: calc(0.5 * var(--u));
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: calc(0.5 * var(--u)) 0 0 rgba(226, 232, 240, 0.08);
+}
+
+.lens-handle span:nth-child(1) { left: 26%; }
+.lens-handle span:nth-child(2) { left: 34%; }
 
 /* --- Entrance: CSS only, so the hero survives a failed module load ------- */
 
@@ -2832,51 +2957,43 @@ body.cockpit-root {
     .motivation-inner { grid-template-columns: minmax(0, 1fr); }
 }
 
+@media (max-width: 900px) {
+    .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 36px;
+    }
+
+    .lens { --lens-size: min(64vw, 380px); }
+}
+
 @media (max-width: 768px) {
     .hero {
         --beam-blur: 24px;
         height: auto;
         min-height: 100dvh;
-        display: flex;
     }
 
     .hero-curtain {
         position: relative;
         inset: auto;
         width: 100%;
-        padding: 40px 16px 56px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        padding: 40px 0 64px;
+        align-items: flex-start;
     }
+
     .hero-beams i:nth-child(3) { display: none; }
 
-    .hero-copy {
-        position: relative;
-        order: 1;
-        left: auto;
-        top: auto;
-        transform: none;
-        width: 100%;
-    }
+    .hero-inner { padding: 0 16px; }
 
-    .hero-copy::before { display: none; }
+    .hero-title { font-size: clamp(2rem, 8.6vw, 2.6rem); }
 
-    .hero-scrim { display: none; }
+    .lens { --lens-size: min(72vw, 330px); }
 
-    .lens {
-        position: relative;
-        order: 2;
-        left: auto;
-        top: auto;
-        margin: 44px auto 0;
-        transform: rotate(-16deg);
-        --lens-size: min(66vw, 300px);
-    }
-
-    .lens-hud { width: 76%; bottom: 13%; padding: 7px 8px; }
-    .lens-hud dt { letter-spacing: 0.1em; }
-    .lens-wordmark { font-size: clamp(1.5rem, 8vw, 2.2rem); }
+    /* No pinned sequence here, so the glass keeps the detection view and the
+       header carries the wordmark. */
+    .lens-wordmark { display: none; }
+    .lens-hud { width: 58%; left: 11%; }
+    .lens-hud dt { white-space: nowrap; }
 
     .hero-btn { flex: 1 1 auto; justify-content: center; }
 
@@ -2890,8 +3007,7 @@ body.cockpit-root {
 
 @media (prefers-reduced-motion: reduce) {
     .hero-beams i,
-    .lens-sweep,
-    .preloader-mark {
+    .lens-sweep {
         animation: none !important;
     }
 
@@ -2907,6 +3023,9 @@ body.cockpit-root {
         animation: none !important;
         filter: none !important;
     }
+
+    .preloader-ticks-lit,
+    .preloader-reticle { transition: none !important; }
 
     [data-sequence="on"] .app-header { opacity: 1; pointer-events: auto; }
 }

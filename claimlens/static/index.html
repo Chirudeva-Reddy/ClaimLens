@@ -57,16 +57,24 @@
         </div>
     </header>
 
-    <!-- Loading gate: holds the reveal until the evidence photograph is decoded -->
+    <!-- Loading gate: a measuring scale that fills as the evidence decodes -->
     <div class="preloader" id="preloader" role="status" aria-live="polite">
         <div class="preloader-inner">
-            <svg class="preloader-mark" width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="10.5" cy="10.5" r="7"/>
-                <line x1="15.6" y1="15.6" x2="21" y2="21"/>
-            </svg>
             <p class="preloader-label font-mono">Calibrating inspection</p>
-            <div class="preloader-track"><span class="preloader-fill" id="preloader-fill"></span></div>
-            <p class="preloader-pct font-mono"><span id="preloader-pct">0</span>%</p>
+            <div class="preloader-scale">
+                <div class="preloader-ticks"></div>
+                <div class="preloader-ticks preloader-ticks-lit" id="preloader-fill"></div>
+                <div class="preloader-reticle" id="preloader-reticle">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                        <circle cx="12" cy="12" r="7"/>
+                        <path d="M12 1v4M12 19v4M1 12h4M19 12h4"/>
+                    </svg>
+                </div>
+            </div>
+            <p class="preloader-readout font-mono">
+                <span id="preloader-stage">Decoding evidence</span>
+                <span class="preloader-pct"><span id="preloader-pct">0</span>%</span>
+            </p>
         </div>
     </div>
 
@@ -78,51 +86,118 @@
             <div class="hero-beams" aria-hidden="true"><i></i><i></i><i></i></div>
             <div class="hero-rules" aria-hidden="true"></div>
 
-            <div class="lens" id="hero-lens">
-                <div class="lens-glass">
-                    <img class="lens-media" src="/api/scenarios/case_b/image" alt="Severe multi-panel front-end collision under inspection" width="640" height="640" fetchpriority="high" decoding="async">
-                    <div class="lens-tint" aria-hidden="true"></div>
-                    <svg class="lens-annotations" viewBox="0 0 200 200" aria-hidden="true">
-                        <polygon class="lens-poly" points="52,96 96,74 138,92 132,132 74,138"/>
-                        <polygon class="lens-poly lens-poly-b" points="112,52 152,60 156,88 118,80"/>
-                        <path class="lens-tick" d="M100 18v14M100 168v14M18 100h14M168 100h14"/>
-                    </svg>
-                    <div class="lens-sweep" aria-hidden="true"></div>
-                    <p class="lens-wordmark" id="lens-wordmark" aria-label="ClaimLens"><span aria-hidden="true">C</span><span aria-hidden="true">l</span><span aria-hidden="true">a</span><span aria-hidden="true">i</span><span aria-hidden="true">m</span><span aria-hidden="true">L</span><span aria-hidden="true">e</span><span aria-hidden="true">n</span><span aria-hidden="true">s</span></p>
-                    <dl class="lens-hud font-mono">
-                        <div class="lens-hud-row">
-                            <dt>Loss ratio</dt>
-                            <dd><span data-count-to="86.4">86.4</span>%</dd>
-                        </div>
-                        <div class="lens-hud-row lens-hud-verdict">
-                            <dt>Verdict</dt>
-                            <dd>Total loss</dd>
-                        </div>
-                    </dl>
-                    <div class="lens-shine" aria-hidden="true"></div>
+            <div class="hero-inner">
+                <div class="hero-copy" id="hero-copy">
+                    <h1 class="hero-title">
+                        <span class="hero-line"><span style="--i:0">Photograph the damage.</span></span>
+                        <span class="hero-line"><span style="--i:1">Get the verdict.</span></span>
+                    </h1>
+                    <p class="hero-sub">
+                        ClaimLens segments the damage, prices the repair in AED, and calls total loss
+                        against CBUAE thresholds.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="hero-btn hero-btn-primary" href="#cockpit">
+                            Open the cockpit
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg>
+                        </a>
+                        <button type="button" class="hero-btn hero-btn-ghost" id="btn-hero-demo">
+                            Watch a claim run
+                        </button>
+                    </div>
                 </div>
-                <div class="lens-collar" aria-hidden="true"></div>
-                <div class="lens-handle" aria-hidden="true"></div>
-            </div>
 
-            <div class="hero-scrim" aria-hidden="true"></div>
+                <div class="hero-stage">
+                    <div class="lens" id="hero-lens">
+                        <div class="lens-body">
+                            <div class="lens-glass">
+                                <img class="lens-media" src="/api/scenarios/case_b/image" alt="Severe multi-panel front-end collision under inspection" width="640" height="640" fetchpriority="high" decoding="async">
+                                <div class="lens-tint" aria-hidden="true"></div>
 
-            <div class="hero-copy" id="hero-copy">
-                <h1 class="hero-title">
-                    <span class="hero-line"><span style="--i:0">Photograph the damage.</span></span>
-                    <span class="hero-line"><span style="--i:1">Get the verdict.</span></span>
-                </h1>
-                <p class="hero-sub">
-                    Damage segmented, repair priced in AED, total loss called against CBUAE thresholds.
-                </p>
-                <div class="hero-actions">
-                    <a class="hero-btn hero-btn-primary" href="#cockpit">
-                        Open the cockpit
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg>
-                    </a>
-                    <button type="button" class="hero-btn hero-btn-ghost" id="btn-hero-demo">
-                        Watch a claim run
-                    </button>
+                                <svg class="lens-annotations" viewBox="0 0 400 400" aria-hidden="true">
+                                    <defs>
+                                        <pattern id="lens-mesh" width="7" height="7" patternUnits="userSpaceOnUse">
+                                            <circle cx="1.2" cy="1.2" r="1" fill="rgba(94, 245, 224, 0.75)"/>
+                                        </pattern>
+                                        <filter id="lens-bloom" x="-40%" y="-40%" width="180%" height="180%">
+                                            <feGaussianBlur stdDeviation="3" result="b"/>
+                                            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                                        </filter>
+                                    </defs>
+
+                                    <g class="lens-registration">
+                                        <path d="M126 66h14M133 59v14M282 96h14M289 89v14M118 318h14M125 311v14"/>
+                                    </g>
+
+                                    <g class="lens-detection" filter="url(#lens-bloom)">
+                                        <polygon class="lens-poly" points="160,118 210,100 236,150 228,238 176,258 148,196"/>
+                                        <polygon class="lens-poly-mesh" points="160,118 210,100 236,150 228,238 176,258 148,196"/>
+                                        <g class="lens-vertex">
+                                            <rect x="156" y="114" width="8" height="8"/>
+                                            <rect x="232" y="146" width="8" height="8"/>
+                                            <rect x="172" y="254" width="8" height="8"/>
+                                        </g>
+                                    </g>
+
+                                    <g class="lens-detection lens-detection-b" filter="url(#lens-bloom)">
+                                        <polygon class="lens-poly" points="248,262 306,286 322,318 300,332 254,300"/>
+                                        <polygon class="lens-poly-mesh" points="248,262 306,286 322,318 300,332 254,300"/>
+                                        <g class="lens-vertex">
+                                            <rect x="244" y="258" width="8" height="8"/>
+                                            <rect x="318" y="314" width="8" height="8"/>
+                                        </g>
+                                    </g>
+
+                                    <g class="lens-callout">
+                                        <path class="lens-leader" d="M160 118 L138 104 L104 104"/>
+                                        <rect x="46" y="70" width="76" height="52" rx="2"/>
+                                        <text x="56" y="87">D01</text>
+                                        <text x="56" y="102" class="lens-callout-name">DENT</text>
+                                        <text x="56" y="117" class="lens-callout-score">0.82</text>
+                                    </g>
+
+                                    <g class="lens-callout lens-callout-right">
+                                        <path class="lens-leader" d="M248 262 L272 244 L288 244"/>
+                                        <rect x="288" y="210" width="82" height="52" rx="2"/>
+                                        <text x="297" y="227">D02</text>
+                                        <text x="297" y="242" class="lens-callout-name">SCRATCH</text>
+                                        <text x="297" y="257" class="lens-callout-score">0.67</text>
+                                    </g>
+                                </svg>
+
+                                <div class="lens-sweep" aria-hidden="true"></div>
+
+                                <!-- Case B, illustrated: 86.4% of an AED 15,000 pre-accident value. -->
+                                <dl class="lens-hud font-mono">
+                                    <div class="lens-hud-row">
+                                        <dt>Loss ratio</dt>
+                                        <dd><span data-count-to="86.4">86.4</span>%</dd>
+                                    </div>
+                                    <div class="lens-hud-row">
+                                        <dt>Repair (AED)</dt>
+                                        <dd>12,960</dd>
+                                    </div>
+                                    <div class="lens-hud-row lens-hud-verdict">
+                                        <dt>Verdict</dt>
+                                        <dd>Total loss</dd>
+                                    </div>
+                                    <div class="lens-hud-bar"><span></span></div>
+                                </dl>
+
+                                <p class="lens-wordmark" id="lens-wordmark" aria-label="ClaimLens"><span aria-hidden="true">C</span><span aria-hidden="true">l</span><span aria-hidden="true">a</span><span aria-hidden="true">i</span><span aria-hidden="true">m</span><span aria-hidden="true">L</span><span aria-hidden="true">e</span><span aria-hidden="true">n</span><span aria-hidden="true">s</span></p>
+                                <div class="lens-shine" aria-hidden="true"></div>
+                            </div>
+                            <div class="lens-rim" aria-hidden="true"></div>
+                        </div>
+
+                        <div class="lens-neck" aria-hidden="true"></div>
+                        <div class="lens-collar" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/>
+                            </svg>
+                        </div>
+                        <div class="lens-handle" aria-hidden="true"><span></span><span></span></div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -28,16 +28,20 @@ const letters = document.querySelectorAll('.lens-wordmark span');
 function runPreloader() {
     const box = document.getElementById('preloader');
     const fill = document.getElementById('preloader-fill');
+    const reticle = document.getElementById('preloader-reticle');
     const label = document.getElementById('preloader-pct');
+    const stage = document.getElementById('preloader-stage');
     if (!box) return Promise.resolve();
 
     let pct = 0;
     const set = (v) => {
         pct = Math.max(pct, Math.min(100, Math.round(v)));
         if (fill) fill.style.width = pct + '%';
+        if (reticle) reticle.style.left = pct + '%';
         if (label) label.textContent = String(pct);
+        if (stage) stage.textContent = pct < 55 ? 'Decoding evidence' : pct < 100 ? 'Calibrating scale' : 'Ready';
     };
-    set(8);
+    set(6);
 
     const photo = document.querySelector('.lens-media');
     const settled = (el, ev) => new Promise((resolve) => {
@@ -110,7 +114,16 @@ function wireSequence() {
         root.dataset.sequence = 'on';
         curtain.classList.add('is-sequenced');
         hideWordmark();
-        gsap.set(lens, { xPercent: -50, yPercent: -50, rotate: -16, transformOrigin: '50% 50%' });
+        gsap.set(lens, { transformOrigin: '50% 50%' });
+
+        // Offsets that carry the glass from its resting place to the middle.
+        const centre = (axis) => () => {
+            const b = lens.getBoundingClientRect();
+            const current = gsap.getProperty(lens, axis === 'x' ? 'x' : 'y');
+            return axis === 'x'
+                ? current + (innerWidth / 2 - (b.left + b.width / 2))
+                : current + (innerHeight / 2 - (b.top + b.height / 2));
+        };
 
         // The hole and the glass grow together, so the rim always rides its edge.
         const maxHole = () => Math.hypot(innerWidth, innerHeight) / 2 * 1.08;
@@ -142,7 +155,7 @@ function wireSequence() {
 
         // 1. The headline hands the frame to the glass.
         tl.to(copy, { yPercent: -34, opacity: 0, ease: 'power1.in', duration: 0.22 }, 0)
-          .to(lens, { scale: 1.18, rotate: -6, ease: 'none', duration: 0.45 }, 0)
+          .to(lens, { x: centre('x'), y: centre('y'), scale: 1.1, ease: 'power1.inOut', duration: 0.45 }, 0)
 
         // 2. The evidence layer dims out, leaving the wordmark on dark glass.
           .to(['.lens-media', '.lens-annotations', '.lens-sweep', '.lens-shine'],
