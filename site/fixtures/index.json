@@ -1,0 +1,14 @@
+{
+  "case_a": {
+    "brand": "Toyota",
+    "acv": 120000.0
+  },
+  "case_b": {
+    "brand": "General Market Standard",
+    "acv": 15000.0
+  },
+  "case_c": {
+    "brand": "Toyota",
+    "acv": 85000.0
+  }
+}

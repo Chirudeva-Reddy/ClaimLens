@@ -15,3 +15,5 @@ yolov8n-seg.pt
 
 .playwright-cli/
 output/playwright/
+
+dist/
