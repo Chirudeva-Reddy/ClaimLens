@@ -91,11 +91,37 @@ function revealWordmark() {
 
 /* ---------- Below-fold reveals ------------------------------------------- */
 
+const EASE = [0.16, 1, 0.3, 1];
+
+function countUp(el) {
+    const target = Number(el.dataset.countTo);
+    if (!Number.isFinite(target)) return;
+    const decimals = (el.dataset.countTo.split('.')[1] || '').length;
+    el.textContent = target.toFixed(decimals).replace(/\d/g, '0');
+    animate(0, target, {
+        duration: 1.1,
+        ease: EASE,
+        onUpdate: (v) => { el.textContent = v.toFixed(decimals); },
+    });
+}
+
 function wireReveals() {
     root.dataset.motion = 'on';
-    return inView('.reveal-on-scroll', (el) => {
-        animate(el, { opacity: [0, 1], y: [26, 0] }, { duration: 0.62, ease: [0.16, 1, 0.3, 1] });
-    }, { amount: 0.12, margin: '0px 0px -6% 0px' });
+    const stops = [
+        inView('.reveal-on-scroll', (el) => {
+            animate(el, { opacity: [0, 1], y: [26, 0] }, { duration: 0.62, ease: EASE });
+        }, { amount: 0.12, margin: '0px 0px -6% 0px' }),
+
+        // Groups arrive in sequence, so a row of cards reads left to right.
+        inView('.reveal-group', (el) => {
+            animate([...el.children], { opacity: [0, 1], y: [24, 0] },
+                { duration: 0.6, ease: EASE, delay: stagger(0.07) });
+        }, { amount: 0.1, margin: '0px 0px -6% 0px' }),
+
+        // Figures settle before their number runs.
+        inView('[data-count-to]', (el) => { countUp(el); }, { amount: 0.6 }),
+    ];
+    return () => stops.forEach((stop) => stop());
 }
 
 /* ---------- The pinned sequence (GSAP owns every element it touches) ------ */
@@ -230,9 +256,12 @@ function build() {
 
     if (reduceMotion.matches) {
         delete root.dataset.motion;
-        document.querySelectorAll('.reveal-on-scroll').forEach((el) => {
+        document.querySelectorAll('.reveal-on-scroll, .reveal-group > *').forEach((el) => {
             el.style.opacity = '1';
             el.style.transform = 'none';
+        });
+        document.querySelectorAll('[data-count-to]').forEach((el) => {
+            el.textContent = el.dataset.countTo;
         });
         return;
     }

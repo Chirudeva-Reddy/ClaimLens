@@ -8,7 +8,7 @@
     <link rel="icon" href="data:,">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body class="cockpit-root">
@@ -166,15 +166,16 @@
 
                                 <div class="lens-sweep" aria-hidden="true"></div>
 
-                                <!-- Case B, illustrated: 86.4% of an AED 15,000 pre-accident value. -->
+                                <!-- Case B as the pipeline actually reports it: AED 12,070 against a
+                                     15,000 pre-accident value, so 80.5%. -->
                                 <dl class="lens-hud font-mono">
                                     <div class="lens-hud-row">
                                         <dt>Loss ratio</dt>
-                                        <dd><span data-count-to="86.4">86.4</span>%</dd>
+                                        <dd><span data-count-to="80.5">80.5</span>%</dd>
                                     </div>
                                     <div class="lens-hud-row">
                                         <dt>Repair (AED)</dt>
-                                        <dd>12,960</dd>
+                                        <dd>12,070</dd>
                                     </div>
                                     <div class="lens-hud-row lens-hud-verdict">
                                         <dt>Verdict</dt>
@@ -207,42 +208,42 @@
     <!-- What the system is -->
     <section class="story story-project" id="project" aria-labelledby="project-heading">
         <div class="story-inner">
-            <h2 class="story-heading" id="project-heading">Five stages, each one auditable on its own.</h2>
-            <p class="story-lede">
+            <h2 class="story-heading reveal-on-scroll" id="project-heading">Five stages, each one auditable on its own.</h2>
+            <p class="story-lede reveal-on-scroll">
                 ClaimLens decomposes total-loss triage into stages an adjuster can inspect, rather than one
                 classifier that answers and refuses to explain.
             </p>
 
-            <ol class="stage-grid">
-                <li class="stage-cell stage-cell-wide reveal-on-scroll">
+            <ol class="stage-grid reveal-group">
+                <li class="stage-cell stage-cell-wide">
                     <p class="stage-verb font-mono">Gate</p>
                     <h3>Reject the photograph before it misleads anyone</h3>
                     <p>Resolution floor and variance-of-Laplacian blur test run before any model sees the image.</p>
-                    <p class="stage-metric font-mono">96.7% precision <span>/</span> 98.2% recall</p>
+                    <p class="stage-metric font-mono"><span data-count-to="96.7">96.7</span>% precision <span>/</span> <span data-count-to="98.2">98.2</span>% recall</p>
                 </li>
-                <li class="stage-cell reveal-on-scroll">
+                <li class="stage-cell">
                     <p class="stage-verb font-mono">Segment</p>
                     <h3>Two models, not one</h3>
                     <p>YOLOv8n-seg over 21 vehicle components, and a second over 6 damage categories.</p>
-                    <p class="stage-metric font-mono">82.0% <span>/</span> 64.6% box mAP@50</p>
+                    <p class="stage-metric font-mono"><span data-count-to="82.0">82.0</span>% <span>/</span> <span data-count-to="64.6">64.6</span>% box mAP@50</p>
                 </li>
-                <li class="stage-cell reveal-on-scroll">
+                <li class="stage-cell">
                     <p class="stage-verb font-mono">Associate</p>
                     <h3>Damage bound to its host panel</h3>
                     <p>Shapely polygon intersection assigns every damage mask to a component and flags load-bearing zones.</p>
-                    <p class="stage-metric font-mono">94.2% assignment accuracy</p>
+                    <p class="stage-metric font-mono"><span data-count-to="94.2">94.2</span>% assignment accuracy</p>
                 </li>
-                <li class="stage-cell reveal-on-scroll">
+                <li class="stage-cell">
                     <p class="stage-verb font-mono">Price</p>
                     <h3>Deterministic AED, no model guessing costs</h3>
                     <p>Rule-based costing against a scraped catalogue of 3,174 UAE OEM body parts.</p>
-                    <p class="stage-metric font-mono">4.8% median absolute error</p>
+                    <p class="stage-metric font-mono"><span data-count-to="4.8">4.8</span>% median absolute error</p>
                 </li>
-                <li class="stage-cell reveal-on-scroll">
+                <li class="stage-cell">
                     <p class="stage-verb font-mono">Decide</p>
                     <h3>The statutory test, stated out loud</h3>
                     <p>CBUAE 50% economic rule with US and UK thresholds selectable, and the clause cited alongside the verdict.</p>
-                    <p class="stage-metric font-mono">95.0% sensitivity <span>/</span> 92.3% specificity</p>
+                    <p class="stage-metric font-mono"><span data-count-to="95.0">95.0</span>% sensitivity <span>/</span> <span data-count-to="92.3">92.3</span>% specificity</p>
                 </li>
             </ol>
         </div>
@@ -251,7 +252,7 @@
     <!-- Why it is built this way -->
     <section class="story story-motivation" id="motivation" aria-labelledby="motivation-heading">
         <div class="story-inner motivation-inner">
-            <div class="motivation-copy">
+            <div class="motivation-copy reveal-group">
                 <h2 class="story-heading" id="motivation-heading">A verdict without reasoning is not a verdict.</h2>
                 <p>
                     Vehicle owners send in accident photographs and get back a blunt total-loss or repair

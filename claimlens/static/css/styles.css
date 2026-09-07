@@ -24,9 +24,9 @@
     /* High-Fidelity Typography & Text Hierarchy */
     --text-primary: #F8FAFC;
     --text-secondary: #94A3B8;
-    --text-tertiary: #64748B;
-    --text-dim: #475569;
-    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --text-tertiary: #8496AC;
+    --text-dim: #64748B;
+    --font-sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
     /* Calibrated Semantic Accents */
@@ -73,7 +73,7 @@
 }
 
 html {
-    font-size: 14px;
+    font-size: 15px;
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
 }
@@ -126,7 +126,7 @@ body.cockpit-root {
     text-align: center;
     padding: 24px 16px;
     color: var(--text-tertiary);
-    font-size: 0.78rem;
+    font-size: 0.83rem;
 }
 
 /* Accessible Focus-Visible Outlines for Interactive Elements */
@@ -194,7 +194,7 @@ body.cockpit-root {
 }
 
 .brand-title {
-    font-size: 1.15rem;
+    font-size: 1.22rem;
     font-weight: 700;
     letter-spacing: -0.025em;
     color: var(--text-primary);
@@ -202,7 +202,7 @@ body.cockpit-root {
 }
 
 .version-tag {
-    font-size: 0.68rem;
+    font-size: 0.74rem;
     font-weight: 600;
     color: var(--accent-cyan);
     background: var(--accent-cyan-subtle);
@@ -213,7 +213,7 @@ body.cockpit-root {
 }
 
 .brand-subtitle {
-    font-size: 0.78rem;
+    font-size: 0.83rem;
     color: var(--text-tertiary);
     font-weight: 400;
 }
@@ -233,7 +233,7 @@ body.cockpit-root {
     background: rgba(16, 185, 129, 0.08);
     border: 1px solid var(--status-emerald-border);
     border-radius: var(--radius-sm);
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 600;
     color: var(--status-emerald);
     letter-spacing: 0.01em;
@@ -252,7 +252,7 @@ body.cockpit-root {
     background: var(--bg-surface-elevated);
     border: 1px solid var(--border-medium);
     border-radius: var(--radius-sm);
-    font-size: 0.72rem;
+    font-size: 0.76rem;
     font-weight: 500;
     color: var(--text-secondary);
 }
@@ -308,7 +308,7 @@ body.cockpit-root {
 }
 
 .eyebrow-label {
-    font-size: 0.7rem;
+    font-size: 0.74rem;
     font-weight: 700;
     letter-spacing: 0.06em;
     color: var(--text-tertiary);
@@ -316,7 +316,7 @@ body.cockpit-root {
 }
 
 .scenario-bar-hint {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     color: var(--text-secondary);
 }
 
@@ -371,7 +371,7 @@ body.cockpit-root {
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    font-size: 0.65rem;
+    font-size: 0.74rem;
     font-weight: 700;
     letter-spacing: 0.04em;
     padding: 2px 6px;
@@ -398,7 +398,7 @@ body.cockpit-root {
 }
 
 .tab-meta-acv {
-    font-size: 0.72rem;
+    font-size: 0.76rem;
     color: var(--text-secondary);
     font-weight: 500;
 }
@@ -417,14 +417,14 @@ body.cockpit-root {
 }
 
 .tab-main-title {
-    font-size: 0.88rem;
+    font-size: 0.93rem;
     font-weight: 600;
     letter-spacing: -0.01em;
     color: var(--text-primary);
 }
 
 .tab-subtext {
-    font-size: 0.72rem;
+    font-size: 0.76rem;
     color: var(--text-tertiary);
     white-space: nowrap;
     overflow: hidden;
@@ -446,14 +446,14 @@ body.cockpit-root {
 }
 
 .card-title {
-    font-size: 1.05rem;
+    font-size: 1.11rem;
     font-weight: 600;
     letter-spacing: -0.02em;
     color: var(--text-primary);
 }
 
 .card-subtitle {
-    font-size: 0.78rem;
+    font-size: 0.83rem;
     color: var(--text-tertiary);
 }
 
@@ -478,14 +478,14 @@ body.cockpit-root {
 }
 
 .control-label {
-    font-size: 0.78rem;
+    font-size: 0.83rem;
     font-weight: 600;
     color: var(--text-secondary);
     letter-spacing: 0.01em;
 }
 
 .control-note {
-    font-size: 0.68rem;
+    font-size: 0.74rem;
     color: var(--text-tertiary);
     font-family: var(--font-mono);
 }
@@ -530,7 +530,7 @@ body.cockpit-root {
 }
 
 .dropzone-prompt {
-    font-size: 0.82rem;
+    font-size: 0.87rem;
     font-weight: 500;
     color: var(--text-primary);
     margin-bottom: 4px;
@@ -543,7 +543,7 @@ body.cockpit-root {
 }
 
 .dropzone-hint {
-    font-size: 0.68rem;
+    font-size: 0.74rem;
     color: var(--text-tertiary);
 }
 
@@ -589,7 +589,7 @@ body.cockpit-root {
 .quality-gate-banner {
     padding: 8px 12px;
     border-radius: var(--radius-xs);
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     margin-top: 6px;
     line-height: 1.4;
 }
@@ -621,7 +621,7 @@ body.cockpit-root {
 }
 
 .control-subtext {
-    font-size: 0.7rem;
+    font-size: 0.74rem;
     color: var(--text-tertiary);
 }
 
@@ -650,7 +650,7 @@ body.cockpit-root {
     border-radius: var(--radius-sm);
     padding: 8px 12px;
     color: var(--text-primary);
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-family: inherit;
     outline: none;
     transition: border-color 0.15s ease;
@@ -672,7 +672,7 @@ body.cockpit-root {
 .currency-prefix {
     position: absolute;
     left: 10px;
-    font-size: 0.78rem;
+    font-size: 0.83rem;
     font-weight: 600;
     color: var(--text-tertiary);
     pointer-events: none;
@@ -690,7 +690,7 @@ body.cockpit-root {
 }
 
 .slider-live-value {
-    font-size: 0.78rem;
+    font-size: 0.83rem;
     font-weight: 600;
     color: var(--accent-primary);
 }
@@ -743,7 +743,7 @@ body.cockpit-root {
 .slider-range-labels {
     display: flex;
     justify-content: space-between;
-    font-size: 0.65rem;
+    font-size: 0.74rem;
     color: var(--text-tertiary);
 }
 
@@ -764,7 +764,7 @@ body.cockpit-root {
     border: 1px solid var(--border-subtle);
     color: var(--text-secondary);
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.76rem;
     padding: 3px 0;
     border-radius: var(--radius-xs);
     cursor: pointer;
@@ -795,7 +795,7 @@ body.cockpit-root {
     border: none;
     border-radius: var(--radius-sm);
     padding: 11px 18px;
-    font-size: 0.88rem;
+    font-size: 0.93rem;
     font-weight: 700;
     letter-spacing: -0.01em;
     cursor: pointer;
@@ -919,14 +919,14 @@ body.cockpit-root {
 }
 
 .triage-status-headline {
-    font-size: 1.15rem;
+    font-size: 1.22rem;
     font-weight: 700;
     letter-spacing: -0.02em;
     color: var(--text-primary);
 }
 
 .triage-summary {
-    font-size: 0.82rem;
+    font-size: 0.87rem;
     color: var(--text-secondary);
     line-height: 1.45;
 }
@@ -936,7 +936,7 @@ body.cockpit-root {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
 }
 
 .action-label {
@@ -997,14 +997,14 @@ body.cockpit-root {
 }
 
 .gauge-value {
-    font-size: 1.05rem;
+    font-size: 1.11rem;
     font-weight: 700;
     color: var(--text-primary);
     line-height: 1;
 }
 
 .gauge-label {
-    font-size: 0.58rem;
+    font-size: 0.74rem;
     font-weight: 700;
     letter-spacing: 0.05em;
     color: var(--text-tertiary);
@@ -1035,7 +1035,7 @@ body.cockpit-root {
 }
 
 .kpi-label {
-    font-size: 0.68rem;
+    font-size: 0.74rem;
     font-weight: 700;
     letter-spacing: 0.05em;
     color: var(--text-tertiary);
@@ -1047,14 +1047,14 @@ body.cockpit-root {
 }
 
 .kpi-value {
-    font-size: 1.25rem;
+    font-size: 1.33rem;
     font-weight: 700;
     color: var(--text-primary);
     margin-top: 4px;
 }
 
 .kpi-footer {
-    font-size: 0.7rem;
+    font-size: 0.74rem;
     color: var(--text-tertiary);
     margin-top: 2px;
 }
@@ -1096,13 +1096,13 @@ body.cockpit-root {
 }
 
 .studio-pane-title {
-    font-size: 0.92rem;
+    font-size: 0.98rem;
     font-weight: 600;
     color: var(--text-primary);
 }
 
 .studio-badge {
-    font-size: 0.65rem;
+    font-size: 0.74rem;
     font-weight: 600;
     letter-spacing: 0.05em;
     background: var(--bg-surface-elevated);
@@ -1123,7 +1123,7 @@ body.cockpit-root {
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-full);
     padding: 3px 8px;
-    font-size: 0.7rem;
+    font-size: 0.74rem;
     font-weight: 500;
     color: var(--text-tertiary);
     cursor: pointer;
@@ -1251,7 +1251,7 @@ body.cockpit-root {
 }
 
 .tooltip-header {
-    font-size: 0.78rem;
+    font-size: 0.83rem;
     font-weight: 700;
     color: var(--text-primary);
     border-bottom: 1px solid var(--border-subtle);
@@ -1264,7 +1264,7 @@ body.cockpit-root {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.72rem;
+    font-size: 0.76rem;
     margin-bottom: 3px;
 }
 
@@ -1294,14 +1294,14 @@ body.cockpit-root {
 }
 
 .placeholder-title {
-    font-size: 0.88rem;
+    font-size: 0.93rem;
     font-weight: 600;
     color: var(--text-secondary);
     margin-bottom: 4px;
 }
 
 .placeholder-text {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     max-width: 320px;
     line-height: 1.4;
 }
@@ -1314,7 +1314,7 @@ body.cockpit-root {
     padding: 8px 16px;
     background: var(--bg-surface-subtle);
     border-top: 1px solid var(--border-medium);
-    font-size: 0.7rem;
+    font-size: 0.74rem;
     color: var(--text-secondary);
 }
 
@@ -1350,7 +1350,7 @@ body.cockpit-root {
     border: none;
     border-bottom: 2px solid transparent;
     padding: 10px 14px;
-    font-size: 0.78rem;
+    font-size: 0.83rem;
     font-weight: 600;
     color: var(--text-tertiary);
     cursor: pointer;
@@ -1397,14 +1397,14 @@ body.cockpit-root {
 .itemized-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.78rem;
+    font-size: 0.83rem;
     text-align: left;
 }
 
 .itemized-table th {
     background-color: var(--bg-surface-elevated);
     padding: 8px 10px;
-    font-size: 0.7rem;
+    font-size: 0.74rem;
     font-weight: 700;
     color: var(--text-tertiary);
     text-transform: uppercase;
@@ -1439,7 +1439,7 @@ body.cockpit-root {
 
 .action-pill {
     display: inline-block;
-    font-size: 0.65rem;
+    font-size: 0.74rem;
     font-weight: 700;
     padding: 1px 5px;
     border-radius: var(--radius-xs);
@@ -1481,14 +1481,14 @@ body.cockpit-root {
 }
 
 .assumptions-title {
-    font-size: 0.78rem;
+    font-size: 0.83rem;
     font-weight: 600;
     color: var(--text-primary);
 }
 
 .assumptions-list {
     list-style: square inside;
-    font-size: 0.72rem;
+    font-size: 0.76rem;
     color: var(--text-secondary);
     line-height: 1.5;
 }
@@ -1502,13 +1502,13 @@ body.cockpit-root {
 }
 
 .policy-pane-title {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 600;
     color: var(--status-emerald);
 }
 
 .policy-pane-sub {
-    font-size: 0.72rem;
+    font-size: 0.76rem;
     color: var(--text-secondary);
     margin-top: 2px;
 }
@@ -1534,33 +1534,33 @@ body.cockpit-root {
 }
 
 .policy-article-badge {
-    font-size: 0.68rem;
+    font-size: 0.74rem;
     font-weight: 600;
     color: var(--accent-cyan);
 }
 
 .policy-score {
-    font-size: 0.68rem;
+    font-size: 0.74rem;
     color: var(--text-tertiary);
     font-family: var(--font-mono);
 }
 
 .policy-title {
-    font-size: 0.88rem;
+    font-size: 0.93rem;
     font-weight: 600;
     color: var(--text-primary);
     margin-bottom: 4px;
 }
 
 .policy-summary {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     color: var(--text-secondary);
     margin-bottom: 8px;
     line-height: 1.4;
 }
 
 .policy-legal-quote {
-    font-size: 0.72rem;
+    font-size: 0.76rem;
     color: #CBD5E1;
     font-style: italic;
     background: var(--bg-surface-elevated);
@@ -1578,20 +1578,20 @@ body.cockpit-root {
 }
 
 .unknowns-pane-title {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 600;
     color: var(--status-amber);
 }
 
 .unknowns-pane-sub {
-    font-size: 0.72rem;
+    font-size: 0.76rem;
     color: var(--text-secondary);
     margin-top: 2px;
 }
 
 .unknowns-list {
     list-style: square inside;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     color: var(--text-secondary);
     line-height: 1.55;
     background: var(--bg-surface-subtle);
@@ -1614,7 +1614,7 @@ body.cockpit-root {
     border-radius: var(--radius-sm);
     padding: 8px 12px;
     color: var(--text-primary);
-    font-size: 0.78rem;
+    font-size: 0.83rem;
     font-weight: 600;
     cursor: pointer;
     display: inline-flex;
@@ -1690,14 +1690,14 @@ body.cockpit-root {
 }
 
 .modal-title {
-    font-size: 1.05rem;
+    font-size: 1.11rem;
     font-weight: 700;
     letter-spacing: -0.02em;
     color: var(--text-primary);
 }
 
 .modal-subtitle {
-    font-size: 0.72rem;
+    font-size: 0.76rem;
     color: var(--accent-primary);
 }
 
@@ -1713,7 +1713,7 @@ body.cockpit-root {
     border: none;
     border-radius: var(--radius-sm);
     padding: 6px 12px;
-    font-size: 0.78rem;
+    font-size: 0.83rem;
     font-weight: 700;
     cursor: pointer;
     display: inline-flex;
@@ -1765,7 +1765,7 @@ body.cockpit-root {
 }
 
 .report-logo-text {
-    font-size: 1.15rem;
+    font-size: 1.22rem;
     font-weight: 800;
     letter-spacing: -0.02em;
 }
@@ -1778,13 +1778,13 @@ body.cockpit-root {
     display: flex;
     flex-direction: column;
     margin-top: 4px;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     color: var(--text-secondary);
 }
 
 .report-claim-meta {
     text-align: right;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     color: var(--text-secondary);
     display: flex;
     flex-direction: column;
@@ -1798,7 +1798,7 @@ body.cockpit-root {
 }
 
 .report-section-title {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 700;
     letter-spacing: 0.02em;
     color: var(--text-secondary);
@@ -1824,19 +1824,19 @@ body.cockpit-root {
 }
 
 .rpt-metric-label {
-    font-size: 0.65rem;
+    font-size: 0.74rem;
     font-weight: 700;
     color: var(--text-tertiary);
 }
 
 .rpt-metric-val {
-    font-size: 1rem;
+    font-size: 1.06rem;
     font-weight: 700;
     color: var(--text-primary);
 }
 
 .report-verdict-statement {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     background: var(--bg-surface-subtle);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-xs);
@@ -1847,7 +1847,7 @@ body.cockpit-root {
 .report-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.78rem;
+    font-size: 0.83rem;
 }
 
 .report-table th,
@@ -1859,7 +1859,7 @@ body.cockpit-root {
 
 .report-table th {
     background: var(--bg-surface-elevated);
-    font-size: 0.68rem;
+    font-size: 0.74rem;
     font-weight: 700;
     color: var(--text-tertiary);
     text-transform: uppercase;
@@ -1871,14 +1871,14 @@ body.cockpit-root {
     border: 1px solid var(--border-medium);
     border-radius: var(--radius-xs);
     padding: 8px 12px;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     line-height: 1.45;
     color: var(--text-secondary);
 }
 
 .report-clause-box h4 {
     color: var(--accent-primary);
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     margin-bottom: 2px;
 }
 
@@ -1904,13 +1904,13 @@ body.cockpit-root {
 }
 
 .sig-title {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 700;
     color: var(--text-primary);
 }
 
 .sig-note {
-    font-size: 0.68rem;
+    font-size: 0.74rem;
     color: var(--text-tertiary);
 }
 
@@ -1931,7 +1931,7 @@ body.cockpit-root {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     color: var(--text-tertiary);
     flex-wrap: wrap;
     gap: 8px;
@@ -2213,7 +2213,7 @@ body.cockpit-root {
 }
 
 .preloader-label {
-    font-size: 0.62rem;
+    font-size: 0.74rem;
     letter-spacing: 0.24em;
     text-transform: uppercase;
     color: var(--text-tertiary);
@@ -2263,7 +2263,7 @@ body.cockpit-root {
     display: flex;
     justify-content: space-between;
     gap: 12px;
-    font-size: 0.7rem;
+    font-size: 0.78rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--text-secondary);
@@ -2674,7 +2674,7 @@ body.cockpit-root {
 
 .lens-hud-bar span {
     display: block;
-    width: 86.4%;
+    width: 80.5%;
     height: 100%;
     background-color: var(--glow);
     box-shadow: 0 0 calc(1.6 * var(--u)) var(--glow-soft);
@@ -2828,7 +2828,8 @@ body.cockpit-root {
     to   { opacity: 1; transform: translateY(0); }
 }
 
-[data-motion="on"] .reveal-on-scroll { opacity: 0; }
+[data-motion="on"] .reveal-on-scroll,
+[data-motion="on"] .reveal-group > * { opacity: 0; }
 
 /* The header wordmark would give away the reveal, so it arrives after it. */
 [data-sequence="on"] .app-header {
@@ -2877,9 +2878,9 @@ body.cockpit-root {
 }
 
 .story-lede {
-    margin-top: 16px;
+    margin-top: 18px;
     max-width: 62ch;
-    font-size: clamp(0.98rem, 1.1vw, 1.08rem);
+    font-size: clamp(1.02rem, 1.15vw, 1.16rem);
     line-height: 1.65;
     color: var(--text-secondary);
 }
@@ -2904,9 +2905,26 @@ body.cockpit-root {
 
 .stage-cell-wide {
     grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    align-items: center;
+    column-gap: 32px;
     background:
         radial-gradient(ellipse 60% 120% at 88% 10%, rgba(16, 185, 129, 0.14), transparent 62%),
         var(--bg-surface);
+}
+
+.stage-cell-wide .stage-verb { grid-column: 1; }
+.stage-cell-wide h3 { grid-column: 1; }
+.stage-cell-wide > p:not(.stage-verb):not(.stage-metric) { grid-column: 1; }
+
+.stage-cell-wide .stage-metric {
+    grid-column: 2;
+    grid-row: 1 / -1;
+    margin-top: 0;
+    justify-self: end;
+    text-align: right;
+    font-size: 1.05rem;
 }
 
 .stage-grid:has(.stage-cell:hover) .stage-cell { opacity: 0.62; }
@@ -2928,8 +2946,8 @@ body.cockpit-root {
 .stage-cell:hover::after { transform: translateX(280%) skewX(-12deg); }
 
 .stage-verb {
-    font-size: 0.66rem;
-    letter-spacing: 0.2em;
+    font-size: 0.74rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--accent-primary);
     margin-bottom: 12px;
@@ -2945,20 +2963,20 @@ body.cockpit-root {
 }
 
 .stage-cell p:not(.stage-verb):not(.stage-metric) {
-    font-size: 0.92rem;
+    font-size: 0.98rem;
     line-height: 1.6;
     color: var(--text-secondary);
     max-width: 52ch;
 }
 
 .stage-metric {
-    margin-top: 16px;
-    font-size: 0.82rem;
+    margin-top: 18px;
+    font-size: 0.88rem;
     color: var(--text-primary);
     font-variant-numeric: tabular-nums;
 }
 
-.stage-metric span { color: var(--text-dim); padding: 0 2px; }
+.stage-metric span:not([data-count-to]) { color: var(--text-dim); padding: 0 3px; }
 
 .motivation-inner {
     display: grid;
@@ -2970,7 +2988,7 @@ body.cockpit-root {
 .motivation-copy p {
     margin-top: 18px;
     max-width: 62ch;
-    font-size: clamp(0.98rem, 1.1vw, 1.08rem);
+    font-size: clamp(1.02rem, 1.15vw, 1.16rem);
     line-height: 1.7;
     color: var(--text-secondary);
 }
@@ -2993,8 +3011,8 @@ body.cockpit-root {
 }
 
 .motivation-figure figcaption {
-    margin-top: 12px;
-    font-size: 0.88rem;
+    margin-top: 14px;
+    font-size: 0.94rem;
     line-height: 1.6;
     color: var(--text-secondary);
 }
@@ -3066,7 +3084,8 @@ body.cockpit-root {
     .lens-hud,
     .lens-wordmark,
     .lens-wordmark span,
-    .reveal-on-scroll {
+    .reveal-on-scroll,
+    .reveal-group > * {
         opacity: 1 !important;
         transform: none !important;
         animation: none !important;
