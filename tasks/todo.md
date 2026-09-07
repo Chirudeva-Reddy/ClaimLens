@@ -26,8 +26,8 @@ Full detail (acceptance criteria, verification, files) in [plan.md](plan.md). Wo
 - [x] **Checkpoint: Cost Estimator** — review with user
 
 ## Phase 5: Total-Loss Triage Engine
-- [ ] Task 9: Triage decision engine (blueprint §9)
-- [ ] **Checkpoint: Total-Loss Triage Engine** — review with user
+- [x] Task 9: Triage decision engine (blueprint §9)
+- [x] **Checkpoint: Total-Loss Triage Engine** — review with user
 
 ## Phase 6: Policy Retrieval
 - [ ] Task 10: Illustrative policy clause retrieval
