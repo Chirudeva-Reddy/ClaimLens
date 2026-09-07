@@ -2,7 +2,7 @@
 
 Explainable, two-stage vehicle damage and total-loss triage system.
 Option C: Part Detection + Damage Detection + Spatial Association +
-Rule-Based Costing + Total-Loss Decision Engine + CBUAE Policy Retrieval.
+Rule-Based Costing (AED) + Total-Loss Decision Engine + CBUAE Policy Retrieval.
 """
 
 from __future__ import annotations
@@ -25,6 +25,16 @@ JURISDICTION_PRESETS = {
     "UK / European Market Reference (60% Threshold)": "uk_60",
     "Custom Threshold (%)": "custom",
 }
+
+AVAILABLE_BRANDS = [
+    "Toyota",
+    "Nissan",
+    "Hyundai",
+    "Ford",
+    "Lexus",
+    "Mercedes-Benz",
+    "General Market Standard",
+]
 
 APP_CSS = """
 /* ClaimLens Theme Styling */
@@ -162,7 +172,7 @@ APP_CSS = """
 }
 
 .kpi-value {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 800;
     color: #f8fafc;
     margin-bottom: 4px;
@@ -256,12 +266,12 @@ def _format_triage_card(decision: TriageDecision) -> str:
 
 
 def _format_kpi_cards(decision: TriageDecision, estimate: CostEstimate) -> str:
-    """Renders 3-column key performance indicator metric cards."""
-    repair_val = f"${estimate.median_estimate:,.2f}"
-    repair_range = f"Range: ${estimate.total_min:,.0f} – ${estimate.total_max:,.0f}"
+    """Renders 3-column key performance indicator metric cards in AED."""
+    repair_val = f"AED {estimate.median_estimate:,.2f}"
+    repair_range = f"Range: AED {estimate.total_min:,.0f} – {estimate.total_max:,.0f}"
 
-    acv_val = f"${decision.pre_accident_value:,.2f}"
-    acv_sub = "Pre-Accident Cash Value"
+    acv_val = f"AED {decision.pre_accident_value:,.2f}"
+    acv_sub = f"Pre-Accident Valuation ({estimate.brand})"
 
     ratio_val = f"{decision.economic_ratio:.1%}"
     threshold_val = f"Threshold: {decision.threshold_applied:.0%}"
@@ -327,13 +337,13 @@ def _format_unknowns_markdown(decision: TriageDecision) -> str:
 
 
 def _format_assumptions_markdown(estimate: CostEstimate) -> str:
-    """Formats explicit costing assumptions and transparent rules."""
+    """Formats explicit costing assumptions and transparent rules in AED."""
     md = [
         "### 📋 Cost Estimator Assumptions & Transparency Rules",
         "",
         (
-            "ClaimLens does **not** query unstructured LLMs for pricing. All repair amounts are deterministic, "
-            "derived from the curated reference price table (`data/price_table.json`) using the following rules:"
+            f"ClaimLens calculates deterministic repair costs in **AED**, fusing the curated UAE collision "
+            f"table with empirical OEM catalog prices for **{estimate.brand}**:"
         ),
         "",
     ]
@@ -343,7 +353,7 @@ def _format_assumptions_markdown(estimate: CostEstimate) -> str:
 
 
 def _build_cost_table(estimate: CostEstimate) -> list[list[str]]:
-    """Builds tabular representation of itemized repair operations."""
+    """Builds tabular representation of itemized repair operations in AED."""
     rows: list[list[str]] = []
     for item in estimate.itemized_costs:
         struct_flag = "⚠️ Yes (Load-Bearing)" if item.is_structural else "No (Cosmetic)"
@@ -352,8 +362,8 @@ def _build_cost_table(estimate: CostEstimate) -> list[list[str]]:
                 item.part_name,
                 item.damage_type,
                 item.action.capitalize(),
-                f"${item.min_cost:,.0f} – ${item.max_cost:,.0f}",
-                f"${item.median_cost:,.2f}",
+                f"AED {item.min_cost:,.0f} – {item.max_cost:,.0f}",
+                f"AED {item.median_cost:,.2f}",
                 struct_flag,
                 item.description,
             ]
@@ -363,11 +373,12 @@ def _build_cost_table(estimate: CostEstimate) -> list[list[str]]:
 
 def analyze_claim(
     image_path: str | None,
+    brand_label: str,
     pre_accident_value: float,
     jurisdiction_label: str,
     custom_threshold_pct: float,
 ) -> tuple[str, str, Any, list[list[str]], str, str, str]:
-    """Orchestrates end-to-end ClaimLens triage pipeline."""
+    """Orchestrates end-to-end ClaimLens triage pipeline in AED."""
     if not image_path:
         error_card = """
         <div class="triage-card triage-card-inspection">
@@ -384,8 +395,8 @@ def analyze_claim(
     # 2. Run Quality Gate + Two-Stage Detection + Spatial Association
     inspection: InspectionResult = inspect_vehicle(image_path)
 
-    # 3. Calculate Rule-Based Visible Repair Costs
-    estimate: CostEstimate = estimate_repair_costs(inspection)
+    # 3. Calculate Rule-Based Visible Repair Costs in AED with Brand OEM Calibration
+    estimate: CostEstimate = estimate_repair_costs(inspection, brand=brand_label)
 
     # 4. Total-Loss Triage Decision Engine
     decision: TriageDecision = decide_triage(
@@ -443,11 +454,12 @@ def create_app() -> gr.Blocks:
             <style>{APP_CSS}</style>
             <div class="claimlens-header">
                 <h1>ClaimLens</h1>
-                <p>Explainable Vehicle Damage & Total-Loss Triage System with Spatial Association, Rule-Based Costing, and Statutory Policy Retrieval.</p>
+                <p>Explainable Vehicle Damage & Total-Loss Triage System with Spatial Association, Rule-Based Costing (AED), and CBUAE Policy Retrieval.</p>
                 <div class="claimlens-badge-row">
                     <span class="claimlens-tag">Option C Two-Stage Vision</span>
                     <span class="claimlens-tag">YOLOv8-Seg Fine-Tuned</span>
-                    <span class="claimlens-tag">Deterministic Cost Engine</span>
+                    <span class="claimlens-tag">AED Cost Engine</span>
+                    <span class="claimlens-tag">Scraped UAE OEM Parts</span>
                     <span class="claimlens-tag">CBUAE Motor Policy Standard</span>
                     <span class="claimlens-tag">Safe Abstention Logic</span>
                 </div>
@@ -466,10 +478,17 @@ def create_app() -> gr.Blocks:
                 )
 
                 gr.Markdown("### ⚙️ 2. Policy & Valuation Parameters")
+                input_brand = gr.Dropdown(
+                    choices=AVAILABLE_BRANDS,
+                    value="Toyota",
+                    label="Vehicle Make / Brand (UAE OEM Benchmark)",
+                    info="Applies scraped UAE replacement parts pricing for the selected brand.",
+                )
+
                 input_acv = gr.Number(
-                    value=35000,
-                    label="Pre-Accident Vehicle Cash Value ($ / AED)",
-                    info="Agreed policy schedule value or market depreciated value.",
+                    value=120000,
+                    label="Pre-Accident Vehicle Cash Value (AED)",
+                    info="Agreed policy schedule value or market depreciated value in AED.",
                 )
 
                 input_jurisdiction = gr.Dropdown(
@@ -502,30 +521,34 @@ def create_app() -> gr.Blocks:
                     examples=[
                         [
                             "data/demo_examples/case_a_repairable.jpg",
-                            35000,
+                            "Toyota",
+                            120000,
                             "UAE Unified Motor Policy (50% Economic Test)",
                             50,
                         ],
                         [
                             "data/demo_examples/case_b_total_loss.jpg",
-                            4500,
+                            "General Market Standard",
+                            15000,
                             "UAE Unified Motor Policy (50% Economic Test)",
                             50,
                         ],
                         [
                             "data/demo_examples/case_c_structural_inspection.jpg",
-                            25000,
+                            "Toyota",
+                            85000,
                             "UAE Unified Motor Policy (50% Economic Test)",
                             50,
                         ],
                     ],
                     inputs=[
                         input_image,
+                        input_brand,
                         input_acv,
                         input_jurisdiction,
                         input_custom_thresh,
                     ],
-                    label="Blueprint §13 Validation Scenarios",
+                    label="Blueprint §13 Validation Scenarios (AED)",
                 )
 
             # Right Column: Outputs
@@ -557,14 +580,14 @@ def create_app() -> gr.Blocks:
                                 "Component",
                                 "Damage Type",
                                 "Action",
-                                "Cost Range ($)",
-                                "Median ($)",
+                                "Cost Range (AED)",
+                                "Median (AED)",
                                 "Structural?",
                                 "Description",
                             ],
                             datatype=["str", "str", "str", "str", "str", "str", "str"],
                             interactive=False,
-                            label="Deterministic Line Items",
+                            label="Deterministic Line Items (AED)",
                         )
                         out_assumptions = gr.Markdown()
 
@@ -579,6 +602,7 @@ def create_app() -> gr.Blocks:
             fn=analyze_claim,
             inputs=[
                 input_image,
+                input_brand,
                 input_acv,
                 input_jurisdiction,
                 input_custom_thresh,

@@ -1,0 +1,2675 @@
+{
+  "metadata": {
+    "source": "Al Khateeb UAE Automotive Collision Parts Catalog (Dubai/UAE)",
+    "source_url": "https://alkhateeb.ae/",
+    "currency": "AED",
+    "scraped_at_utc": "2026-09-07T14:23:32.025079+00:00",
+    "total_products_scanned": 6712,
+    "total_parts_matched": 3174,
+    "brands_covered": [
+      "General Market Standard",
+      "Toyota",
+      "Ford",
+      "Mercedes-Benz",
+      "Nissan",
+      "Lexus",
+      "Hyundai"
+    ]
+  },
+  "brands": {
+    "General Market Standard": {
+      "fender": {
+        "sample_count": 560,
+        "min_price_aed": 11.25,
+        "max_price_aed": 9750.0,
+        "median_price_aed": 570.0,
+        "examples": [
+          {
+            "title": "Fender Flares LED For T2 2023+ 1.5 Upgrade To 2.0 High Style ,4PCS/Set",
+            "price_aed": 480.0,
+            "url": "https://alkhateeb.ae/products/fender-flares-led-for-t2-2023-1-5-upgrade-to-2-0-high-style-4pcs-set"
+          },
+          {
+            "title": "Fender Flares LED For T2 2023+ 1.5 Upgrade To 2.0 High Style ,4PCS/Set",
+            "price_aed": 480.0,
+            "url": "https://alkhateeb.ae/products/fender-flares-led-for-t2-2023-1-5-upgrade-to-2-0-high-style-4pcs-set"
+          },
+          {
+            "title": "Original Fender Flares For T2 2023+, 6 PCS/Set",
+            "price_aed": 870.0,
+            "url": "https://alkhateeb.ae/products/original-fender-flares-for-t2-2023-6-pcs-set"
+          },
+          {
+            "title": "Original Fender Flares For T2 2023+, 6 PCS/Set",
+            "price_aed": 870.0,
+            "url": "https://alkhateeb.ae/products/original-fender-flares-for-t2-2023-6-pcs-set"
+          },
+          {
+            "title": "Fender Flare For RR-Defender 110 2021+,Black",
+            "price_aed": 870.0,
+            "url": "https://alkhateeb.ae/products/fender-flare-for-rr-defender-110-2021-black"
+          }
+        ]
+      },
+      "front-light": {
+        "sample_count": 562,
+        "min_price_aed": 12.3,
+        "max_price_aed": 6300.0,
+        "median_price_aed": 225.0,
+        "examples": [
+          {
+            "title": "Fog Lamp Use for Prado 2014/W&S 2Pc",
+            "price_aed": 117.0,
+            "url": "https://alkhateeb.ae/products/fog-lamp-use-for-prado-2014-w-s-2pc"
+          },
+          {
+            "title": "Fog Lamp for Hilux Revo W/Led Frame +Wire+Switch,2PCS/Set",
+            "price_aed": 225.0,
+            "url": "https://alkhateeb.ae/products/fog-lamp-for-hilux-revo-w-led-frame-wire-switch-2pcs-set"
+          },
+          {
+            "title": "Fog Light Special For Rav4 2019+",
+            "price_aed": 142.5,
+            "url": "https://alkhateeb.ae/products/fog-light-special-for-rav4-2019"
+          },
+          {
+            "title": "Fog Lamp For Rav4 2013-15,W/Wire,Switch & Bulb,H16,19W, 2Pcs/Set",
+            "price_aed": 123.0,
+            "url": "https://alkhateeb.ae/products/fog-lamp-for-rav4-2013-15-w-wire-switch-bulb-h16-19w-2pcs-set"
+          },
+          {
+            "title": "Fog Lamp Use Corolla 2014 On,Ch.Frame/W&S",
+            "price_aed": 102.0,
+            "url": "https://alkhateeb.ae/products/fog-lamp-use-corolla-2014-on-ch-frame-w-s"
+          }
+        ]
+      },
+      "front-bumper": {
+        "sample_count": 391,
+        "min_price_aed": 10.5,
+        "max_price_aed": 6000.0,
+        "median_price_aed": 292.5,
+        "examples": [
+          {
+            "title": "Front Bumper Guard For Prado FJ150 2014-17, W/LED, White",
+            "price_aed": 510.0,
+            "url": "https://alkhateeb.ae/products/front-bumper-guard-for-prado-fj150-2014-17-w-led-white"
+          },
+          {
+            "title": "Front Bumper Corner For LC250 2024+ Low Edition Upgrade To Vx Edition, White",
+            "price_aed": 720.0,
+            "url": "https://alkhateeb.ae/products/front-bumper-corner-for-lc250-2024-low-edition-upgrade-to-vx-edition-white"
+          },
+          {
+            "title": "Front Bumper Corner For LC250 2024+ Low Edition Upgrade To Vx Edition, Black",
+            "price_aed": 720.0,
+            "url": "https://alkhateeb.ae/products/front-bumper-corner-for-lc250-2024-low-edition-upgrade-to-vx-edition-black"
+          },
+          {
+            "title": "Front Bumper Guard For T2 2023+, Silver",
+            "price_aed": 510.0,
+            "url": "https://alkhateeb.ae/products/front-bumper-guard-for-t2-2023-silver"
+          },
+          {
+            "title": "Front Bumper Guard For T2 2023+, Silver",
+            "price_aed": 510.0,
+            "url": "https://alkhateeb.ae/products/front-bumper-guard-for-t2-2023-silver"
+          }
+        ]
+      },
+      "grille": {
+        "sample_count": 402,
+        "min_price_aed": 13.5,
+        "max_price_aed": 3000.0,
+        "median_price_aed": 367.5,
+        "examples": [
+          {
+            "title": "Front Bumper Grill For Revo 2015,Mid Asia,4Wd",
+            "price_aed": 123.0,
+            "url": "https://alkhateeb.ae/products/front-bumper-grill-for-revo-2015-mid-asia-4wd"
+          },
+          {
+            "title": "Letter Led Light of Front Grill For T2 2023+, Low Edition To High Edition",
+            "price_aed": 900.0,
+            "url": "https://alkhateeb.ae/products/letter-led-light-of-front-grill-for-t2-2023-low-edition-to-high-edition"
+          },
+          {
+            "title": "Letter Led Light of Front Grill For T2 2023+, Low Edition To High Edition",
+            "price_aed": 900.0,
+            "url": "https://alkhateeb.ae/products/letter-led-light-of-front-grill-for-t2-2023-low-edition-to-high-edition"
+          },
+          {
+            "title": "Front Grill For FJ Cruiser 2007-21, OEM, Matt Black",
+            "price_aed": 270.0,
+            "url": "https://alkhateeb.ae/products/front-grill-for-fj-cruiser-2007-21-oem-matt-black"
+          },
+          {
+            "title": "Grille For Hilux Revo 2021 TRD Style/Led",
+            "price_aed": 420.0,
+            "url": "https://alkhateeb.ae/products/grille-for-hilux-revo-2021-trd-style-led"
+          }
+        ]
+      },
+      "right-mirror": {
+        "sample_count": 179,
+        "min_price_aed": 12.0,
+        "max_price_aed": 1950.0,
+        "median_price_aed": 370.0,
+        "examples": [
+          {
+            "title": "Side Mirror For FJCruiser 2007-21, Silver Right",
+            "price_aed": 495.0,
+            "url": "https://alkhateeb.ae/products/side-mirror-for-fjcruiser-2007-21-silver-right"
+          },
+          {
+            "title": "Side Mirror For FJCruiser 2007-21, Silver Right",
+            "price_aed": 495.0,
+            "url": "https://alkhateeb.ae/products/side-mirror-for-fjcruiser-2007-21-silver-right"
+          },
+          {
+            "title": "Side Mirror For FJ Cruiser 2007-21, Silver Left",
+            "price_aed": 495.0,
+            "url": "https://alkhateeb.ae/products/side-mirror-for-fj-cruiser-2007-21-silver-left"
+          },
+          {
+            "title": "Car Side Mirror for Camry 2007-2011 Powere 3PIN OEM 87940-06909 Black Paint",
+            "price_aed": 132.0,
+            "url": "https://alkhateeb.ae/products/car-side-mirror-for-camry-2007-2011-powere-3pin-oem-87940-06909-black-paint"
+          },
+          {
+            "title": "Car Side Mirror for Camry 2007-2011 Powered 3PIN OEM 87910-06909 Right Black Paint",
+            "price_aed": 132.0,
+            "url": "https://alkhateeb.ae/products/car-side-mirror-for-camry-2007-2011-powered-3pin-oem-87910-06909-right-black-paint"
+          }
+        ]
+      },
+      "left-mirror": {
+        "sample_count": 36,
+        "min_price_aed": 24.0,
+        "max_price_aed": 510.0,
+        "median_price_aed": 315.0,
+        "examples": [
+          {
+            "title": "Side Mirror For FJ Cruiser 2007-21, Silver Left",
+            "price_aed": 495.0,
+            "url": "https://alkhateeb.ae/products/side-mirror-for-fj-cruiser-2007-21-silver-left"
+          },
+          {
+            "title": "Car Side Mirror for Camry 2018 Powered with Signal Light 5PIN OEM 87940-06890 Left Black Paint",
+            "price_aed": 277.5,
+            "url": "https://alkhateeb.ae/products/car-side-mirror-for-camry-2018-powered-with-signal-light-5pin-oem-87940-06890-left-black-paint"
+          },
+          {
+            "title": "Car Side Mirror for Corolla 2010 Powered with Signal Light 5PIN OEM 87910-12A30 Left Black no Paint",
+            "price_aed": 247.5,
+            "url": "https://alkhateeb.ae/products/car-side-mirror-for-corolla-2010-powered-with-signal-light-5pin-oem-87910-12a30-left-black-no-paint"
+          },
+          {
+            "title": "Car Side Mirror for Corolla 2020 Powered with Signal Light 5PIN OEM 87940-02P70 Left Black",
+            "price_aed": 277.5,
+            "url": "https://alkhateeb.ae/products/car-side-mirror-for-corolla-2020-powered-with-signal-light-5pin-oem-87940-02p70-left-black"
+          },
+          {
+            "title": "SIDE MIRROR FOR LC FJ70 SERIES, 3 WIRES, MATT BLACK, LEFT",
+            "price_aed": 277.5,
+            "url": "https://alkhateeb.ae/products/side-mirror-for-lc-fj70-series-3-wires-matt-black-left"
+          }
+        ]
+      },
+      "roof": {
+        "sample_count": 302,
+        "min_price_aed": 10.2,
+        "max_price_aed": 8250.0,
+        "median_price_aed": 375.0,
+        "examples": [
+          {
+            "title": "Car Roof Led Light, Universal, White Led 3535 5W/PC*5*4 , Lens, Size: 95.5CM *21CM, Black Body，W/Wire Set & Switch",
+            "price_aed": 570.0,
+            "url": "https://alkhateeb.ae/products/car-roof-led-light-universal-white-led-3535-5w-pc-5-4-lens-size-95-5cm-21cm-black-body-w-wire-set-switch"
+          },
+          {
+            "title": "Car Roof Led Light, Universal, White Led 3535 5W/PC*5*4 , Lens, Size: 95.5CM *21CM, Black Body，W/Wire Set & Switch",
+            "price_aed": 570.0,
+            "url": "https://alkhateeb.ae/products/car-roof-led-light-universal-white-led-3535-5w-pc-5-4-lens-size-95-5cm-21cm-black-body-w-wire-set-switch"
+          },
+          {
+            "title": "Car Roof Led Light, Universal, White Led 3W/PC*3*4 , Reflector, Size: 95.5Cm *21Cm,  Black Body，W/Wire Set & Switch",
+            "price_aed": 420.0,
+            "url": "https://alkhateeb.ae/products/car-roof-led-light-universal-white-led-3w-pc-3-4-reflector-size-95-5cm-21cm-black-body-w-wire-set-switch"
+          },
+          {
+            "title": "Car Roof Led Light, Universal, White Led 3W/PC*3*4 , Reflector, Size: 95.5Cm *21Cm,  Black Body，W/Wire Set & Switch",
+            "price_aed": 420.0,
+            "url": "https://alkhateeb.ae/products/car-roof-led-light-universal-white-led-3w-pc-3-4-reflector-size-95-5cm-21cm-black-body-w-wire-set-switch"
+          },
+          {
+            "title": "Car Roof Light For T2 2023+,Glossy  Black",
+            "price_aed": 1170.0,
+            "url": "https://alkhateeb.ae/products/car-roof-light-for-t2-2023-glossy-black"
+          }
+        ]
+      },
+      "back-door": {
+        "sample_count": 22,
+        "min_price_aed": 100.0,
+        "max_price_aed": 1170.0,
+        "median_price_aed": 570.0,
+        "examples": [
+          {
+            "title": "Rear Door For LC Pick Up FJ76 2024+, 5 Doors, Right",
+            "price_aed": 1020.0,
+            "url": "https://alkhateeb.ae/products/rear-door-for-lc-pick-up-fj76-2024-5-doors-right"
+          },
+          {
+            "title": "Rear Door For LC Pick Up FJ76 2024+, 5 Doors, Left",
+            "price_aed": 1020.0,
+            "url": "https://alkhateeb.ae/products/rear-door-for-lc-pick-up-fj76-2024-5-doors-left"
+          },
+          {
+            "title": "Car Rear Door for Prado 2018 Model",
+            "price_aed": 1170.0,
+            "url": "https://alkhateeb.ae/products/car-rear-door-for-prado-2018-model"
+          },
+          {
+            "title": "Rear Door Aluminum Table for Defender 2020+, Black",
+            "price_aed": 570.0,
+            "url": "https://alkhateeb.ae/products/rear-door-aluminum-table-for-defender-2020-black"
+          },
+          {
+            "title": "Rear Door Aluminum Table for Defender 2020+, Black",
+            "price_aed": 570.0,
+            "url": "https://alkhateeb.ae/products/rear-door-aluminum-table-for-defender-2020-black"
+          }
+        ]
+      },
+      "front-door": {
+        "sample_count": 19,
+        "min_price_aed": 585.0,
+        "max_price_aed": 1020.0,
+        "median_price_aed": 930.0,
+        "examples": [
+          {
+            "title": "Front Door For LC FJ76 2024+ , 5 Doors, Right",
+            "price_aed": 1020.0,
+            "url": "https://alkhateeb.ae/products/front-door-for-lc-fj76-2024-5-doors-right"
+          },
+          {
+            "title": "Front Door For LC FJ76 2024+, 5 Doors, Left",
+            "price_aed": 1020.0,
+            "url": "https://alkhateeb.ae/products/front-door-for-lc-fj76-2024-5-doors-left"
+          },
+          {
+            "title": "Front Door For LC FJ75 , 3 Doors, Right",
+            "price_aed": 1020.0,
+            "url": "https://alkhateeb.ae/products/front-door-for-lc-fj75-3-doors-right"
+          },
+          {
+            "title": "Front Door For LC  FJ75 , 3 Doors, Left",
+            "price_aed": 1020.0,
+            "url": "https://alkhateeb.ae/products/front-door-for-lc-fj75-3-doors-left"
+          },
+          {
+            "title": "FRONT DOOR FOR LC PICK UP AND STATION 2007+ RIGHT",
+            "price_aed": 1020.0,
+            "url": "https://alkhateeb.ae/products/front-door-for-lc-pick-up-and-station-2007-right"
+          }
+        ]
+      },
+      "trunk": {
+        "sample_count": 262,
+        "min_price_aed": 25.0,
+        "max_price_aed": 5000.0,
+        "median_price_aed": 400.0,
+        "examples": [
+          {
+            "title": "Trunk Disco Stripe Light 120Cm 7Color",
+            "price_aed": 25.0,
+            "url": "https://alkhateeb.ae/products/trunk-disco-stripe-light-120cm-7color"
+          },
+          {
+            "title": "Trunk Disco Stripe Light 120Cm 7Color",
+            "price_aed": 25.0,
+            "url": "https://alkhateeb.ae/products/trunk-disco-stripe-light-120cm-7color"
+          },
+          {
+            "title": "Trunk Disco Stripe Light 150Cm 7Color",
+            "price_aed": 28.0,
+            "url": "https://alkhateeb.ae/products/trunk-disco-stripe-light-150cm-7color"
+          },
+          {
+            "title": "Trunk Disco Stripe Light 150Cm 7Color",
+            "price_aed": 28.0,
+            "url": "https://alkhateeb.ae/products/trunk-disco-stripe-light-150cm-7color"
+          },
+          {
+            "title": "TRUNK STREAMER DECORATION FOR F150 2022+, RAPTOR STYLE, W/LED FORD LETTER",
+            "price_aed": 960.0,
+            "url": "https://alkhateeb.ae/products/trunk-streamer-decoration-for-f150-2022-raptor-style-w-led-ford-letter"
+          }
+        ]
+      },
+      "hood": {
+        "sample_count": 146,
+        "min_price_aed": 18.0,
+        "max_price_aed": 9750.0,
+        "median_price_aed": 727.5,
+        "examples": [
+          {
+            "title": "Hood Daytime Stripe Light, 180cm White, with App & Remote",
+            "price_aed": 72.0,
+            "url": "https://alkhateeb.ae/products/hood-daytime-stripe-light-180cm-white-with-app-remote"
+          },
+          {
+            "title": "Hood Daytime Stripe Light, 180cm White, with App & Remote",
+            "price_aed": 72.0,
+            "url": "https://alkhateeb.ae/products/hood-daytime-stripe-light-180cm-white-with-app-remote"
+          },
+          {
+            "title": "Hood Daytime Stripe Light, 150CM, White",
+            "price_aed": 24.0,
+            "url": "https://alkhateeb.ae/products/hood-daytime-stripe-light-150cm-white"
+          },
+          {
+            "title": "Hood Daytime Stripe Light, 150CM, White",
+            "price_aed": 24.0,
+            "url": "https://alkhateeb.ae/products/hood-daytime-stripe-light-150cm-white"
+          },
+          {
+            "title": "Land Cruiser Pickup and Station Hood Panel 2007-2023, Matte Black with Logo Hole",
+            "price_aed": 660.0,
+            "url": "https://alkhateeb.ae/products/land-cruiser-pickup-and-station-hood-panel-2007-2023-matte-black-with-logo-hole"
+          }
+        ]
+      },
+      "back-light": {
+        "sample_count": 317,
+        "min_price_aed": 10.2,
+        "max_price_aed": 9750.0,
+        "median_price_aed": 760.0,
+        "examples": [
+          {
+            "title": "Truck Tail Light 24V/36W 60LED 34.5x13.5x3cm",
+            "price_aed": 68.0,
+            "url": "https://alkhateeb.ae/products/truck-tail-light-24v-36w-60led-34-5x13-5x3cm-1"
+          },
+          {
+            "title": "Truck Tail Light 24V/36W 60LED 34.5x13.5x3cm",
+            "price_aed": 68.0,
+            "url": "https://alkhateeb.ae/products/truck-tail-light-24v-36w-60led-34-5x13-5x3cm-1"
+          },
+          {
+            "title": "Truck Tail Light 24V/36W 60LED 34.5x13.5x3cm",
+            "price_aed": 80.0,
+            "url": "https://alkhateeb.ae/products/truck-tail-light-24v-36w-60led-34-5x13-5x3cm"
+          },
+          {
+            "title": "Truck Tail Light 24V/36W 60LED 34.5x13.5x3cm",
+            "price_aed": 80.0,
+            "url": "https://alkhateeb.ae/products/truck-tail-light-24v-36w-60led-34-5x13-5x3cm"
+          },
+          {
+            "title": "Truck Tail Light 2PCS/SET 24V /20W 100LED Strong Kind 8D Lens Light & Flashing 46.5x13x1.8CM",
+            "price_aed": 90.0,
+            "url": "https://alkhateeb.ae/products/truck-tail-light-2pcs-set-24v-20w-100led-strong-kind-8d-lens-light-flashing-46-5x13x1-8cm"
+          }
+        ]
+      },
+      "back-bumper": {
+        "sample_count": 207,
+        "min_price_aed": 11.25,
+        "max_price_aed": 3600.0,
+        "median_price_aed": 292.5,
+        "examples": [
+          {
+            "title": "Car Rear Bumper Guard With Light And Bracket Hilux Vigo 2012-2014, Metal, Chrome",
+            "price_aed": 375.0,
+            "url": "https://alkhateeb.ae/products/gtk-car-rear-bumper-guard-with-light-and-bracket-hilux-vigo-2012-2014-metal-chrome"
+          },
+          {
+            "title": "Rear Bumper for RAM 1500 2019+ TRX/Limited Mammoth Style",
+            "price_aed": 3600.0,
+            "url": "https://alkhateeb.ae/products/rear-bumper-for-ram-1500-2019-trx-limited-mammoth-style"
+          },
+          {
+            "title": "Rear Bumper for RAM 1500 2019+ TRX/Limited Mammoth Style",
+            "price_aed": 3600.0,
+            "url": "https://alkhateeb.ae/products/rear-bumper-for-ram-1500-2019-trx-limited-mammoth-style"
+          },
+          {
+            "title": "Rear Bumper for F150 2015-2021 Raptor Style",
+            "price_aed": 2850.0,
+            "url": "https://alkhateeb.ae/products/rear-bumper-for-f150-2015-2021-raptor-style"
+          },
+          {
+            "title": "Rear Bumper for F150 2015-2021 Raptor Style",
+            "price_aed": 2850.0,
+            "url": "https://alkhateeb.ae/products/rear-bumper-for-f150-2015-2021-raptor-style"
+          }
+        ]
+      },
+      "wheel": {
+        "sample_count": 1076,
+        "min_price_aed": 10.4,
+        "max_price_aed": 11700.0,
+        "median_price_aed": 34.0,
+        "examples": [
+          {
+            "title": "WHEEL WEDGE 2PC",
+            "price_aed": 40.0,
+            "url": "https://alkhateeb.ae/products/wheel-wedge-2pc"
+          },
+          {
+            "title": "WHEEL WEDGE 2PC",
+            "price_aed": 40.0,
+            "url": "https://alkhateeb.ae/products/wheel-wedge-2pc"
+          },
+          {
+            "title": "Chrome Front Grille Cover Trims For Prado FJ150 TRD Style",
+            "price_aed": 375.0,
+            "url": "https://alkhateeb.ae/products/chrome-front-grille-cover-trims-for-prado-fj150-trd-style"
+          },
+          {
+            "title": "Car Fender Flare Trim Hilux Vigo 2010-2014, 6PCS/Set White",
+            "price_aed": 300.0,
+            "url": "https://alkhateeb.ae/products/car-fender-flare-trim-hilux-vigo-2010-2014-6pcs-set-white"
+          },
+          {
+            "title": "Steering Wheel Cover PVC 2SEC Wooden 2PCS/SET Brown",
+            "price_aed": 24.0,
+            "url": "https://alkhateeb.ae/products/steering-wheel-cover-pvc-2sec-wooden-2pcs-set-brown"
+          }
+        ]
+      },
+      "rocker-panel": {
+        "sample_count": 191,
+        "min_price_aed": 43.0,
+        "max_price_aed": 9600.0,
+        "median_price_aed": 840.0,
+        "examples": [
+          {
+            "title": "Car Running Boards Side Steps Nerf Bars Defender 2020+ Double Cabin, Black",
+            "price_aed": 1000.0,
+            "url": "https://alkhateeb.ae/products/car-running-boards-side-steps-nerf-bars-defender-2020-double-cabin-black"
+          },
+          {
+            "title": "Car Running Boards Side Steps Nerf Bars Defender 2020+ Double Cabin, Black",
+            "price_aed": 1000.0,
+            "url": "https://alkhateeb.ae/products/car-running-boards-side-steps-nerf-bars-defender-2020-double-cabin-black"
+          },
+          {
+            "title": "Car Side Step Bar Running Board Crew Cab Pair Raptor Style With Backets F150 2022+",
+            "price_aed": 1760.0,
+            "url": "https://alkhateeb.ae/products/car-side-step-bar-running-board-crew-cab-pair-raptor-style-with-backets-f150-2022"
+          },
+          {
+            "title": "Car Side Step Bar Running Board Crew Cab Pair Raptor Style With Backets F150 2022+",
+            "price_aed": 1760.0,
+            "url": "https://alkhateeb.ae/products/car-side-step-bar-running-board-crew-cab-pair-raptor-style-with-backets-f150-2022"
+          },
+          {
+            "title": "POWERED RUNNING BOARD FOR RAM 1500, 2019-23 4D",
+            "price_aed": 4200.0,
+            "url": "https://alkhateeb.ae/products/powered-running-board-for-ram-1500-2019-23-4d"
+          }
+        ]
+      },
+      "front-glass": {
+        "sample_count": 27,
+        "min_price_aed": 12.0,
+        "max_price_aed": 682.5,
+        "median_price_aed": 487.5,
+        "examples": [
+          {
+            "title": "Windshield Front Glass for 4Runner 2010-2015",
+            "price_aed": 487.5,
+            "url": "https://alkhateeb.ae/products/windshield-front-glass-for-4runner-2010-2015"
+          },
+          {
+            "title": "Windshield Front Glass for 4Runner 2010-2015",
+            "price_aed": 487.5,
+            "url": "https://alkhateeb.ae/products/windshield-front-glass-for-4runner-2010-2015"
+          },
+          {
+            "title": "Windsheild Front Glass for 4Runner 2016-2022",
+            "price_aed": 487.5,
+            "url": "https://alkhateeb.ae/products/windsheild-front-glass-for-4runner-2016-2022"
+          },
+          {
+            "title": "Windsheild Front Glass for 4Runner 2016-2022",
+            "price_aed": 487.5,
+            "url": "https://alkhateeb.ae/products/windsheild-front-glass-for-4runner-2016-2022"
+          },
+          {
+            "title": "Windsheild Front Glass for Camry 2018+ M.E & USA",
+            "price_aed": 487.5,
+            "url": "https://alkhateeb.ae/products/windsheild-front-glass-for-camry-2018-m-e-usa"
+          }
+        ]
+      }
+    },
+    "Toyota": {
+      "front-light": {
+        "sample_count": 178,
+        "min_price_aed": 13.5,
+        "max_price_aed": 3750.0,
+        "median_price_aed": 300.0,
+        "examples": [
+          {
+            "title": "Fog Lamp Use for Prado 2014/W&S 2Pc",
+            "price_aed": 117.0,
+            "url": "https://alkhateeb.ae/products/fog-lamp-use-for-prado-2014-w-s-2pc"
+          },
+          {
+            "title": "Fog Lamp for Hilux Revo W/Led Frame +Wire+Switch,2PCS/Set",
+            "price_aed": 225.0,
+            "url": "https://alkhateeb.ae/products/fog-lamp-for-hilux-revo-w-led-frame-wire-switch-2pcs-set"
+          },
+          {
+            "title": "Fog Light Special For Rav4 2019+",
+            "price_aed": 142.5,
+            "url": "https://alkhateeb.ae/products/fog-light-special-for-rav4-2019"
+          },
+          {
+            "title": "Fog Lamp For Rav4 2013-15,W/Wire,Switch & Bulb,H16,19W, 2Pcs/Set",
+            "price_aed": 123.0,
+            "url": "https://alkhateeb.ae/products/fog-lamp-for-rav4-2013-15-w-wire-switch-bulb-h16-19w-2pcs-set"
+          },
+          {
+            "title": "Fog Lamp Use Corolla 2014 On,Ch.Frame/W&S",
+            "price_aed": 102.0,
+            "url": "https://alkhateeb.ae/products/fog-lamp-use-corolla-2014-on-ch-frame-w-s"
+          }
+        ]
+      },
+      "front-bumper": {
+        "sample_count": 205,
+        "min_price_aed": 10.5,
+        "max_price_aed": 3300.0,
+        "median_price_aed": 240.0,
+        "examples": [
+          {
+            "title": "Front Bumper Guard For Prado FJ150 2014-17, W/LED, White",
+            "price_aed": 510.0,
+            "url": "https://alkhateeb.ae/products/front-bumper-guard-for-prado-fj150-2014-17-w-led-white"
+          },
+          {
+            "title": "Front Bumper Corner For LC250 2024+ Low Edition Upgrade To Vx Edition, White",
+            "price_aed": 720.0,
+            "url": "https://alkhateeb.ae/products/front-bumper-corner-for-lc250-2024-low-edition-upgrade-to-vx-edition-white"
+          },
+          {
+            "title": "Front Bumper Corner For LC250 2024+ Low Edition Upgrade To Vx Edition, Black",
+            "price_aed": 720.0,
+            "url": "https://alkhateeb.ae/products/front-bumper-corner-for-lc250-2024-low-edition-upgrade-to-vx-edition-black"
+          },
+          {
+            "title": "Front Bumper Grill For Revo 2015,Mid Asia,4Wd",
+            "price_aed": 123.0,
+            "url": "https://alkhateeb.ae/products/front-bumper-grill-for-revo-2015-mid-asia-4wd"
+          },
+          {
+            "title": "ORIGINAL FRONT BUMPER FOR HIACE 2023",
+            "price_aed": 1050.0,
+            "url": "https://alkhateeb.ae/products/original-front-bumper-for-hiace-2023"
+          }
+        ]
+      },
+      "grille": {
+        "sample_count": 156,
+        "min_price_aed": 33.0,
+        "max_price_aed": 1875.0,
+        "median_price_aed": 270.0,
+        "examples": [
+          {
+            "title": "Front Bumper Grill For Revo 2015,Mid Asia,4Wd",
+            "price_aed": 123.0,
+            "url": "https://alkhateeb.ae/products/front-bumper-grill-for-revo-2015-mid-asia-4wd"
+          },
+          {
+            "title": "Front Grill For FJ Cruiser 2007-21, OEM, Matt Black",
+            "price_aed": 270.0,
+            "url": "https://alkhateeb.ae/products/front-grill-for-fj-cruiser-2007-21-oem-matt-black"
+          },
+          {
+            "title": "Grille For Hilux Revo 2021 TRD Style/Led",
+            "price_aed": 420.0,
+            "url": "https://alkhateeb.ae/products/grille-for-hilux-revo-2021-trd-style-led"
+          },
+          {
+            "title": "Front Grill For Hilux Vigo 2012-14, GR Style",
+            "price_aed": 270.0,
+            "url": "https://alkhateeb.ae/products/front-grill-for-hilux-vigo-2012-14-gr-style"
+          },
+          {
+            "title": "Front Grille for LC FJ200 2016-2021 GR Style with LED and Logo Glossy Black",
+            "price_aed": 600.0,
+            "url": "https://alkhateeb.ae/products/front-grille-for-lc-fj200-2016-2021-gr-style-with-led-and-logo-glossy-black"
+          }
+        ]
+      },
+      "fender": {
+        "sample_count": 121,
+        "min_price_aed": 22.5,
+        "max_price_aed": 2250.0,
+        "median_price_aed": 165.0,
+        "examples": [
+          {
+            "title": "Front Fender Inner Skirt For Revo 2015(Mid East), Right",
+            "price_aed": 42.0,
+            "url": "https://alkhateeb.ae/products/front-fender-inner-skirt-for-revo-2015mid-east-right"
+          },
+          {
+            "title": "Front Fender Inner Skirt For Revo 2015(Mid East), Left",
+            "price_aed": 42.0,
+            "url": "https://alkhateeb.ae/products/front-fender-inner-skirt-for-revo-2015mid-east-left"
+          },
+          {
+            "title": "Fender Flared for Tundra 2022-2025 4PCS/SET",
+            "price_aed": 1020.0,
+            "url": "https://alkhateeb.ae/products/fender-flared-for-tundra-2022-2025-4pcs-set"
+          },
+          {
+            "title": "Car Front Right Fender Hilux Revo 2015-2022, 4X4",
+            "price_aed": 187.5,
+            "url": "https://alkhateeb.ae/products/car-front-right-fender-hilux-revo-2015-2022-4x4"
+          },
+          {
+            "title": "Car Fender Flare Trim Hilux Vigo 2010-2014, 6PCS/Set White",
+            "price_aed": 300.0,
+            "url": "https://alkhateeb.ae/products/car-fender-flare-trim-hilux-vigo-2010-2014-6pcs-set-white"
+          }
+        ]
+      },
+      "left-mirror": {
+        "sample_count": 16,
+        "min_price_aed": 127.5,
+        "max_price_aed": 510.0,
+        "median_price_aed": 323.75,
+        "examples": [
+          {
+            "title": "Side Mirror For FJ Cruiser 2007-21, Silver Left",
+            "price_aed": 495.0,
+            "url": "https://alkhateeb.ae/products/side-mirror-for-fj-cruiser-2007-21-silver-left"
+          },
+          {
+            "title": "Car Side Mirror for Camry 2018 Powered with Signal Light 5PIN OEM 87940-06890 Left Black Paint",
+            "price_aed": 277.5,
+            "url": "https://alkhateeb.ae/products/car-side-mirror-for-camry-2018-powered-with-signal-light-5pin-oem-87940-06890-left-black-paint"
+          },
+          {
+            "title": "Car Side Mirror for Corolla 2010 Powered with Signal Light 5PIN OEM 87910-12A30 Left Black no Paint",
+            "price_aed": 247.5,
+            "url": "https://alkhateeb.ae/products/car-side-mirror-for-corolla-2010-powered-with-signal-light-5pin-oem-87910-12a30-left-black-no-paint"
+          },
+          {
+            "title": "Car Side Mirror for Corolla 2020 Powered with Signal Light 5PIN OEM 87940-02P70 Left Black",
+            "price_aed": 277.5,
+            "url": "https://alkhateeb.ae/products/car-side-mirror-for-corolla-2020-powered-with-signal-light-5pin-oem-87940-02p70-left-black"
+          },
+          {
+            "title": "Side Mirror 4 Vigo 2012,,W/3Pcs Wire,Left",
+            "price_aed": 127.5,
+            "url": "https://alkhateeb.ae/products/side-mirror-4-vigo-2012-w-3pcs-wire-left"
+          }
+        ]
+      },
+      "right-mirror": {
+        "sample_count": 80,
+        "min_price_aed": 40.0,
+        "max_price_aed": 1275.0,
+        "median_price_aed": 330.0,
+        "examples": [
+          {
+            "title": "Side Mirror For FJ Cruiser 2007-21, Silver Left",
+            "price_aed": 495.0,
+            "url": "https://alkhateeb.ae/products/side-mirror-for-fj-cruiser-2007-21-silver-left"
+          },
+          {
+            "title": "Car Side Mirror for Camry 2007-2011 Powere 3PIN OEM 87940-06909 Black Paint",
+            "price_aed": 132.0,
+            "url": "https://alkhateeb.ae/products/car-side-mirror-for-camry-2007-2011-powere-3pin-oem-87940-06909-black-paint"
+          },
+          {
+            "title": "Car Side Mirror for Camry 2007-2011 Powered 3PIN OEM 87910-06909 Right Black Paint",
+            "price_aed": 132.0,
+            "url": "https://alkhateeb.ae/products/car-side-mirror-for-camry-2007-2011-powered-3pin-oem-87910-06909-right-black-paint"
+          },
+          {
+            "title": "Car Side Mirror for Camry 2018 Powered with Signal Light 5PIN OEM 87940-06890 Left Black Paint",
+            "price_aed": 277.5,
+            "url": "https://alkhateeb.ae/products/car-side-mirror-for-camry-2018-powered-with-signal-light-5pin-oem-87940-06890-left-black-paint"
+          },
+          {
+            "title": "Car Side Mirror for Camry 2018 Powere with Signal Light 5PIN OEM 87910-06890 Right Black Paint",
+            "price_aed": 370.0,
+            "url": "https://alkhateeb.ae/products/car-side-mirror-for-camry-2018-powere-with-signal-light-5pin-oem-87910-06890-right-black-paint"
+          }
+        ]
+      },
+      "back-door": {
+        "sample_count": 12,
+        "min_price_aed": 100.0,
+        "max_price_aed": 1170.0,
+        "median_price_aed": 825.0,
+        "examples": [
+          {
+            "title": "Rear Door For LC Pick Up FJ76 2024+, 5 Doors, Right",
+            "price_aed": 1020.0,
+            "url": "https://alkhateeb.ae/products/rear-door-for-lc-pick-up-fj76-2024-5-doors-right"
+          },
+          {
+            "title": "Rear Door For LC Pick Up FJ76 2024+, 5 Doors, Left",
+            "price_aed": 1020.0,
+            "url": "https://alkhateeb.ae/products/rear-door-for-lc-pick-up-fj76-2024-5-doors-left"
+          },
+          {
+            "title": "Car Rear Door for Prado 2018 Model",
+            "price_aed": 1170.0,
+            "url": "https://alkhateeb.ae/products/car-rear-door-for-prado-2018-model"
+          },
+          {
+            "title": "Car Rear Door Strip Decoration Land Cruiser FJ200 2016-2021, ABS Chrome",
+            "price_aed": 100.0,
+            "url": "https://alkhateeb.ae/products/gtk-car-rear-door-strip-decoration-land-cruiser-fj200-2016-2021-abs-chrome"
+          },
+          {
+            "title": "Rear Door Spot Light Warning Lamp LED Warning Light, Interior Ambient Light Projector Land Cruiser FJ200 2019",
+            "price_aed": 180.0,
+            "url": "https://alkhateeb.ae/products/autotech-rear-door-spot-light-warning-lamp-led-warning-light-interior-ambient-light-projector-land-cruiser-fj200-2019"
+          }
+        ]
+      },
+      "front-door": {
+        "sample_count": 13,
+        "min_price_aed": 585.0,
+        "max_price_aed": 1020.0,
+        "median_price_aed": 630.0,
+        "examples": [
+          {
+            "title": "Front Door For LC FJ76 2024+ , 5 Doors, Right",
+            "price_aed": 1020.0,
+            "url": "https://alkhateeb.ae/products/front-door-for-lc-fj76-2024-5-doors-right"
+          },
+          {
+            "title": "Front Door For LC FJ76 2024+, 5 Doors, Left",
+            "price_aed": 1020.0,
+            "url": "https://alkhateeb.ae/products/front-door-for-lc-fj76-2024-5-doors-left"
+          },
+          {
+            "title": "Front Door For LC FJ75 , 3 Doors, Right",
+            "price_aed": 1020.0,
+            "url": "https://alkhateeb.ae/products/front-door-for-lc-fj75-3-doors-right"
+          },
+          {
+            "title": "Front Door For LC  FJ75 , 3 Doors, Left",
+            "price_aed": 1020.0,
+            "url": "https://alkhateeb.ae/products/front-door-for-lc-fj75-3-doors-left"
+          },
+          {
+            "title": "Car Front Door Left Panel Hilux Vigo 2012-2014",
+            "price_aed": 585.0,
+            "url": "https://alkhateeb.ae/products/gtk-car-front-door-left-panel-hilux-vigo-2012-2014"
+          }
+        ]
+      },
+      "back-bumper": {
+        "sample_count": 77,
+        "min_price_aed": 48.0,
+        "max_price_aed": 1950.0,
+        "median_price_aed": 255.0,
+        "examples": [
+          {
+            "title": "Car Rear Bumper Guard With Light And Bracket Hilux Vigo 2012-2014, Metal, Chrome",
+            "price_aed": 375.0,
+            "url": "https://alkhateeb.ae/products/gtk-car-rear-bumper-guard-with-light-and-bracket-hilux-vigo-2012-2014-metal-chrome"
+          },
+          {
+            "title": "S/S Rear Bumper for Tundra 2014+",
+            "price_aed": 1950.0,
+            "url": "https://alkhateeb.ae/products/s-s-rear-bumper-for-tundra-2014"
+          },
+          {
+            "title": "Car Rear Bumper Step Board Stainless Steel Land Cruiser Lc300 2022, Xvr, White Painting",
+            "price_aed": 525.0,
+            "url": "https://alkhateeb.ae/products/gtk-car-rear-bumper-step-board-stainless-steel-land-cruiser-lc300-2022-xvr-white-painting"
+          },
+          {
+            "title": "Rear Bumper for Land Cruiser FJ300 2022+ Original Low Edition",
+            "price_aed": 277.5,
+            "url": "https://alkhateeb.ae/products/rear-bumper-for-land-cruiser-fj300-2022-original-low-edition"
+          },
+          {
+            "title": "REAR BUMPER STEP BOARD FOR LANDCRUISER LC300 2022+ GXR",
+            "price_aed": 330.0,
+            "url": "https://alkhateeb.ae/products/rear-bumper-step-board-for-landcruiser-lc300-2022-gxr"
+          }
+        ]
+      },
+      "wheel": {
+        "sample_count": 109,
+        "min_price_aed": 25.0,
+        "max_price_aed": 6300.0,
+        "median_price_aed": 240.0,
+        "examples": [
+          {
+            "title": "Chrome Front Grille Cover Trims For Prado FJ150 TRD Style",
+            "price_aed": 375.0,
+            "url": "https://alkhateeb.ae/products/chrome-front-grille-cover-trims-for-prado-fj150-trd-style"
+          },
+          {
+            "title": "Car Fender Flare Trim Hilux Vigo 2010-2014, 6PCS/Set White",
+            "price_aed": 300.0,
+            "url": "https://alkhateeb.ae/products/car-fender-flare-trim-hilux-vigo-2010-2014-6pcs-set-white"
+          },
+          {
+            "title": "ALLOY CASTING WHEEL RIM FOR HILUX /FORTUNER /FJ 150  GLOSSY BLACK SIZE:17''x8, ET:25, PCD:6x139.7,CB:106.1",
+            "price_aed": 600.0,
+            "url": "https://alkhateeb.ae/products/alloy-casting-wheel-rim-for-hilux-fortuner-fj-150-glossy-black-size-17x8-et-25-pcd-6x139-7-cb-106-1"
+          },
+          {
+            "title": "14Inch Nylon Silver Wheel Hub Cap Cover With Logo Corolla 2001-2007, Set Of 4 Wc70314",
+            "price_aed": 84.0,
+            "url": "https://alkhateeb.ae/products/14inch-nylon-silver-wheel-hub-cap-cover-with-logo-corolla-2001-2007-set-of-4-wc70314"
+          },
+          {
+            "title": "13Inch Nylon Silver Wheel Hub Cap Cover With Logo Corolla E110 1995-2001, Set Of 4",
+            "price_aed": 80.0,
+            "url": "https://alkhateeb.ae/products/13inch-nylon-silver-wheel-hub-cap-cover-with-logo-corolla-e110-1995-2001-set-of-4"
+          }
+        ]
+      },
+      "hood": {
+        "sample_count": 46,
+        "min_price_aed": 75.0,
+        "max_price_aed": 1760.0,
+        "median_price_aed": 521.25,
+        "examples": [
+          {
+            "title": "Land Cruiser Pickup and Station Hood Panel 2007-2023, Matte Black with Logo Hole",
+            "price_aed": 660.0,
+            "url": "https://alkhateeb.ae/products/land-cruiser-pickup-and-station-hood-panel-2007-2023-matte-black-with-logo-hole"
+          },
+          {
+            "title": "Hood for Land Cruiser FJ200 2008",
+            "price_aed": 645.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-an-tai-car-black-steel-hood-land-cruiser-fj200-2008"
+          },
+          {
+            "title": "Land Cruiser FJ200 AnTai Hood Steel Engine 2016+ Black",
+            "price_aed": 645.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-an-tai-car-black-steel-hood-land-cruiser-fj200-2016"
+          },
+          {
+            "title": "AN TAI Car Black Steel Hood Prado 2002-2010",
+            "price_aed": 727.5,
+            "url": "https://alkhateeb.ae/products/al-khateeb-an-tai-car-black-steel-hood-prado-2002-2010"
+          },
+          {
+            "title": "AN TAI Car Black Steel Hood Prado 2018+",
+            "price_aed": 630.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-an-tai-car-black-steel-hood-prado-2018"
+          }
+        ]
+      },
+      "roof": {
+        "sample_count": 52,
+        "min_price_aed": 57.0,
+        "max_price_aed": 2850.0,
+        "median_price_aed": 367.5,
+        "examples": [
+          {
+            "title": "Hilux Vigo Roof Rack Cross Bar Aluminum 2012-2014, 2PCS/Set Black",
+            "price_aed": 180.0,
+            "url": "https://alkhateeb.ae/products/hilux-vigo-roof-rack-cross-bar-aluminum-2012-2014-2pcs-set-black"
+          },
+          {
+            "title": "Aluminium Roof Rack Rail Bar For Hilux Vigo 2012-2014, Silver",
+            "price_aed": 180.0,
+            "url": "https://alkhateeb.ae/products/aluminium-roof-rack-rail-bar-for-hilux-vigo-2012-2014-silver"
+          },
+          {
+            "title": "Silver Roof Rack Rail For Land Cruiser Prado 2014, 172cm",
+            "price_aed": 300.0,
+            "url": "https://alkhateeb.ae/products/silver-roof-rack-rail-for-land-cruiser-prado-2014-172cm"
+          },
+          {
+            "title": "Car Roof Rack Slim Europian Style Fortuner 2016+, Chrome",
+            "price_aed": 450.0,
+            "url": "https://alkhateeb.ae/products/car-roof-rack-slim-europian-style-fortuner-2016-chrome"
+          },
+          {
+            "title": "Roof Rack Basket Cargo Carrier For Prado 2010-2022 With 2 Ladder And Bracket",
+            "price_aed": 1650.0,
+            "url": "https://alkhateeb.ae/products/roof-rack-basket-cargo-carrier-for-prado-2010-2022-with-2-ladder-and-bracket"
+          }
+        ]
+      },
+      "rocker-panel": {
+        "sample_count": 55,
+        "min_price_aed": 100.0,
+        "max_price_aed": 3800.0,
+        "median_price_aed": 640.0,
+        "examples": [
+          {
+            "title": "SIDE SKIRT DECORATION FOR LC LC250 2024+, 4PCS/SET, CHROME",
+            "price_aed": 500.0,
+            "url": "https://alkhateeb.ae/products/side-skirt-decoration-for-lc-lc250-2024-4pcs-set-chrome"
+          },
+          {
+            "title": "Side Steps Bars & Running Boards FJ Cruiser 2007+ 170X30X19Cm",
+            "price_aed": 840.0,
+            "url": "https://alkhateeb.ae/products/side-steps-bars-running-boards-fj-cruiser-2007-170x30x19cm"
+          },
+          {
+            "title": "SIDE SKIRT LAND CUISER LC200 4 PCS-SKD213LCWT",
+            "price_aed": 360.0,
+            "url": "https://alkhateeb.ae/products/side-skirt-land-cuiser-lc200-4-pcs-skd213lcwt"
+          },
+          {
+            "title": "SIDE SKIRT DÉCOR USE FOR HIACE-MID DOOR",
+            "price_aed": 146.0,
+            "url": "https://alkhateeb.ae/products/side-skirt-decor-use-4-hiace-mid-door"
+          },
+          {
+            "title": "Car Side Skirt Door Body Moulding Cladding Trim Decoration Prado FJ150 2018-2020, 4PCS/Set Chrome",
+            "price_aed": 340.0,
+            "url": "https://alkhateeb.ae/products/gtk-car-side-skirt-door-body-moulding-cladding-trim-decoration-prado-fj150-2018-2020-4pcs-set-chrome"
+          }
+        ]
+      },
+      "trunk": {
+        "sample_count": 87,
+        "min_price_aed": 30.0,
+        "max_price_aed": 2400.0,
+        "median_price_aed": 440.0,
+        "examples": [
+          {
+            "title": "Trunk Stand for Hilux Revo 2015-2025 Width Need to be Adjustable 6CM FM 158-164 CM for Outside \"GTK 4X4\" with LED Light",
+            "price_aed": 1760.0,
+            "url": "https://alkhateeb.ae/products/trunk-stand-for-hilux-revo-2015-2025-width-need-to-be-adjustable-6cm-fm-158-164-cm-for-outside-gtk-4x4-with-led-light"
+          },
+          {
+            "title": "Glass for LandCruiser LC200 2008-2021 Tailgate",
+            "price_aed": 487.5,
+            "url": "https://alkhateeb.ae/products/glass-for-landcruiser-lc200-2008-2021-tailgate"
+          },
+          {
+            "title": "Glass for LandCruiser LC300 2022+ Tailgate",
+            "price_aed": 427.5,
+            "url": "https://alkhateeb.ae/products/glass-for-landcruiser-lc300-2022-tailgate"
+          },
+          {
+            "title": "Glass for Fortuner 2016-2025 Tailgate",
+            "price_aed": 337.5,
+            "url": "https://alkhateeb.ae/products/glass-for-fortuner-2016-2025-tailgate"
+          },
+          {
+            "title": "Glass for Prado FJ150 2010-2024 Tailgate",
+            "price_aed": 337.5,
+            "url": "https://alkhateeb.ae/products/glass-for-prado-fj150-2010-2024-tailgate"
+          }
+        ]
+      },
+      "back-light": {
+        "sample_count": 100,
+        "min_price_aed": 46.0,
+        "max_price_aed": 4800.0,
+        "median_price_aed": 360.0,
+        "examples": [
+          {
+            "title": "Tail Light for Camry 4PCS/Set Black 2018+",
+            "price_aed": 1360.0,
+            "url": "https://alkhateeb.ae/products/tail-light-for-camry-4pcs-set-black-2018"
+          },
+          {
+            "title": "Tail Light for Prado 2024 RGB with App & Remote 3PCS/SET",
+            "price_aed": 3800.0,
+            "url": "https://alkhateeb.ae/products/tail-light-for-prado-2024-rgb-with-app-remote-3pcs-set"
+          },
+          {
+            "title": "Car Grille With Headlight and 2PCS Tail Light FJ Cruiser 2007-2019, Black",
+            "price_aed": 1575.0,
+            "url": "https://alkhateeb.ae/products/car-grille-with-headlight-and-2pcs-tail-light-fj-cruiser-2007-2019-black"
+          },
+          {
+            "title": "LED Tail Light For Prado Fj150 2018+, Red 1Pc/Right",
+            "price_aed": 390.0,
+            "url": "https://alkhateeb.ae/products/led-tail-light-for-prado-fj150-2018-red-1pc-right"
+          },
+          {
+            "title": "Tail Lamp Taiwan Camry 2012-14 LH",
+            "price_aed": 280.0,
+            "url": "https://alkhateeb.ae/products/tail-lamp-taiwan-camry-2012-14-lh"
+          }
+        ]
+      },
+      "front-glass": {
+        "sample_count": 3,
+        "min_price_aed": 487.5,
+        "max_price_aed": 487.5,
+        "median_price_aed": 487.5,
+        "examples": [
+          {
+            "title": "Windsheild Front Glass for Camry 2018+ M.E & USA",
+            "price_aed": 487.5,
+            "url": "https://alkhateeb.ae/products/windsheild-front-glass-for-camry-2018-m-e-usa"
+          },
+          {
+            "title": "Windsheild Front Glass for Prado FJ150 2010-2024",
+            "price_aed": 487.5,
+            "url": "https://alkhateeb.ae/products/windsheild-front-glass-for-prado-fj150-2010-2024"
+          },
+          {
+            "title": "Windsheild Front Glass for LandCruiser LC200 & LX570 2008-2021",
+            "price_aed": 487.5,
+            "url": "https://alkhateeb.ae/products/windsheild-front-glass-for-landcruiser-lc200-lx570-2008-2021"
+          }
+        ]
+      }
+    },
+    "Ford": {
+      "trunk": {
+        "sample_count": 7,
+        "min_price_aed": 150.0,
+        "max_price_aed": 960.0,
+        "median_price_aed": 360.0,
+        "examples": [
+          {
+            "title": "TRUNK STREAMER DECORATION FOR F150 2022+, RAPTOR STYLE, W/LED FORD LETTER",
+            "price_aed": 960.0,
+            "url": "https://alkhateeb.ae/products/trunk-streamer-decoration-for-f150-2022-raptor-style-w-led-ford-letter"
+          },
+          {
+            "title": "TRUNK LIGHT FOR BRONCO  2022+",
+            "price_aed": 360.0,
+            "url": "https://alkhateeb.ae/products/product"
+          },
+          {
+            "title": "Tailgate Pocket for Bronco 2022+ 3PCS/Set",
+            "price_aed": 440.0,
+            "url": "https://alkhateeb.ae/products/tail-gate-pocket-for-bronco-2022-3pcs-set"
+          },
+          {
+            "title": "Tailgate Ladder for Bronco 2022+",
+            "price_aed": 500.0,
+            "url": "https://alkhateeb.ae/products/tail-gate-ladder-for-bronco-2022"
+          },
+          {
+            "title": "Car Trunk Door Table Type With Drink Holder Ranger 2012-2019",
+            "price_aed": 202.5,
+            "url": "https://alkhateeb.ae/products/gtk-car-trunk-door-table-type-with-drink-holder-ranger-2012-2019"
+          }
+        ]
+      },
+      "roof": {
+        "sample_count": 6,
+        "min_price_aed": 300.0,
+        "max_price_aed": 2100.0,
+        "median_price_aed": 390.0,
+        "examples": [
+          {
+            "title": "Roll Bar with Luggage Roof for Ranger T9 2023+ \"GTK 4X4\"",
+            "price_aed": 2100.0,
+            "url": "https://alkhateeb.ae/products/roll-bar-with-luggage-roof-for-ranger-t9-2023-gtk-4x4"
+          },
+          {
+            "title": "ROOF RACK FOR  RANGER T9 2023+, SILVER",
+            "price_aed": 300.0,
+            "url": "https://alkhateeb.ae/products/roof-rack-for-ranger-t9-2023-silver"
+          },
+          {
+            "title": "ROOF BASKET FOR  BRONCO 2022+",
+            "price_aed": 1575.0,
+            "url": "https://alkhateeb.ae/products/roof-basket-for-bronco-2022"
+          },
+          {
+            "title": "CAR ROOF LIGHT FOR RANGER 2022,BLACK",
+            "price_aed": 480.0,
+            "url": "https://alkhateeb.ae/products/car-roof-light-for-ranger-2022-black"
+          },
+          {
+            "title": "Oem Aluminium Roof Bar For Ranger Rover Evoque 2012+, Black 2Pcs",
+            "price_aed": 300.0,
+            "url": "https://alkhateeb.ae/products/gtk-oem-aluminium-roof-bar-for-ranger-rover-evoque-2012-black-2pcs"
+          }
+        ]
+      },
+      "front-light": {
+        "sample_count": 15,
+        "min_price_aed": 82.5,
+        "max_price_aed": 3300.0,
+        "median_price_aed": 850.0,
+        "examples": [
+          {
+            "title": "Fog Lamp Cover Ranger 2015-2021 Chrome with Hole R-H",
+            "price_aed": 82.5,
+            "url": "https://alkhateeb.ae/products/fog-lamp-cover-ranger-2015-2021-chrome-with-hole-r-h"
+          },
+          {
+            "title": "Headlight for Ranger 2016-2021 2PCS/SET Black",
+            "price_aed": 2700.0,
+            "url": "https://alkhateeb.ae/products/headlight-for-ranger-2016-2021-2pcs-set-black"
+          },
+          {
+            "title": "Fog Lamp Cover Ranger 2015-2021 Chrome with Hole L-H",
+            "price_aed": 82.5,
+            "url": "https://alkhateeb.ae/products/fog-lamp-cover-ranger-2015-2021-chrome-with-hole-l-h"
+          },
+          {
+            "title": "HEAD LIGHT FOR EXPEDITION 2003-2006",
+            "price_aed": 840.0,
+            "url": "https://alkhateeb.ae/products/head-light4-expedition-03-06-hlt6103expch"
+          },
+          {
+            "title": "HEAD LIGHT4 EXPEDITION 03-06-HLT6103EXPBK",
+            "price_aed": 840.0,
+            "url": "https://alkhateeb.ae/products/head-light4-expedition-03-06-hlt6103expbk"
+          }
+        ]
+      },
+      "grille": {
+        "sample_count": 31,
+        "min_price_aed": 225.0,
+        "max_price_aed": 750.0,
+        "median_price_aed": 480.0,
+        "examples": [
+          {
+            "title": "Front Grill for Ranger T9 2023+ High Edition Black Grill+White Letter with LED",
+            "price_aed": 525.0,
+            "url": "https://alkhateeb.ae/products/front-grill-for-ranger-t9-2023-high-edition-black-grill-white-letter-with-led"
+          },
+          {
+            "title": "Front Grill for Ranger T9 2023+ High Edition Black, Grill+Red Letter with LED",
+            "price_aed": 525.0,
+            "url": "https://alkhateeb.ae/products/front-grill-for-ranger-t9-2023-high-edition-black-grill-red-letter-with-led"
+          },
+          {
+            "title": "Front Grill for Ranger T9 2023+, High Edition, Black, Grill+Black Letter with LED",
+            "price_aed": 525.0,
+            "url": "https://alkhateeb.ae/products/front-grill-for-ranger-t9-2023-high-edition-black-grill-black-letter-with-led"
+          },
+          {
+            "title": "Front Grille for Ranger 2023+ Upgrade to Raptor Style with LED",
+            "price_aed": 720.0,
+            "url": "https://alkhateeb.ae/products/front-grille-for-ranger-2023-upgrade-to-raptor-style-with-led"
+          },
+          {
+            "title": "Front Grille for Ranger T9 2023+ Low Edition, Black Grille+Black Letter, Orange LED",
+            "price_aed": 510.0,
+            "url": "https://alkhateeb.ae/products/front-grille-for-ranger-t9-2023-low-edition-black-grille-black-letter-orange-led"
+          }
+        ]
+      },
+      "back-light": {
+        "sample_count": 8,
+        "min_price_aed": 142.5,
+        "max_price_aed": 2000.0,
+        "median_price_aed": 590.0,
+        "examples": [
+          {
+            "title": "Tail Light for Ranger T9 2023+ 2PCS/SET Black",
+            "price_aed": 1560.0,
+            "url": "https://alkhateeb.ae/products/tail-light-for-ranger-t9-2023-2pcs-set-black"
+          },
+          {
+            "title": "TAIL LIGHT/LED4  EXPEDITION 03+",
+            "price_aed": 760.0,
+            "url": "https://alkhateeb.ae/products/tail-light-led4-expedition-03"
+          },
+          {
+            "title": "TAIL LIGHT FOR BRONCO  2022+,2PCS/SET",
+            "price_aed": 2000.0,
+            "url": "https://alkhateeb.ae/products/tail-light-for-bronco-2022-2pcs-set"
+          },
+          {
+            "title": "BRAKE LIGHT FOR  BRONCO  2022+,W/BRACKET",
+            "price_aed": 202.5,
+            "url": "https://alkhateeb.ae/products/product-32"
+          },
+          {
+            "title": "Ranger Tail Lights 2016+ 2PCS/SET Black Smoked",
+            "price_aed": 1360.0,
+            "url": "https://alkhateeb.ae/products/autotech-2pcs-set-black-smoked-tail-lights-for-ranger-2016"
+          }
+        ]
+      },
+      "front-bumper": {
+        "sample_count": 9,
+        "min_price_aed": 307.5,
+        "max_price_aed": 3300.0,
+        "median_price_aed": 525.0,
+        "examples": [
+          {
+            "title": "Front Bumper OEM Ranger 2022+",
+            "price_aed": 982.5,
+            "url": "https://alkhateeb.ae/products/front-bumper-oem-ranger-2022"
+          },
+          {
+            "title": "FRONT BUMPER RANGER 2012-14",
+            "price_aed": 307.5,
+            "url": "https://alkhateeb.ae/products/front-bumper-ranger-2012-14"
+          },
+          {
+            "title": "TYG Front Bumper Matt-Black With Mould For Ranger 2015+",
+            "price_aed": 370.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-tyg-front-bumper-matt-black-with-mould-for-ranger-2015"
+          },
+          {
+            "title": "FPI Front Bumper For Ranger 2012-2014, Black",
+            "price_aed": 307.5,
+            "url": "https://alkhateeb.ae/products/al-khateeb-fpi-front-bumper-for-ranger-2012-2014-black"
+          },
+          {
+            "title": "FPI Front Bumper For Ranger 2015+ With Bumper Moulding Mat, Black",
+            "price_aed": 367.5,
+            "url": "https://alkhateeb.ae/products/al-khateeb-fpi-front-bumper-for-ranger-2015-with-bumper-moulding-mat-black"
+          }
+        ]
+      },
+      "hood": {
+        "sample_count": 8,
+        "min_price_aed": 54.0,
+        "max_price_aed": 600.0,
+        "median_price_aed": 195.0,
+        "examples": [
+          {
+            "title": "Car Air Flow Vent Cover Bonnet Scoop Ranger 2012, 2Pcs/Set Black",
+            "price_aed": 54.0,
+            "url": "https://alkhateeb.ae/products/gtk-car-air-flow-vent-cover-bonnet-scoop-ranger-2012-2pcs-set-black"
+          },
+          {
+            "title": "Black Hood Guard For Ranger T7 & T8 2015 With Logo Name",
+            "price_aed": 187.5,
+            "url": "https://alkhateeb.ae/products/gtk-black-hood-guard-for-ranger-t7-t8-2015-with-logo-name"
+          },
+          {
+            "title": "Car Scout Hood Deflector Bonnet Guard Protector With Logo Name Ranger T6 2018-2018 White+Black",
+            "price_aed": 127.5,
+            "url": "https://alkhateeb.ae/products/gtk-car-scout-hood-deflector-bonnet-guard-protector-with-logo-name-ranger-t6-2018-2018-white-black"
+          },
+          {
+            "title": "HOOD SCROOP FOR  BRONCO  2022+",
+            "price_aed": 600.0,
+            "url": "https://alkhateeb.ae/products/hood-scroop-for-bronco-2022"
+          },
+          {
+            "title": "Black Hood Guard Decoration For Ranger 2016-2020",
+            "price_aed": 127.5,
+            "url": "https://alkhateeb.ae/products/gtk-black-hood-guard-decoration-for-ranger-2016-2020"
+          }
+        ]
+      },
+      "fender": {
+        "sample_count": 4,
+        "min_price_aed": 285.0,
+        "max_price_aed": 720.0,
+        "median_price_aed": 457.5,
+        "examples": [
+          {
+            "title": "FENDER FLARE 4 RANGER 2015-2017",
+            "price_aed": 720.0,
+            "url": "https://alkhateeb.ae/products/fender-flare-4-ranger-2015-2017"
+          },
+          {
+            "title": "FENDER AIR FLOW FOR BRONCO  2022+,W/LED?2PCS/SET",
+            "price_aed": 630.0,
+            "url": "https://alkhateeb.ae/products/product-17"
+          },
+          {
+            "title": "Car Front Right Fender Ranger T7 2016-2020",
+            "price_aed": 285.0,
+            "url": "https://alkhateeb.ae/products/gtk-car-front-right-fender-ranger-t7-2016-2020"
+          },
+          {
+            "title": "Car Front Left Fender Ranger T7 2016-2020",
+            "price_aed": 285.0,
+            "url": "https://alkhateeb.ae/products/gtk-car-front-left-fender-ranger-t7-2016-2020"
+          }
+        ]
+      },
+      "back-door": {
+        "sample_count": 2,
+        "min_price_aed": 500.0,
+        "max_price_aed": 630.0,
+        "median_price_aed": 565.0,
+        "examples": [
+          {
+            "title": "CAR REAR DOOR FOLDABLE TABLE FOR BRONCO  2022+",
+            "price_aed": 630.0,
+            "url": "https://alkhateeb.ae/products/car-rear-door-foldable-table-for-bronco-2022"
+          },
+          {
+            "title": "REAR DOOR STRIP 2PCS/SET, (UP+DN),USE 4 RANGER 12'-21' BL",
+            "price_aed": 500.0,
+            "url": "https://alkhateeb.ae/products/rear-door-strip-2pcs-set-up-dn-use-4-ranger-12-21-bl"
+          }
+        ]
+      },
+      "rocker-panel": {
+        "sample_count": 7,
+        "min_price_aed": 600.0,
+        "max_price_aed": 3200.0,
+        "median_price_aed": 960.0,
+        "examples": [
+          {
+            "title": "POWERED RUNNING BOARD FOR RANGER  2012-21 4D",
+            "price_aed": 3200.0,
+            "url": "https://alkhateeb.ae/products/powered-running-board-for-ranger-2012-21-4d"
+          },
+          {
+            "title": "Car Aluminium Alloy + Pp Plastic Side Steps Bars Running Boards Ranger Rover Sport 2005-2012, Black+Silver, 4Pcs",
+            "price_aed": 960.0,
+            "url": "https://alkhateeb.ae/products/gtk-car-aluminium-alloy-pp-plastic-side-steps-bars-running-boards-ranger-rover-sport-2005-2012-black-silver-4pcs"
+          },
+          {
+            "title": "Car Aluminium Alloy + Pp Plastic Side Steps Bars Running Boards With Brackets Ranger Rover Sport 2005-2012, Black+Silver, 2Pcs",
+            "price_aed": 800.0,
+            "url": "https://alkhateeb.ae/products/gtk-car-aluminium-alloy-pp-plastic-side-steps-bars-running-boards-with-brackets-ranger-rover-sport-2005-2012-black-silver-2pcs"
+          },
+          {
+            "title": "Car Aluminum ABS Side Step Bar Running Board With Set Of Brackets Ranger 2012-2017, Silver Black",
+            "price_aed": 600.0,
+            "url": "https://alkhateeb.ae/products/gtk-car-aluminum-abs-side-step-bar-running-board-with-set-of-brackets-ranger-2012-2017-silver-black"
+          },
+          {
+            "title": "Car Pick Up Steel Side Steps 4X4 Running Boards Side Step With Brackets, Raptor Style Ranger 2012-2019",
+            "price_aed": 880.0,
+            "url": "https://alkhateeb.ae/products/gtk-car-pick-up-steel-side-steps-4x4-running-boards-side-step-with-brackets-raptor-style-ranger-2012-2019"
+          }
+        ]
+      },
+      "right-mirror": {
+        "sample_count": 4,
+        "min_price_aed": 450.0,
+        "max_price_aed": 490.0,
+        "median_price_aed": 470.0,
+        "examples": [
+          {
+            "title": "YTM Car Side Mirror Right Electric Automatic Foldable Chrome With LED Ranger 2012-2014, R-H",
+            "price_aed": 450.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-ytm-car-side-mirror-right-electric-automatic-foldable-chrome-with-led-ranger-2012-2014-r-h"
+          },
+          {
+            "title": "YTM Car Side Mirror Left Electric Automatic Foldable Chrome With LED Ranger 2015-2018, L-H",
+            "price_aed": 490.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-ytm-car-side-mirror-left-electric-automatic-foldable-chrome-with-led-ranger-2015-2018-l-h"
+          },
+          {
+            "title": "YTM Car Side Mirror Right Electric Automatic Foldable Chrome With LED Ranger 2015-2018, R-H",
+            "price_aed": 490.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-ytm-car-side-mirror-right-electric-automatic-foldable-chrome-with-led-ranger-2015-2018-r-h"
+          },
+          {
+            "title": "YTM Car Side Mirror Left Electric Automatic Foldable Chrome With LED Ranger 2012-2014, L-H",
+            "price_aed": 450.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-ytm-car-side-mirror-left-electric-automatic-foldable-chrome-with-led-ranger-2012-2014-l-h"
+          }
+        ]
+      },
+      "left-mirror": {
+        "sample_count": 3,
+        "min_price_aed": 66.0,
+        "max_price_aed": 490.0,
+        "median_price_aed": 450.0,
+        "examples": [
+          {
+            "title": "YTM Car Side Mirror Left Electric Automatic Foldable Chrome With LED Ranger 2015-2018, L-H",
+            "price_aed": 490.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-ytm-car-side-mirror-left-electric-automatic-foldable-chrome-with-led-ranger-2015-2018-l-h"
+          },
+          {
+            "title": "YTM Car Side Mirror Left Electric Automatic Foldable Chrome With LED Ranger 2012-2014, L-H",
+            "price_aed": 450.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-ytm-car-side-mirror-left-electric-automatic-foldable-chrome-with-led-ranger-2012-2014-l-h"
+          },
+          {
+            "title": "Car Left Auto Dim Mirror Glass Blind Spot Ranger Rover Sport 2010+",
+            "price_aed": 66.0,
+            "url": "https://alkhateeb.ae/products/gtk-car-left-auto-dim-mirror-glass-blind-spot-ranger-rover-sport-2010"
+          }
+        ]
+      },
+      "back-bumper": {
+        "sample_count": 4,
+        "min_price_aed": 600.0,
+        "max_price_aed": 1725.0,
+        "median_price_aed": 1150.0,
+        "examples": [
+          {
+            "title": "Stainless Steel Rear Bumper With Bracket For Ranger T6 2012+, Chrome",
+            "price_aed": 800.0,
+            "url": "https://alkhateeb.ae/products/gtk-stainless-steel-rear-bumper-with-bracket-for-ford-ranger-t6-2012-chrome"
+          },
+          {
+            "title": "Car Rear Bumper Step Bar Ranger 2012-2017, Chrome +Black",
+            "price_aed": 600.0,
+            "url": "https://alkhateeb.ae/products/gtk-car-rear-bumper-step-bar-ranger-2012-2017-chrome-black"
+          },
+          {
+            "title": "Heavy Duty Rear Bumper With LED & 2 Hanger For Bronco 2022",
+            "price_aed": 1500.0,
+            "url": "https://alkhateeb.ae/products/gtk-heavy-duty-rear-bumper-with-led-2-hanger-for-bronco-2022"
+          },
+          {
+            "title": "Heavy Duty Rear Bumper With LED & 2 Hook Hanger For Bronco 2021",
+            "price_aed": 1725.0,
+            "url": "https://alkhateeb.ae/products/gtk-heavy-duty-rear-bumper-with-led-2-hook-hanger-for-bronco-2021"
+          }
+        ]
+      },
+      "wheel": {
+        "sample_count": 2,
+        "min_price_aed": 142.5,
+        "max_price_aed": 142.5,
+        "median_price_aed": 142.5,
+        "examples": [
+          {
+            "title": "Car Head Tail Lights Lamps Cover Trim Set Black&White Ranger T7 2015-2018 4PCS/Set",
+            "price_aed": 142.5,
+            "url": "https://alkhateeb.ae/products/gtk-car-head-tail-lights-lamps-cover-trim-set-black-white-ranger-t7-2015-2018-4pcs-set"
+          },
+          {
+            "title": "Ranger T7 Car Head Tail Lights Lamps Cover Trim Set Black&Red 2015-2018 4PCS/Set",
+            "price_aed": 142.5,
+            "url": "https://alkhateeb.ae/products/ford-ranger-t7-gtk-car-head-tail-lights-lamps-cover-trim-set-black-red-2015-2018-4pcs-set"
+          }
+        ]
+      }
+    },
+    "Mercedes-Benz": {
+      "wheel": {
+        "sample_count": 7,
+        "min_price_aed": 1125.0,
+        "max_price_aed": 7500.0,
+        "median_price_aed": 5600.0,
+        "examples": [
+          {
+            "title": "ALLOY FORGED REAR WHEEL RIM FOR G-CLASS 2025,  SIZE : 22''x10J, ET 37, PCD 130X5 CB 84.1-BLACK+MACHINE",
+            "price_aed": 3400.0,
+            "url": "https://alkhateeb.ae/products/alloy-forged-rear-wheel-rim-for-g-class-2025-size-22x10j-et-37-pcd-130x5-cb-84-1-black-machine"
+          },
+          {
+            "title": "WHEEL RIM FOR G-CLASS B800 23'' SILVER",
+            "price_aed": 5600.0,
+            "url": "https://alkhateeb.ae/products/wheel-rim-for-g-class-b800-23-silver"
+          },
+          {
+            "title": "WHEEL RIM 4 S-CLASS B900/ REAR RIM/10J + 3K DRY CRBN WC 4 S-Class B900",
+            "price_aed": 7500.0,
+            "url": "https://alkhateeb.ae/products/wheel-rim-4-benz-s-class-b900-rear-rim-10j-3k-dry-crbn-wc-4-benz-s-class-b900"
+          },
+          {
+            "title": "REAR WHEEL RIM FOR G-CLASS 24\" MACHINE BLACK",
+            "price_aed": 6000.0,
+            "url": "https://alkhateeb.ae/products/rear-wheel-rim-for-benz-g-class-24-machine-black"
+          },
+          {
+            "title": "FRONT WHEEL RIM FOR G-CLASS 24\" MACHINE BLACK",
+            "price_aed": 6000.0,
+            "url": "https://alkhateeb.ae/products/front-wheel-rim-for-benz-g-class-24-machine-black"
+          }
+        ]
+      },
+      "front-glass": {
+        "sample_count": 1,
+        "min_price_aed": 637.5,
+        "max_price_aed": 637.5,
+        "median_price_aed": 637.5,
+        "examples": [
+          {
+            "title": "Windsheild Front Glass for GLE & GLS 2019+",
+            "price_aed": 637.5,
+            "url": "https://alkhateeb.ae/products/windsheild-front-glass-for-gle-gls-2019"
+          }
+        ]
+      },
+      "fender": {
+        "sample_count": 5,
+        "min_price_aed": 862.5,
+        "max_price_aed": 1320.0,
+        "median_price_aed": 1125.0,
+        "examples": [
+          {
+            "title": "Car Front Fender for GLE-Class C292 2016-2024 Right Taiwan",
+            "price_aed": 862.5,
+            "url": "https://alkhateeb.ae/products/car-front-fender-for-gle-class-c292-2016-2024-right-taiwan"
+          },
+          {
+            "title": "Car Front Fender for GLC-Class X254 2022+ Right Taiwan",
+            "price_aed": 1320.0,
+            "url": "https://alkhateeb.ae/products/car-front-fender-for-glc-class-x254-2022-right-taiwan"
+          },
+          {
+            "title": "Car Front Fender for GLE-Class C292 2016-2024 Left - Taiwan",
+            "price_aed": 862.5,
+            "url": "https://alkhateeb.ae/products/car-front-fender-for-gle-class-c292-2016-2024-left-taiwan"
+          },
+          {
+            "title": "Car Front Fender for GLC-Class X254 2022+ Left - Taiwan",
+            "price_aed": 1320.0,
+            "url": "https://alkhateeb.ae/products/car-front-fender-for-glc-class-x254-2022-left-taiwan"
+          },
+          {
+            "title": "Front & Rear Fender Flare Trim G-Class G65 AMG, 4Pcs/Set Black",
+            "price_aed": 1125.0,
+            "url": "https://alkhateeb.ae/products/gtk-front-rear-fender-flare-trim-g-class-g65-amg-4pcs-set-black"
+          }
+        ]
+      },
+      "back-light": {
+        "sample_count": 2,
+        "min_price_aed": 1800.0,
+        "max_price_aed": 2100.0,
+        "median_price_aed": 1950.0,
+        "examples": [
+          {
+            "title": "TAIL LIGHT FOR S-CLASS 2018-2019 W222/2PCS-BLACK",
+            "price_aed": 2100.0,
+            "url": "https://alkhateeb.ae/products/tail-light-4benz-s-class18-19-w222-2pcs-black"
+          },
+          {
+            "title": "Auto Car Full Body Kit C-Class W204 C63 2006-2012 Upgrade To 2013 Style (No Headlights & Tail Light)",
+            "price_aed": 1800.0,
+            "url": "https://alkhateeb.ae/products/prima-auto-car-full-body-kit-c-class-w204-c63-2006-2012-upgrade-to-2013-style-no-headlights-tail-light"
+          }
+        ]
+      },
+      "roof": {
+        "sample_count": 6,
+        "min_price_aed": 1000.0,
+        "max_price_aed": 8250.0,
+        "median_price_aed": 4050.0,
+        "examples": [
+          {
+            "title": "ROOF BASKET AND LADDER FOR G-CLASS",
+            "price_aed": 8250.0,
+            "url": "https://alkhateeb.ae/products/roof-basket-and-ladder-for-g-class"
+          },
+          {
+            "title": "CAR ROOF LIGHT USE FOR G-CLASS W463 2002-18, DRY CARBON",
+            "price_aed": 3900.0,
+            "url": "https://alkhateeb.ae/products/car-roof-light-use-for-g-class-w463-2002-18-dry-carbon"
+          },
+          {
+            "title": "CAR ROOF LIGHT FOR G-CLASS W464 2019,SY STYLE,DRY CARBON,3K",
+            "price_aed": 7500.0,
+            "url": "https://alkhateeb.ae/products/car-roof-light-for-g-class-w464-2019-sy-style-dry-carbon-3k"
+          },
+          {
+            "title": "Car Rear Spoiler Roof Trunk Wing Style G-Class 2019+, Glossy Black",
+            "price_aed": 1000.0,
+            "url": "https://alkhateeb.ae/products/prima-car-rear-spoiler-roof-trunk-wing-brabus-style-g-class-2019-glossy-black"
+          },
+          {
+            "title": "Car Roof Lamp Top Light Bar With LED Drl Carbon Fiber Style G-Class W464 2020+",
+            "price_aed": 3750.0,
+            "url": "https://alkhateeb.ae/products/autotech-car-roof-lamp-top-light-bar-with-led-drl-carbon-fiber-brabus-style-g-class-w464-2020"
+          }
+        ]
+      },
+      "rocker-panel": {
+        "sample_count": 5,
+        "min_price_aed": 3400.0,
+        "max_price_aed": 8000.0,
+        "median_price_aed": 3400.0,
+        "examples": [
+          {
+            "title": "POWERED RUNNING BOARD FOR G-CLASS  2011-18",
+            "price_aed": 3400.0,
+            "url": "https://alkhateeb.ae/products/powered-running-board-for-g-class-2011-18"
+          },
+          {
+            "title": "POWERED RUNNING BOARD FOR G-CLASS RS 2019-23 W/EXHUAST PIPE",
+            "price_aed": 3400.0,
+            "url": "https://alkhateeb.ae/products/powered-running-board-for-benz-g-class-rs-2019-23-w-exhuast-pipe"
+          },
+          {
+            "title": "POWERED RUNNING BOARD FOR G-CLASS AMG 2019-23 W/EXHUAST PIPE",
+            "price_aed": 3400.0,
+            "url": "https://alkhateeb.ae/products/powered-running-board-for-benz-g-class-amg-2019-23-w-exhuast-pipe"
+          },
+          {
+            "title": "POWER RUNNING BOARD FOR G-CLASS W463 2013-18,2 PCS, W/BRACKET AND WIRE",
+            "price_aed": 8000.0,
+            "url": "https://alkhateeb.ae/products/power-running-board-for-g-class-w463-2013-18-2-pcs-w-bracket-and-wire"
+          },
+          {
+            "title": "POWER RUNNING BOARD FOR G-CLASS W463 2005-12, 2 PCS,W/BRACKET AND WIRE",
+            "price_aed": 8000.0,
+            "url": "https://alkhateeb.ae/products/power-running-board-for-g-class-w463-2005-12-2-pcs-w-bracket-and-wire"
+          }
+        ]
+      },
+      "grille": {
+        "sample_count": 1,
+        "min_price_aed": 270.0,
+        "max_price_aed": 270.0,
+        "median_price_aed": 270.0,
+        "examples": [
+          {
+            "title": "GRILLE FOR LC PICKUP G-CLASS STYL-BKCK",
+            "price_aed": 270.0,
+            "url": "https://alkhateeb.ae/products/grille-for-lc-pickup-g-class-styl-bkck"
+          }
+        ]
+      },
+      "trunk": {
+        "sample_count": 1,
+        "min_price_aed": 1000.0,
+        "max_price_aed": 1000.0,
+        "median_price_aed": 1000.0,
+        "examples": [
+          {
+            "title": "Car Rear Spoiler Roof Trunk Wing Style G-Class 2019+, Glossy Black",
+            "price_aed": 1000.0,
+            "url": "https://alkhateeb.ae/products/prima-car-rear-spoiler-roof-trunk-wing-brabus-style-g-class-2019-glossy-black"
+          }
+        ]
+      },
+      "front-light": {
+        "sample_count": 2,
+        "min_price_aed": 1800.0,
+        "max_price_aed": 2700.0,
+        "median_price_aed": 2250.0,
+        "examples": [
+          {
+            "title": "Car Headlights Performance S-Class W204 2012-2013, 2Pcs/Set Black",
+            "price_aed": 2700.0,
+            "url": "https://alkhateeb.ae/products/autotech-car-headlights-performance-s-class-w204-2012-2013-2pcs-set-black"
+          },
+          {
+            "title": "Auto Car Full Body Kit C-Class W204 C63 2006-2012 Upgrade To 2013 Style (No Headlights & Tail Light)",
+            "price_aed": 1800.0,
+            "url": "https://alkhateeb.ae/products/prima-auto-car-full-body-kit-c-class-w204-c63-2006-2012-upgrade-to-2013-style-no-headlights-tail-light"
+          }
+        ]
+      },
+      "hood": {
+        "sample_count": 1,
+        "min_price_aed": 3600.0,
+        "max_price_aed": 3600.0,
+        "median_price_aed": 3600.0,
+        "examples": [
+          {
+            "title": "Car Replacement Engine Hood Bonnet Cover G-Class 2019+, Upgrade, 3K Carbon Fiber",
+            "price_aed": 3600.0,
+            "url": "https://alkhateeb.ae/products/prima-car-replacement-engine-hood-bonnet-cover-g-class-2019-upgrade-to-brabus-style-3k-carbon-fiber"
+          }
+        ]
+      },
+      "front-bumper": {
+        "sample_count": 2,
+        "min_price_aed": 2250.0,
+        "max_price_aed": 2250.0,
+        "median_price_aed": 2250.0,
+        "examples": [
+          {
+            "title": "Front Bumper Lip For G-Class G500 2019 Style With Light",
+            "price_aed": 2250.0,
+            "url": "https://alkhateeb.ae/products/prima-front-bumper-lip-for-g-class-g500-2019-brabus-style-with-light"
+          },
+          {
+            "title": "Front Bumper Lip For G-Class Amg 2019",
+            "price_aed": 2250.0,
+            "url": "https://alkhateeb.ae/products/prima-front-bumper-lip-for-g-class-amg-2019-brabus-style"
+          }
+        ]
+      },
+      "right-mirror": {
+        "sample_count": 1,
+        "min_price_aed": 1950.0,
+        "max_price_aed": 1950.0,
+        "median_price_aed": 1950.0,
+        "examples": [
+          {
+            "title": "Car Side Mirror With Led & 9 Wires G-Class W464 2012-2018, 2Pcs/Set",
+            "price_aed": 1950.0,
+            "url": "https://alkhateeb.ae/products/auto-tech-car-side-mirror-with-led-9-wires-g-class-w464-2012-2018-2pcs-set"
+          }
+        ]
+      }
+    },
+    "Nissan": {
+      "wheel": {
+        "sample_count": 8,
+        "min_price_aed": 80.0,
+        "max_price_aed": 1460.0,
+        "median_price_aed": 90.0,
+        "examples": [
+          {
+            "title": "Alloy Casting Wheel RIM for Patrol Y63 2025+ Black+Machine Size:20\"X8 ET:35, PCD:6x139.7, CB:78.10",
+            "price_aed": 800.0,
+            "url": "https://alkhateeb.ae/products/alloy-casting-wheel-rim-for-patrol-y63-2025-black-machine-size-20x8-et-35-pcd-6x139-7-cb-78-10"
+          },
+          {
+            "title": "Wheel Hub Cap Cover With Logo Sunny 14Inch Nylon Silver 1998-2004, Set Of 4",
+            "price_aed": 84.0,
+            "url": "https://alkhateeb.ae/products/wheel-hub-cap-cover-with-logo-sunny-14inch-nylon-silver-1998-2004-set-of-4"
+          },
+          {
+            "title": "Wheel Rim Alloy for Patrol 2010-2021",
+            "price_aed": 1460.0,
+            "url": "https://alkhateeb.ae/products/wheel-rim-alloy-for-nissan-patrol-2010-24-nismo-rss-style-black-machine-size-22x9-5j-et-35-pcd-139-7x6-cb-77-8"
+          },
+          {
+            "title": "15Inch Nylon Silver Wheel Hub Cap Cover With Logo Sunny 2013+, Set Of 4",
+            "price_aed": 90.0,
+            "url": "https://alkhateeb.ae/products/ruote-15inch-nylon-silver-wheel-hub-cap-cover-with-logo-sunny-2013-set-of-4"
+          },
+          {
+            "title": "14Inch Nylon Silver Wheel Hub Cap Cover With Logo Sunny 2011-2012, Set Of 4",
+            "price_aed": 90.0,
+            "url": "https://alkhateeb.ae/products/ruote-14inch-nylon-silver-wheel-hub-cap-cover-with-logo-sunny-2011-2012-set-of-4"
+          }
+        ]
+      },
+      "trunk": {
+        "sample_count": 5,
+        "min_price_aed": 140.0,
+        "max_price_aed": 600.0,
+        "median_price_aed": 400.0,
+        "examples": [
+          {
+            "title": "Glass for Patrol Y62/QX80/ARMADA Tail Gate",
+            "price_aed": 487.5,
+            "url": "https://alkhateeb.ae/products/glass-for-patrol-y62-qx80-armada-tail-gate"
+          },
+          {
+            "title": "TRUNK STREMER LIGHT FOR PATROL",
+            "price_aed": 400.0,
+            "url": "https://alkhateeb.ae/products/trunk-stremer-light-4-patrol"
+          },
+          {
+            "title": "REAR TRUNK FOR PATROL 2020 - TSD2020PA",
+            "price_aed": 600.0,
+            "url": "https://alkhateeb.ae/products/rear-trunk-for-patrol-2020-tsd2020pa"
+          },
+          {
+            "title": "Car Rear Spoiler Trunk With Brake Light LED Sunny 2004-2009, ABS Plastic White",
+            "price_aed": 150.0,
+            "url": "https://alkhateeb.ae/products/gtk-car-rear-spoiler-trunk-with-brake-light-led-sunny-2004-2009-abs-plastic-white"
+          },
+          {
+            "title": "Car Rear Trunk Spoiler With LED Maxima 2005 Onwards, ABS White Painted",
+            "price_aed": 140.0,
+            "url": "https://alkhateeb.ae/products/gtk-car-rear-trunk-spoiler-with-led-maxima-2005-onwards-abs-white-painted"
+          }
+        ]
+      },
+      "roof": {
+        "sample_count": 6,
+        "min_price_aed": 187.5,
+        "max_price_aed": 1650.0,
+        "median_price_aed": 345.0,
+        "examples": [
+          {
+            "title": "Roof Rack for Patrol",
+            "price_aed": 315.0,
+            "url": "https://alkhateeb.ae/products/roof-rack-for-nis-patrol"
+          },
+          {
+            "title": "Roof Basket 4 Patrol Y62 ,Black",
+            "price_aed": 1650.0,
+            "url": "https://alkhateeb.ae/products/roof-basket-4-patrol-y62-black"
+          },
+          {
+            "title": "Roof Bar for Patrol 2016-2018",
+            "price_aed": 375.0,
+            "url": "https://alkhateeb.ae/products/roof-bar-for-patrol-2016-2018"
+          },
+          {
+            "title": "ROOF RACK FOR PATROL OEM FULL BODY CHROME",
+            "price_aed": 232.5,
+            "url": "https://alkhateeb.ae/products/roof-rack-4-patrol-oem-full-body-ch-rb693pasr"
+          },
+          {
+            "title": "Car Rear Spoiler Roof Wing Patrol Y61 2005-2009, Abs Plastic Unpainted",
+            "price_aed": 420.0,
+            "url": "https://alkhateeb.ae/products/gtk-car-rear-spoiler-roof-wing-patrol-y61-2005-2009-abs-plastic-unpainted"
+          }
+        ]
+      },
+      "right-mirror": {
+        "sample_count": 2,
+        "min_price_aed": 510.0,
+        "max_price_aed": 510.0,
+        "median_price_aed": 510.0,
+        "examples": [
+          {
+            "title": "Side Mirror Patrol Y62 2010-24 Black LED Electric Auto Fold R-H",
+            "price_aed": 510.0,
+            "url": "https://alkhateeb.ae/products/side-mirror-patrol-y62-2010-24-black-led-electric-auto-fold-r-h"
+          },
+          {
+            "title": "YTM Car Side Mirror Left Electric Automatic Foldable Black With LED Patrol Y62 2010-2024 L-H",
+            "price_aed": 510.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-ytm-car-side-mirror-left-electric-automatic-foldable-black-with-led-patrol-y62-2010-2024-l-h"
+          }
+        ]
+      },
+      "back-light": {
+        "sample_count": 4,
+        "min_price_aed": 150.0,
+        "max_price_aed": 2900.0,
+        "median_price_aed": 1050.0,
+        "examples": [
+          {
+            "title": "TAIL LIGHT FOR PATROL 2019 4PC",
+            "price_aed": 1400.0,
+            "url": "https://alkhateeb.ae/products/tail-light4-patrol-2019-4pc-tls698papc"
+          },
+          {
+            "title": "TAIL LIGHT FOR PATROL /TSD",
+            "price_aed": 2900.0,
+            "url": "https://alkhateeb.ae/products/tail-light4-patrol-tsd"
+          },
+          {
+            "title": "Car Performance Rear Led Tail Light Tail Lamp Assembly Patrol Y62 2018+ Smoked Red Reverse Light, 4Pcs Set",
+            "price_aed": 700.0,
+            "url": "https://alkhateeb.ae/products/auto-tech-car-performance-rear-led-tail-light-tail-lamp-assembly-patrol-y62-2018-smoked-red-reverse-light-4pcs-set"
+          },
+          {
+            "title": "Car Rear Spoiler Trunk With Brake Light LED Sunny 2004-2009, ABS Plastic White",
+            "price_aed": 150.0,
+            "url": "https://alkhateeb.ae/products/gtk-car-rear-spoiler-trunk-with-brake-light-led-sunny-2004-2009-abs-plastic-white"
+          }
+        ]
+      },
+      "back-bumper": {
+        "sample_count": 3,
+        "min_price_aed": 630.0,
+        "max_price_aed": 780.0,
+        "median_price_aed": 675.0,
+        "examples": [
+          {
+            "title": "REAR BUMPER PLATINUM EDITION OE FOR PATROL 2019+",
+            "price_aed": 630.0,
+            "url": "https://alkhateeb.ae/products/rear-bumper-platinum-edition-oe-for-patrol-2019"
+          },
+          {
+            "title": "REAR BUMPER FOR NAVARA 2015+ CHROME THAILAND",
+            "price_aed": 780.0,
+            "url": "https://alkhateeb.ae/products/rear-bumper-for-nissan-navara-2015-chrome-thailand"
+          },
+          {
+            "title": "Car Rear Bumper Down Spoiler With Led Patrol Y62 2010-2018, Silver/Ne Coating",
+            "price_aed": 675.0,
+            "url": "https://alkhateeb.ae/products/gtk-car-rear-bumper-down-spoiler-with-led-patrol-y62-2010-2018-silver-ne-coating"
+          }
+        ]
+      },
+      "front-light": {
+        "sample_count": 5,
+        "min_price_aed": 82.5,
+        "max_price_aed": 1500.0,
+        "median_price_aed": 247.5,
+        "examples": [
+          {
+            "title": "HEAD LIGHT4 PATOL Y62 2010-17 2PC",
+            "price_aed": 1200.0,
+            "url": "https://alkhateeb.ae/products/head-light4-patol-y62-2010-17-2pc"
+          },
+          {
+            "title": "Car Headlights Performance Patrol Y62 2010-2017, 2Pcs/Set Black+Chrome",
+            "price_aed": 1500.0,
+            "url": "https://alkhateeb.ae/products/autotech-car-headlights-performance-patrol-y62-2010-2017-2pcs-set-black-chrome"
+          },
+          {
+            "title": "Car Fog Lights Bumper Lamps Pickup Frontier Navara 1998-2013, 2Pcs/Set",
+            "price_aed": 82.5,
+            "url": "https://alkhateeb.ae/products/autotech-car-fog-lights-bumper-lamps-pickup-frontier-navara-1998-2013-2pcs-set"
+          },
+          {
+            "title": "Car Front Special Fog Lamp Kit Patrol Y61 2005+ With Wires & Switch, Chrome&Black Frame, Clear Lense, 2Pcs/Set",
+            "price_aed": 247.5,
+            "url": "https://alkhateeb.ae/products/autotech-car-front-special-fog-lamp-kit-patrol-y61-2005-with-wires-switch-chrome-black-frame-clear-lense-2pcs-set"
+          },
+          {
+            "title": "Car Front Special Fog Lamp Kit Sunny 2015+, Chrome&Black Frame, Clear Lense, 2Pcs/Set",
+            "price_aed": 240.0,
+            "url": "https://alkhateeb.ae/products/auto-tech-car-front-special-fog-lamp-kit-sunny-2015-chrome-black-frame-clear-lense-2pcs-set"
+          }
+        ]
+      },
+      "fender": {
+        "sample_count": 1,
+        "min_price_aed": 1170.0,
+        "max_price_aed": 1170.0,
+        "median_price_aed": 1170.0,
+        "examples": [
+          {
+            "title": "FENDER FLARES PATROL Y62 6PC BK",
+            "price_aed": 1170.0,
+            "url": "https://alkhateeb.ae/products/fender-flares-patrol-y62-6pc-bk"
+          }
+        ]
+      },
+      "left-mirror": {
+        "sample_count": 1,
+        "min_price_aed": 510.0,
+        "max_price_aed": 510.0,
+        "median_price_aed": 510.0,
+        "examples": [
+          {
+            "title": "YTM Car Side Mirror Left Electric Automatic Foldable Black With LED Patrol Y62 2010-2024 L-H",
+            "price_aed": 510.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-ytm-car-side-mirror-left-electric-automatic-foldable-black-with-led-patrol-y62-2010-2024-l-h"
+          }
+        ]
+      },
+      "rocker-panel": {
+        "sample_count": 1,
+        "min_price_aed": 220.0,
+        "max_price_aed": 220.0,
+        "median_price_aed": 220.0,
+        "examples": [
+          {
+            "title": "Car Side Skirt Door Body Moulding Cladding Trim Decoration Patrol 2010-2016 4Pcs/Set Chrome",
+            "price_aed": 220.0,
+            "url": "https://alkhateeb.ae/products/gtk-car-side-skirt-door-body-moulding-cladding-trim-decoration-patrol-2010-2016-4pcs-set-chrome"
+          }
+        ]
+      },
+      "hood": {
+        "sample_count": 2,
+        "min_price_aed": 232.5,
+        "max_price_aed": 675.0,
+        "median_price_aed": 453.75,
+        "examples": [
+          {
+            "title": "Hood Inner Liner For Patrol 2020",
+            "price_aed": 232.5,
+            "url": "https://alkhateeb.ae/products/gtk-hood-inner-liner-for-patrol-2020"
+          },
+          {
+            "title": "Aluminum Hood Panel For Patrol 2020+, No Painted",
+            "price_aed": 675.0,
+            "url": "https://alkhateeb.ae/products/gtk-aluminum-hood-panel-for-patrol-2020-no-painted"
+          }
+        ]
+      },
+      "grille": {
+        "sample_count": 3,
+        "min_price_aed": 330.0,
+        "max_price_aed": 630.0,
+        "median_price_aed": 450.0,
+        "examples": [
+          {
+            "title": "ABS Front Grille Chrome For Patrol 2010-2015",
+            "price_aed": 330.0,
+            "url": "https://alkhateeb.ae/products/gtk-abs-front-grille-chrome-for-patrol-2010-2015"
+          },
+          {
+            "title": "Front Grille For Patrol Y62 2019-2021 Facelight To Patrol 2022 Platinum Edition",
+            "price_aed": 450.0,
+            "url": "https://alkhateeb.ae/products/gtk-front-grille-for-patrol-y62-2019-2021-facelight-to-patrol-2022-platinum-edition"
+          },
+          {
+            "title": "Car Front Grille Patrol 2019+ Modify to Platinum Edition Style",
+            "price_aed": 630.0,
+            "url": "https://alkhateeb.ae/products/gtk-car-front-grille-patrol-2019-modify-to-platinum-edition-style"
+          }
+        ]
+      }
+    },
+    "Lexus": {
+      "wheel": {
+        "sample_count": 7,
+        "min_price_aed": 20.0,
+        "max_price_aed": 11700.0,
+        "median_price_aed": 880.0,
+        "examples": [
+          {
+            "title": "Prima Car Body Kit For LX570 2008-2015 Upgrade To 2016 Style",
+            "price_aed": 11700.0,
+            "url": "https://alkhateeb.ae/products/prima-car-body-kit-for-lx570-2008-2015-upgrade-to-2016-style"
+          },
+          {
+            "title": "Car Wheel Rim Center Caps Hubcaps With Logo LX570 2009-2014, Silver 1Pc",
+            "price_aed": 28.0,
+            "url": "https://alkhateeb.ae/products/gtk-car-wheel-rim-center-caps-hubcaps-with-lexus-logo-lx570-2009-2014-silver-1pc"
+          },
+          {
+            "title": "Car Wheel Center Cap LX570 2012-2014 Gray",
+            "price_aed": 20.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-car-wheel-center-cap-lx570-2012-2014-gray"
+          },
+          {
+            "title": "Car Wheel Rim Center Caps Hubcaps With Logo LX570 2009-2014, Gray 1Pc",
+            "price_aed": 28.0,
+            "url": "https://alkhateeb.ae/products/gtk-car-wheel-rim-center-caps-hubcaps-with-lexus-logo-lx570-2009-2014-gray-1pc"
+          },
+          {
+            "title": "Black Alloy Wheel Rim For LX570 2016-2019 To 2021 20\"X8.5\"",
+            "price_aed": 900.0,
+            "url": "https://alkhateeb.ae/products/prima-black-alloy-wheel-rim-for-lx570-2016-2019-to-2021-20x8-5"
+          }
+        ]
+      },
+      "trunk": {
+        "sample_count": 6,
+        "min_price_aed": 487.5,
+        "max_price_aed": 630.0,
+        "median_price_aed": 600.0,
+        "examples": [
+          {
+            "title": "Glass for LX570 2008-2021 Tailgate",
+            "price_aed": 487.5,
+            "url": "https://alkhateeb.ae/products/glass-for-lx570-2008-2021-tailgate"
+          },
+          {
+            "title": "Glass for RX350/450 2016-2022 Tailgate",
+            "price_aed": 487.5,
+            "url": "https://alkhateeb.ae/products/glass-for-rx350-450-2016-2022-tailgate"
+          },
+          {
+            "title": "Car Floor & Trunk Mat Leather LX570 2016-2021, 4Pcs/Set, Black",
+            "price_aed": 600.0,
+            "url": "https://alkhateeb.ae/products/prima-car-floor-trunk-mat-leather-lx570-2016-2021-4pcs-set-black"
+          },
+          {
+            "title": "Car Floor & Trunk Mat Leather LX570 2016-2021, 4Pcs/Set, Black Beige",
+            "price_aed": 600.0,
+            "url": "https://alkhateeb.ae/products/prima-car-floor-trunk-mat-leather-lx570-2016-2021-4pcs-set-black-beige"
+          },
+          {
+            "title": "LX570 Car Floor & Trunk Mat Leather 2016-2021, 4Pcs/Set, Rusty Red",
+            "price_aed": 630.0,
+            "url": "https://alkhateeb.ae/products/lexus-lx570-prima-car-floor-trunk-mat-leather-2016-2021-4pcs-set-rusty-red"
+          }
+        ]
+      },
+      "back-light": {
+        "sample_count": 1,
+        "min_price_aed": 3600.0,
+        "max_price_aed": 3600.0,
+        "median_price_aed": 3600.0,
+        "examples": [
+          {
+            "title": "Tail Light for Lexus Nx200,2014-21, Smoke Black",
+            "price_aed": 3600.0,
+            "url": "https://alkhateeb.ae/products/tail-light-for-lexus-nx200-2014-21-smoke-black"
+          }
+        ]
+      },
+      "hood": {
+        "sample_count": 1,
+        "min_price_aed": 1875.0,
+        "max_price_aed": 1875.0,
+        "median_price_aed": 1875.0,
+        "examples": [
+          {
+            "title": "AN TAI Car Black Steel Hood LX570 2016+",
+            "price_aed": 1875.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-an-tai-car-black-steel-hood-lx570-2016"
+          }
+        ]
+      },
+      "front-light": {
+        "sample_count": 5,
+        "min_price_aed": 1125.0,
+        "max_price_aed": 3300.0,
+        "median_price_aed": 1425.0,
+        "examples": [
+          {
+            "title": "FOG LAMP FOR LX570 2 LENSE",
+            "price_aed": 1425.0,
+            "url": "https://alkhateeb.ae/products/fog-lamp-4-lx570-2-lense"
+          },
+          {
+            "title": "HEAD LIGHT FOR LX570 2009-15 UPTO16",
+            "price_aed": 2250.0,
+            "url": "https://alkhateeb.ae/products/head-light-for-lx570-2009-15-upto16"
+          },
+          {
+            "title": "Car Headlights Peformance Rx330 Rx350 2012-2014 Facelift To 2021 Style, 2Pcs/Set",
+            "price_aed": 3300.0,
+            "url": "https://alkhateeb.ae/products/autotech-car-headlights-peformance-rx330-rx350-2012-2014-facelift-to-2021-style-2pcs-set"
+          },
+          {
+            "title": "Car Fog Lamp 1 Lense For LX570",
+            "price_aed": 1125.0,
+            "url": "https://alkhateeb.ae/products/autotech-car-fog-lamp-1-lense-for-lx570"
+          },
+          {
+            "title": "Front Body Kit 2018 With Grille & Fog Lights Modify IS250 to LX570 Style",
+            "price_aed": 1170.0,
+            "url": "https://alkhateeb.ae/products/gtk-front-body-kit-2018-with-grille-fog-lights-modify-is250-to-lx570-style"
+          }
+        ]
+      },
+      "fender": {
+        "sample_count": 5,
+        "min_price_aed": 200.0,
+        "max_price_aed": 1240.0,
+        "median_price_aed": 892.5,
+        "examples": [
+          {
+            "title": "Car Fender Side Sticker Emblem Badge Logo Stainless Steel ABS LX570 2016-2021, 2Pcs/Set Chrome Black",
+            "price_aed": 200.0,
+            "url": "https://alkhateeb.ae/products/gtk-car-fender-side-sticker-emblem-badge-logo-stainless-steel-abs-lx570-2016-2021-2pcs-set-chrome-black"
+          },
+          {
+            "title": "Car Front Fender RX350/450 Left",
+            "price_aed": 1240.0,
+            "url": "https://alkhateeb.ae/products/car-front-fender-rx350-450-left"
+          },
+          {
+            "title": "Car Front Fender RX350/450 Right",
+            "price_aed": 1240.0,
+            "url": "https://alkhateeb.ae/products/car-front-fender-rx350-450-right"
+          },
+          {
+            "title": "Right Fender Steel For LX570 2016-2021, Black",
+            "price_aed": 892.5,
+            "url": "https://alkhateeb.ae/products/al-khateeb-right-fender-steel-for-lx570-2016-2021-black"
+          },
+          {
+            "title": "Left Fender Steel For LX570 2016-2021, Black",
+            "price_aed": 892.5,
+            "url": "https://alkhateeb.ae/products/al-khateeb-left-fender-steel-for-lx570-2016-2021-black"
+          }
+        ]
+      },
+      "front-bumper": {
+        "sample_count": 1,
+        "min_price_aed": 1520.0,
+        "max_price_aed": 1520.0,
+        "median_price_aed": 1520.0,
+        "examples": [
+          {
+            "title": "Front Bumper for RX350/450 2023+",
+            "price_aed": 1520.0,
+            "url": "https://alkhateeb.ae/products/front-bumper-for-rx350-450-2023"
+          }
+        ]
+      },
+      "back-bumper": {
+        "sample_count": 4,
+        "min_price_aed": 165.0,
+        "max_price_aed": 3300.0,
+        "median_price_aed": 2505.0,
+        "examples": [
+          {
+            "title": "Rear Bumper for RX350/450 2023+",
+            "price_aed": 1710.0,
+            "url": "https://alkhateeb.ae/products/rear-bumper-for-rx350-450-2023"
+          },
+          {
+            "title": "Car Rear Bumper Exhaust Exterior Decorative Cover LX570 Trd 2021, 2Pcs",
+            "price_aed": 165.0,
+            "url": "https://alkhateeb.ae/products/gtk-car-rear-bumper-exhaust-exterior-decorative-cover-lx570-trd-2021-2pcs"
+          },
+          {
+            "title": "Car Body Kit Front & Rear Bumper With Mount And Brackets Modellista White Style LX600 2022+",
+            "price_aed": 3300.0,
+            "url": "https://alkhateeb.ae/products/gtk-car-body-kit-front-rear-bumper-with-mount-and-brackets-modellista-white-style-lx600-2022"
+          },
+          {
+            "title": "Car Body Kit Front & Rear Bumper With Mount And Brackets Modellista Black Style LX600 2022+",
+            "price_aed": 3300.0,
+            "url": "https://alkhateeb.ae/products/gtk-car-body-kit-front-rear-bumper-with-mount-and-brackets-modellista-black-style-lx600-2022"
+          }
+        ]
+      },
+      "rocker-panel": {
+        "sample_count": 4,
+        "min_price_aed": 1160.0,
+        "max_price_aed": 2000.0,
+        "median_price_aed": 1460.0,
+        "examples": [
+          {
+            "title": "SIDE SKIRT DECORATION FOR LX600 2022+, 4 PCS CHROME+WHITE",
+            "price_aed": 2000.0,
+            "url": "https://alkhateeb.ae/products/side-skirt-decoration-for-lx600-2022-4-pcs-chrome-white"
+          },
+          {
+            "title": "SIDE SKIRT DECORATION FOR LX600 2022+, 4 PCS BLACK CHROME+WHITE",
+            "price_aed": 1160.0,
+            "url": "https://alkhateeb.ae/products/side-skirt-decoration-for-lx600-2022-4-pcs-black-chrome-white"
+          },
+          {
+            "title": "SIDE SKIRT DECORATION FOR LX600 2022+, 4 PCS BLACK CHROME+BLACK",
+            "price_aed": 1160.0,
+            "url": "https://alkhateeb.ae/products/side-skirt-decoration-for-lx600-2022-4-pcs-black-chrome-black"
+          },
+          {
+            "title": "SIDE RUNNING BOARD FOR LX600, MODELLISTA STYLE, 2 PCS",
+            "price_aed": 1760.0,
+            "url": "https://alkhateeb.ae/products/side-running-board-for-lx600-modellista-style-2-pcs"
+          }
+        ]
+      },
+      "right-mirror": {
+        "sample_count": 2,
+        "min_price_aed": 570.0,
+        "max_price_aed": 570.0,
+        "median_price_aed": 570.0,
+        "examples": [
+          {
+            "title": "YTM Electric Foldable Black With LED Side Mirror For LX570 2009-2021",
+            "price_aed": 570.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-ytm-electric-foldable-black-with-led-side-mirror-for-lx570-2009-2021"
+          },
+          {
+            "title": "YTM Side Mirror Right Electric Foldable Black With LED LX570 2009-2021",
+            "price_aed": 570.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-ytm-side-mirror-right-electric-foldable-black-with-led-lx570-2009-2021"
+          }
+        ]
+      },
+      "roof": {
+        "sample_count": 2,
+        "min_price_aed": 480.0,
+        "max_price_aed": 525.0,
+        "median_price_aed": 502.5,
+        "examples": [
+          {
+            "title": "Car Aluminum Roof Rack Rail Bar Lx570 2009-2020+, Chrome",
+            "price_aed": 480.0,
+            "url": "https://alkhateeb.ae/products/gtk-car-aluminum-roof-rack-rail-bar-lx570-2009-2020-chrome"
+          },
+          {
+            "title": "Stainless Steel Roof Rack Rail Bar For Lx570, Rx300 And Rx350 2017-2021, Chrome",
+            "price_aed": 525.0,
+            "url": "https://alkhateeb.ae/products/gtk-stainless-steel-roof-rack-rail-bar-for-lx570-rx300-and-rx350-2017-2021-chrome"
+          }
+        ]
+      },
+      "grille": {
+        "sample_count": 1,
+        "min_price_aed": 1170.0,
+        "max_price_aed": 1170.0,
+        "median_price_aed": 1170.0,
+        "examples": [
+          {
+            "title": "Front Body Kit 2018 With Grille & Fog Lights Modify IS250 to LX570 Style",
+            "price_aed": 1170.0,
+            "url": "https://alkhateeb.ae/products/gtk-front-body-kit-2018-with-grille-fog-lights-modify-is250-to-lx570-style"
+          }
+        ]
+      }
+    },
+    "Hyundai": {
+      "trunk": {
+        "sample_count": 8,
+        "min_price_aed": 26.0,
+        "max_price_aed": 675.0,
+        "median_price_aed": 270.0,
+        "examples": [
+          {
+            "title": "Glass for Tucson 2016-2021 Tailgate",
+            "price_aed": 337.5,
+            "url": "https://alkhateeb.ae/products/glass-for-tucson-2016-2021-tailgate"
+          },
+          {
+            "title": "TRUNK STREAMER DCOR VERNA/ACCENT",
+            "price_aed": 26.0,
+            "url": "https://alkhateeb.ae/products/trunk-streamer-dcor-verna-accent"
+          },
+          {
+            "title": "CAR MAT LEATHER FOR  TUCSON 2018 ,W/TRUNK MAT 4 PCS RUSTY RED",
+            "price_aed": 270.0,
+            "url": "https://alkhateeb.ae/products/car-mat-leather-for-tucson-2018-w-trunk-mat-4-pcs-rusty-red"
+          },
+          {
+            "title": "CAR MAT LEATHER FOR  TUCSON 2018 ,W/TRUNK MAT 4 PCS D.BEIGE",
+            "price_aed": 270.0,
+            "url": "https://alkhateeb.ae/products/car-mat-leather-for-tucson-2018-w-trunk-mat-4-pcs-d-beige"
+          },
+          {
+            "title": "CAR MAT LEATHER FOR  TUCSON 2018 ,W/TRUNK MAT 4 PCS BLACK",
+            "price_aed": 270.0,
+            "url": "https://alkhateeb.ae/products/car-mat-leather-for-tucson-2018-w-trunk-mat-4-pcs-black"
+          }
+        ]
+      },
+      "front-glass": {
+        "sample_count": 1,
+        "min_price_aed": 487.5,
+        "max_price_aed": 487.5,
+        "median_price_aed": 487.5,
+        "examples": [
+          {
+            "title": "Glass for Tucson 2016-2021 Windshield Front",
+            "price_aed": 487.5,
+            "url": "https://alkhateeb.ae/products/glass-for-tucson-2016-2021-windshield-front"
+          }
+        ]
+      },
+      "wheel": {
+        "sample_count": 17,
+        "min_price_aed": 27.0,
+        "max_price_aed": 96.0,
+        "median_price_aed": 84.0,
+        "examples": [
+          {
+            "title": "Car Wheel Center Hub Cap Cover 14\" Accent 2017-2020, Set Of 4",
+            "price_aed": 84.0,
+            "url": "https://alkhateeb.ae/products/car-wheel-center-hub-cap-cover-14-accent-2017-2020-set-of-4"
+          },
+          {
+            "title": "WHEEL CUP USE4 HY UNIVERSAL&ELANTRA",
+            "price_aed": 30.0,
+            "url": "https://alkhateeb.ae/products/wheel-cup-use4-hy-universal-elantra"
+          },
+          {
+            "title": "14Inch Nylon Silver Wheel Hub Cap Cover With Logo Accent 2006-2010, Set Of 4",
+            "price_aed": 84.0,
+            "url": "https://alkhateeb.ae/products/ruote-14inch-nylon-silver-wheel-hub-cap-cover-with-logo-accent-2006-2010-set-of-4"
+          },
+          {
+            "title": "13Inch Nylon Silver Wheel Hub Cap Cover With Logo Accent 1998-2001, Set Of 4",
+            "price_aed": 80.0,
+            "url": "https://alkhateeb.ae/products/ruote-13inch-nylon-silver-wheel-hub-cap-cover-with-logo-accent-1998-2001-set-of-4"
+          },
+          {
+            "title": "13\" Nylon Silver Wheel Hub Cap Cover With Logo Accent 2002-2005, Set Of 4",
+            "price_aed": 80.0,
+            "url": "https://alkhateeb.ae/products/ruote-13inch-nylon-silver-wheel-hub-cap-cover-with-logo-accent-2002-2005-set-of-4"
+          }
+        ]
+      },
+      "grille": {
+        "sample_count": 14,
+        "min_price_aed": 123.0,
+        "max_price_aed": 397.5,
+        "median_price_aed": 262.5,
+        "examples": [
+          {
+            "title": "Grill OEM Elantra 2011-15",
+            "price_aed": 184.0,
+            "url": "https://alkhateeb.ae/products/grill-oem-elantra-2011-15"
+          },
+          {
+            "title": "FPI OEM Front Grille Accent 2011-2014 Chrome With Moulding",
+            "price_aed": 123.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-fpi-oem-front-grille-accent-2011-2014-chrome-with-moulding"
+          },
+          {
+            "title": "FPI OEM Front Grille Santa Fe 2012-2017 Chrome Black",
+            "price_aed": 307.5,
+            "url": "https://alkhateeb.ae/products/al-khateeb-fpi-oem-front-grille-santa-fe-2012-2017-chrome-black"
+          },
+          {
+            "title": "FPI OEM Front Grille Tucson 2019+ Chrome Black",
+            "price_aed": 382.5,
+            "url": "https://alkhateeb.ae/products/al-khateeb-fpi-oem-front-grille-tucson-2019-chrome-black"
+          },
+          {
+            "title": "FPI Car Front OEM Radiator Grille Sonata 2018-2020",
+            "price_aed": 277.5,
+            "url": "https://alkhateeb.ae/products/al-khateeb-fpi-car-front-oem-radiator-grille-sonata-2018-2020"
+          }
+        ]
+      },
+      "fender": {
+        "sample_count": 6,
+        "min_price_aed": 170.0,
+        "max_price_aed": 230.0,
+        "median_price_aed": 176.0,
+        "examples": [
+          {
+            "title": "Car Front Fender Accent 2011-16 Left",
+            "price_aed": 170.0,
+            "url": "https://alkhateeb.ae/products/car-front-fender-accent-2011-16-left"
+          },
+          {
+            "title": "TYG Car Fender Left Accent / Solaris 2017-2020",
+            "price_aed": 230.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-tyg-car-fender-left-accent-solaris-2017-2020"
+          },
+          {
+            "title": "TYG Car Fender Right Accent / Solaris 2017-2020",
+            "price_aed": 230.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-tyg-car-fender-right-accent-solaris-2017-2020"
+          },
+          {
+            "title": "Front Right Fender Without Side Lamp Hole For Elantra 2011-2015",
+            "price_aed": 176.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-front-right-fender-without-side-lamp-hole-for-elantra-2011-2015"
+          },
+          {
+            "title": "TYG Car Fender Right Accent 2011-2016",
+            "price_aed": 170.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-tyg-car-fender-right-accent-2011-2016"
+          }
+        ]
+      },
+      "front-light": {
+        "sample_count": 5,
+        "min_price_aed": 52.5,
+        "max_price_aed": 420.0,
+        "median_price_aed": 165.0,
+        "examples": [
+          {
+            "title": "FOG LAMP USE4HY ACCENT/VERNA12W&S",
+            "price_aed": 67.5,
+            "url": "https://alkhateeb.ae/products/fog-lamp-use4hy-accent-verna12w-s"
+          },
+          {
+            "title": "Car Rear Bumper Tail Light Led Reflector Rear Fog Lamp Fog Light Brake Tucson 2016, 2Pcs Set",
+            "price_aed": 190.0,
+            "url": "https://alkhateeb.ae/products/auto-tech-car-rear-bumper-tail-light-led-reflector-rear-fog-lamp-fog-light-brake-tucson-2016-2pcs-set"
+          },
+          {
+            "title": "Special Fog Lamp With Wire&Switch Sonata 2000-2003, 2Pcs/Set Clear",
+            "price_aed": 52.5,
+            "url": "https://alkhateeb.ae/products/autotech-special-fog-lamp-with-wire-switch-sonata-2000-2003-2pcs-set-clear"
+          },
+          {
+            "title": "Special Fog Lamp With Wire&Switch Sonata 2015+, 2Pcs/Set Black+Chrome",
+            "price_aed": 165.0,
+            "url": "https://alkhateeb.ae/products/autotech-special-fog-lamp-with-wire-switch-sonata-2015-2pcs-set-black-chrome"
+          },
+          {
+            "title": "Car LED Daytime Runnning Light Fog Light Frame Sonata 2018+, 2Pcs Set",
+            "price_aed": 420.0,
+            "url": "https://alkhateeb.ae/products/autotech-car-led-daytime-runnning-light-fog-light-frame-sonata-2018-2pcs-set"
+          }
+        ]
+      },
+      "back-light": {
+        "sample_count": 4,
+        "min_price_aed": 190.0,
+        "max_price_aed": 1360.0,
+        "median_price_aed": 700.0,
+        "examples": [
+          {
+            "title": "TAIL LIGHT FOR ACCENT 2012 PERFORMANCE",
+            "price_aed": 700.0,
+            "url": "https://alkhateeb.ae/products/tl-for-accent-2012-performance"
+          },
+          {
+            "title": "TAIL LIGHT/LED 4 SONATA 2004-09",
+            "price_aed": 700.0,
+            "url": "https://alkhateeb.ae/products/tail-light-led-4-sonata-2004-09"
+          },
+          {
+            "title": "Car Performance Rear Tail Light Elantra 2016, Smoked Red 2Pcs/Set",
+            "price_aed": 1360.0,
+            "url": "https://alkhateeb.ae/products/autotech-car-performance-rear-tail-light-elantra-2016-smoked-red-2pcs-set"
+          },
+          {
+            "title": "Car Rear Bumper Tail Light Led Reflector Rear Fog Lamp Fog Light Brake Tucson 2016, 2Pcs Set",
+            "price_aed": 190.0,
+            "url": "https://alkhateeb.ae/products/auto-tech-car-rear-bumper-tail-light-led-reflector-rear-fog-lamp-fog-light-brake-tucson-2016-2pcs-set"
+          }
+        ]
+      },
+      "front-bumper": {
+        "sample_count": 18,
+        "min_price_aed": 57.0,
+        "max_price_aed": 530.0,
+        "median_price_aed": 217.5,
+        "examples": [
+          {
+            "title": "FRONT BUMPER SONATA 2017-18",
+            "price_aed": 217.5,
+            "url": "https://alkhateeb.ae/products/front-bumper-sonata-2017-18"
+          },
+          {
+            "title": "FRONT BUMPER MOULDING SONATA CHROME LH",
+            "price_aed": 87.0,
+            "url": "https://alkhateeb.ae/products/front-bumper-moulding-sonata-chrome-lh"
+          },
+          {
+            "title": "FRONT BUMPER CHROME SONATA MOULDING RH",
+            "price_aed": 87.0,
+            "url": "https://alkhateeb.ae/products/front-bumper-chrome-sonata-moulding-rh"
+          },
+          {
+            "title": "FRONT BUMPER ACCENT WITH FINISHER # S",
+            "price_aed": 172.5,
+            "url": "https://alkhateeb.ae/products/front-bumper-accent-with-finisher-s"
+          },
+          {
+            "title": "Front Bumper For Santa Fe 2014-2019",
+            "price_aed": 410.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-front-bumper-for-santa-fe-2014-2019"
+          }
+        ]
+      },
+      "left-mirror": {
+        "sample_count": 6,
+        "min_price_aed": 290.0,
+        "max_price_aed": 510.0,
+        "median_price_aed": 350.0,
+        "examples": [
+          {
+            "title": "YTM Car Side Mirror Left Electric Heater Automatic Foldable With LED Tucson Ix35 2015-2020 L-H, Black",
+            "price_aed": 510.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-ytm-car-side-mirror-left-electric-heater-automatic-foldable-with-led-tucson-ix35-2015-2020-l-h-black"
+          },
+          {
+            "title": "YTM Car Side Mirror Left Electric Automatic Foldable With LED Tucson Ix35 2009-2014 L-H, Black",
+            "price_aed": 350.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-ytm-car-side-mirror-left-electric-automatic-foldable-with-led-tucson-ix35-2009-2014-l-h-black"
+          },
+          {
+            "title": "YTM Car Side Mirror Left Electric Automatic Foldable With Led Accent 2010-20115 L-H, Black",
+            "price_aed": 290.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-ytm-car-side-mirror-left-electric-automatic-foldable-with-led-accent-2010-20115-l-h-black"
+          },
+          {
+            "title": "YTM Car Side Mirror Left Electric Automatic Foldable With Led Accent 2010-20115 R-H, Black",
+            "price_aed": 290.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-ytm-car-side-mirror-left-electric-automatic-foldable-with-led-accent-2010-20115-r-h-black"
+          },
+          {
+            "title": "YTM Car Side Mirror Left Electric Automatic Foldable With Led Elantra 2016-2018 L-H, Black",
+            "price_aed": 430.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-ytm-car-side-mirror-left-electric-automatic-foldable-with-led-elantra-2016-2018-l-h-black"
+          }
+        ]
+      },
+      "right-mirror": {
+        "sample_count": 10,
+        "min_price_aed": 290.0,
+        "max_price_aed": 510.0,
+        "median_price_aed": 350.0,
+        "examples": [
+          {
+            "title": "YTM Car Side Mirror Left Electric Heater Automatic Foldable With LED Tucson Ix35 2015-2020 L-H, Black",
+            "price_aed": 510.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-ytm-car-side-mirror-left-electric-heater-automatic-foldable-with-led-tucson-ix35-2015-2020-l-h-black"
+          },
+          {
+            "title": "YTM Car Side Mirror Right Electric Heater Automatic Foldable With LED Tucson Ix35 2015-2020 R-H, Black",
+            "price_aed": 510.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-ytm-car-side-mirror-right-electric-heater-automatic-foldable-with-led-tucson-ix35-2015-2020-r-h-black"
+          },
+          {
+            "title": "YTM Car Side Mirror Left Electric Automatic Foldable With LED Tucson Ix35 2009-2014 L-H, Black",
+            "price_aed": 350.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-ytm-car-side-mirror-left-electric-automatic-foldable-with-led-tucson-ix35-2009-2014-l-h-black"
+          },
+          {
+            "title": "YTM Car Side Mirror Right Electric Automatic Foldable With LED Tucson Ix35 2009-2014 R-H, Black",
+            "price_aed": 350.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-ytm-car-side-mirror-right-electric-automatic-foldable-with-led-tucson-ix35-2009-2014-r-h-black"
+          },
+          {
+            "title": "YTM Car Side Mirror Left Electric Automatic Foldable With Led Accent 2010-20115 L-H, Black",
+            "price_aed": 290.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-ytm-car-side-mirror-left-electric-automatic-foldable-with-led-accent-2010-20115-l-h-black"
+          }
+        ]
+      },
+      "back-bumper": {
+        "sample_count": 21,
+        "min_price_aed": 123.0,
+        "max_price_aed": 675.0,
+        "median_price_aed": 285.0,
+        "examples": [
+          {
+            "title": "TYG Matte-Black Rear Bumper Without Sensor Hole For Accent 2017-2020",
+            "price_aed": 290.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-tyg-matte-black-rear-bumper-without-sensor-hole-for-accent-2017-2020"
+          },
+          {
+            "title": "TYG Matte-Black Rear Bumper Lower For Accent 2017-2020",
+            "price_aed": 230.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-tyg-matte-black-rear-bumper-lower-for-accent-2017-2020"
+          },
+          {
+            "title": "TYG Rear Bumper Panel For Elantra 2011-2016",
+            "price_aed": 330.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-tyg-rear-bumper-panel-for-elantra-2011-2016"
+          },
+          {
+            "title": "TYG Black Rear Bumper With Finisher Tucson 2016-2020",
+            "price_aed": 360.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-tyg-black-rear-bumper-with-finisher-tucson-2016-2020"
+          },
+          {
+            "title": "TYG Matt-Black Rear Bumper For Elantra 2011-2015",
+            "price_aed": 210.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-tyg-matt-black-rear-bumper-for-elantra-2011-2015"
+          }
+        ]
+      },
+      "hood": {
+        "sample_count": 4,
+        "min_price_aed": 42.0,
+        "max_price_aed": 790.0,
+        "median_price_aed": 650.0,
+        "examples": [
+          {
+            "title": "TYG Steel Hood Panel For Santa Fe 2013-2018",
+            "price_aed": 790.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-tyg-steel-hood-panel-for-santa-fe-2013-2018"
+          },
+          {
+            "title": "TYG Steel Hood For Tucson 2015-2020",
+            "price_aed": 730.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-tyg-steel-hood-for-tucson-2015-2020"
+          },
+          {
+            "title": "Steel Hood Panel For Elantra 2011-2015",
+            "price_aed": 570.0,
+            "url": "https://alkhateeb.ae/products/al-khateeb-steel-hood-panel-for-elantra-2011-2015"
+          },
+          {
+            "title": "Chrome Hood Guard Decoration For Sonata 2011-2014",
+            "price_aed": 42.0,
+            "url": "https://alkhateeb.ae/products/gtk-chrome-hood-guard-decoration-for-sonata-2011-2014"
+          }
+        ]
+      },
+      "rocker-panel": {
+        "sample_count": 1,
+        "min_price_aed": 250.0,
+        "max_price_aed": 250.0,
+        "median_price_aed": 250.0,
+        "examples": [
+          {
+            "title": "Car Abs Side Step Bar Running Board With Brackets Tucson 2011-2014 Black",
+            "price_aed": 250.0,
+            "url": "https://alkhateeb.ae/products/gtk-car-abs-side-step-bar-running-board-with-brackets-tucson-2011-2014-black"
+          }
+        ]
+      }
+    }
+  }
+}

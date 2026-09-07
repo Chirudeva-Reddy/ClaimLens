@@ -181,8 +181,8 @@ def decide_triage(
             confidence_floor_tripped=False,
             rule_applied="ECONOMIC_THRESHOLD_EXCEEDED",
             reasoning=(
-                f"Estimated visible repair cost (${estimate.median_estimate:,.2f}) represents {economic_ratio:.1%} "
-                f"of the pre-accident vehicle value (${pre_accident_value:,.2f}), crossing the {threshold:.0%} "
+                f"Estimated visible repair cost (AED {estimate.median_estimate:,.2f}) represents {economic_ratio:.1%} "
+                f"of the pre-accident vehicle value (AED {pre_accident_value:,.2f}), crossing the {threshold:.0%} "
                 f"economic threshold specified under {preset.name}. Formal total-loss salvage review is recommended."
             ),
             unknowns=unknowns,
@@ -202,8 +202,8 @@ def decide_triage(
         confidence_floor_tripped=False,
         rule_applied="ECONOMIC_REPAIRABLE_WITHIN_THRESHOLD",
         reasoning=(
-            f"Estimated visible repair cost (${estimate.median_estimate:,.2f}) represents {economic_ratio:.1%} "
-            f"of vehicle value (${pre_accident_value:,.2f}), remaining comfortably below the {threshold:.0%} "
+            f"Estimated visible repair cost (AED {estimate.median_estimate:,.2f}) represents {economic_ratio:.1%} "
+            f"of vehicle value (AED {pre_accident_value:,.2f}), remaining comfortably below the {threshold:.0%} "
             f"total-loss review threshold under {preset.name}, with no structural load-bearing compromises observed."
         ),
         unknowns=unknowns,

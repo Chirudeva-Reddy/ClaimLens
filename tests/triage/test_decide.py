@@ -201,3 +201,12 @@ def test_regional_presets_and_custom_threshold():
     )
     assert custom_dec.outcome == TriageOutcome.PROBABLE_TOTAL_LOSS_REVIEW
     assert custom_dec.threshold_applied == 0.60
+
+
+def test_reasoning_formats_aed_currency():
+    inspection = _make_sample_inspection(damage_name="dent", part_name="front-bumper")
+    estimate = CostEstimate(total_min=5000.0, total_max=7000.0, median_estimate=6000.0)
+    dec = decide_triage(inspection, estimate, pre_accident_value=10000.0, preset_id="uae_50")
+    assert "AED 6,000.00" in dec.reasoning
+    assert "AED 10,000.00" in dec.reasoning
+

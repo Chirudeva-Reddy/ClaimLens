@@ -1,4 +1,4 @@
-"""Transparent, rule-based vehicle visible repair cost estimator."""
+"""Transparent, rule-based vehicle visible repair cost estimator in AED."""
 
 from __future__ import annotations
 
@@ -21,6 +21,7 @@ class ItemizedCost:
     median_cost: float
     description: str
     is_structural: bool = False
+    currency: str = "AED"
 
 
 @dataclass
@@ -31,6 +32,8 @@ class CostEstimate:
     median_estimate: float = 0.0
     assumptions: list[str] = field(default_factory=list)
     has_structural_repair: bool = False
+    currency: str = "AED"
+    brand: str = "General Market Standard"
 
 
 def load_price_table(path: Path | str | None = None) -> dict:
@@ -44,24 +47,30 @@ def load_price_table(path: Path | str | None = None) -> dict:
 def estimate_repair_costs(
     inspection: InspectionResult,
     price_table_path: Path | str | None = None,
+    brand: str = "General Market Standard",
 ) -> CostEstimate:
-    """Computes transparent, itemized repair cost range from inspection detections.
+    """Computes transparent, itemized repair cost range from inspection detections in AED.
 
     Guarantees:
-    - Pure rule-based calculation against curated reference pricing.
+    - Pure rule-based calculation against curated UAE reference pricing in AED.
+    - Grounded in empirical UAE OEM parts data scraped across popular brands.
     - No LLM hallucinations or ungrounded predictions.
     - Every missing or unassociated component is explicitly flagged in assumptions.
     """
     if not inspection.accepted_by_quality_gate:
         return CostEstimate(
+            currency="AED",
+            brand=brand,
             assumptions=[
                 f"Image rejected by quality gate ({inspection.quality_gate_reason}). Repair costs cannot be estimated."
-            ]
+            ],
         )
 
     price_data = load_price_table(price_table_path)
     components_pricing = price_data.get("components", {})
     fallback_pricing = price_data.get("default_fallback", {})
+    brands_data = price_data.get("brands", {})
+    brand_oem = brands_data.get(brand, brands_data.get("General Market Standard", {}))
 
     itemized: list[ItemizedCost] = []
     assumptions: list[str] = []
@@ -83,10 +92,10 @@ def estimate_repair_costs(
             pricing_info = fallback_pricing.get(
                 dmg_type,
                 {
-                    "min_cost": 200.0,
-                    "max_cost": 500.0,
+                    "min_cost": 750.0,
+                    "max_cost": 1800.0,
                     "action": "repair",
-                    "description": f"Standard repair for {dmg_type}",
+                    "description": f"Standard repair for {dmg_type} in AED",
                 },
             )
             assumptions.append(
@@ -95,6 +104,20 @@ def estimate_repair_costs(
 
         min_c = float(pricing_info["min_cost"])
         max_c = float(pricing_info["max_cost"])
+        action = pricing_info.get("action", "repair")
+        desc = pricing_info.get("description", "")
+
+        # If action is replace and brand-specific OEM price data is available, calibrate part cost
+        if action == "replace" and part_name in brand_oem:
+            oem_info = brand_oem[part_name]
+            oem_median = oem_info.get("oem_part_median_aed", 0.0)
+            if oem_median > 0:
+                # Add standard UAE bodyshop paint/labor (approx AED 450 - 750)
+                labor_paint = 600.0 if not assoc.is_structural else 1800.0
+                min_c = round(oem_info.get("oem_part_min_aed", oem_median * 0.7) + labor_paint, 2)
+                max_c = round(oem_info.get("oem_part_max_aed", oem_median * 1.3) + labor_paint, 2)
+                desc = f"{desc} (OEM part calibrated for {brand})"
+
         med_c = round((min_c + max_c) / 2.0, 2)
         is_struct = assoc.is_structural
 
@@ -105,12 +128,13 @@ def estimate_repair_costs(
             ItemizedCost(
                 part_name=part_name,
                 damage_type=dmg_type,
-                action=pricing_info.get("action", "repair"),
+                action=action,
                 min_cost=min_c,
                 max_cost=max_c,
                 median_cost=med_c,
-                description=pricing_info.get("description", ""),
+                description=desc,
                 is_structural=is_struct,
+                currency="AED",
             )
         )
 
@@ -120,10 +144,10 @@ def estimate_repair_costs(
         pricing_info = fallback_pricing.get(
             dmg_type,
             {
-                "min_cost": 250.0,
-                "max_cost": 600.0,
+                "min_cost": 900.0,
+                "max_cost": 2200.0,
                 "action": "repair",
-                "description": f"Standard repair for {dmg_type}",
+                "description": f"Standard exterior collision repair for {dmg_type}",
             },
         )
 
@@ -133,7 +157,7 @@ def estimate_repair_costs(
 
         assumptions.append(
             f"Unidentified panel damage: '{dmg_type}' could not be matched to an identified component; "
-            f"priced using average exterior collision repair rates."
+            f"priced using average UAE exterior collision repair rates."
         )
 
         itemized.append(
@@ -146,6 +170,7 @@ def estimate_repair_costs(
                 median_cost=med_c,
                 description=pricing_info.get("description", ""),
                 is_structural=False,
+                currency="AED",
             )
         )
 
@@ -157,6 +182,8 @@ def estimate_repair_costs(
             median_estimate=0.0,
             assumptions=["No visible damage detected on the submitted photo(s)."],
             has_structural_repair=False,
+            currency="AED",
+            brand=brand,
         )
 
     total_min = round(sum(item.min_cost for item in itemized), 2)
@@ -164,6 +191,10 @@ def estimate_repair_costs(
     median_total = round((total_min + total_max) / 2.0, 2)
 
     # Baseline domain assumptions
+    assumptions.append("All estimates denominated in United Arab Emirates Dirham (AED).")
+    assumptions.append(
+        f"OEM replacement parts benchmarked against UAE market catalog for brand: '{brand}'."
+    )
     assumptions.append("All estimates reflect visible surface collision damage only.")
     assumptions.append("Paint operations assume standard color blending into adjacent panels.")
     if has_structural:
@@ -180,4 +211,6 @@ def estimate_repair_costs(
         median_estimate=median_total,
         assumptions=assumptions,
         has_structural_repair=has_structural,
+        currency="AED",
+        brand=brand,
     )

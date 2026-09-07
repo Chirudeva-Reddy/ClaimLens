@@ -43,7 +43,9 @@ def test_price_table_loads_and_has_metadata():
         data = json.load(f)
 
     assert "metadata" in data
-    assert data["metadata"]["currency"] == "USD"
+    assert data["metadata"]["currency"] == "AED"
+    assert "brands" in data
+    assert "Toyota" in data["brands"]
     assert "default_fallback" in data
     assert "components" in data
 

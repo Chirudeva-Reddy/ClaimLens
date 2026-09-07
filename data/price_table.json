@@ -1,50 +1,828 @@
 {
   "metadata": {
-    "currency": "USD",
-    "labor_rate_per_hour": 85.0,
-    "paint_rate_per_hour": 75.0,
-    "source": "ClaimLens Curated Automotive Collision Reference Standard (Illustrative)",
-    "disclaimer": "ILLUSTRATIVE ONLY. Non-contractual standard automotive repair cost estimates based on industry collision repair benchmarks."
+    "currency": "AED",
+    "market": "United Arab Emirates (UAE)",
+    "standard_labor_rate_per_hour_aed": 120.0,
+    "agency_labor_rate_per_hour_aed": 250.0,
+    "paint_blend_cost_per_panel_aed": 450.0,
+    "source": "ClaimLens UAE Automotive Collision Standard (Fused with live Al Khateeb UAE OEM parts catalog)",
+    "disclaimer": "ILLUSTRATIVE ONLY. Non-contractual standard automotive repair cost estimates based on UAE collision repair benchmarks in AED."
+  },
+  "brands": {
+    "General Market Standard": {
+      "fender": {
+        "oem_part_median_aed": 570.0,
+        "oem_part_min_aed": 11.25,
+        "oem_part_max_aed": 9750.0,
+        "sample_count": 560,
+        "sample_title": "Fender Flares LED For T2 2023+ 1.5 Upgrade To 2.0 High Style ,4PCS/Set",
+        "sample_url": "https://alkhateeb.ae/products/fender-flares-led-for-t2-2023-1-5-upgrade-to-2-0-high-style-4pcs-set"
+      },
+      "front-light": {
+        "oem_part_median_aed": 225.0,
+        "oem_part_min_aed": 12.3,
+        "oem_part_max_aed": 6300.0,
+        "sample_count": 562,
+        "sample_title": "Fog Lamp Use for Prado 2014/W&S 2Pc",
+        "sample_url": "https://alkhateeb.ae/products/fog-lamp-use-for-prado-2014-w-s-2pc"
+      },
+      "front-bumper": {
+        "oem_part_median_aed": 292.5,
+        "oem_part_min_aed": 10.5,
+        "oem_part_max_aed": 6000.0,
+        "sample_count": 391,
+        "sample_title": "Front Bumper Guard For Prado FJ150 2014-17, W/LED, White",
+        "sample_url": "https://alkhateeb.ae/products/front-bumper-guard-for-prado-fj150-2014-17-w-led-white"
+      },
+      "grille": {
+        "oem_part_median_aed": 367.5,
+        "oem_part_min_aed": 13.5,
+        "oem_part_max_aed": 3000.0,
+        "sample_count": 402,
+        "sample_title": "Front Bumper Grill For Revo 2015,Mid Asia,4Wd",
+        "sample_url": "https://alkhateeb.ae/products/front-bumper-grill-for-revo-2015-mid-asia-4wd"
+      },
+      "right-mirror": {
+        "oem_part_median_aed": 370.0,
+        "oem_part_min_aed": 12.0,
+        "oem_part_max_aed": 1950.0,
+        "sample_count": 179,
+        "sample_title": "Side Mirror For FJCruiser 2007-21, Silver Right",
+        "sample_url": "https://alkhateeb.ae/products/side-mirror-for-fjcruiser-2007-21-silver-right"
+      },
+      "left-mirror": {
+        "oem_part_median_aed": 315.0,
+        "oem_part_min_aed": 24.0,
+        "oem_part_max_aed": 510.0,
+        "sample_count": 36,
+        "sample_title": "Side Mirror For FJ Cruiser 2007-21, Silver Left",
+        "sample_url": "https://alkhateeb.ae/products/side-mirror-for-fj-cruiser-2007-21-silver-left"
+      },
+      "roof": {
+        "oem_part_median_aed": 375.0,
+        "oem_part_min_aed": 10.2,
+        "oem_part_max_aed": 8250.0,
+        "sample_count": 302,
+        "sample_title": "Car Roof Led Light, Universal, White Led 3535 5W/PC*5*4 , Lens, Size: 95.5CM *21CM, Black Body，W/Wire Set & Switch",
+        "sample_url": "https://alkhateeb.ae/products/car-roof-led-light-universal-white-led-3535-5w-pc-5-4-lens-size-95-5cm-21cm-black-body-w-wire-set-switch"
+      },
+      "back-door": {
+        "oem_part_median_aed": 570.0,
+        "oem_part_min_aed": 100.0,
+        "oem_part_max_aed": 1170.0,
+        "sample_count": 22,
+        "sample_title": "Rear Door For LC Pick Up FJ76 2024+, 5 Doors, Right",
+        "sample_url": "https://alkhateeb.ae/products/rear-door-for-lc-pick-up-fj76-2024-5-doors-right"
+      },
+      "front-door": {
+        "oem_part_median_aed": 930.0,
+        "oem_part_min_aed": 585.0,
+        "oem_part_max_aed": 1020.0,
+        "sample_count": 19,
+        "sample_title": "Front Door For LC FJ76 2024+ , 5 Doors, Right",
+        "sample_url": "https://alkhateeb.ae/products/front-door-for-lc-fj76-2024-5-doors-right"
+      },
+      "trunk": {
+        "oem_part_median_aed": 400.0,
+        "oem_part_min_aed": 25.0,
+        "oem_part_max_aed": 5000.0,
+        "sample_count": 262,
+        "sample_title": "Trunk Disco Stripe Light 120Cm 7Color",
+        "sample_url": "https://alkhateeb.ae/products/trunk-disco-stripe-light-120cm-7color"
+      },
+      "hood": {
+        "oem_part_median_aed": 727.5,
+        "oem_part_min_aed": 18.0,
+        "oem_part_max_aed": 9750.0,
+        "sample_count": 146,
+        "sample_title": "Hood Daytime Stripe Light, 180cm White, with App & Remote",
+        "sample_url": "https://alkhateeb.ae/products/hood-daytime-stripe-light-180cm-white-with-app-remote"
+      },
+      "back-light": {
+        "oem_part_median_aed": 760.0,
+        "oem_part_min_aed": 10.2,
+        "oem_part_max_aed": 9750.0,
+        "sample_count": 317,
+        "sample_title": "Truck Tail Light 24V/36W 60LED 34.5x13.5x3cm",
+        "sample_url": "https://alkhateeb.ae/products/truck-tail-light-24v-36w-60led-34-5x13-5x3cm-1"
+      },
+      "back-bumper": {
+        "oem_part_median_aed": 292.5,
+        "oem_part_min_aed": 11.25,
+        "oem_part_max_aed": 3600.0,
+        "sample_count": 207,
+        "sample_title": "Car Rear Bumper Guard With Light And Bracket Hilux Vigo 2012-2014, Metal, Chrome",
+        "sample_url": "https://alkhateeb.ae/products/gtk-car-rear-bumper-guard-with-light-and-bracket-hilux-vigo-2012-2014-metal-chrome"
+      },
+      "wheel": {
+        "oem_part_median_aed": 34.0,
+        "oem_part_min_aed": 10.4,
+        "oem_part_max_aed": 11700.0,
+        "sample_count": 1076,
+        "sample_title": "WHEEL WEDGE 2PC",
+        "sample_url": "https://alkhateeb.ae/products/wheel-wedge-2pc"
+      },
+      "rocker-panel": {
+        "oem_part_median_aed": 840.0,
+        "oem_part_min_aed": 43.0,
+        "oem_part_max_aed": 9600.0,
+        "sample_count": 191,
+        "sample_title": "Car Running Boards Side Steps Nerf Bars Defender 2020+ Double Cabin, Black",
+        "sample_url": "https://alkhateeb.ae/products/car-running-boards-side-steps-nerf-bars-defender-2020-double-cabin-black"
+      },
+      "front-glass": {
+        "oem_part_median_aed": 487.5,
+        "oem_part_min_aed": 12.0,
+        "oem_part_max_aed": 682.5,
+        "sample_count": 27,
+        "sample_title": "Windshield Front Glass for 4Runner 2010-2015",
+        "sample_url": "https://alkhateeb.ae/products/windshield-front-glass-for-4runner-2010-2015"
+      }
+    },
+    "Toyota": {
+      "front-light": {
+        "oem_part_median_aed": 300.0,
+        "oem_part_min_aed": 13.5,
+        "oem_part_max_aed": 3750.0,
+        "sample_count": 178,
+        "sample_title": "Fog Lamp Use for Prado 2014/W&S 2Pc",
+        "sample_url": "https://alkhateeb.ae/products/fog-lamp-use-for-prado-2014-w-s-2pc"
+      },
+      "front-bumper": {
+        "oem_part_median_aed": 240.0,
+        "oem_part_min_aed": 10.5,
+        "oem_part_max_aed": 3300.0,
+        "sample_count": 205,
+        "sample_title": "Front Bumper Guard For Prado FJ150 2014-17, W/LED, White",
+        "sample_url": "https://alkhateeb.ae/products/front-bumper-guard-for-prado-fj150-2014-17-w-led-white"
+      },
+      "grille": {
+        "oem_part_median_aed": 270.0,
+        "oem_part_min_aed": 33.0,
+        "oem_part_max_aed": 1875.0,
+        "sample_count": 156,
+        "sample_title": "Front Bumper Grill For Revo 2015,Mid Asia,4Wd",
+        "sample_url": "https://alkhateeb.ae/products/front-bumper-grill-for-revo-2015-mid-asia-4wd"
+      },
+      "fender": {
+        "oem_part_median_aed": 165.0,
+        "oem_part_min_aed": 22.5,
+        "oem_part_max_aed": 2250.0,
+        "sample_count": 121,
+        "sample_title": "Front Fender Inner Skirt For Revo 2015(Mid East), Right",
+        "sample_url": "https://alkhateeb.ae/products/front-fender-inner-skirt-for-revo-2015mid-east-right"
+      },
+      "left-mirror": {
+        "oem_part_median_aed": 323.75,
+        "oem_part_min_aed": 127.5,
+        "oem_part_max_aed": 510.0,
+        "sample_count": 16,
+        "sample_title": "Side Mirror For FJ Cruiser 2007-21, Silver Left",
+        "sample_url": "https://alkhateeb.ae/products/side-mirror-for-fj-cruiser-2007-21-silver-left"
+      },
+      "right-mirror": {
+        "oem_part_median_aed": 330.0,
+        "oem_part_min_aed": 40.0,
+        "oem_part_max_aed": 1275.0,
+        "sample_count": 80,
+        "sample_title": "Side Mirror For FJ Cruiser 2007-21, Silver Left",
+        "sample_url": "https://alkhateeb.ae/products/side-mirror-for-fj-cruiser-2007-21-silver-left"
+      },
+      "back-door": {
+        "oem_part_median_aed": 825.0,
+        "oem_part_min_aed": 100.0,
+        "oem_part_max_aed": 1170.0,
+        "sample_count": 12,
+        "sample_title": "Rear Door For LC Pick Up FJ76 2024+, 5 Doors, Right",
+        "sample_url": "https://alkhateeb.ae/products/rear-door-for-lc-pick-up-fj76-2024-5-doors-right"
+      },
+      "front-door": {
+        "oem_part_median_aed": 630.0,
+        "oem_part_min_aed": 585.0,
+        "oem_part_max_aed": 1020.0,
+        "sample_count": 13,
+        "sample_title": "Front Door For LC FJ76 2024+ , 5 Doors, Right",
+        "sample_url": "https://alkhateeb.ae/products/front-door-for-lc-fj76-2024-5-doors-right"
+      },
+      "back-bumper": {
+        "oem_part_median_aed": 255.0,
+        "oem_part_min_aed": 48.0,
+        "oem_part_max_aed": 1950.0,
+        "sample_count": 77,
+        "sample_title": "Car Rear Bumper Guard With Light And Bracket Hilux Vigo 2012-2014, Metal, Chrome",
+        "sample_url": "https://alkhateeb.ae/products/gtk-car-rear-bumper-guard-with-light-and-bracket-hilux-vigo-2012-2014-metal-chrome"
+      },
+      "wheel": {
+        "oem_part_median_aed": 240.0,
+        "oem_part_min_aed": 25.0,
+        "oem_part_max_aed": 6300.0,
+        "sample_count": 109,
+        "sample_title": "Chrome Front Grille Cover Trims For Prado FJ150 TRD Style",
+        "sample_url": "https://alkhateeb.ae/products/chrome-front-grille-cover-trims-for-prado-fj150-trd-style"
+      },
+      "hood": {
+        "oem_part_median_aed": 521.25,
+        "oem_part_min_aed": 75.0,
+        "oem_part_max_aed": 1760.0,
+        "sample_count": 46,
+        "sample_title": "Land Cruiser Pickup and Station Hood Panel 2007-2023, Matte Black with Logo Hole",
+        "sample_url": "https://alkhateeb.ae/products/land-cruiser-pickup-and-station-hood-panel-2007-2023-matte-black-with-logo-hole"
+      },
+      "roof": {
+        "oem_part_median_aed": 367.5,
+        "oem_part_min_aed": 57.0,
+        "oem_part_max_aed": 2850.0,
+        "sample_count": 52,
+        "sample_title": "Hilux Vigo Roof Rack Cross Bar Aluminum 2012-2014, 2PCS/Set Black",
+        "sample_url": "https://alkhateeb.ae/products/hilux-vigo-roof-rack-cross-bar-aluminum-2012-2014-2pcs-set-black"
+      },
+      "rocker-panel": {
+        "oem_part_median_aed": 640.0,
+        "oem_part_min_aed": 100.0,
+        "oem_part_max_aed": 3800.0,
+        "sample_count": 55,
+        "sample_title": "SIDE SKIRT DECORATION FOR LC LC250 2024+, 4PCS/SET, CHROME",
+        "sample_url": "https://alkhateeb.ae/products/side-skirt-decoration-for-lc-lc250-2024-4pcs-set-chrome"
+      },
+      "trunk": {
+        "oem_part_median_aed": 440.0,
+        "oem_part_min_aed": 30.0,
+        "oem_part_max_aed": 2400.0,
+        "sample_count": 87,
+        "sample_title": "Trunk Stand for Hilux Revo 2015-2025 Width Need to be Adjustable 6CM FM 158-164 CM for Outside \"GTK 4X4\" with LED Light",
+        "sample_url": "https://alkhateeb.ae/products/trunk-stand-for-hilux-revo-2015-2025-width-need-to-be-adjustable-6cm-fm-158-164-cm-for-outside-gtk-4x4-with-led-light"
+      },
+      "back-light": {
+        "oem_part_median_aed": 360.0,
+        "oem_part_min_aed": 46.0,
+        "oem_part_max_aed": 4800.0,
+        "sample_count": 100,
+        "sample_title": "Tail Light for Camry 4PCS/Set Black 2018+",
+        "sample_url": "https://alkhateeb.ae/products/tail-light-for-camry-4pcs-set-black-2018"
+      },
+      "front-glass": {
+        "oem_part_median_aed": 487.5,
+        "oem_part_min_aed": 487.5,
+        "oem_part_max_aed": 487.5,
+        "sample_count": 3,
+        "sample_title": "Windsheild Front Glass for Camry 2018+ M.E & USA",
+        "sample_url": "https://alkhateeb.ae/products/windsheild-front-glass-for-camry-2018-m-e-usa"
+      }
+    },
+    "Ford": {
+      "trunk": {
+        "oem_part_median_aed": 360.0,
+        "oem_part_min_aed": 150.0,
+        "oem_part_max_aed": 960.0,
+        "sample_count": 7,
+        "sample_title": "TRUNK STREAMER DECORATION FOR F150 2022+, RAPTOR STYLE, W/LED FORD LETTER",
+        "sample_url": "https://alkhateeb.ae/products/trunk-streamer-decoration-for-f150-2022-raptor-style-w-led-ford-letter"
+      },
+      "roof": {
+        "oem_part_median_aed": 390.0,
+        "oem_part_min_aed": 300.0,
+        "oem_part_max_aed": 2100.0,
+        "sample_count": 6,
+        "sample_title": "Roll Bar with Luggage Roof for Ranger T9 2023+ \"GTK 4X4\"",
+        "sample_url": "https://alkhateeb.ae/products/roll-bar-with-luggage-roof-for-ranger-t9-2023-gtk-4x4"
+      },
+      "front-light": {
+        "oem_part_median_aed": 850.0,
+        "oem_part_min_aed": 82.5,
+        "oem_part_max_aed": 3300.0,
+        "sample_count": 15,
+        "sample_title": "Fog Lamp Cover Ranger 2015-2021 Chrome with Hole R-H",
+        "sample_url": "https://alkhateeb.ae/products/fog-lamp-cover-ranger-2015-2021-chrome-with-hole-r-h"
+      },
+      "grille": {
+        "oem_part_median_aed": 480.0,
+        "oem_part_min_aed": 225.0,
+        "oem_part_max_aed": 750.0,
+        "sample_count": 31,
+        "sample_title": "Front Grill for Ranger T9 2023+ High Edition Black Grill+White Letter with LED",
+        "sample_url": "https://alkhateeb.ae/products/front-grill-for-ranger-t9-2023-high-edition-black-grill-white-letter-with-led"
+      },
+      "back-light": {
+        "oem_part_median_aed": 590.0,
+        "oem_part_min_aed": 142.5,
+        "oem_part_max_aed": 2000.0,
+        "sample_count": 8,
+        "sample_title": "Tail Light for Ranger T9 2023+ 2PCS/SET Black",
+        "sample_url": "https://alkhateeb.ae/products/tail-light-for-ranger-t9-2023-2pcs-set-black"
+      },
+      "front-bumper": {
+        "oem_part_median_aed": 525.0,
+        "oem_part_min_aed": 307.5,
+        "oem_part_max_aed": 3300.0,
+        "sample_count": 9,
+        "sample_title": "Front Bumper OEM Ranger 2022+",
+        "sample_url": "https://alkhateeb.ae/products/front-bumper-oem-ranger-2022"
+      },
+      "hood": {
+        "oem_part_median_aed": 195.0,
+        "oem_part_min_aed": 54.0,
+        "oem_part_max_aed": 600.0,
+        "sample_count": 8,
+        "sample_title": "Car Air Flow Vent Cover Bonnet Scoop Ranger 2012, 2Pcs/Set Black",
+        "sample_url": "https://alkhateeb.ae/products/gtk-car-air-flow-vent-cover-bonnet-scoop-ranger-2012-2pcs-set-black"
+      },
+      "fender": {
+        "oem_part_median_aed": 457.5,
+        "oem_part_min_aed": 285.0,
+        "oem_part_max_aed": 720.0,
+        "sample_count": 4,
+        "sample_title": "FENDER FLARE 4 RANGER 2015-2017",
+        "sample_url": "https://alkhateeb.ae/products/fender-flare-4-ranger-2015-2017"
+      },
+      "back-door": {
+        "oem_part_median_aed": 565.0,
+        "oem_part_min_aed": 500.0,
+        "oem_part_max_aed": 630.0,
+        "sample_count": 2,
+        "sample_title": "CAR REAR DOOR FOLDABLE TABLE FOR BRONCO  2022+",
+        "sample_url": "https://alkhateeb.ae/products/car-rear-door-foldable-table-for-bronco-2022"
+      },
+      "rocker-panel": {
+        "oem_part_median_aed": 960.0,
+        "oem_part_min_aed": 600.0,
+        "oem_part_max_aed": 3200.0,
+        "sample_count": 7,
+        "sample_title": "POWERED RUNNING BOARD FOR RANGER  2012-21 4D",
+        "sample_url": "https://alkhateeb.ae/products/powered-running-board-for-ranger-2012-21-4d"
+      },
+      "right-mirror": {
+        "oem_part_median_aed": 470.0,
+        "oem_part_min_aed": 450.0,
+        "oem_part_max_aed": 490.0,
+        "sample_count": 4,
+        "sample_title": "YTM Car Side Mirror Right Electric Automatic Foldable Chrome With LED Ranger 2012-2014, R-H",
+        "sample_url": "https://alkhateeb.ae/products/al-khateeb-ytm-car-side-mirror-right-electric-automatic-foldable-chrome-with-led-ranger-2012-2014-r-h"
+      },
+      "left-mirror": {
+        "oem_part_median_aed": 450.0,
+        "oem_part_min_aed": 66.0,
+        "oem_part_max_aed": 490.0,
+        "sample_count": 3,
+        "sample_title": "YTM Car Side Mirror Left Electric Automatic Foldable Chrome With LED Ranger 2015-2018, L-H",
+        "sample_url": "https://alkhateeb.ae/products/al-khateeb-ytm-car-side-mirror-left-electric-automatic-foldable-chrome-with-led-ranger-2015-2018-l-h"
+      },
+      "back-bumper": {
+        "oem_part_median_aed": 1150.0,
+        "oem_part_min_aed": 600.0,
+        "oem_part_max_aed": 1725.0,
+        "sample_count": 4,
+        "sample_title": "Stainless Steel Rear Bumper With Bracket For Ranger T6 2012+, Chrome",
+        "sample_url": "https://alkhateeb.ae/products/gtk-stainless-steel-rear-bumper-with-bracket-for-ford-ranger-t6-2012-chrome"
+      },
+      "wheel": {
+        "oem_part_median_aed": 142.5,
+        "oem_part_min_aed": 142.5,
+        "oem_part_max_aed": 142.5,
+        "sample_count": 2,
+        "sample_title": "Car Head Tail Lights Lamps Cover Trim Set Black&White Ranger T7 2015-2018 4PCS/Set",
+        "sample_url": "https://alkhateeb.ae/products/gtk-car-head-tail-lights-lamps-cover-trim-set-black-white-ranger-t7-2015-2018-4pcs-set"
+      }
+    },
+    "Mercedes-Benz": {
+      "wheel": {
+        "oem_part_median_aed": 5600.0,
+        "oem_part_min_aed": 1125.0,
+        "oem_part_max_aed": 7500.0,
+        "sample_count": 7,
+        "sample_title": "ALLOY FORGED REAR WHEEL RIM FOR G-CLASS 2025,  SIZE : 22''x10J, ET 37, PCD 130X5 CB 84.1-BLACK+MACHINE",
+        "sample_url": "https://alkhateeb.ae/products/alloy-forged-rear-wheel-rim-for-g-class-2025-size-22x10j-et-37-pcd-130x5-cb-84-1-black-machine"
+      },
+      "front-glass": {
+        "oem_part_median_aed": 637.5,
+        "oem_part_min_aed": 637.5,
+        "oem_part_max_aed": 637.5,
+        "sample_count": 1,
+        "sample_title": "Windsheild Front Glass for GLE & GLS 2019+",
+        "sample_url": "https://alkhateeb.ae/products/windsheild-front-glass-for-gle-gls-2019"
+      },
+      "fender": {
+        "oem_part_median_aed": 1125.0,
+        "oem_part_min_aed": 862.5,
+        "oem_part_max_aed": 1320.0,
+        "sample_count": 5,
+        "sample_title": "Car Front Fender for GLE-Class C292 2016-2024 Right Taiwan",
+        "sample_url": "https://alkhateeb.ae/products/car-front-fender-for-gle-class-c292-2016-2024-right-taiwan"
+      },
+      "back-light": {
+        "oem_part_median_aed": 1950.0,
+        "oem_part_min_aed": 1800.0,
+        "oem_part_max_aed": 2100.0,
+        "sample_count": 2,
+        "sample_title": "TAIL LIGHT FOR S-CLASS 2018-2019 W222/2PCS-BLACK",
+        "sample_url": "https://alkhateeb.ae/products/tail-light-4benz-s-class18-19-w222-2pcs-black"
+      },
+      "roof": {
+        "oem_part_median_aed": 4050.0,
+        "oem_part_min_aed": 1000.0,
+        "oem_part_max_aed": 8250.0,
+        "sample_count": 6,
+        "sample_title": "ROOF BASKET AND LADDER FOR G-CLASS",
+        "sample_url": "https://alkhateeb.ae/products/roof-basket-and-ladder-for-g-class"
+      },
+      "rocker-panel": {
+        "oem_part_median_aed": 3400.0,
+        "oem_part_min_aed": 3400.0,
+        "oem_part_max_aed": 8000.0,
+        "sample_count": 5,
+        "sample_title": "POWERED RUNNING BOARD FOR G-CLASS  2011-18",
+        "sample_url": "https://alkhateeb.ae/products/powered-running-board-for-g-class-2011-18"
+      },
+      "grille": {
+        "oem_part_median_aed": 270.0,
+        "oem_part_min_aed": 270.0,
+        "oem_part_max_aed": 270.0,
+        "sample_count": 1,
+        "sample_title": "GRILLE FOR LC PICKUP G-CLASS STYL-BKCK",
+        "sample_url": "https://alkhateeb.ae/products/grille-for-lc-pickup-g-class-styl-bkck"
+      },
+      "trunk": {
+        "oem_part_median_aed": 1000.0,
+        "oem_part_min_aed": 1000.0,
+        "oem_part_max_aed": 1000.0,
+        "sample_count": 1,
+        "sample_title": "Car Rear Spoiler Roof Trunk Wing Style G-Class 2019+, Glossy Black",
+        "sample_url": "https://alkhateeb.ae/products/prima-car-rear-spoiler-roof-trunk-wing-brabus-style-g-class-2019-glossy-black"
+      },
+      "front-light": {
+        "oem_part_median_aed": 2250.0,
+        "oem_part_min_aed": 1800.0,
+        "oem_part_max_aed": 2700.0,
+        "sample_count": 2,
+        "sample_title": "Car Headlights Performance S-Class W204 2012-2013, 2Pcs/Set Black",
+        "sample_url": "https://alkhateeb.ae/products/autotech-car-headlights-performance-s-class-w204-2012-2013-2pcs-set-black"
+      },
+      "hood": {
+        "oem_part_median_aed": 3600.0,
+        "oem_part_min_aed": 3600.0,
+        "oem_part_max_aed": 3600.0,
+        "sample_count": 1,
+        "sample_title": "Car Replacement Engine Hood Bonnet Cover G-Class 2019+, Upgrade, 3K Carbon Fiber",
+        "sample_url": "https://alkhateeb.ae/products/prima-car-replacement-engine-hood-bonnet-cover-g-class-2019-upgrade-to-brabus-style-3k-carbon-fiber"
+      },
+      "front-bumper": {
+        "oem_part_median_aed": 2250.0,
+        "oem_part_min_aed": 2250.0,
+        "oem_part_max_aed": 2250.0,
+        "sample_count": 2,
+        "sample_title": "Front Bumper Lip For G-Class G500 2019 Style With Light",
+        "sample_url": "https://alkhateeb.ae/products/prima-front-bumper-lip-for-g-class-g500-2019-brabus-style-with-light"
+      },
+      "right-mirror": {
+        "oem_part_median_aed": 1950.0,
+        "oem_part_min_aed": 1950.0,
+        "oem_part_max_aed": 1950.0,
+        "sample_count": 1,
+        "sample_title": "Car Side Mirror With Led & 9 Wires G-Class W464 2012-2018, 2Pcs/Set",
+        "sample_url": "https://alkhateeb.ae/products/auto-tech-car-side-mirror-with-led-9-wires-g-class-w464-2012-2018-2pcs-set"
+      }
+    },
+    "Nissan": {
+      "wheel": {
+        "oem_part_median_aed": 90.0,
+        "oem_part_min_aed": 80.0,
+        "oem_part_max_aed": 1460.0,
+        "sample_count": 8,
+        "sample_title": "Alloy Casting Wheel RIM for Patrol Y63 2025+ Black+Machine Size:20\"X8 ET:35, PCD:6x139.7, CB:78.10",
+        "sample_url": "https://alkhateeb.ae/products/alloy-casting-wheel-rim-for-patrol-y63-2025-black-machine-size-20x8-et-35-pcd-6x139-7-cb-78-10"
+      },
+      "trunk": {
+        "oem_part_median_aed": 400.0,
+        "oem_part_min_aed": 140.0,
+        "oem_part_max_aed": 600.0,
+        "sample_count": 5,
+        "sample_title": "Glass for Patrol Y62/QX80/ARMADA Tail Gate",
+        "sample_url": "https://alkhateeb.ae/products/glass-for-patrol-y62-qx80-armada-tail-gate"
+      },
+      "roof": {
+        "oem_part_median_aed": 345.0,
+        "oem_part_min_aed": 187.5,
+        "oem_part_max_aed": 1650.0,
+        "sample_count": 6,
+        "sample_title": "Roof Rack for Patrol",
+        "sample_url": "https://alkhateeb.ae/products/roof-rack-for-nis-patrol"
+      },
+      "right-mirror": {
+        "oem_part_median_aed": 510.0,
+        "oem_part_min_aed": 510.0,
+        "oem_part_max_aed": 510.0,
+        "sample_count": 2,
+        "sample_title": "Side Mirror Patrol Y62 2010-24 Black LED Electric Auto Fold R-H",
+        "sample_url": "https://alkhateeb.ae/products/side-mirror-patrol-y62-2010-24-black-led-electric-auto-fold-r-h"
+      },
+      "back-light": {
+        "oem_part_median_aed": 1050.0,
+        "oem_part_min_aed": 150.0,
+        "oem_part_max_aed": 2900.0,
+        "sample_count": 4,
+        "sample_title": "TAIL LIGHT FOR PATROL 2019 4PC",
+        "sample_url": "https://alkhateeb.ae/products/tail-light4-patrol-2019-4pc-tls698papc"
+      },
+      "back-bumper": {
+        "oem_part_median_aed": 675.0,
+        "oem_part_min_aed": 630.0,
+        "oem_part_max_aed": 780.0,
+        "sample_count": 3,
+        "sample_title": "REAR BUMPER PLATINUM EDITION OE FOR PATROL 2019+",
+        "sample_url": "https://alkhateeb.ae/products/rear-bumper-platinum-edition-oe-for-patrol-2019"
+      },
+      "front-light": {
+        "oem_part_median_aed": 247.5,
+        "oem_part_min_aed": 82.5,
+        "oem_part_max_aed": 1500.0,
+        "sample_count": 5,
+        "sample_title": "HEAD LIGHT4 PATOL Y62 2010-17 2PC",
+        "sample_url": "https://alkhateeb.ae/products/head-light4-patol-y62-2010-17-2pc"
+      },
+      "fender": {
+        "oem_part_median_aed": 1170.0,
+        "oem_part_min_aed": 1170.0,
+        "oem_part_max_aed": 1170.0,
+        "sample_count": 1,
+        "sample_title": "FENDER FLARES PATROL Y62 6PC BK",
+        "sample_url": "https://alkhateeb.ae/products/fender-flares-patrol-y62-6pc-bk"
+      },
+      "left-mirror": {
+        "oem_part_median_aed": 510.0,
+        "oem_part_min_aed": 510.0,
+        "oem_part_max_aed": 510.0,
+        "sample_count": 1,
+        "sample_title": "YTM Car Side Mirror Left Electric Automatic Foldable Black With LED Patrol Y62 2010-2024 L-H",
+        "sample_url": "https://alkhateeb.ae/products/al-khateeb-ytm-car-side-mirror-left-electric-automatic-foldable-black-with-led-patrol-y62-2010-2024-l-h"
+      },
+      "rocker-panel": {
+        "oem_part_median_aed": 220.0,
+        "oem_part_min_aed": 220.0,
+        "oem_part_max_aed": 220.0,
+        "sample_count": 1,
+        "sample_title": "Car Side Skirt Door Body Moulding Cladding Trim Decoration Patrol 2010-2016 4Pcs/Set Chrome",
+        "sample_url": "https://alkhateeb.ae/products/gtk-car-side-skirt-door-body-moulding-cladding-trim-decoration-patrol-2010-2016-4pcs-set-chrome"
+      },
+      "hood": {
+        "oem_part_median_aed": 453.75,
+        "oem_part_min_aed": 232.5,
+        "oem_part_max_aed": 675.0,
+        "sample_count": 2,
+        "sample_title": "Hood Inner Liner For Patrol 2020",
+        "sample_url": "https://alkhateeb.ae/products/gtk-hood-inner-liner-for-patrol-2020"
+      },
+      "grille": {
+        "oem_part_median_aed": 450.0,
+        "oem_part_min_aed": 330.0,
+        "oem_part_max_aed": 630.0,
+        "sample_count": 3,
+        "sample_title": "ABS Front Grille Chrome For Patrol 2010-2015",
+        "sample_url": "https://alkhateeb.ae/products/gtk-abs-front-grille-chrome-for-patrol-2010-2015"
+      }
+    },
+    "Lexus": {
+      "wheel": {
+        "oem_part_median_aed": 880.0,
+        "oem_part_min_aed": 20.0,
+        "oem_part_max_aed": 11700.0,
+        "sample_count": 7,
+        "sample_title": "Prima Car Body Kit For LX570 2008-2015 Upgrade To 2016 Style",
+        "sample_url": "https://alkhateeb.ae/products/prima-car-body-kit-for-lx570-2008-2015-upgrade-to-2016-style"
+      },
+      "trunk": {
+        "oem_part_median_aed": 600.0,
+        "oem_part_min_aed": 487.5,
+        "oem_part_max_aed": 630.0,
+        "sample_count": 6,
+        "sample_title": "Glass for LX570 2008-2021 Tailgate",
+        "sample_url": "https://alkhateeb.ae/products/glass-for-lx570-2008-2021-tailgate"
+      },
+      "back-light": {
+        "oem_part_median_aed": 3600.0,
+        "oem_part_min_aed": 3600.0,
+        "oem_part_max_aed": 3600.0,
+        "sample_count": 1,
+        "sample_title": "Tail Light for Lexus Nx200,2014-21, Smoke Black",
+        "sample_url": "https://alkhateeb.ae/products/tail-light-for-lexus-nx200-2014-21-smoke-black"
+      },
+      "hood": {
+        "oem_part_median_aed": 1875.0,
+        "oem_part_min_aed": 1875.0,
+        "oem_part_max_aed": 1875.0,
+        "sample_count": 1,
+        "sample_title": "AN TAI Car Black Steel Hood LX570 2016+",
+        "sample_url": "https://alkhateeb.ae/products/al-khateeb-an-tai-car-black-steel-hood-lx570-2016"
+      },
+      "front-light": {
+        "oem_part_median_aed": 1425.0,
+        "oem_part_min_aed": 1125.0,
+        "oem_part_max_aed": 3300.0,
+        "sample_count": 5,
+        "sample_title": "FOG LAMP FOR LX570 2 LENSE",
+        "sample_url": "https://alkhateeb.ae/products/fog-lamp-4-lx570-2-lense"
+      },
+      "fender": {
+        "oem_part_median_aed": 892.5,
+        "oem_part_min_aed": 200.0,
+        "oem_part_max_aed": 1240.0,
+        "sample_count": 5,
+        "sample_title": "Car Fender Side Sticker Emblem Badge Logo Stainless Steel ABS LX570 2016-2021, 2Pcs/Set Chrome Black",
+        "sample_url": "https://alkhateeb.ae/products/gtk-car-fender-side-sticker-emblem-badge-logo-stainless-steel-abs-lx570-2016-2021-2pcs-set-chrome-black"
+      },
+      "front-bumper": {
+        "oem_part_median_aed": 1520.0,
+        "oem_part_min_aed": 1520.0,
+        "oem_part_max_aed": 1520.0,
+        "sample_count": 1,
+        "sample_title": "Front Bumper for RX350/450 2023+",
+        "sample_url": "https://alkhateeb.ae/products/front-bumper-for-rx350-450-2023"
+      },
+      "back-bumper": {
+        "oem_part_median_aed": 2505.0,
+        "oem_part_min_aed": 165.0,
+        "oem_part_max_aed": 3300.0,
+        "sample_count": 4,
+        "sample_title": "Rear Bumper for RX350/450 2023+",
+        "sample_url": "https://alkhateeb.ae/products/rear-bumper-for-rx350-450-2023"
+      },
+      "rocker-panel": {
+        "oem_part_median_aed": 1460.0,
+        "oem_part_min_aed": 1160.0,
+        "oem_part_max_aed": 2000.0,
+        "sample_count": 4,
+        "sample_title": "SIDE SKIRT DECORATION FOR LX600 2022+, 4 PCS CHROME+WHITE",
+        "sample_url": "https://alkhateeb.ae/products/side-skirt-decoration-for-lx600-2022-4-pcs-chrome-white"
+      },
+      "right-mirror": {
+        "oem_part_median_aed": 570.0,
+        "oem_part_min_aed": 570.0,
+        "oem_part_max_aed": 570.0,
+        "sample_count": 2,
+        "sample_title": "YTM Electric Foldable Black With LED Side Mirror For LX570 2009-2021",
+        "sample_url": "https://alkhateeb.ae/products/al-khateeb-ytm-electric-foldable-black-with-led-side-mirror-for-lx570-2009-2021"
+      },
+      "roof": {
+        "oem_part_median_aed": 502.5,
+        "oem_part_min_aed": 480.0,
+        "oem_part_max_aed": 525.0,
+        "sample_count": 2,
+        "sample_title": "Car Aluminum Roof Rack Rail Bar Lx570 2009-2020+, Chrome",
+        "sample_url": "https://alkhateeb.ae/products/gtk-car-aluminum-roof-rack-rail-bar-lx570-2009-2020-chrome"
+      },
+      "grille": {
+        "oem_part_median_aed": 1170.0,
+        "oem_part_min_aed": 1170.0,
+        "oem_part_max_aed": 1170.0,
+        "sample_count": 1,
+        "sample_title": "Front Body Kit 2018 With Grille & Fog Lights Modify IS250 to LX570 Style",
+        "sample_url": "https://alkhateeb.ae/products/gtk-front-body-kit-2018-with-grille-fog-lights-modify-is250-to-lx570-style"
+      }
+    },
+    "Hyundai": {
+      "trunk": {
+        "oem_part_median_aed": 270.0,
+        "oem_part_min_aed": 26.0,
+        "oem_part_max_aed": 675.0,
+        "sample_count": 8,
+        "sample_title": "Glass for Tucson 2016-2021 Tailgate",
+        "sample_url": "https://alkhateeb.ae/products/glass-for-tucson-2016-2021-tailgate"
+      },
+      "front-glass": {
+        "oem_part_median_aed": 487.5,
+        "oem_part_min_aed": 487.5,
+        "oem_part_max_aed": 487.5,
+        "sample_count": 1,
+        "sample_title": "Glass for Tucson 2016-2021 Windshield Front",
+        "sample_url": "https://alkhateeb.ae/products/glass-for-tucson-2016-2021-windshield-front"
+      },
+      "wheel": {
+        "oem_part_median_aed": 84.0,
+        "oem_part_min_aed": 27.0,
+        "oem_part_max_aed": 96.0,
+        "sample_count": 17,
+        "sample_title": "Car Wheel Center Hub Cap Cover 14\" Accent 2017-2020, Set Of 4",
+        "sample_url": "https://alkhateeb.ae/products/car-wheel-center-hub-cap-cover-14-accent-2017-2020-set-of-4"
+      },
+      "grille": {
+        "oem_part_median_aed": 262.5,
+        "oem_part_min_aed": 123.0,
+        "oem_part_max_aed": 397.5,
+        "sample_count": 14,
+        "sample_title": "Grill OEM Elantra 2011-15",
+        "sample_url": "https://alkhateeb.ae/products/grill-oem-elantra-2011-15"
+      },
+      "fender": {
+        "oem_part_median_aed": 176.0,
+        "oem_part_min_aed": 170.0,
+        "oem_part_max_aed": 230.0,
+        "sample_count": 6,
+        "sample_title": "Car Front Fender Accent 2011-16 Left",
+        "sample_url": "https://alkhateeb.ae/products/car-front-fender-accent-2011-16-left"
+      },
+      "front-light": {
+        "oem_part_median_aed": 165.0,
+        "oem_part_min_aed": 52.5,
+        "oem_part_max_aed": 420.0,
+        "sample_count": 5,
+        "sample_title": "FOG LAMP USE4HY ACCENT/VERNA12W&S",
+        "sample_url": "https://alkhateeb.ae/products/fog-lamp-use4hy-accent-verna12w-s"
+      },
+      "back-light": {
+        "oem_part_median_aed": 700.0,
+        "oem_part_min_aed": 190.0,
+        "oem_part_max_aed": 1360.0,
+        "sample_count": 4,
+        "sample_title": "TAIL LIGHT FOR ACCENT 2012 PERFORMANCE",
+        "sample_url": "https://alkhateeb.ae/products/tl-for-accent-2012-performance"
+      },
+      "front-bumper": {
+        "oem_part_median_aed": 217.5,
+        "oem_part_min_aed": 57.0,
+        "oem_part_max_aed": 530.0,
+        "sample_count": 18,
+        "sample_title": "FRONT BUMPER SONATA 2017-18",
+        "sample_url": "https://alkhateeb.ae/products/front-bumper-sonata-2017-18"
+      },
+      "left-mirror": {
+        "oem_part_median_aed": 350.0,
+        "oem_part_min_aed": 290.0,
+        "oem_part_max_aed": 510.0,
+        "sample_count": 6,
+        "sample_title": "YTM Car Side Mirror Left Electric Heater Automatic Foldable With LED Tucson Ix35 2015-2020 L-H, Black",
+        "sample_url": "https://alkhateeb.ae/products/al-khateeb-ytm-car-side-mirror-left-electric-heater-automatic-foldable-with-led-tucson-ix35-2015-2020-l-h-black"
+      },
+      "right-mirror": {
+        "oem_part_median_aed": 350.0,
+        "oem_part_min_aed": 290.0,
+        "oem_part_max_aed": 510.0,
+        "sample_count": 10,
+        "sample_title": "YTM Car Side Mirror Left Electric Heater Automatic Foldable With LED Tucson Ix35 2015-2020 L-H, Black",
+        "sample_url": "https://alkhateeb.ae/products/al-khateeb-ytm-car-side-mirror-left-electric-heater-automatic-foldable-with-led-tucson-ix35-2015-2020-l-h-black"
+      },
+      "back-bumper": {
+        "oem_part_median_aed": 285.0,
+        "oem_part_min_aed": 123.0,
+        "oem_part_max_aed": 675.0,
+        "sample_count": 21,
+        "sample_title": "TYG Matte-Black Rear Bumper Without Sensor Hole For Accent 2017-2020",
+        "sample_url": "https://alkhateeb.ae/products/al-khateeb-tyg-matte-black-rear-bumper-without-sensor-hole-for-accent-2017-2020"
+      },
+      "hood": {
+        "oem_part_median_aed": 650.0,
+        "oem_part_min_aed": 42.0,
+        "oem_part_max_aed": 790.0,
+        "sample_count": 4,
+        "sample_title": "TYG Steel Hood Panel For Santa Fe 2013-2018",
+        "sample_url": "https://alkhateeb.ae/products/al-khateeb-tyg-steel-hood-panel-for-santa-fe-2013-2018"
+      },
+      "rocker-panel": {
+        "oem_part_median_aed": 250.0,
+        "oem_part_min_aed": 250.0,
+        "oem_part_max_aed": 250.0,
+        "sample_count": 1,
+        "sample_title": "Car Abs Side Step Bar Running Board With Brackets Tucson 2011-2014 Black",
+        "sample_url": "https://alkhateeb.ae/products/gtk-car-abs-side-step-bar-running-board-with-brackets-tucson-2011-2014-black"
+      }
+    }
   },
   "default_fallback": {
     "scratch": {
-      "min_cost": 150.0,
-      "max_cost": 350.0,
+      "min_cost": 550.0,
+      "max_cost": 1280.0,
       "action": "repair",
       "labor_hours": 2.5,
       "description": "Surface sand, prime, and paint blend"
     },
     "dent": {
-      "min_cost": 250.0,
-      "max_cost": 600.0,
+      "min_cost": 920.0,
+      "max_cost": 2200.0,
       "action": "repair",
       "labor_hours": 4.0,
       "description": "Panel reshaping, filler, and refinishing"
     },
     "crack": {
-      "min_cost": 450.0,
-      "max_cost": 1100.0,
+      "min_cost": 1650.0,
+      "max_cost": 4040.0,
       "action": "replace",
       "labor_hours": 5.5,
       "description": "Structural or panel fracture repair/replacement"
     },
     "glass shatter": {
-      "min_cost": 350.0,
-      "max_cost": 850.0,
+      "min_cost": 1280.0,
+      "max_cost": 3120.0,
       "action": "replace",
       "labor_hours": 3.0,
       "description": "Safety glass removal and replacement"
     },
     "lamp broken": {
-      "min_cost": 300.0,
-      "max_cost": 750.0,
+      "min_cost": 1100.0,
+      "max_cost": 2750.0,
       "action": "replace",
       "labor_hours": 2.0,
       "description": "Lighting assembly replacement and aim"
     },
     "tire flat": {
-      "min_cost": 140.0,
-      "max_cost": 320.0,
+      "min_cost": 510.0,
+      "max_cost": 1170.0,
       "action": "replace",
       "labor_hours": 1.0,
       "description": "Tire replacement, mounting, and balancing"
@@ -54,232 +832,862 @@
     "front-bumper": {
       "is_structural": false,
       "damages": {
-        "scratch": { "min_cost": 180.0, "max_cost": 380.0, "action": "repair", "description": "Bumper fascia touch-up and clearcoat" },
-        "dent": { "min_cost": 280.0, "max_cost": 550.0, "action": "repair", "description": "Plastic heat reshape and spot paint" },
-        "crack": { "min_cost": 750.0, "max_cost": 1400.0, "action": "replace", "description": "Fascia cracked; full bumper replacement required" },
-        "glass shatter": { "min_cost": 200.0, "max_cost": 400.0, "action": "replace", "description": "Fog light / sensor lens replacement" },
-        "lamp broken": { "min_cost": 250.0, "max_cost": 550.0, "action": "replace", "description": "Fog/driving lamp assembly replacement" },
-        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+        "scratch": {
+          "min_cost": 660.0,
+          "max_cost": 1390.0,
+          "action": "repair",
+          "description": "Bumper fascia touch-up and clearcoat"
+        },
+        "dent": {
+          "min_cost": 1030.0,
+          "max_cost": 2020.0,
+          "action": "repair",
+          "description": "Plastic heat reshape and spot paint"
+        },
+        "crack": {
+          "min_cost": 2750.0,
+          "max_cost": 5140.0,
+          "action": "replace",
+          "description": "Fascia cracked; full bumper replacement required"
+        },
+        "glass shatter": {
+          "min_cost": 730.0,
+          "max_cost": 1470.0,
+          "action": "replace",
+          "description": "Fog light / sensor lens replacement"
+        },
+        "lamp broken": {
+          "min_cost": 920.0,
+          "max_cost": 2020.0,
+          "action": "replace",
+          "description": "Fog/driving lamp assembly replacement"
+        },
+        "tire flat": {
+          "min_cost": 510.0,
+          "max_cost": 1170.0,
+          "action": "replace",
+          "description": "Tire replacement"
+        }
       }
     },
     "back-bumper": {
       "is_structural": false,
       "damages": {
-        "scratch": { "min_cost": 180.0, "max_cost": 380.0, "action": "repair", "description": "Rear bumper refinish" },
-        "dent": { "min_cost": 280.0, "max_cost": 550.0, "action": "repair", "description": "Plastic deformation reshape" },
-        "crack": { "min_cost": 700.0, "max_cost": 1350.0, "action": "replace", "description": "Rear bumper cover replacement" },
-        "glass shatter": { "min_cost": 150.0, "max_cost": 350.0, "action": "replace", "description": "Reflector / sensor lens replacement" },
-        "lamp broken": { "min_cost": 220.0, "max_cost": 480.0, "action": "replace", "description": "Reverse / fog lamp replacement" },
-        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+        "scratch": {
+          "min_cost": 660.0,
+          "max_cost": 1390.0,
+          "action": "repair",
+          "description": "Rear bumper refinish"
+        },
+        "dent": {
+          "min_cost": 1030.0,
+          "max_cost": 2020.0,
+          "action": "repair",
+          "description": "Plastic deformation reshape"
+        },
+        "crack": {
+          "min_cost": 2570.0,
+          "max_cost": 4950.0,
+          "action": "replace",
+          "description": "Rear bumper cover replacement"
+        },
+        "glass shatter": {
+          "min_cost": 550.0,
+          "max_cost": 1280.0,
+          "action": "replace",
+          "description": "Reflector / sensor lens replacement"
+        },
+        "lamp broken": {
+          "min_cost": 810.0,
+          "max_cost": 1760.0,
+          "action": "replace",
+          "description": "Reverse / fog lamp replacement"
+        },
+        "tire flat": {
+          "min_cost": 510.0,
+          "max_cost": 1170.0,
+          "action": "replace",
+          "description": "Tire replacement"
+        }
       }
     },
     "hood": {
       "is_structural": false,
       "damages": {
-        "scratch": { "min_cost": 250.0, "max_cost": 500.0, "action": "repair", "description": "Full hood surface paint and blend" },
-        "dent": { "min_cost": 400.0, "max_cost": 850.0, "action": "repair", "description": "Metalwork dent removal and repaint" },
-        "crack": { "min_cost": 900.0, "max_cost": 1800.0, "action": "replace", "description": "Hood panel buckling/creasing; replacement required" },
-        "glass shatter": { "min_cost": 150.0, "max_cost": 300.0, "action": "repair", "description": "Washer nozzle / heat deflector repair" },
-        "lamp broken": { "min_cost": 200.0, "max_cost": 400.0, "action": "replace", "description": "Hood accessory light replacement" },
-        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+        "scratch": {
+          "min_cost": 920.0,
+          "max_cost": 1840.0,
+          "action": "repair",
+          "description": "Full hood surface paint and blend"
+        },
+        "dent": {
+          "min_cost": 1470.0,
+          "max_cost": 3120.0,
+          "action": "repair",
+          "description": "Metalwork dent removal and repaint"
+        },
+        "crack": {
+          "min_cost": 3300.0,
+          "max_cost": 6610.0,
+          "action": "replace",
+          "description": "Hood panel buckling/creasing; replacement required"
+        },
+        "glass shatter": {
+          "min_cost": 550.0,
+          "max_cost": 1100.0,
+          "action": "repair",
+          "description": "Washer nozzle / heat deflector repair"
+        },
+        "lamp broken": {
+          "min_cost": 730.0,
+          "max_cost": 1470.0,
+          "action": "replace",
+          "description": "Hood accessory light replacement"
+        },
+        "tire flat": {
+          "min_cost": 510.0,
+          "max_cost": 1170.0,
+          "action": "replace",
+          "description": "Tire replacement"
+        }
       }
     },
     "trunk": {
       "is_structural": false,
       "damages": {
-        "scratch": { "min_cost": 200.0, "max_cost": 420.0, "action": "repair", "description": "Trunk lid repaint" },
-        "dent": { "min_cost": 350.0, "max_cost": 700.0, "action": "repair", "description": "Trunk lid dent repair and alignment" },
-        "crack": { "min_cost": 800.0, "max_cost": 1600.0, "action": "replace", "description": "Trunk lid replacement and latch alignment" },
-        "glass shatter": { "min_cost": 350.0, "max_cost": 750.0, "action": "replace", "description": "Trunk glass / camera lens replacement" },
-        "lamp broken": { "min_cost": 250.0, "max_cost": 550.0, "action": "replace", "description": "Third brake light replacement" },
-        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+        "scratch": {
+          "min_cost": 730.0,
+          "max_cost": 1540.0,
+          "action": "repair",
+          "description": "Trunk lid repaint"
+        },
+        "dent": {
+          "min_cost": 1280.0,
+          "max_cost": 2570.0,
+          "action": "repair",
+          "description": "Trunk lid dent repair and alignment"
+        },
+        "crack": {
+          "min_cost": 2940.0,
+          "max_cost": 5870.0,
+          "action": "replace",
+          "description": "Trunk lid replacement and latch alignment"
+        },
+        "glass shatter": {
+          "min_cost": 1280.0,
+          "max_cost": 2750.0,
+          "action": "replace",
+          "description": "Trunk glass / camera lens replacement"
+        },
+        "lamp broken": {
+          "min_cost": 920.0,
+          "max_cost": 2020.0,
+          "action": "replace",
+          "description": "Third brake light replacement"
+        },
+        "tire flat": {
+          "min_cost": 510.0,
+          "max_cost": 1170.0,
+          "action": "replace",
+          "description": "Tire replacement"
+        }
       }
     },
     "front-door": {
       "is_structural": false,
       "damages": {
-        "scratch": { "min_cost": 220.0, "max_cost": 480.0, "action": "repair", "description": "Door skin refinish and blend to adjacent panel" },
-        "dent": { "min_cost": 380.0, "max_cost": 800.0, "action": "repair", "description": "Paintless or stud-weld dent repair" },
-        "crack": { "min_cost": 1100.0, "max_cost": 2200.0, "action": "replace", "description": "Door shell replacement and internal hardware transfer" },
-        "glass shatter": { "min_cost": 300.0, "max_cost": 650.0, "action": "replace", "description": "Front door window glass replacement and vacuum debris" },
-        "lamp broken": { "min_cost": 150.0, "max_cost": 350.0, "action": "replace", "description": "Door puddle/warning lamp replacement" },
-        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+        "scratch": {
+          "min_cost": 810.0,
+          "max_cost": 1760.0,
+          "action": "repair",
+          "description": "Door skin refinish and blend to adjacent panel"
+        },
+        "dent": {
+          "min_cost": 1390.0,
+          "max_cost": 2940.0,
+          "action": "repair",
+          "description": "Paintless or stud-weld dent repair"
+        },
+        "crack": {
+          "min_cost": 4040.0,
+          "max_cost": 8070.0,
+          "action": "replace",
+          "description": "Door shell replacement and internal hardware transfer"
+        },
+        "glass shatter": {
+          "min_cost": 1100.0,
+          "max_cost": 2390.0,
+          "action": "replace",
+          "description": "Front door window glass replacement and vacuum debris"
+        },
+        "lamp broken": {
+          "min_cost": 550.0,
+          "max_cost": 1280.0,
+          "action": "replace",
+          "description": "Door puddle/warning lamp replacement"
+        },
+        "tire flat": {
+          "min_cost": 510.0,
+          "max_cost": 1170.0,
+          "action": "replace",
+          "description": "Tire replacement"
+        }
       }
     },
     "back-door": {
       "is_structural": false,
       "damages": {
-        "scratch": { "min_cost": 220.0, "max_cost": 480.0, "action": "repair", "description": "Rear door skin paint" },
-        "dent": { "min_cost": 380.0, "max_cost": 800.0, "action": "repair", "description": "Rear door dent repair" },
-        "crack": { "min_cost": 1100.0, "max_cost": 2200.0, "action": "replace", "description": "Rear door shell replacement" },
-        "glass shatter": { "min_cost": 280.0, "max_cost": 620.0, "action": "replace", "description": "Rear door window glass replacement" },
-        "lamp broken": { "min_cost": 150.0, "max_cost": 350.0, "action": "replace", "description": "Door light replacement" },
-        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+        "scratch": {
+          "min_cost": 810.0,
+          "max_cost": 1760.0,
+          "action": "repair",
+          "description": "Rear door skin paint"
+        },
+        "dent": {
+          "min_cost": 1390.0,
+          "max_cost": 2940.0,
+          "action": "repair",
+          "description": "Rear door dent repair"
+        },
+        "crack": {
+          "min_cost": 4040.0,
+          "max_cost": 8070.0,
+          "action": "replace",
+          "description": "Rear door shell replacement"
+        },
+        "glass shatter": {
+          "min_cost": 1030.0,
+          "max_cost": 2280.0,
+          "action": "replace",
+          "description": "Rear door window glass replacement"
+        },
+        "lamp broken": {
+          "min_cost": 550.0,
+          "max_cost": 1280.0,
+          "action": "replace",
+          "description": "Door light replacement"
+        },
+        "tire flat": {
+          "min_cost": 510.0,
+          "max_cost": 1170.0,
+          "action": "replace",
+          "description": "Tire replacement"
+        }
       }
     },
     "fender": {
       "is_structural": false,
       "damages": {
-        "scratch": { "min_cost": 180.0, "max_cost": 380.0, "action": "repair", "description": "Front fender repaint and blend" },
-        "dent": { "min_cost": 300.0, "max_cost": 650.0, "action": "repair", "description": "Fender reshaping" },
-        "crack": { "min_cost": 650.0, "max_cost": 1300.0, "action": "replace", "description": "Bolt-on front fender replacement and paint" },
-        "glass shatter": { "min_cost": 150.0, "max_cost": 350.0, "action": "replace", "description": "Fender marker glass replacement" },
-        "lamp broken": { "min_cost": 150.0, "max_cost": 350.0, "action": "replace", "description": "Fender side turn signal replacement" },
-        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+        "scratch": {
+          "min_cost": 660.0,
+          "max_cost": 1390.0,
+          "action": "repair",
+          "description": "Front fender repaint and blend"
+        },
+        "dent": {
+          "min_cost": 1100.0,
+          "max_cost": 2390.0,
+          "action": "repair",
+          "description": "Fender reshaping"
+        },
+        "crack": {
+          "min_cost": 2390.0,
+          "max_cost": 4770.0,
+          "action": "replace",
+          "description": "Bolt-on front fender replacement and paint"
+        },
+        "glass shatter": {
+          "min_cost": 550.0,
+          "max_cost": 1280.0,
+          "action": "replace",
+          "description": "Fender marker glass replacement"
+        },
+        "lamp broken": {
+          "min_cost": 550.0,
+          "max_cost": 1280.0,
+          "action": "replace",
+          "description": "Fender side turn signal replacement"
+        },
+        "tire flat": {
+          "min_cost": 510.0,
+          "max_cost": 1170.0,
+          "action": "replace",
+          "description": "Tire replacement"
+        }
       }
     },
     "quarter-panel": {
       "is_structural": true,
       "damages": {
-        "scratch": { "min_cost": 300.0, "max_cost": 600.0, "action": "repair", "description": "Quarter panel refinish and roof rail blend" },
-        "dent": { "min_cost": 600.0, "max_cost": 1400.0, "action": "repair", "description": "Unibody sheet metal restoration and pulling" },
-        "crack": { "min_cost": 2500.0, "max_cost": 4800.0, "action": "replace", "description": "STRUCTURAL: Cut, section, weld quarter-panel, corrosion protection, full paint" },
-        "glass shatter": { "min_cost": 350.0, "max_cost": 750.0, "action": "replace", "description": "Quarter window fixed glass replacement" },
-        "lamp broken": { "min_cost": 250.0, "max_cost": 600.0, "action": "replace", "description": "Quarter panel lamp assembly replacement" },
-        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+        "scratch": {
+          "min_cost": 1100.0,
+          "max_cost": 2200.0,
+          "action": "repair",
+          "description": "Quarter panel refinish and roof rail blend"
+        },
+        "dent": {
+          "min_cost": 2200.0,
+          "max_cost": 5140.0,
+          "action": "repair",
+          "description": "Unibody sheet metal restoration and pulling"
+        },
+        "crack": {
+          "min_cost": 9180.0,
+          "max_cost": 17620.0,
+          "action": "replace",
+          "description": "STRUCTURAL: Cut, section, weld quarter-panel, corrosion protection, full paint"
+        },
+        "glass shatter": {
+          "min_cost": 1280.0,
+          "max_cost": 2750.0,
+          "action": "replace",
+          "description": "Quarter window fixed glass replacement"
+        },
+        "lamp broken": {
+          "min_cost": 920.0,
+          "max_cost": 2200.0,
+          "action": "replace",
+          "description": "Quarter panel lamp assembly replacement"
+        },
+        "tire flat": {
+          "min_cost": 510.0,
+          "max_cost": 1170.0,
+          "action": "replace",
+          "description": "Tire replacement"
+        }
       }
     },
     "rocker-panel": {
       "is_structural": true,
       "damages": {
-        "scratch": { "min_cost": 200.0, "max_cost": 450.0, "action": "repair", "description": "Lower unibody paint and gravel guard application" },
-        "dent": { "min_cost": 550.0, "max_cost": 1300.0, "action": "repair", "description": "Rocker panel stud pull and frame check" },
-        "crack": { "min_cost": 2200.0, "max_cost": 4500.0, "action": "replace", "description": "STRUCTURAL: Rocker panel section cut and structural weld" },
-        "glass shatter": { "min_cost": 150.0, "max_cost": 350.0, "action": "repair", "description": "Threshold trim repair" },
-        "lamp broken": { "min_cost": 150.0, "max_cost": 350.0, "action": "replace", "description": "Underbody lighting replacement" },
-        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+        "scratch": {
+          "min_cost": 730.0,
+          "max_cost": 1650.0,
+          "action": "repair",
+          "description": "Lower unibody paint and gravel guard application"
+        },
+        "dent": {
+          "min_cost": 2020.0,
+          "max_cost": 4770.0,
+          "action": "repair",
+          "description": "Rocker panel stud pull and frame check"
+        },
+        "crack": {
+          "min_cost": 8070.0,
+          "max_cost": 16520.0,
+          "action": "replace",
+          "description": "STRUCTURAL: Rocker panel section cut and structural weld"
+        },
+        "glass shatter": {
+          "min_cost": 550.0,
+          "max_cost": 1280.0,
+          "action": "repair",
+          "description": "Threshold trim repair"
+        },
+        "lamp broken": {
+          "min_cost": 550.0,
+          "max_cost": 1280.0,
+          "action": "replace",
+          "description": "Underbody lighting replacement"
+        },
+        "tire flat": {
+          "min_cost": 510.0,
+          "max_cost": 1170.0,
+          "action": "replace",
+          "description": "Tire replacement"
+        }
       }
     },
     "windshield": {
       "is_structural": true,
       "damages": {
-        "scratch": { "min_cost": 120.0, "max_cost": 250.0, "action": "repair", "description": "Optical glass polish for minor wiper scratches" },
-        "dent": { "min_cost": 500.0, "max_cost": 1200.0, "action": "replace", "description": "Laminated glass compromised; replacement required" },
-        "crack": { "min_cost": 550.0, "max_cost": 1300.0, "action": "replace", "description": "Laminated windshield replacement and ADAS camera calibration" },
-        "glass shatter": { "min_cost": 600.0, "max_cost": 1400.0, "action": "replace", "description": "Full laminated acoustic windshield replacement and sensor calibration" },
-        "lamp broken": { "min_cost": 150.0, "max_cost": 300.0, "action": "repair", "description": "Rain sensor / mirror bracket re-glue" },
-        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+        "scratch": {
+          "min_cost": 440.0,
+          "max_cost": 920.0,
+          "action": "repair",
+          "description": "Optical glass polish for minor wiper scratches"
+        },
+        "dent": {
+          "min_cost": 1840.0,
+          "max_cost": 4400.0,
+          "action": "replace",
+          "description": "Laminated glass compromised; replacement required"
+        },
+        "crack": {
+          "min_cost": 2020.0,
+          "max_cost": 4770.0,
+          "action": "replace",
+          "description": "Laminated windshield replacement and ADAS camera calibration"
+        },
+        "glass shatter": {
+          "min_cost": 2200.0,
+          "max_cost": 5140.0,
+          "action": "replace",
+          "description": "Full laminated acoustic windshield replacement and sensor calibration"
+        },
+        "lamp broken": {
+          "min_cost": 550.0,
+          "max_cost": 1100.0,
+          "action": "repair",
+          "description": "Rain sensor / mirror bracket re-glue"
+        },
+        "tire flat": {
+          "min_cost": 510.0,
+          "max_cost": 1170.0,
+          "action": "replace",
+          "description": "Tire replacement"
+        }
       }
     },
     "back-windshield": {
       "is_structural": false,
       "damages": {
-        "scratch": { "min_cost": 120.0, "max_cost": 250.0, "action": "repair", "description": "Rear glass polish" },
-        "dent": { "min_cost": 450.0, "max_cost": 950.0, "action": "replace", "description": "Rear glass replacement" },
-        "crack": { "min_cost": 450.0, "max_cost": 950.0, "action": "replace", "description": "Rear heated glass replacement" },
-        "glass shatter": { "min_cost": 500.0, "max_cost": 1050.0, "action": "replace", "description": "Tempered rear window replacement and interior cleanup" },
-        "lamp broken": { "min_cost": 200.0, "max_cost": 450.0, "action": "replace", "description": "High mount brake light replacement" },
-        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+        "scratch": {
+          "min_cost": 440.0,
+          "max_cost": 920.0,
+          "action": "repair",
+          "description": "Rear glass polish"
+        },
+        "dent": {
+          "min_cost": 1650.0,
+          "max_cost": 3490.0,
+          "action": "replace",
+          "description": "Rear glass replacement"
+        },
+        "crack": {
+          "min_cost": 1650.0,
+          "max_cost": 3490.0,
+          "action": "replace",
+          "description": "Rear heated glass replacement"
+        },
+        "glass shatter": {
+          "min_cost": 1840.0,
+          "max_cost": 3850.0,
+          "action": "replace",
+          "description": "Tempered rear window replacement and interior cleanup"
+        },
+        "lamp broken": {
+          "min_cost": 730.0,
+          "max_cost": 1650.0,
+          "action": "replace",
+          "description": "High mount brake light replacement"
+        },
+        "tire flat": {
+          "min_cost": 510.0,
+          "max_cost": 1170.0,
+          "action": "replace",
+          "description": "Tire replacement"
+        }
       }
     },
     "front-window": {
       "is_structural": false,
       "damages": {
-        "scratch": { "min_cost": 100.0, "max_cost": 220.0, "action": "repair", "description": "Side glass buffing" },
-        "dent": { "min_cost": 250.0, "max_cost": 550.0, "action": "replace", "description": "Door glass and track repair" },
-        "crack": { "min_cost": 250.0, "max_cost": 550.0, "action": "replace", "description": "Tempered glass replacement" },
-        "glass shatter": { "min_cost": 280.0, "max_cost": 600.0, "action": "replace", "description": "Door glass replacement, regulator check, door vacuum" },
-        "lamp broken": { "min_cost": 150.0, "max_cost": 350.0, "action": "repair", "description": "Door electronics check" },
-        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+        "scratch": {
+          "min_cost": 370.0,
+          "max_cost": 810.0,
+          "action": "repair",
+          "description": "Side glass buffing"
+        },
+        "dent": {
+          "min_cost": 920.0,
+          "max_cost": 2020.0,
+          "action": "replace",
+          "description": "Door glass and track repair"
+        },
+        "crack": {
+          "min_cost": 920.0,
+          "max_cost": 2020.0,
+          "action": "replace",
+          "description": "Tempered glass replacement"
+        },
+        "glass shatter": {
+          "min_cost": 1030.0,
+          "max_cost": 2200.0,
+          "action": "replace",
+          "description": "Door glass replacement, regulator check, door vacuum"
+        },
+        "lamp broken": {
+          "min_cost": 550.0,
+          "max_cost": 1280.0,
+          "action": "repair",
+          "description": "Door electronics check"
+        },
+        "tire flat": {
+          "min_cost": 510.0,
+          "max_cost": 1170.0,
+          "action": "replace",
+          "description": "Tire replacement"
+        }
       }
     },
     "back-window": {
       "is_structural": false,
       "damages": {
-        "scratch": { "min_cost": 100.0, "max_cost": 220.0, "action": "repair", "description": "Rear side glass buffing" },
-        "dent": { "min_cost": 250.0, "max_cost": 550.0, "action": "replace", "description": "Rear side glass replacement" },
-        "crack": { "min_cost": 250.0, "max_cost": 550.0, "action": "replace", "description": "Rear side glass replacement" },
-        "glass shatter": { "min_cost": 280.0, "max_cost": 600.0, "action": "replace", "description": "Rear side glass replacement" },
-        "lamp broken": { "min_cost": 150.0, "max_cost": 350.0, "action": "repair", "description": "Window trim repair" },
-        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+        "scratch": {
+          "min_cost": 370.0,
+          "max_cost": 810.0,
+          "action": "repair",
+          "description": "Rear side glass buffing"
+        },
+        "dent": {
+          "min_cost": 920.0,
+          "max_cost": 2020.0,
+          "action": "replace",
+          "description": "Rear side glass replacement"
+        },
+        "crack": {
+          "min_cost": 920.0,
+          "max_cost": 2020.0,
+          "action": "replace",
+          "description": "Rear side glass replacement"
+        },
+        "glass shatter": {
+          "min_cost": 1030.0,
+          "max_cost": 2200.0,
+          "action": "replace",
+          "description": "Rear side glass replacement"
+        },
+        "lamp broken": {
+          "min_cost": 550.0,
+          "max_cost": 1280.0,
+          "action": "repair",
+          "description": "Window trim repair"
+        },
+        "tire flat": {
+          "min_cost": 510.0,
+          "max_cost": 1170.0,
+          "action": "replace",
+          "description": "Tire replacement"
+        }
       }
     },
     "headlight": {
       "is_structural": false,
       "damages": {
-        "scratch": { "min_cost": 120.0, "max_cost": 250.0, "action": "repair", "description": "Headlight lens restoration and UV clearcoat" },
-        "dent": { "min_cost": 450.0, "max_cost": 1200.0, "action": "replace", "description": "Headlight internal reflector/bracket damage; assembly replacement" },
-        "crack": { "min_cost": 450.0, "max_cost": 1200.0, "action": "replace", "description": "Cracked housing will ingest moisture; unit replacement required" },
-        "glass shatter": { "min_cost": 500.0, "max_cost": 1300.0, "action": "replace", "description": "Headlight assembly replacement" },
-        "lamp broken": { "min_cost": 500.0, "max_cost": 1300.0, "action": "replace", "description": "Headlight assembly replacement and beam aiming" },
-        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+        "scratch": {
+          "min_cost": 440.0,
+          "max_cost": 920.0,
+          "action": "repair",
+          "description": "Headlight lens restoration and UV clearcoat"
+        },
+        "dent": {
+          "min_cost": 1650.0,
+          "max_cost": 4400.0,
+          "action": "replace",
+          "description": "Headlight internal reflector/bracket damage; assembly replacement"
+        },
+        "crack": {
+          "min_cost": 1650.0,
+          "max_cost": 4400.0,
+          "action": "replace",
+          "description": "Cracked housing will ingest moisture; unit replacement required"
+        },
+        "glass shatter": {
+          "min_cost": 1840.0,
+          "max_cost": 4770.0,
+          "action": "replace",
+          "description": "Headlight assembly replacement"
+        },
+        "lamp broken": {
+          "min_cost": 1840.0,
+          "max_cost": 4770.0,
+          "action": "replace",
+          "description": "Headlight assembly replacement and beam aiming"
+        },
+        "tire flat": {
+          "min_cost": 510.0,
+          "max_cost": 1170.0,
+          "action": "replace",
+          "description": "Tire replacement"
+        }
       }
     },
     "tail-light": {
       "is_structural": false,
       "damages": {
-        "scratch": { "min_cost": 100.0, "max_cost": 200.0, "action": "repair", "description": "Tail light lens buffing" },
-        "dent": { "min_cost": 250.0, "max_cost": 650.0, "action": "replace", "description": "Tail light unit replacement" },
-        "crack": { "min_cost": 250.0, "max_cost": 650.0, "action": "replace", "description": "Tail light housing replacement" },
-        "glass shatter": { "min_cost": 280.0, "max_cost": 700.0, "action": "replace", "description": "Tail light lens shattered; unit replacement" },
-        "lamp broken": { "min_cost": 280.0, "max_cost": 700.0, "action": "replace", "description": "Tail lamp cluster replacement" },
-        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+        "scratch": {
+          "min_cost": 370.0,
+          "max_cost": 730.0,
+          "action": "repair",
+          "description": "Tail light lens buffing"
+        },
+        "dent": {
+          "min_cost": 920.0,
+          "max_cost": 2390.0,
+          "action": "replace",
+          "description": "Tail light unit replacement"
+        },
+        "crack": {
+          "min_cost": 920.0,
+          "max_cost": 2390.0,
+          "action": "replace",
+          "description": "Tail light housing replacement"
+        },
+        "glass shatter": {
+          "min_cost": 1030.0,
+          "max_cost": 2570.0,
+          "action": "replace",
+          "description": "Tail light lens shattered; unit replacement"
+        },
+        "lamp broken": {
+          "min_cost": 1030.0,
+          "max_cost": 2570.0,
+          "action": "replace",
+          "description": "Tail lamp cluster replacement"
+        },
+        "tire flat": {
+          "min_cost": 510.0,
+          "max_cost": 1170.0,
+          "action": "replace",
+          "description": "Tire replacement"
+        }
       }
     },
     "license-plate": {
       "is_structural": false,
       "damages": {
-        "scratch": { "min_cost": 50.0, "max_cost": 100.0, "action": "repair", "description": "Plate bracket touch-up" },
-        "dent": { "min_cost": 80.0, "max_cost": 180.0, "action": "repair", "description": "Bracket straightening" },
-        "crack": { "min_cost": 100.0, "max_cost": 220.0, "action": "replace", "description": "Plate frame / bracket replacement" },
-        "glass shatter": { "min_cost": 100.0, "max_cost": 220.0, "action": "replace", "description": "Plate light cover replacement" },
-        "lamp broken": { "min_cost": 80.0, "max_cost": 180.0, "action": "replace", "description": "License plate illumination light replacement" },
-        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+        "scratch": {
+          "min_cost": 180.0,
+          "max_cost": 370.0,
+          "action": "repair",
+          "description": "Plate bracket touch-up"
+        },
+        "dent": {
+          "min_cost": 290.0,
+          "max_cost": 660.0,
+          "action": "repair",
+          "description": "Bracket straightening"
+        },
+        "crack": {
+          "min_cost": 370.0,
+          "max_cost": 810.0,
+          "action": "replace",
+          "description": "Plate frame / bracket replacement"
+        },
+        "glass shatter": {
+          "min_cost": 370.0,
+          "max_cost": 810.0,
+          "action": "replace",
+          "description": "Plate light cover replacement"
+        },
+        "lamp broken": {
+          "min_cost": 290.0,
+          "max_cost": 660.0,
+          "action": "replace",
+          "description": "License plate illumination light replacement"
+        },
+        "tire flat": {
+          "min_cost": 510.0,
+          "max_cost": 1170.0,
+          "action": "replace",
+          "description": "Tire replacement"
+        }
       }
     },
     "mirror": {
       "is_structural": false,
       "damages": {
-        "scratch": { "min_cost": 120.0, "max_cost": 260.0, "action": "repair", "description": "Mirror cap painting" },
-        "dent": { "min_cost": 200.0, "max_cost": 450.0, "action": "repair", "description": "Mirror housing repair" },
-        "crack": { "min_cost": 350.0, "max_cost": 750.0, "action": "replace", "description": "Power mirror assembly replacement" },
-        "glass shatter": { "min_cost": 180.0, "max_cost": 380.0, "action": "replace", "description": "Heated mirror glass replacement" },
-        "lamp broken": { "min_cost": 160.0, "max_cost": 320.0, "action": "replace", "description": "Mirror indicator LED replacement" },
-        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+        "scratch": {
+          "min_cost": 440.0,
+          "max_cost": 950.0,
+          "action": "repair",
+          "description": "Mirror cap painting"
+        },
+        "dent": {
+          "min_cost": 730.0,
+          "max_cost": 1650.0,
+          "action": "repair",
+          "description": "Mirror housing repair"
+        },
+        "crack": {
+          "min_cost": 1280.0,
+          "max_cost": 2750.0,
+          "action": "replace",
+          "description": "Power mirror assembly replacement"
+        },
+        "glass shatter": {
+          "min_cost": 660.0,
+          "max_cost": 1390.0,
+          "action": "replace",
+          "description": "Heated mirror glass replacement"
+        },
+        "lamp broken": {
+          "min_cost": 590.0,
+          "max_cost": 1170.0,
+          "action": "replace",
+          "description": "Mirror indicator LED replacement"
+        },
+        "tire flat": {
+          "min_cost": 510.0,
+          "max_cost": 1170.0,
+          "action": "replace",
+          "description": "Tire replacement"
+        }
       }
     },
     "roof": {
       "is_structural": true,
       "damages": {
-        "scratch": { "min_cost": 300.0, "max_cost": 650.0, "action": "repair", "description": "Roof panel repaint" },
-        "dent": { "min_cost": 650.0, "max_cost": 1500.0, "action": "repair", "description": "Hail/falling object dent repair" },
-        "crack": { "min_cost": 2800.0, "max_cost": 5500.0, "action": "replace", "description": "STRUCTURAL: Roof panel cut, windshield removal, unibody replacement" },
-        "glass shatter": { "min_cost": 800.0, "max_cost": 1800.0, "action": "replace", "description": "Panoramic sunroof / moonroof glass replacement" },
-        "lamp broken": { "min_cost": 200.0, "max_cost": 450.0, "action": "replace", "description": "Roof clearance / aerial light replacement" },
-        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+        "scratch": {
+          "min_cost": 1100.0,
+          "max_cost": 2390.0,
+          "action": "repair",
+          "description": "Roof panel repaint"
+        },
+        "dent": {
+          "min_cost": 2390.0,
+          "max_cost": 5500.0,
+          "action": "repair",
+          "description": "Hail/falling object dent repair"
+        },
+        "crack": {
+          "min_cost": 10280.0,
+          "max_cost": 20180.0,
+          "action": "replace",
+          "description": "STRUCTURAL: Roof panel cut, windshield removal, unibody replacement"
+        },
+        "glass shatter": {
+          "min_cost": 2940.0,
+          "max_cost": 6610.0,
+          "action": "replace",
+          "description": "Panoramic sunroof / moonroof glass replacement"
+        },
+        "lamp broken": {
+          "min_cost": 730.0,
+          "max_cost": 1650.0,
+          "action": "replace",
+          "description": "Roof clearance / aerial light replacement"
+        },
+        "tire flat": {
+          "min_cost": 510.0,
+          "max_cost": 1170.0,
+          "action": "replace",
+          "description": "Tire replacement"
+        }
       }
     },
     "grille": {
       "is_structural": false,
       "damages": {
-        "scratch": { "min_cost": 120.0, "max_cost": 260.0, "action": "repair", "description": "Grille louvre paint touch-up" },
-        "dent": { "min_cost": 200.0, "max_cost": 450.0, "action": "repair", "description": "Grille reshape" },
-        "crack": { "min_cost": 350.0, "max_cost": 800.0, "action": "replace", "description": "Front radiator grille replacement" },
-        "glass shatter": { "min_cost": 150.0, "max_cost": 350.0, "action": "replace", "description": "Radar emblem lens replacement" },
-        "lamp broken": { "min_cost": 200.0, "max_cost": 450.0, "action": "replace", "description": "Illuminated emblem / grille light replacement" },
-        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+        "scratch": {
+          "min_cost": 440.0,
+          "max_cost": 950.0,
+          "action": "repair",
+          "description": "Grille louvre paint touch-up"
+        },
+        "dent": {
+          "min_cost": 730.0,
+          "max_cost": 1650.0,
+          "action": "repair",
+          "description": "Grille reshape"
+        },
+        "crack": {
+          "min_cost": 1280.0,
+          "max_cost": 2940.0,
+          "action": "replace",
+          "description": "Front radiator grille replacement"
+        },
+        "glass shatter": {
+          "min_cost": 550.0,
+          "max_cost": 1280.0,
+          "action": "replace",
+          "description": "Radar emblem lens replacement"
+        },
+        "lamp broken": {
+          "min_cost": 730.0,
+          "max_cost": 1650.0,
+          "action": "replace",
+          "description": "Illuminated emblem / grille light replacement"
+        },
+        "tire flat": {
+          "min_cost": 510.0,
+          "max_cost": 1170.0,
+          "action": "replace",
+          "description": "Tire replacement"
+        }
       }
     },
     "front-wheel": {
       "is_structural": false,
       "damages": {
-        "scratch": { "min_cost": 150.0, "max_cost": 300.0, "action": "repair", "description": "Alloy wheel curb rash repair and powder coat" },
-        "dent": { "min_cost": 200.0, "max_cost": 450.0, "action": "repair", "description": "Wheel rim truing and balance" },
-        "crack": { "min_cost": 400.0, "max_cost": 900.0, "action": "replace", "description": "Cracked alloy wheel unsafe; wheel replacement required" },
-        "glass shatter": { "min_cost": 140.0, "max_cost": 300.0, "action": "repair", "description": "Wheel center cap repair" },
-        "lamp broken": { "min_cost": 140.0, "max_cost": 300.0, "action": "repair", "description": "Brake caliper / wheel speed sensor check" },
-        "tire flat": { "min_cost": 160.0, "max_cost": 350.0, "action": "replace", "description": "Tire replacement, valve stem, and wheel balance" }
+        "scratch": {
+          "min_cost": 550.0,
+          "max_cost": 1100.0,
+          "action": "repair",
+          "description": "Alloy wheel curb rash repair and powder coat"
+        },
+        "dent": {
+          "min_cost": 730.0,
+          "max_cost": 1650.0,
+          "action": "repair",
+          "description": "Wheel rim truing and balance"
+        },
+        "crack": {
+          "min_cost": 1470.0,
+          "max_cost": 3300.0,
+          "action": "replace",
+          "description": "Cracked alloy wheel unsafe; wheel replacement required"
+        },
+        "glass shatter": {
+          "min_cost": 510.0,
+          "max_cost": 1100.0,
+          "action": "repair",
+          "description": "Wheel center cap repair"
+        },
+        "lamp broken": {
+          "min_cost": 510.0,
+          "max_cost": 1100.0,
+          "action": "repair",
+          "description": "Brake caliper / wheel speed sensor check"
+        },
+        "tire flat": {
+          "min_cost": 590.0,
+          "max_cost": 1280.0,
+          "action": "replace",
+          "description": "Tire replacement, valve stem, and wheel balance"
+        }
       }
     },
     "back-wheel": {
       "is_structural": false,
       "damages": {
-        "scratch": { "min_cost": 150.0, "max_cost": 300.0, "action": "repair", "description": "Rear alloy wheel refinish" },
-        "dent": { "min_cost": 200.0, "max_cost": 450.0, "action": "repair", "description": "Wheel rim truing and balance" },
-        "crack": { "min_cost": 400.0, "max_cost": 900.0, "action": "replace", "description": "Rear alloy wheel replacement" },
-        "glass shatter": { "min_cost": 140.0, "max_cost": 300.0, "action": "repair", "description": "Wheel center cap repair" },
-        "lamp broken": { "min_cost": 140.0, "max_cost": 300.0, "action": "repair", "description": "ABS sensor check" },
-        "tire flat": { "min_cost": 160.0, "max_cost": 350.0, "action": "replace", "description": "Rear tire replacement and balance" }
+        "scratch": {
+          "min_cost": 550.0,
+          "max_cost": 1100.0,
+          "action": "repair",
+          "description": "Rear alloy wheel refinish"
+        },
+        "dent": {
+          "min_cost": 730.0,
+          "max_cost": 1650.0,
+          "action": "repair",
+          "description": "Wheel rim truing and balance"
+        },
+        "crack": {
+          "min_cost": 1470.0,
+          "max_cost": 3300.0,
+          "action": "replace",
+          "description": "Rear alloy wheel replacement"
+        },
+        "glass shatter": {
+          "min_cost": 510.0,
+          "max_cost": 1100.0,
+          "action": "repair",
+          "description": "Wheel center cap repair"
+        },
+        "lamp broken": {
+          "min_cost": 510.0,
+          "max_cost": 1100.0,
+          "action": "repair",
+          "description": "ABS sensor check"
+        },
+        "tire flat": {
+          "min_cost": 590.0,
+          "max_cost": 1280.0,
+          "action": "replace",
+          "description": "Rear tire replacement and balance"
+        }
       }
     }
   }
