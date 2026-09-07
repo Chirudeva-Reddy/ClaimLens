@@ -1,0 +1,286 @@
+{
+  "metadata": {
+    "currency": "USD",
+    "labor_rate_per_hour": 85.0,
+    "paint_rate_per_hour": 75.0,
+    "source": "ClaimLens Curated Automotive Collision Reference Standard (Illustrative)",
+    "disclaimer": "ILLUSTRATIVE ONLY. Non-contractual standard automotive repair cost estimates based on industry collision repair benchmarks."
+  },
+  "default_fallback": {
+    "scratch": {
+      "min_cost": 150.0,
+      "max_cost": 350.0,
+      "action": "repair",
+      "labor_hours": 2.5,
+      "description": "Surface sand, prime, and paint blend"
+    },
+    "dent": {
+      "min_cost": 250.0,
+      "max_cost": 600.0,
+      "action": "repair",
+      "labor_hours": 4.0,
+      "description": "Panel reshaping, filler, and refinishing"
+    },
+    "crack": {
+      "min_cost": 450.0,
+      "max_cost": 1100.0,
+      "action": "replace",
+      "labor_hours": 5.5,
+      "description": "Structural or panel fracture repair/replacement"
+    },
+    "glass shatter": {
+      "min_cost": 350.0,
+      "max_cost": 850.0,
+      "action": "replace",
+      "labor_hours": 3.0,
+      "description": "Safety glass removal and replacement"
+    },
+    "lamp broken": {
+      "min_cost": 300.0,
+      "max_cost": 750.0,
+      "action": "replace",
+      "labor_hours": 2.0,
+      "description": "Lighting assembly replacement and aim"
+    },
+    "tire flat": {
+      "min_cost": 140.0,
+      "max_cost": 320.0,
+      "action": "replace",
+      "labor_hours": 1.0,
+      "description": "Tire replacement, mounting, and balancing"
+    }
+  },
+  "components": {
+    "front-bumper": {
+      "is_structural": false,
+      "damages": {
+        "scratch": { "min_cost": 180.0, "max_cost": 380.0, "action": "repair", "description": "Bumper fascia touch-up and clearcoat" },
+        "dent": { "min_cost": 280.0, "max_cost": 550.0, "action": "repair", "description": "Plastic heat reshape and spot paint" },
+        "crack": { "min_cost": 750.0, "max_cost": 1400.0, "action": "replace", "description": "Fascia cracked; full bumper replacement required" },
+        "glass shatter": { "min_cost": 200.0, "max_cost": 400.0, "action": "replace", "description": "Fog light / sensor lens replacement" },
+        "lamp broken": { "min_cost": 250.0, "max_cost": 550.0, "action": "replace", "description": "Fog/driving lamp assembly replacement" },
+        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+      }
+    },
+    "back-bumper": {
+      "is_structural": false,
+      "damages": {
+        "scratch": { "min_cost": 180.0, "max_cost": 380.0, "action": "repair", "description": "Rear bumper refinish" },
+        "dent": { "min_cost": 280.0, "max_cost": 550.0, "action": "repair", "description": "Plastic deformation reshape" },
+        "crack": { "min_cost": 700.0, "max_cost": 1350.0, "action": "replace", "description": "Rear bumper cover replacement" },
+        "glass shatter": { "min_cost": 150.0, "max_cost": 350.0, "action": "replace", "description": "Reflector / sensor lens replacement" },
+        "lamp broken": { "min_cost": 220.0, "max_cost": 480.0, "action": "replace", "description": "Reverse / fog lamp replacement" },
+        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+      }
+    },
+    "hood": {
+      "is_structural": false,
+      "damages": {
+        "scratch": { "min_cost": 250.0, "max_cost": 500.0, "action": "repair", "description": "Full hood surface paint and blend" },
+        "dent": { "min_cost": 400.0, "max_cost": 850.0, "action": "repair", "description": "Metalwork dent removal and repaint" },
+        "crack": { "min_cost": 900.0, "max_cost": 1800.0, "action": "replace", "description": "Hood panel buckling/creasing; replacement required" },
+        "glass shatter": { "min_cost": 150.0, "max_cost": 300.0, "action": "repair", "description": "Washer nozzle / heat deflector repair" },
+        "lamp broken": { "min_cost": 200.0, "max_cost": 400.0, "action": "replace", "description": "Hood accessory light replacement" },
+        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+      }
+    },
+    "trunk": {
+      "is_structural": false,
+      "damages": {
+        "scratch": { "min_cost": 200.0, "max_cost": 420.0, "action": "repair", "description": "Trunk lid repaint" },
+        "dent": { "min_cost": 350.0, "max_cost": 700.0, "action": "repair", "description": "Trunk lid dent repair and alignment" },
+        "crack": { "min_cost": 800.0, "max_cost": 1600.0, "action": "replace", "description": "Trunk lid replacement and latch alignment" },
+        "glass shatter": { "min_cost": 350.0, "max_cost": 750.0, "action": "replace", "description": "Trunk glass / camera lens replacement" },
+        "lamp broken": { "min_cost": 250.0, "max_cost": 550.0, "action": "replace", "description": "Third brake light replacement" },
+        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+      }
+    },
+    "front-door": {
+      "is_structural": false,
+      "damages": {
+        "scratch": { "min_cost": 220.0, "max_cost": 480.0, "action": "repair", "description": "Door skin refinish and blend to adjacent panel" },
+        "dent": { "min_cost": 380.0, "max_cost": 800.0, "action": "repair", "description": "Paintless or stud-weld dent repair" },
+        "crack": { "min_cost": 1100.0, "max_cost": 2200.0, "action": "replace", "description": "Door shell replacement and internal hardware transfer" },
+        "glass shatter": { "min_cost": 300.0, "max_cost": 650.0, "action": "replace", "description": "Front door window glass replacement and vacuum debris" },
+        "lamp broken": { "min_cost": 150.0, "max_cost": 350.0, "action": "replace", "description": "Door puddle/warning lamp replacement" },
+        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+      }
+    },
+    "back-door": {
+      "is_structural": false,
+      "damages": {
+        "scratch": { "min_cost": 220.0, "max_cost": 480.0, "action": "repair", "description": "Rear door skin paint" },
+        "dent": { "min_cost": 380.0, "max_cost": 800.0, "action": "repair", "description": "Rear door dent repair" },
+        "crack": { "min_cost": 1100.0, "max_cost": 2200.0, "action": "replace", "description": "Rear door shell replacement" },
+        "glass shatter": { "min_cost": 280.0, "max_cost": 620.0, "action": "replace", "description": "Rear door window glass replacement" },
+        "lamp broken": { "min_cost": 150.0, "max_cost": 350.0, "action": "replace", "description": "Door light replacement" },
+        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+      }
+    },
+    "fender": {
+      "is_structural": false,
+      "damages": {
+        "scratch": { "min_cost": 180.0, "max_cost": 380.0, "action": "repair", "description": "Front fender repaint and blend" },
+        "dent": { "min_cost": 300.0, "max_cost": 650.0, "action": "repair", "description": "Fender reshaping" },
+        "crack": { "min_cost": 650.0, "max_cost": 1300.0, "action": "replace", "description": "Bolt-on front fender replacement and paint" },
+        "glass shatter": { "min_cost": 150.0, "max_cost": 350.0, "action": "replace", "description": "Fender marker glass replacement" },
+        "lamp broken": { "min_cost": 150.0, "max_cost": 350.0, "action": "replace", "description": "Fender side turn signal replacement" },
+        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+      }
+    },
+    "quarter-panel": {
+      "is_structural": true,
+      "damages": {
+        "scratch": { "min_cost": 300.0, "max_cost": 600.0, "action": "repair", "description": "Quarter panel refinish and roof rail blend" },
+        "dent": { "min_cost": 600.0, "max_cost": 1400.0, "action": "repair", "description": "Unibody sheet metal restoration and pulling" },
+        "crack": { "min_cost": 2500.0, "max_cost": 4800.0, "action": "replace", "description": "STRUCTURAL: Cut, section, weld quarter-panel, corrosion protection, full paint" },
+        "glass shatter": { "min_cost": 350.0, "max_cost": 750.0, "action": "replace", "description": "Quarter window fixed glass replacement" },
+        "lamp broken": { "min_cost": 250.0, "max_cost": 600.0, "action": "replace", "description": "Quarter panel lamp assembly replacement" },
+        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+      }
+    },
+    "rocker-panel": {
+      "is_structural": true,
+      "damages": {
+        "scratch": { "min_cost": 200.0, "max_cost": 450.0, "action": "repair", "description": "Lower unibody paint and gravel guard application" },
+        "dent": { "min_cost": 550.0, "max_cost": 1300.0, "action": "repair", "description": "Rocker panel stud pull and frame check" },
+        "crack": { "min_cost": 2200.0, "max_cost": 4500.0, "action": "replace", "description": "STRUCTURAL: Rocker panel section cut and structural weld" },
+        "glass shatter": { "min_cost": 150.0, "max_cost": 350.0, "action": "repair", "description": "Threshold trim repair" },
+        "lamp broken": { "min_cost": 150.0, "max_cost": 350.0, "action": "replace", "description": "Underbody lighting replacement" },
+        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+      }
+    },
+    "windshield": {
+      "is_structural": true,
+      "damages": {
+        "scratch": { "min_cost": 120.0, "max_cost": 250.0, "action": "repair", "description": "Optical glass polish for minor wiper scratches" },
+        "dent": { "min_cost": 500.0, "max_cost": 1200.0, "action": "replace", "description": "Laminated glass compromised; replacement required" },
+        "crack": { "min_cost": 550.0, "max_cost": 1300.0, "action": "replace", "description": "Laminated windshield replacement and ADAS camera calibration" },
+        "glass shatter": { "min_cost": 600.0, "max_cost": 1400.0, "action": "replace", "description": "Full laminated acoustic windshield replacement and sensor calibration" },
+        "lamp broken": { "min_cost": 150.0, "max_cost": 300.0, "action": "repair", "description": "Rain sensor / mirror bracket re-glue" },
+        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+      }
+    },
+    "back-windshield": {
+      "is_structural": false,
+      "damages": {
+        "scratch": { "min_cost": 120.0, "max_cost": 250.0, "action": "repair", "description": "Rear glass polish" },
+        "dent": { "min_cost": 450.0, "max_cost": 950.0, "action": "replace", "description": "Rear glass replacement" },
+        "crack": { "min_cost": 450.0, "max_cost": 950.0, "action": "replace", "description": "Rear heated glass replacement" },
+        "glass shatter": { "min_cost": 500.0, "max_cost": 1050.0, "action": "replace", "description": "Tempered rear window replacement and interior cleanup" },
+        "lamp broken": { "min_cost": 200.0, "max_cost": 450.0, "action": "replace", "description": "High mount brake light replacement" },
+        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+      }
+    },
+    "front-window": {
+      "is_structural": false,
+      "damages": {
+        "scratch": { "min_cost": 100.0, "max_cost": 220.0, "action": "repair", "description": "Side glass buffing" },
+        "dent": { "min_cost": 250.0, "max_cost": 550.0, "action": "replace", "description": "Door glass and track repair" },
+        "crack": { "min_cost": 250.0, "max_cost": 550.0, "action": "replace", "description": "Tempered glass replacement" },
+        "glass shatter": { "min_cost": 280.0, "max_cost": 600.0, "action": "replace", "description": "Door glass replacement, regulator check, door vacuum" },
+        "lamp broken": { "min_cost": 150.0, "max_cost": 350.0, "action": "repair", "description": "Door electronics check" },
+        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+      }
+    },
+    "back-window": {
+      "is_structural": false,
+      "damages": {
+        "scratch": { "min_cost": 100.0, "max_cost": 220.0, "action": "repair", "description": "Rear side glass buffing" },
+        "dent": { "min_cost": 250.0, "max_cost": 550.0, "action": "replace", "description": "Rear side glass replacement" },
+        "crack": { "min_cost": 250.0, "max_cost": 550.0, "action": "replace", "description": "Rear side glass replacement" },
+        "glass shatter": { "min_cost": 280.0, "max_cost": 600.0, "action": "replace", "description": "Rear side glass replacement" },
+        "lamp broken": { "min_cost": 150.0, "max_cost": 350.0, "action": "repair", "description": "Window trim repair" },
+        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+      }
+    },
+    "headlight": {
+      "is_structural": false,
+      "damages": {
+        "scratch": { "min_cost": 120.0, "max_cost": 250.0, "action": "repair", "description": "Headlight lens restoration and UV clearcoat" },
+        "dent": { "min_cost": 450.0, "max_cost": 1200.0, "action": "replace", "description": "Headlight internal reflector/bracket damage; assembly replacement" },
+        "crack": { "min_cost": 450.0, "max_cost": 1200.0, "action": "replace", "description": "Cracked housing will ingest moisture; unit replacement required" },
+        "glass shatter": { "min_cost": 500.0, "max_cost": 1300.0, "action": "replace", "description": "Headlight assembly replacement" },
+        "lamp broken": { "min_cost": 500.0, "max_cost": 1300.0, "action": "replace", "description": "Headlight assembly replacement and beam aiming" },
+        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+      }
+    },
+    "tail-light": {
+      "is_structural": false,
+      "damages": {
+        "scratch": { "min_cost": 100.0, "max_cost": 200.0, "action": "repair", "description": "Tail light lens buffing" },
+        "dent": { "min_cost": 250.0, "max_cost": 650.0, "action": "replace", "description": "Tail light unit replacement" },
+        "crack": { "min_cost": 250.0, "max_cost": 650.0, "action": "replace", "description": "Tail light housing replacement" },
+        "glass shatter": { "min_cost": 280.0, "max_cost": 700.0, "action": "replace", "description": "Tail light lens shattered; unit replacement" },
+        "lamp broken": { "min_cost": 280.0, "max_cost": 700.0, "action": "replace", "description": "Tail lamp cluster replacement" },
+        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+      }
+    },
+    "license-plate": {
+      "is_structural": false,
+      "damages": {
+        "scratch": { "min_cost": 50.0, "max_cost": 100.0, "action": "repair", "description": "Plate bracket touch-up" },
+        "dent": { "min_cost": 80.0, "max_cost": 180.0, "action": "repair", "description": "Bracket straightening" },
+        "crack": { "min_cost": 100.0, "max_cost": 220.0, "action": "replace", "description": "Plate frame / bracket replacement" },
+        "glass shatter": { "min_cost": 100.0, "max_cost": 220.0, "action": "replace", "description": "Plate light cover replacement" },
+        "lamp broken": { "min_cost": 80.0, "max_cost": 180.0, "action": "replace", "description": "License plate illumination light replacement" },
+        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+      }
+    },
+    "mirror": {
+      "is_structural": false,
+      "damages": {
+        "scratch": { "min_cost": 120.0, "max_cost": 260.0, "action": "repair", "description": "Mirror cap painting" },
+        "dent": { "min_cost": 200.0, "max_cost": 450.0, "action": "repair", "description": "Mirror housing repair" },
+        "crack": { "min_cost": 350.0, "max_cost": 750.0, "action": "replace", "description": "Power mirror assembly replacement" },
+        "glass shatter": { "min_cost": 180.0, "max_cost": 380.0, "action": "replace", "description": "Heated mirror glass replacement" },
+        "lamp broken": { "min_cost": 160.0, "max_cost": 320.0, "action": "replace", "description": "Mirror indicator LED replacement" },
+        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+      }
+    },
+    "roof": {
+      "is_structural": true,
+      "damages": {
+        "scratch": { "min_cost": 300.0, "max_cost": 650.0, "action": "repair", "description": "Roof panel repaint" },
+        "dent": { "min_cost": 650.0, "max_cost": 1500.0, "action": "repair", "description": "Hail/falling object dent repair" },
+        "crack": { "min_cost": 2800.0, "max_cost": 5500.0, "action": "replace", "description": "STRUCTURAL: Roof panel cut, windshield removal, unibody replacement" },
+        "glass shatter": { "min_cost": 800.0, "max_cost": 1800.0, "action": "replace", "description": "Panoramic sunroof / moonroof glass replacement" },
+        "lamp broken": { "min_cost": 200.0, "max_cost": 450.0, "action": "replace", "description": "Roof clearance / aerial light replacement" },
+        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+      }
+    },
+    "grille": {
+      "is_structural": false,
+      "damages": {
+        "scratch": { "min_cost": 120.0, "max_cost": 260.0, "action": "repair", "description": "Grille louvre paint touch-up" },
+        "dent": { "min_cost": 200.0, "max_cost": 450.0, "action": "repair", "description": "Grille reshape" },
+        "crack": { "min_cost": 350.0, "max_cost": 800.0, "action": "replace", "description": "Front radiator grille replacement" },
+        "glass shatter": { "min_cost": 150.0, "max_cost": 350.0, "action": "replace", "description": "Radar emblem lens replacement" },
+        "lamp broken": { "min_cost": 200.0, "max_cost": 450.0, "action": "replace", "description": "Illuminated emblem / grille light replacement" },
+        "tire flat": { "min_cost": 140.0, "max_cost": 320.0, "action": "replace", "description": "Tire replacement" }
+      }
+    },
+    "front-wheel": {
+      "is_structural": false,
+      "damages": {
+        "scratch": { "min_cost": 150.0, "max_cost": 300.0, "action": "repair", "description": "Alloy wheel curb rash repair and powder coat" },
+        "dent": { "min_cost": 200.0, "max_cost": 450.0, "action": "repair", "description": "Wheel rim truing and balance" },
+        "crack": { "min_cost": 400.0, "max_cost": 900.0, "action": "replace", "description": "Cracked alloy wheel unsafe; wheel replacement required" },
+        "glass shatter": { "min_cost": 140.0, "max_cost": 300.0, "action": "repair", "description": "Wheel center cap repair" },
+        "lamp broken": { "min_cost": 140.0, "max_cost": 300.0, "action": "repair", "description": "Brake caliper / wheel speed sensor check" },
+        "tire flat": { "min_cost": 160.0, "max_cost": 350.0, "action": "replace", "description": "Tire replacement, valve stem, and wheel balance" }
+      }
+    },
+    "back-wheel": {
+      "is_structural": false,
+      "damages": {
+        "scratch": { "min_cost": 150.0, "max_cost": 300.0, "action": "repair", "description": "Rear alloy wheel refinish" },
+        "dent": { "min_cost": 200.0, "max_cost": 450.0, "action": "repair", "description": "Wheel rim truing and balance" },
+        "crack": { "min_cost": 400.0, "max_cost": 900.0, "action": "replace", "description": "Rear alloy wheel replacement" },
+        "glass shatter": { "min_cost": 140.0, "max_cost": 300.0, "action": "repair", "description": "Wheel center cap repair" },
+        "lamp broken": { "min_cost": 140.0, "max_cost": 300.0, "action": "repair", "description": "ABS sensor check" },
+        "tire flat": { "min_cost": 160.0, "max_cost": 350.0, "action": "replace", "description": "Rear tire replacement and balance" }
+      }
+    }
+  }
+}

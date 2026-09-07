@@ -21,9 +21,9 @@ Full detail (acceptance criteria, verification, files) in [plan.md](plan.md). Wo
 - [x] **Checkpoint: Damage Detection & Segmentation** — review with user
 
 ## Phase 4: Visible Repair-Cost Estimator
-- [ ] Task 7: Curated price table
-- [ ] Task 8: Cost estimator module
-- [ ] **Checkpoint: Cost Estimator** — review with user
+- [x] Task 7: Curated price table
+- [x] Task 8: Cost estimator module
+- [x] **Checkpoint: Cost Estimator** — review with user
 
 ## Phase 5: Total-Loss Triage Engine
 - [ ] Task 9: Triage decision engine (blueprint §9)
