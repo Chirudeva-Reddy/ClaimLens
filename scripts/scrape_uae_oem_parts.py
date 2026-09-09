@@ -226,10 +226,14 @@ def scrape_all_parts(max_pages: int = 30) -> dict[str, Any]:
                 page_matches += 1
 
         total_matched_parts += page_matches
-        print(f"Page {page:02d}: Scanned {len(products)} products, matched {page_matches} body components.")
+        print(
+            f"Page {page:02d}: Scanned {len(products)} products, matched {page_matches} body components."
+        )
         time.sleep(0.15)  # Respectful crawl rate limit
 
-    print(f"\nCompleted crawl: {total_scanned} total products examined, {total_matched_parts} component matches.")
+    print(
+        f"\nCompleted crawl: {total_scanned} total products examined, {total_matched_parts} component matches."
+    )
 
     # Calculate statistics per (Brand, Component)
     brand_stats: dict[str, dict[str, Any]] = {}
@@ -240,7 +244,11 @@ def scrape_all_parts(max_pages: int = 30) -> dict[str, Any]:
             n = len(prices)
             if n == 0:
                 continue
-            median_price = prices[n // 2] if n % 2 != 0 else round((prices[n // 2 - 1] + prices[n // 2]) / 2.0, 2)
+            median_price = (
+                prices[n // 2]
+                if n % 2 != 0
+                else round((prices[n // 2 - 1] + prices[n // 2]) / 2.0, 2)
+            )
             brand_stats[brand][part] = {
                 "sample_count": n,
                 "min_price_aed": round(prices[0], 2),

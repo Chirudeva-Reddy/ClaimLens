@@ -16,6 +16,10 @@
 
 import { animate, inView, stagger } from 'https://cdn.jsdelivr.net/npm/motion@13.2.0/+esm';
 
+// A reload would otherwise restore the previous scroll position and drop the
+// visitor into the middle of a half-played sequence.
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const root = document.documentElement;
 const lens = document.getElementById('hero-lens');
@@ -68,27 +72,6 @@ function runPreloader() {
     });
 }
 
-/* ---------- Wordmark ----------------------------------------------------- */
-
-let wordAnimation = null;
-
-function hideWordmark() {
-    // Stop any in-flight reveal, or it commits its end styles over these.
-    wordAnimation?.stop();
-    wordAnimation = null;
-    letters.forEach((el) => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(16px)';
-        el.style.filter = 'blur(10px)';
-    });
-}
-
-function revealWordmark() {
-    wordAnimation = animate(letters,
-        { opacity: 1, y: 0, filter: 'blur(0px)' },
-        { type: 'spring', visualDuration: 0.5, bounce: 0.26, delay: stagger(0.04) });
-}
-
 /* ---------- Below-fold reveals ------------------------------------------- */
 
 const EASE = [0.16, 1, 0.3, 1];
@@ -139,7 +122,7 @@ function wireSequence() {
 
         root.dataset.sequence = 'on';
         curtain.classList.add('is-sequenced');
-        hideWordmark();
+        gsap.set(letters, { opacity: 0, y: 16, filter: 'blur(8px)' });
         gsap.set(lens, { transformOrigin: '50% 50%' });
 
         // Offsets that carry the glass from its resting place to the middle.
@@ -155,7 +138,6 @@ function wireSequence() {
         const maxHole = () => Math.hypot(innerWidth, innerHeight) / 2 * 1.08;
         const holeScale = () => maxHole() / (lens.offsetWidth / 2);
 
-        let spoken = false;
         let exiting = false;
         const tl = gsap.timeline({
             scrollTrigger: {
@@ -164,16 +146,13 @@ function wireSequence() {
                 // The page keeps scrolling behind the fixed glass, so the hole
                 // opens onto the first content section rather than onto nothing.
                 endTrigger: '#project',
-                // Stop just short, so the heading clears the sticky header.
+                // Stop just short, so the heading clears the fixed header.
                 end: 'top 90px',
                 pin: true,
                 pinSpacing: false,
                 scrub: 0.25,
                 invalidateOnRefresh: true,
                 onUpdate: (self) => {
-                    // Wordmark letters resolve once, at the point the glass owns the frame.
-                    if (!spoken && self.progress > 0.34) { spoken = true; revealWordmark(); }
-                    if (spoken && self.progress < 0.28) { spoken = false; hideWordmark(); }
                     const past = self.progress > 0.6;
                     if (past !== exiting) { exiting = past; lens.classList.toggle('is-exiting', past); }
                 },
@@ -182,10 +161,8 @@ function wireSequence() {
                 // Scrolling back above the start leaves the trigger inactive, so
                 // reset the reveal here rather than waiting for an update tick.
                 onLeaveBack: () => {
-                    spoken = false;
                     exiting = false;
                     lens.classList.remove('is-exiting');
-                    hideWordmark();
                 },
             },
         });
@@ -194,26 +171,31 @@ function wireSequence() {
         tl.to(copy, { yPercent: -34, opacity: 0, ease: 'power1.in', duration: 0.22 }, 0)
           .to(lens, { x: centre('x'), y: centre('y'), scale: 1.1, ease: 'power1.inOut', duration: 0.45 }, 0)
 
-        // 2. The evidence layer dims out, leaving the wordmark on dark glass.
-          .to(['.lens-media', '.lens-annotations', '.lens-sweep', '.lens-shine'],
-              { opacity: 0, ease: 'none', duration: 0.22 }, 0.42)
-          .to('.lens-hud', { opacity: 0, ease: 'none', duration: 0.16 }, 0.42)
-          .to('.lens-tint', { opacity: 0, ease: 'none', duration: 0.2 }, 0.5)
+        // 2. The evidence layer dims out, leaving the wordmark on dark glass (0.38-0.52).
+          .to(['.lens-media', '.lens-annotations', '.lens-hud', '.lens-sweep', '.lens-shine'],
+              { opacity: 0, ease: 'none', duration: 0.14 }, 0.38)
+          .to('.lens-tint', { opacity: 0, ease: 'none', duration: 0.14 }, 0.44)
           .to(['.hero-veil', '.hero-beams', '.hero-rules'],
-              { autoAlpha: 0, ease: 'none', duration: 0.16 }, 0.46)
+              { autoAlpha: 0, ease: 'none', duration: 0.16 }, 0.42)
 
-        // 3. The page comes through the glass.
+        // 3. The letters scrub in with staggered rise and blur on dark glass (0.44-0.58).
+          .fromTo(letters,
+              { opacity: 0, y: 16, filter: 'blur(8px)' },
+              { opacity: 1, y: 0, filter: 'blur(0px)', stagger: 0.008, ease: 'power1.out', duration: 0.04 },
+              0.44)
+
+        // 4. The page comes through the glass (0.62-0.78), aperture finishes at 1.0.
           .to('.lens-wordmark', { scale: 1.35, opacity: 0, ease: 'power1.in', duration: 0.16 }, 0.62)
-          .to(lens, { scale: holeScale, ease: 'power1.in', duration: 0.26 }, 0.68)
-          .to(curtain, { '--hole': () => maxHole() + 'px', ease: 'power1.in', duration: 0.26 }, 0.68)
-          .to('.lens-glass', { opacity: 0, ease: 'none', duration: 0.06 }, 0.88);
+          .to(lens, { scale: holeScale, ease: 'power1.in', duration: 0.32 }, 0.68)
+          .to(curtain, { '--hole': () => maxHole() + 'px', ease: 'power1.in', duration: 0.32 }, 0.68)
+          .to('.lens-glass', { opacity: 0, ease: 'none', duration: 0.08 }, 0.92);
 
         return () => {
             tl.kill();
             curtain.classList.remove('is-sequenced');
             delete root.dataset.sequence;
             delete root.dataset.revealed;
-            gsap.set([lens, copy, '.lens-glass', '.lens-wordmark', '.lens-media', '.lens-annotations',
+            gsap.set([lens, copy, letters, '.lens-glass', '.lens-wordmark', '.lens-media', '.lens-annotations',
                       '.lens-sweep', '.lens-shine', '.lens-hud', '.lens-tint',
                       '.hero-veil', '.hero-beams', '.hero-rules'], { clearProps: 'all' });
             lens.classList.remove('is-exiting');

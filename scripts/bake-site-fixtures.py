@@ -36,11 +36,15 @@ def main() -> None:
         )
         response.raise_for_status()
         payload = response.json()
-        (OUT / "fixtures" / f"{case_id}.json").write_text(json.dumps(payload, separators=(",", ":")))
+        (OUT / "fixtures" / f"{case_id}.json").write_text(
+            json.dumps(payload, separators=(",", ":"))
+        )
         shutil.copyfile(scenario["image_path"], OUT / "assets" / f"{case_id}.jpg")
         index[case_id] = {"brand": scenario["brand"], "acv": scenario["acv"]}
-        print(f"{case_id}: {payload['triage']['headline']} "
-              f"({payload['financials']['loss_ratio_pct']}% of AED {payload['financials']['acv_aed']:,.0f})")
+        print(
+            f"{case_id}: {payload['triage']['headline']} "
+            f"({payload['financials']['loss_ratio_pct']}% of AED {payload['financials']['acv_aed']:,.0f})"
+        )
 
     (OUT / "fixtures" / "index.json").write_text(json.dumps(index, indent=2))
 

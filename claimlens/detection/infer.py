@@ -6,10 +6,11 @@ from pathlib import Path
 from typing import Any
 
 import numpy as np
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageOps
 from ultralytics import YOLO
 
 from claimlens.detection.association import associate_damages_with_parts
+from claimlens.detection.preprocessing import letterbox_image, unletterbox_coords
 from claimlens.detection.schemas import (
     STRUCTURAL_PART_NAMES,
     DetectedDamage,
@@ -31,7 +32,28 @@ def _get_model(model_or_path: YOLO | Path | str | None, default_path: Path) -> Y
     return None
 
 
-def extract_parts_from_results(results: Any) -> list[DetectedPart]:
+# Support image_meta attribute and constructor argument on InspectionResult
+_orig_inspection_result_init = InspectionResult.__init__
+
+
+def _inspection_result_init(
+    self: Any,
+    *args: Any,
+    image_meta: dict[str, Any] | None = None,
+    **kwargs: Any,
+) -> None:
+    _orig_inspection_result_init(self, *args, **kwargs)
+    self.image_meta = image_meta if image_meta is not None else {}
+
+
+InspectionResult.__init__ = _inspection_result_init  # type: ignore[method-assign]
+InspectionResult.image_meta = None  # type: ignore[attr-defined]
+
+
+def extract_parts_from_results(
+    results: Any,
+    letterbox_meta: dict[str, Any] | None = None,
+) -> list[DetectedPart]:
     parts: list[DetectedPart] = []
     if not results or len(results) == 0:
         return parts
@@ -52,13 +74,22 @@ def extract_parts_from_results(results: Any) -> list[DetectedPart]:
         cid = int(cls_ids[i])
         cname = str(names.get(cid, f"part_{cid}"))
         conf = float(confs[i])
-        box = tuple(float(x) for x in xyxy[i])
+        raw_box = xyxy[i]
+        if letterbox_meta is not None:
+            unletterboxed_box = unletterbox_coords(raw_box, letterbox_meta)
+            box = tuple(float(x) for x in unletterboxed_box)
+        else:
+            box = tuple(float(x) for x in raw_box)
 
         polygon_pts: list[tuple[float, float]] | None = None
         if masks is not None and len(masks.xy) > i:
             pts = masks.xy[i]
             if len(pts) >= 3:
-                polygon_pts = [(float(x), float(y)) for x, y in pts]
+                if letterbox_meta is not None:
+                    unletterboxed_pts = unletterbox_coords(pts, letterbox_meta)
+                    polygon_pts = [(float(x), float(y)) for x, y in unletterboxed_pts]
+                else:
+                    polygon_pts = [(float(x), float(y)) for x, y in pts]
 
         is_structural = cname.lower() in STRUCTURAL_PART_NAMES
         parts.append(
@@ -74,7 +105,11 @@ def extract_parts_from_results(results: Any) -> list[DetectedPart]:
     return parts
 
 
-def extract_damages_from_results(results: Any, image_size: tuple[int, int]) -> list[DetectedDamage]:
+def extract_damages_from_results(
+    results: Any,
+    image_size: tuple[int, int],
+    letterbox_meta: dict[str, Any] | None = None,
+) -> list[DetectedDamage]:
     damages: list[DetectedDamage] = []
     if not results or len(results) == 0:
         return damages
@@ -91,13 +126,21 @@ def extract_damages_from_results(results: Any, image_size: tuple[int, int]) -> l
     confs = boxes.conf.cpu().numpy()
     cls_ids = boxes.cls.cpu().numpy().astype(int)
     img_w, img_h = image_size
+    if letterbox_meta is not None:
+        img_w = int(letterbox_meta.get("orig_width", img_w))
+        img_h = int(letterbox_meta.get("orig_height", img_h))
     img_area = max(1.0, float(img_w * img_h))
 
     for i in range(len(boxes)):
         cid = int(cls_ids[i])
         cname = str(names.get(cid, f"damage_{cid}"))
         conf = float(confs[i])
-        box = tuple(float(x) for x in xyxy[i])
+        raw_box = xyxy[i]
+        if letterbox_meta is not None:
+            unletterboxed_box = unletterbox_coords(raw_box, letterbox_meta)
+            box = tuple(float(x) for x in unletterboxed_box)
+        else:
+            box = tuple(float(x) for x in raw_box)
 
         polygon_pts: list[tuple[float, float]] | None = None
         area_ratio = 0.0
@@ -105,7 +148,11 @@ def extract_damages_from_results(results: Any, image_size: tuple[int, int]) -> l
         if masks is not None and len(masks.xy) > i:
             pts = masks.xy[i]
             if len(pts) >= 3:
-                polygon_pts = [(float(x), float(y)) for x, y in pts]
+                if letterbox_meta is not None:
+                    unletterboxed_pts = unletterbox_coords(pts, letterbox_meta)
+                    polygon_pts = [(float(x), float(y)) for x, y in unletterboxed_pts]
+                else:
+                    polygon_pts = [(float(x), float(y)) for x, y in pts]
                 # Approximate polygon area via shoelace formula
                 x_coords = np.array([p[0] for p in polygon_pts])
                 y_coords = np.array([p[1] for p in polygon_pts])
@@ -179,7 +226,6 @@ def annotate_inspection(
     return canvas.convert("RGB")
 
 
-
 def inspect_vehicle(
     image_path: Path | str,
     parts_model: YOLO | Path | str | None = None,
@@ -190,14 +236,23 @@ def inspect_vehicle(
     path = Path(image_path)
     verdict = check_image_quality(path)
     if not verdict.accepted:
-        return InspectionResult(
+        res = InspectionResult(
             accepted_by_quality_gate=False,
             quality_gate_reason=verdict.reason,
         )
+        res.image_meta = {}
+        return res
 
-    with Image.open(path) as img:
-        img_rgb = img.convert("RGB")
-        size = img_rgb.size
+    with Image.open(path) as raw_img:
+        # Normalize orientation and letterbox onto constant 640x640 canvas
+        letterboxed_img, meta = letterbox_image(raw_img)
+        # Transpose original image for consistent annotation rendering in original pixel space
+        img_orig = ImageOps.exif_transpose(raw_img)
+        if img_orig is None:
+            img_orig = raw_img
+        if img_orig.mode != "RGB":
+            img_orig = img_orig.convert("RGB")
+        orig_size = (meta["orig_width"], meta["orig_height"])
 
     p_model = _get_model(parts_model, DEFAULT_PARTS_WEIGHTS)
     d_model = _get_model(damages_model, DEFAULT_DAMAGES_WEIGHTS)
@@ -206,20 +261,32 @@ def inspect_vehicle(
     detected_damages: list[DetectedDamage] = []
 
     if p_model is not None:
-        p_res = p_model(img_rgb, conf=conf_threshold, verbose=False)
-        detected_parts = extract_parts_from_results(p_res)
+        p_res = p_model(letterboxed_img, conf=conf_threshold, verbose=False)
+        detected_parts = extract_parts_from_results(p_res, letterbox_meta=meta)
 
     if d_model is not None:
-        d_res = d_model(img_rgb, conf=conf_threshold, verbose=False)
-        detected_damages = extract_damages_from_results(d_res, size)
+        d_res = d_model(letterboxed_img, conf=conf_threshold, verbose=False)
+        detected_damages = extract_damages_from_results(d_res, orig_size, letterbox_meta=meta)
 
     associated, unassociated, structural_flag = associate_damages_with_parts(
         detected_damages, detected_parts
     )
 
-    annotated = annotate_inspection(img_rgb, detected_parts, detected_damages)
+    annotated = annotate_inspection(img_orig, detected_parts, detected_damages)
 
-    return InspectionResult(
+    image_meta = {
+        "width": meta["orig_width"],
+        "height": meta["orig_height"],
+        "orig_width": meta["orig_width"],
+        "orig_height": meta["orig_height"],
+        "scale": meta["scale"],
+        "pad_left": meta["pad_left"],
+        "pad_top": meta["pad_top"],
+        "target_width": meta["target_width"],
+        "target_height": meta["target_height"],
+    }
+
+    result = InspectionResult(
         accepted_by_quality_gate=True,
         quality_gate_reason=None,
         associated_damages=associated,
@@ -228,3 +295,5 @@ def inspect_vehicle(
         structural_flag=structural_flag,
         annotated_image=annotated,
     )
+    result.image_meta = image_meta
+    return result

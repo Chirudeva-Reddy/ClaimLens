@@ -209,4 +209,3 @@ def test_reasoning_formats_aed_currency():
     dec = decide_triage(inspection, estimate, pre_accident_value=10000.0, preset_id="uae_50")
     assert "AED 6,000.00" in dec.reasoning
     assert "AED 10,000.00" in dec.reasoning
-

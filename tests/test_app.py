@@ -89,6 +89,8 @@ def test_analyze_claim_case_c_structural_inspection() -> None:
     assert "AED" in kpi_html
     assert isinstance(img, Image.Image)
     assert isinstance(table, list)
-    assert "Chassis & Structural Frame Roadworthiness Rule" in policy or "CONFIRMED CLAUSE" in policy
+    assert (
+        "Chassis & Structural Frame Roadworthiness Rule" in policy or "CONFIRMED CLAUSE" in policy
+    )
     assert "Unresolvable Physical Factors" in unknowns
     assert "Cost Estimator Assumptions" in assumptions

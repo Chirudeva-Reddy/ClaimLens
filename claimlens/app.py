@@ -508,7 +508,9 @@ def analyze_claim(
         policy_query = "economic total loss 50 percent threshold vehicle market value repair"
     else:
         # Check if glass was damaged
-        has_glass = any("glass" in (a.damage.name or "").lower() for a in inspection.associated_damages)
+        has_glass = any(
+            "glass" in (a.damage.name or "").lower() for a in inspection.associated_damages
+        )
         if has_glass:
             policy_query = "windshield glass damage comprehensive excess waiver"
 
@@ -517,7 +519,9 @@ def analyze_claim(
     # 6. Render UI Components
     triage_html = _format_triage_card(decision)
     kpi_html = _format_kpi_cards(decision, estimate)
-    annotated_img = inspection.annotated_image if inspection.annotated_image else Image.open(image_path)
+    annotated_img = (
+        inspection.annotated_image if inspection.annotated_image else Image.open(image_path)
+    )
     cost_table = _build_cost_table(estimate)
     policy_html = _format_policy_card(policy_result)
     unknowns_md = _format_unknowns_markdown(decision)
@@ -566,9 +570,10 @@ def load_demo_case_c():
 
 def create_app() -> gr.Blocks:
     """Builds and wires the Gradio Blocks UI."""
-    with gr.Blocks(
-        title="ClaimLens — Explainable Vehicle Damage Triage"
-    ) as demo, gr.Column(elem_classes=["claimlens-container"]):
+    with (
+        gr.Blocks(title="ClaimLens — Explainable Vehicle Damage Triage") as demo,
+        gr.Column(elem_classes=["claimlens-container"]),
+    ):
         # Header & Styles
         gr.HTML(
             f"""
@@ -679,7 +684,9 @@ def create_app() -> gr.Blocks:
         # Split Deep-Dive View (Visual Studio & Intelligence Tabs)
         with gr.Row():
             with gr.Column(scale=5, elem_classes=["surface-card"]):
-                gr.HTML('<div class="section-title">🔬 3. Computer Vision Segmentation Studio</div>')
+                gr.HTML(
+                    '<div class="section-title">🔬 3. Computer Vision Segmentation Studio</div>'
+                )
                 out_annotated_image = gr.Image(
                     label="Annotated Parts & Damages Segmentation Overlay",
                     interactive=False,
@@ -696,7 +703,9 @@ def create_app() -> gr.Blocks:
                 )
 
             with gr.Column(scale=7, elem_classes=["surface-card"]):
-                gr.HTML('<div class="section-title">⚖️ 4. Explainable Decision & Policy Audit Trail</div>')
+                gr.HTML(
+                    '<div class="section-title">⚖️ 4. Explainable Decision & Policy Audit Trail</div>'
+                )
                 with gr.Tabs():
                     with gr.TabItem("📊 Itemized Repair Estimate"):
                         out_cost_table = gr.Dataframe(

@@ -334,6 +334,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Keyboard shortcuts [1], [2], [3] for instant scenario switching
+    document.addEventListener('keydown', (e) => {
+        // Guard against browser navigation combos (Cmd+1/2/3, Ctrl+1/2/3, Alt+1/2/3) and key repeat
+        if (e.metaKey || e.ctrlKey || e.altKey || e.repeat) return;
+        // Guard against inputs, textareas, selects, and rich-text/contenteditable targets
+        if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable)) return;
+        // Guard against open appraisal modal dialog
+        if (adjusterModalBackdrop && !adjusterModalBackdrop.classList.contains('hidden')) return;
+        // Guard against in-flight inspection execution
+        if (btnRunInspection && btnRunInspection.disabled) return;
+
+        let targetBtn = null;
+        if (e.key === '1') {
+            targetBtn = document.getElementById('btn-case-a');
+        } else if (e.key === '2') {
+            targetBtn = document.getElementById('btn-case-b');
+        } else if (e.key === '3') {
+            targetBtn = document.getElementById('btn-case-c');
+        }
+
+        if (targetBtn && !targetBtn.disabled) {
+            e.preventDefault();
+            targetBtn.click();
+        }
+    });
+
     async function loadAndRunScenario(caseId) {
         resetResults();
         document.querySelectorAll('.scenario-tab-btn').forEach(c => {
@@ -484,6 +510,61 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================================================
     // 6. Render Inspection & Telemetry Results
     // =========================================================================
+
+    // =========================================================================
+    // Motion helpers
+    //
+    // Figures move rather than snap: a value that travels tells the adjuster
+    // which number their slider just changed, and in which direction. Nielsen
+    // Norman puts useful UI motion at 100-400ms, with 500ms reading as
+    // sluggish, so a figure gets 420ms and everything else stays under it.
+    // =========================================================================
+    const REDUCE_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const runningTweens = new WeakMap();
+
+    const asMoney = (v) => `AED ${v.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    const asPercent = (v) => `${v.toFixed(1)}%`;
+
+    function tweenNumber(el, to, format, duration = 420) {
+        if (!el) return;
+
+        const pending = runningTweens.get(el);
+        if (pending) cancelAnimationFrame(pending);
+
+        const settle = () => {
+            el.dataset.value = String(to);
+            el.textContent = format(to);
+            runningTweens.delete(el);
+        };
+
+        const stored = Number(el.dataset.value);
+        // First paint counts up from zero; after that it travels from whatever
+        // is on screen, so the direction of change is legible.
+        const from = Number.isFinite(stored) ? stored : 0;
+        if (REDUCE_MOTION.matches || from === to) return settle();
+
+        const start = performance.now();
+        const step = (now) => {
+            const t = Math.min(1, (now - start) / duration);
+            const eased = 1 - Math.pow(1 - t, 3);
+            el.textContent = format(from + (to - from) * eased);
+            if (t < 1) runningTweens.set(el, requestAnimationFrame(step));
+            else settle();
+        };
+        runningTweens.set(el, requestAnimationFrame(step));
+    }
+
+    // Results arrive in sequence rather than all at once. Staggered revelation
+    // reads as a narrative and gives the eye an order to follow.
+    function stagger(elements) {
+        elements.forEach((el, i) => {
+            el.style.setProperty('--i', String(i));
+            el.classList.remove('enters');
+            void el.offsetWidth;
+            el.classList.add('enters');
+        });
+    }
+
     function renderAnalysisResults(data) {
         document.body.classList.add('has-analysis');
         // Quality Gate status
@@ -505,17 +586,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Radial Loss Ratio Gauge
         const ratio = Math.min(100.0, Math.max(0.0, data.financials.loss_ratio_pct));
-        gaugeLossRatio.textContent = `${data.financials.loss_ratio_pct.toFixed(1)}%`;
+        tweenNumber(gaugeLossRatio, data.financials.loss_ratio_pct, asPercent);
         const circumference = 314.159;
         const offset = circumference - (ratio / 100.0) * circumference;
         gaugeBar.style.strokeDashoffset = offset;
         gaugeBar.style.stroke = color === 'emerald' ? '#10B981' : (color === 'ruby' ? '#F43F5E' : '#F59E0B');
 
         // KPI Telemetry Cards
-        kpiRepairCost.textContent = `AED ${data.financials.repair_cost_median_aed.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        tweenNumber(kpiRepairCost, data.financials.repair_cost_median_aed, asMoney);
         kpiRepairRange.textContent = `Min: AED ${data.financials.repair_cost_min_aed.toLocaleString()} • Max: AED ${data.financials.repair_cost_max_aed.toLocaleString()}`;
-        kpiAcv.textContent = `AED ${data.financials.acv_aed.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-        kpiThreshold.textContent = `${data.financials.threshold_pct.toFixed(1)}%`;
+        tweenNumber(kpiAcv, data.financials.acv_aed, asMoney);
+        tweenNumber(kpiThreshold, data.financials.threshold_pct, asPercent);
+        stagger([...document.querySelectorAll('.kpi-card')]);
 
         // Canvas & High-Precision SVG Rendering
         if (data.image_meta && data.image_meta.raw_base64) {
@@ -560,6 +642,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!polygons || polygons.length === 0) return;
 
+        let drawIndex = 0;
         polygons.forEach((poly) => {
             if (!poly.polygon || poly.polygon.length < 3) return;
 
@@ -571,6 +654,16 @@ document.addEventListener('DOMContentLoaded', () => {
             el.setAttribute('data-label', poly.label);
             el.setAttribute('data-conf', `${(poly.confidence * 100).toFixed(0)}%`);
             el.setAttribute('vector-effect', 'non-scaling-stroke');
+            // Outline traces itself, so the eye follows where the model looked.
+            if (!REDUCE_MOTION.matches && typeof el.getTotalLength === 'function') {
+                requestAnimationFrame(() => {
+                    const length = el.getTotalLength();
+                    if (!length) return;
+                    el.style.setProperty('--trace', `${length}`);
+                    el.style.setProperty('--i', String(drawIndex++));
+                    el.classList.add('traces');
+                });
+            }
 
             let cssClass = 'svg-polygon ';
             if (poly.type === 'part') {
@@ -714,7 +807,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const polyId = item.damage_polygon_id || '';
             const actionClass = item.action === 'REPLACE' ? 'action-replace' : 'action-repair';
             return `
-                <tr data-poly-id="${polyId}" class="table-row-item" tabindex="0">
+                <tr data-poly-id="${polyId}" class="table-row-item enters" style="--i:${idx}" tabindex="0">
                     <td class="font-mono tabular-nums">${idx + 1}</td>
                     <td>
                         <strong>${escapeHtml(item.part_name)}</strong>
@@ -840,15 +933,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Update Loss Ratio Gauge
                 const ratio = Math.min(100.0, Math.max(0.0, rec.financials.loss_ratio_pct));
-                gaugeLossRatio.textContent = `${rec.financials.loss_ratio_pct.toFixed(1)}%`;
+                tweenNumber(gaugeLossRatio, rec.financials.loss_ratio_pct, asPercent, 260);
                 const circumference = 314.159;
                 const offset = circumference - (ratio / 100.0) * circumference;
                 gaugeBar.style.strokeDashoffset = offset;
                 gaugeBar.style.stroke = color === 'emerald' ? '#10B981' : (color === 'ruby' ? '#F43F5E' : '#F59E0B');
 
                 // Update Telemetry KPIs
-                kpiAcv.textContent = `AED ${rec.financials.acv_aed.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-                kpiThreshold.textContent = `${rec.financials.threshold_pct.toFixed(1)}%`;
+                tweenNumber(kpiAcv, rec.financials.acv_aed, asMoney, 260);
+                tweenNumber(kpiThreshold, rec.financials.threshold_pct, asPercent, 260);
 
                 state.lastAnalysisData = {
                     ...original,

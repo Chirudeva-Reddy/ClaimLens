@@ -231,7 +231,9 @@ async def analyze_claim_endpoint(
         if scenario_id and scenario_id in SCENARIOS:
             source_path = Path(SCENARIOS[scenario_id]["image_path"])
             if not source_path.exists():
-                raise HTTPException(status_code=404, detail=f"Scenario image not found: {source_path}")
+                raise HTTPException(
+                    status_code=404, detail=f"Scenario image not found: {source_path}"
+                )
             active_image_path = source_path
         elif image is not None:
             suffix = Path(image.filename or "upload.jpg").suffix or ".jpg"
@@ -241,7 +243,9 @@ async def analyze_claim_endpoint(
                 temp_path = Path(tmp.name)
             active_image_path = temp_path
         else:
-            raise HTTPException(status_code=400, detail="Either an image upload or a scenario_id is required.")
+            raise HTTPException(
+                status_code=400, detail="Either an image upload or a scenario_id is required."
+            )
 
         # Stage 1: Quality Gate
         gate_result = check_image_quality(active_image_path)
@@ -276,7 +280,9 @@ async def analyze_claim_endpoint(
                         "repair_cost_median_aed": 0.0,
                         "acv_aed": acv,
                         "loss_ratio_pct": 0.0,
-                        "threshold_pct": custom_threshold if jurisdiction == "custom" else get_preset(jurisdiction).threshold * 100.0,
+                        "threshold_pct": custom_threshold
+                        if jurisdiction == "custom"
+                        else get_preset(jurisdiction).threshold * 100.0,
                         "is_total_loss": False,
                         "currency": "AED",
                     },
@@ -322,10 +328,13 @@ async def analyze_claim_endpoint(
         triage_ui = _format_triage_ui(triage_decision)
 
         # Stage 5: CBUAE Statutory Policy Retrieval
-        damaged_parts_query = " ".join(
-            [item.part_name for item in cost_estimate.itemized_costs]
-            + [assoc.damage.name for assoc in inspection.associated_damages]
-        ) or "vehicle total loss collision repair"
+        damaged_parts_query = (
+            " ".join(
+                [item.part_name for item in cost_estimate.itemized_costs]
+                + [assoc.damage.name for assoc in inspection.associated_damages]
+            )
+            or "vehicle total loss collision repair"
+        )
         policy_result = retrieve_policy_guidance(damaged_parts_query)
 
         # Structure polygons for interactive SVG overlay
@@ -341,7 +350,9 @@ async def analyze_claim_endpoint(
                     "label": part.name,
                     "confidence": round(part.confidence, 3),
                     "box": [round(c, 1) for c in part.box],
-                    "polygon": [[round(x, 1), round(y, 1)] for x, y in part.polygon] if part.polygon else [],
+                    "polygon": [[round(x, 1), round(y, 1)] for x, y in part.polygon]
+                    if part.polygon
+                    else [],
                     "is_structural": part.is_structural,
                 }
             )
@@ -432,7 +443,8 @@ async def analyze_claim_endpoint(
                     "acv_aed": round(triage_decision.pre_accident_value, 2),
                     "loss_ratio_pct": round(triage_decision.economic_ratio * 100.0, 2),
                     "threshold_pct": round(triage_decision.threshold_applied * 100.0, 2),
-                    "is_total_loss": triage_decision.outcome == TriageOutcome.PROBABLE_TOTAL_LOSS_REVIEW,
+                    "is_total_loss": triage_decision.outcome
+                    == TriageOutcome.PROBABLE_TOTAL_LOSS_REVIEW,
                     "structural_risk_flag": inspection.structural_flag,
                     "brand": brand,
                     "currency": "AED",
@@ -462,7 +474,21 @@ static_dir = Path(__file__).parent / "static"
 if not static_dir.exists():
     static_dir.mkdir(parents=True, exist_ok=True)
 
-app.mount("/static", StaticFiles(directory=str(static_dir)), name="static")
+class RevalidatedStatic(StaticFiles):
+    """Serve the front end with revalidation.
+
+    Starlette sends no Cache-Control, so browsers apply heuristic freshness and
+    can run an edited stylesheet or script from cache for minutes. That silently
+    hides front-end changes during development and after a deploy.
+    """
+
+    def file_response(self, *args: Any, **kwargs: Any) -> Any:
+        response = super().file_response(*args, **kwargs)
+        response.headers["Cache-Control"] = "no-cache"
+        return response
+
+
+app.mount("/static", RevalidatedStatic(directory=str(static_dir)), name="static")
 
 
 @app.get("/")

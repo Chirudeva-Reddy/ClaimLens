@@ -8,7 +8,7 @@
     <link rel="icon" href="data:,">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body class="cockpit-root">
@@ -167,7 +167,8 @@
                                 <div class="lens-sweep" aria-hidden="true"></div>
 
                                 <!-- Case B as the pipeline actually reports it: AED 12,070 against a
-                                     15,000 pre-accident value, so 80.5%. -->
+                                     15,000 pre-accident value, so 80.5%. Regenerate alongside
+                                     scripts/bake-site-fixtures.py whenever the model changes. -->
                                 <dl class="lens-hud font-mono">
                                     <div class="lens-hud-row">
                                         <dt>Loss ratio</dt>
@@ -216,31 +217,31 @@
 
             <ol class="stage-grid reveal-group">
                 <li class="stage-cell stage-cell-wide">
-                    <p class="stage-verb font-mono">Gate</p>
+                    <p class="stage-verb font-mono">Stage 01 // Gate</p>
                     <h3>Reject the photograph before it misleads anyone</h3>
                     <p>Resolution floor and variance-of-Laplacian blur test run before any model sees the image.</p>
                     <p class="stage-metric font-mono"><span data-count-to="96.7">96.7</span>% precision <span>/</span> <span data-count-to="98.2">98.2</span>% recall</p>
                 </li>
                 <li class="stage-cell">
-                    <p class="stage-verb font-mono">Segment</p>
+                    <p class="stage-verb font-mono">Stage 02 // Segment</p>
                     <h3>Two models, not one</h3>
                     <p>YOLOv8n-seg over 21 vehicle components, and a second over 6 damage categories.</p>
                     <p class="stage-metric font-mono"><span data-count-to="82.0">82.0</span>% <span>/</span> <span data-count-to="64.6">64.6</span>% box mAP@50</p>
                 </li>
                 <li class="stage-cell">
-                    <p class="stage-verb font-mono">Associate</p>
+                    <p class="stage-verb font-mono">Stage 03 // Associate</p>
                     <h3>Damage bound to its host panel</h3>
                     <p>Shapely polygon intersection assigns every damage mask to a component and flags load-bearing zones.</p>
                     <p class="stage-metric font-mono"><span data-count-to="94.2">94.2</span>% assignment accuracy</p>
                 </li>
                 <li class="stage-cell">
-                    <p class="stage-verb font-mono">Price</p>
+                    <p class="stage-verb font-mono">Stage 04 // Price</p>
                     <h3>Deterministic AED, no model guessing costs</h3>
                     <p>Rule-based costing against a scraped catalogue of 3,174 UAE OEM body parts.</p>
                     <p class="stage-metric font-mono"><span data-count-to="4.8">4.8</span>% median absolute error</p>
                 </li>
                 <li class="stage-cell">
-                    <p class="stage-verb font-mono">Decide</p>
+                    <p class="stage-verb font-mono">Stage 05 // Decide</p>
                     <h3>The statutory test, stated out loud</h3>
                     <p>CBUAE 50% economic rule with US and UK thresholds selectable, and the clause cited alongside the verdict.</p>
                     <p class="stage-metric font-mono"><span data-count-to="95.0">95.0</span>% sensitivity <span>/</span> <span data-count-to="92.3">92.3</span>% specificity</p>
@@ -299,7 +300,10 @@
                             </svg>
                             REPAIRABLE
                         </span>
-                        <span class="tab-meta-acv font-mono">ACV AED 120k</span>
+                        <div class="tab-meta-right">
+                            <span class="tab-meta-acv font-mono">ACV AED 120k</span>
+                            <kbd class="tab-kbd-hint font-mono" title="Press key 1">1</kbd>
+                        </div>
                     </div>
                     <div class="tab-title-row">
                         <span class="tab-icon-wrap">
@@ -322,7 +326,10 @@
                             </svg>
                             TOTAL LOSS
                         </span>
-                        <span class="tab-meta-acv font-mono">ACV AED 15k</span>
+                        <div class="tab-meta-right">
+                            <span class="tab-meta-acv font-mono">ACV AED 15k</span>
+                            <kbd class="tab-kbd-hint font-mono" title="Press key 2">2</kbd>
+                        </div>
                     </div>
                     <div class="tab-title-row">
                         <span class="tab-icon-wrap">
@@ -347,7 +354,10 @@
                             </svg>
                             SAFE ABSTAIN
                         </span>
-                        <span class="tab-meta-acv font-mono">ACV AED 85k</span>
+                        <div class="tab-meta-right">
+                            <span class="tab-meta-acv font-mono">ACV AED 85k</span>
+                            <kbd class="tab-kbd-hint font-mono" title="Press key 3">3</kbd>
+                        </div>
                     </div>
                     <div class="tab-title-row">
                         <span class="tab-icon-wrap">
@@ -616,6 +626,10 @@
                     </div>
 
                     <div class="canvas-viewport" id="canvas-viewport">
+                        <div class="canvas-reticle reticle-tl" aria-hidden="true"></div>
+                        <div class="canvas-reticle reticle-tr" aria-hidden="true"></div>
+                        <div class="canvas-reticle reticle-bl" aria-hidden="true"></div>
+                        <div class="canvas-reticle reticle-br" aria-hidden="true"></div>
                         <div class="canvas-wrapper" id="canvas-wrapper">
                             <img id="canvas-base-img" class="canvas-base-img" src="" alt="Collision Analysis">
                             <svg id="canvas-svg" class="canvas-svg" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet"></svg>

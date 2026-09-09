@@ -17,3 +17,10 @@ yolov8n-seg.pt
 output/playwright/
 
 dist/
+
+# Datasets and training artifacts
+data/merged/
+runs/
+models/*_baseline.pt
+models/*_baseline.onnx
+models/test_soup*.pt
