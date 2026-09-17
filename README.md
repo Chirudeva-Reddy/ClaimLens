@@ -14,6 +14,33 @@
 
 ---
 
+## 🎬 Product Showcase
+
+<div align="center">
+
+[![ClaimLens Launch Video & Live Cockpit Demo](assets/claimlens-demo.gif)](https://chirudeva-reddy.github.io/ClaimLens/)
+
+<sub>*(Curated with <b>/brag</b> & <b>/boost</b> — Click image above to launch the live interactive cockpit)*</sub>
+
+</div>
+
+<details>
+<summary><b>▶ Click to Watch Full HD 1080p MP4 (Direct Embed)</b></summary>
+<br>
+
+<video src="assets/claimlens-demo.mp4" controls width="100%" poster="assets/claimlens-demo.jpg">
+  Your browser does not support the video tag. Download or view the full video directly: <a href="assets/claimlens-demo.mp4">assets/claimlens-demo.mp4</a>.
+</video>
+
+</details>
+
+> ### ⚡ Eliminating The Claims Bottleneck:
+> - **For The Accident Victim**: Being in a collision takes 2 seconds—yet traditional insurance claims leave drivers stranded for 10–14 days in agonizing uncertainty waiting for an adjuster. ClaimLens replaces weeks of friction with **3-second instant photo triage**, generating an itemized, verifiable repair breakdown in AED.
+> - **For Insurance Companies**: Clears backlogs of thousands of minor claims without dispatching expensive adjusters (saving AED 400–800 per inspection). Unlike generic LLMs that hallucinate part costs and invent labor rates, ClaimLens uses **deterministic pricing from 3,174 live scraped UAE OEM parts** and automatically triggers **CBUAE Article 7(2)** statutory constructive total-loss rules when loss ratio exceeds 50%.
+> - **The Safety Invariant**: Whenever collision damage touches load-bearing unibody zones (quarter-panels, rockers, pillars), ClaimLens **safely abstains** (`INSUFFICIENT_EVIDENCE_INSPECTION_REQUIRED`) and outputs an explicit chassis bench inspection checklist with **0.0% false high-confidence decisions**.
+
+---
+
 ## 💡 Motivation & Problem Statement
 
 Automotive insurance claim triage is historically fraught with friction, delays, and opacity. Vehicle owners submitting accident photos frequently receive blunt total-loss or repair verdicts with zero explanation of how the decision was derived.

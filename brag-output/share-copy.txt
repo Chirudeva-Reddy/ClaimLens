@@ -1,0 +1,1 @@
+An accident takes 2 seconds—the insurance claim shouldn't take 14 days. ClaimLens combines two-stage computer vision, live scraped UAE OEM parts pricing (AED), and CBUAE statutory rules for instant, explainable vehicle damage & total-loss triage. Live cockpit: https://chirudeva-reddy.github.io/ClaimLens/
